@@ -1,3 +1,4 @@
+// @ts-check
 // deno-lint-ignore-file no-unused-labels
 import { li, button, span, img } from "../../utils/utils.mjs";
 
@@ -58,7 +59,7 @@ const setupCarousel = (carouselWrapper) => {
 
   handlePause: {
     const isReduced =
-      window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+      window.matchMedia(`(prefers-reduced-motion: reduce)`) != null &&
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
     if (isReduced) {
       break handlePause;
@@ -121,7 +122,8 @@ const setupCarousel = (carouselWrapper) => {
     carouselWrapper.addEventListener("focusin", stopTimer);
     carouselWrapper.addEventListener("focusout", startTimer);
   }
-  setupSlideButtons: {
+
+  const slideButtons = (() => {
     const carouselSlidesNavigationContainer = carouselWrapper.querySelector(
       ".carouselSlidesNavigation",
     );
@@ -133,7 +135,7 @@ const setupCarousel = (carouselWrapper) => {
       "(Current Slide)",
     );
 
-    slideButtons = slides.map((slide, index) => {
+    const slideButtons = slides.map((slide, index) => {
       const isCurrent = index === controller.currentSlide;
       const slideButton = button(
         {
@@ -181,7 +183,10 @@ const setupCarousel = (carouselWrapper) => {
       };
       return slideButton;
     });
-  }
+
+    return slideButtons
+  })();
+
   setupNextPrevButtons: {
     carouselWrapper
       .querySelector(".buttonPrevious")
