@@ -1,0 +1,29 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+.welcomeText {
+	@include title;
+	font-weight: 700;
+	font-size: 1.5rem;
+	display: grid;
+	grid-auto-flow: row;
+	gap: 1.875rem;
+	h1,
+	p {
+		@include paddingMarginReset;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	em {
+		color: var(--yellow);
+		text-transform: uppercase;
+		font-style: normal;
+	}
+	strong {
+		font-weight: 900;
+	}
+	&FindOutMoreLink {
+		color: var(--purple-light-020);
+	}
+}

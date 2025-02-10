@@ -1,0 +1,115 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../itemCard/itemCard.scss" as itemCard;
+
+$scrollingListBreakpoint: 1400;
+
+/******************************************************************************
+ *
+ * STYLING
+ *
+ *****************************************************************************/
+
+.scrollingList {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	container-name: scrollingList;
+	container-type: inline-size;
+	position: relative;
+	&Header {
+		@include title;
+		@include paddingMarginReset;
+		text-transform: uppercase;
+		margin-inline: 2.3125rem;
+		gap: 2.5rem;
+		display: flex;
+		width: 100%;
+		&Title {
+			font-weight: 700;
+			font-size: 1.5rem;
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			flex: 1;
+			&::after {
+				@include icon;
+				@extend %icon-arrow-left-s-line;
+				font-size: 2rem;
+				transform: rotate(180deg);
+			}
+		}
+		&SeeMoreButton {
+			@include raisedButtonMain();
+			font-size: 1rem;
+			width: Hug (235px) px;
+			padding: 0.5rem 1.5rem;
+			--button-shadow: var(--purple-dark-010);
+			--button-background-color: var(--purple-light-025);
+		}
+	}
+	&Container {
+		position: relative;
+		display: flex;
+		width: 100%;
+		@container scrollingList (width > #{$scrollingListBreakpoint}) {
+			margin-inline: 2.3125rem;
+		}
+	}
+	&Controls {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		&Next::before {
+			transform: rotate(180deg);
+		}
+		button {
+			@include buttonReset;
+			@include flexCenter;
+			background-color: var(--purple-light-025);
+			border-radius: 100%;
+			transition: opacity 0.4s ease-out;
+			width: 2rem;
+			height: 2rem;
+			font-size: 1.3rem;
+			background: var(--purple-light-025);
+			color: white;
+			&:disabled {
+				opacity: 0.5;
+			}
+			&::before {
+				@include icon;
+				@extend %icon-arrow-left-s-line;
+			}
+			span {
+				@include srOnly;
+			}
+		}
+	}
+}
+
+.isScrolling {
+	.gridItemsList {
+		@include listReset;
+		@include hideScrollBar;
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-y: hidden;
+		overflow-x: auto;
+		scroll-snap-type: x proximity;
+		scroll-padding-inline-start: itemCard.$scrollingListHoverHaloSize;
+		scroll-behavior: smooth;
+		padding: itemCard.$scrollingListHoverHaloSize;
+		> li {
+			flex: 0 0 auto;
+			width: itemCard.$itemCardWidth;
+			scroll-snap-align: end;
+			&:first-child {
+				margin-inline-start: itemCard.$itemCardPadding;
+			}
+			&:last-child {
+				margin-inline-end: itemCard.$itemCardPadding;
+			}
+		}
+	}
+}

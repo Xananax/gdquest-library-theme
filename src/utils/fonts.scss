@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@700&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap");
+
+:root {
+	--base-font-size: 16px;
+	--font-mono: "Sometype Mono", ui-monospace, "Cascadia Code",
+		"Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+	--font-title: Montserrat, Avenir, Corbel, "URW Gothic", source-sans-pro,
+		sans-serif;
+	--font-subtitle: Poppins, Avenir, Montserrat, Corbel, "URW Gothic",
+		source-sans-pro, sans-serif;
+	--font-body: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+		Arial, sans-serif;
+	--font-antique: "Caprasimo", Superclarendon, "Bookman Old Style",
+		"URW Bookman", "URW Bookman L", "Georgia Pro", Georgia, serif;
+	font-family: var(--font-body);
+	font-optical-sizing: auto;
+}

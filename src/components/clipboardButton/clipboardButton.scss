@@ -1,0 +1,15 @@
+@use "../../utils/utils.scss" as *;
+
+[data-is="clipboard-button"] {
+	@include buttonReset();
+	& > [data-clipboard-message] {
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.2s;
+	}
+	&[aria-pressed="true"] {
+		& > [data-clipboard-message] {
+			opacity: 1;
+		}
+	}
+}

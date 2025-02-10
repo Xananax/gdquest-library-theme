@@ -1,0 +1,296 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../../utils/animation.scss" as *;
+
+.itemSummaryCardWrapper {
+	container: itemSummaryCardContainer;
+	container-type: inline-size;
+	display: grid;
+	width: 100%;
+}
+
+$summaryCardMid: 33rem;
+$summaryCardBreakPoint: 40rem;
+
+.itemSummaryCard {
+	display: grid;
+	flex-wrap: wrap;
+	font-family: var(--font-mono);
+	font-weight: 500;
+	margin: 0 auto;
+	margin-block-end: 6px; /** for the shadow) **/
+	color: black;
+	grid-template-areas:
+		".  . title    title"
+		".  . cover    cover"
+		".  . attrs    attrs"
+		".  . dates    dates"
+		".  . features features"
+		".  . license  license"
+		".  . claps    .";
+	@container (width > #{$summaryCardMid}) {
+		grid-template-areas:
+			".  . title    title"
+			".  . cover    cover"
+			".  . attrs    license"
+			".  . features dates"
+			".  . claps    date";
+	}
+	@container (width > #{$summaryCardBreakPoint}) {
+		grid-template-columns: 14fr 5fr 40fr 40fr;
+		grid-template-areas:
+			"date    .   title    title"
+			".       .    .         ."
+			"license .  cover    attrs"
+			"license .  features dates"
+			".       .  .        claps";
+	}
+	&::before,
+	&::after {
+		content: "";
+		display: block;
+		border-width: 0;
+		border-style: solid;
+		border-color: var(--color-pink-main);
+		z-index: 1;
+	}
+	&::before {
+		grid-column: 2;
+		grid-row: 1 / -1;
+		border-inline-width: 2px;
+		width: 2.5rem;
+		height: 100%;
+	}
+	&::after {
+		grid-column: 1 / -1;
+		grid-row: 2;
+		border-block-start-width: 2px;
+		width: 100%;
+	}
+	ul,
+	li {
+		list-style-type: none;
+	}
+	&Title,
+	&Date,
+	&Cover,
+	&Attributes,
+	&Features,
+	&Licenses,
+	&Dates,
+	&Claps {
+		padding: 0.625rem;
+		z-index: 1;
+	}
+	&Background {
+		$radius: 0.9375rem;
+		$elevation: 0.5rem;
+		$shadow: #1e0f2f96;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		z-index: -1;
+		box-shadow: 0px 6px 0px 0px $shadow;
+		background:
+			radial-gradient(
+				circle closest-side at bottom calc($radius + $elevation) right
+					2rem,
+				transparent $radius,
+				#fff calc($radius + 2px),
+				#fff 100%
+			),
+			/** shadow **/
+				radial-gradient(
+					circle closest-side at bottom calc($radius) right 2rem,
+					transparent $radius,
+					$shadow calc($radius + 2px),
+					$shadow 100%
+				);
+		@container (width > #{$summaryCardBreakPoint}) {
+			background:
+				radial-gradient(
+					circle closest-side at bottom calc($radius + $elevation)
+						right 50%,
+					transparent $radius,
+					#fff calc($radius + 2px),
+					#fff 100%
+				),
+				/** shadow **/
+					radial-gradient(
+						circle closest-side at bottom calc($radius) right 50%,
+						transparent $radius,
+						$shadow calc($radius + 2px),
+						$shadow 100%
+					);
+		}
+	}
+	&Title {
+		grid-area: title;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		text-transform: uppercase;
+		color: var(--purple-mid-025);
+		a {
+			text-decoration: none;
+		}
+	}
+	&Date {
+		grid-area: date;
+		margin: 0;
+		font-size: 0.875rem;
+		color: var(--color-pink-main);
+		display: none;
+		align-items: center;
+		@container (width > #{$summaryCardBreakPoint}) {
+			display: flex;
+		}
+	}
+	&Cover {
+		grid-area: cover;
+		max-width: 100%;
+	}
+	&Attributes {
+		grid-area: attrs;
+		display: grid;
+		gap: 0.3125rem;
+		& > div {
+			width: 100%;
+		}
+		dt {
+			width: auto;
+			float: left;
+			font-weight: 600;
+			&::after {
+				content: ":";
+				margin-inline-end: 0.5ch;
+			}
+		}
+		dd {
+			margin: 0;
+			padding: 0;
+			a {
+				text-decoration: none;
+			}
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			padding-block-start: 0.3125rem;
+			gap: 0.3125rem;
+			&::before {
+				content: "";
+				display: block;
+				height: 1rem;
+			}
+			a {
+				border: 1px solid var(--color-pink-main);
+				padding-inline: 0.3125rem;
+				font-family: var(--font-body);
+				border-radius: 1rem;
+				&:hover {
+					background-color: var(--color-pink-main);
+					color: white;
+				}
+			}
+		}
+	}
+	&Features {
+		grid-area: features;
+		margin: 0;
+		& > li {
+			display: flex;
+			align-items: center;
+			&::before {
+				@include icon;
+				@extend %icon-checked-circle;
+				font-size: 1.3rem;
+			}
+		}
+	}
+	&Licenses {
+		grid-area: license;
+		display: grid;
+		grid-template-rows: repeat(n, auto);
+		align-items: end;
+		align-content: end;
+		font-size: 0.875rem;
+		margin: 0;
+		padding-inline: 1.5rem 0.5rem;
+		gap: 0.625rem;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+		hyphens: auto;
+		&CodeLabel,
+		&AssetsLabel,
+		&AllElseLabel {
+			color: var(--color-pink-main);
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-block-end: 0.2rem;
+			&::before {
+				@include icon;
+				color: black;
+				font-size: 1.2rem;
+				margin-block-start: -0.1rem;
+				position: absolute;
+				inset-inline-start: -1.25rem;
+			}
+		}
+		dd,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		&CodeLabel::before {
+			@extend %icon-opensource;
+		}
+		&AssetsLabel::before {
+			@extend %icon-cc-by-sa;
+		}
+		&AllElseLabel::before {
+			@extend %icon-copyright;
+		}
+	}
+	&Dates {
+		grid-area: dates;
+		display: grid;
+		grid-template-columns: auto auto;
+		justify-items: start;
+		justify-content: start;
+		@container (width > #{$summaryCardBreakPoint}) {
+			justify-items: end;
+			justify-content: end;
+		}
+		dt {
+			grid-column: 1;
+			font-weight: 600;
+			&::after {
+				content: ":";
+				margin-inline-end: 0.5ch;
+			}
+		}
+		dd {
+			grid-column: 2;
+		}
+		dl,
+		dt {
+			&:nth-of-type(2) {
+				color: var(--color-pink-main);
+			}
+		}
+	}
+	.clapsButton {
+		padding: 0.625rem 0.875rem;
+		@container (width > #{$summaryCardBreakPoint}) {
+			align-content: center;
+			justify-self: end;
+		}
+	}
+}

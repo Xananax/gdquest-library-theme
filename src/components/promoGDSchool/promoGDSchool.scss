@@ -1,0 +1,115 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+$promoGDSchoolBreakpoint: 1000px;
+
+.promoGDSchool {
+	container-name: promoGDSchoolContainer;
+	container-type: inline-size;
+	--color: var(--purple-mid-025);
+	&Title {
+		@include title;
+		@include paddingMarginReset;
+		display: flex;
+		align-items: center;
+		position: relative;
+		max-width: 100%;
+		z-index: 1;
+		font-weight: 900;
+		font-size: 1.25rem;
+		padding-inline-start: 1rem;
+		margin-block-end: -0.7rem;
+		background-color: var(--color);
+		height: 4rem;
+		border-start-end-radius: 4rem;
+		@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
+			margin-block-end: -2rem;
+			font-size: 3rem;
+			height: auto;
+			background-color: transparent;
+			overflow: hidden;
+			@include text-stroke(32, var(--color));
+		}
+		&Logo {
+			height: 3ch;
+			position: absolute;
+			inset: 0 auto 0 auto;
+			margin-inline-start: -2rem;
+			transform: translateY(-70%);
+			span {
+				@include srOnly;
+			}
+			&::before {
+				content: "";
+				display: block;
+				background: no-repeat url("static/gdschool_logo.svg") 0%
+					center / contain;
+				height: 100%;
+				aspect-ratio: 3.5;
+			}
+			@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
+				margin-inline-start: 0.3ch;
+				transform: none;
+				position: static;
+			}
+		}
+	}
+	&Body {
+		border-radius: 0 0 2.5rem 2.5rem; /* 40px */
+		border: 0.625rem solid var(--color);
+		padding: 1rem;
+		gap: 1.25rem;
+		display: grid;
+		width: 100%;
+		justify-items: center;
+		position: relative;
+		@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
+			border-radius: 2.5rem; /* 40px */
+			padding: 5rem 6.25rem;
+			border-width: 1.25rem;
+			gap: 3.125rem;
+		}
+		&List {
+			@include listReset;
+			@include paddingMarginReset;
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+			margin-inline: 0.625rem;
+			gap: 1.875rem;
+			> li {
+				@include listReset;
+				@include paddingMarginReset;
+				display: flex;
+			}
+			img {
+				max-width: 100%;
+			}
+			@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
+				flex-wrap: nowrap;
+			}
+		}
+		&HighlightLink {
+			@include title;
+			@include flexCenter;
+			color: var(--yellow);
+			display: flex;
+			font-weight: 900;
+			font-size: 1rem;
+			text-transform: uppercase;
+			justify-self: end;
+			@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
+				position: absolute;
+				font-size: 1.5rem;
+				bottom: 1rem;
+				right: 1rem;
+			}
+			&::after {
+				@include icon;
+				@extend %icon-arrow-left-s-line;
+				font-size: 2rem;
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

@@ -1,0 +1,355 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+$slideCoverBreakpoint: 48rem;
+$slideNavSize: 34rem;
+$slideNavBreakpoint: calc($slideCoverBreakpoint + $slideNavSize);
+$sliderHeight: 30.5rem;
+
+/******************************************************************************
+ *
+ * STYLING
+ *
+ *****************************************************************************/
+
+%carouselCategory {
+	@include title;
+	@include paddingMarginReset;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 900;
+}
+
+%carouselTitle {
+	@include bodyText;
+	@include paddingMarginReset;
+	color: var(--yellow);
+	font-weight: 700;
+}
+
+%backgroundProgress {
+	content: "";
+	position: absolute;
+	inset: 0;
+	transform-origin: 0 0;
+	transform: scaleX(0);
+	z-index: 0;
+	animation-duration: var(--timer-time);
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-timing-function: ease-in;
+	@media (prefers-reduced-motion: reduce) {
+		display: none;
+	}
+}
+
+.carousel {
+	&SkipToContent {
+		@include srOnlyFocusable;
+	}
+	&Controls,
+	&SlidesNavigation,
+	&SlidesList,
+	&Controls > li,
+	&SlidesNavigation > li {
+		@include listReset;
+	}
+	&LiveRegion,
+	&SlideButtonCurrentTextAnnouncer {
+		@include srOnly;
+	}
+	&Wrapper {
+		width: 100%;
+		height: $sliderHeight;
+		display: flex;
+		flex-wrap: wrap;
+		container-name: carouselContainer;
+		container-type: inline-size;
+		position: relative;
+		gap: 0.9375rem;
+		--timer-animation-name: none;
+		--timer-time: 0;
+	}
+	&SlidesNavigation {
+		gap: 0.3125rem;
+		padding-block-start: 0.625rem;
+		padding-inline-start: 0;
+		> li {
+			border-radius: 100%;
+			width: 0.5625rem;
+			height: 0.5625rem;
+			&:focus,
+			&:focus-within {
+				outline: 0.125rem solid var(--purple-dark-010);
+			}
+		}
+		@container carouselContainer (width > #{$slideNavBreakpoint}) {
+			gap: 1rem;
+			padding-block: 0.3125rem;
+			> li {
+				border-radius: var(--rounded-3xl);
+			}
+		}
+		&Button {
+			background: var(--purple-dark-020);
+			&[aria-current="true"] {
+				background: var(--purple-mid-010);
+			}
+			&Label {
+				text-align: start;
+				gap: 1.25rem;
+				@container carouselContainer (width > #{$slideNavBreakpoint}) {
+					padding-inline: 1.25rem 1.875rem;
+					padding-block: 1.25rem;
+				}
+				&::before {
+					background: var(--purple-dark-010);
+				}
+				&Category,
+				&Title {
+					opacity: 0;
+					@container carouselContainer (width > #{$slideNavBreakpoint}) {
+						opacity: 1;
+					}
+				}
+				&Category {
+					@extend %carouselCategory;
+					font-size: 0.9375rem;
+				}
+				&Title {
+					@extend %carouselTitle;
+					font-size: 1.25rem;
+				}
+			}
+		}
+	}
+	&Controls {
+		@include flexCenter;
+		position: absolute;
+		pointer-events: none;
+		width: 100%;
+		left: 0;
+		gap: 0.2rem;
+		padding: 0.3rem;
+		z-index: 2;
+		top: 0;
+		justify-content: end;
+		@container carouselContainer (width > #{$slideNavBreakpoint}) {
+			width: calc(100% - $slideNavSize);
+			top: auto;
+			bottom: 0;
+			justify-content: center;
+		}
+		&Button {
+			font-size: 2em;
+			@include buttonReset;
+			@include flexCenter;
+			pointer-events: all;
+			background: var(--purple-dark-010);
+			color: white;
+			opacity: 0.7;
+			border-radius: 100%;
+			transition: opacity 0.4s ease-out;
+			&:hover {
+				opacity: 1;
+				transition: opacity 0.2s ease-in;
+			}
+			> span {
+				@include srOnly;
+			}
+			&::before {
+				padding: 0.2rem;
+			}
+			&.buttonPrevious::before {
+				@include icon;
+				@extend %icon-arrow-left-s-line;
+			}
+			&.buttonNext::before {
+				@include icon;
+				@extend %icon-arrow-left-s-line;
+				transform: rotate(180deg);
+			}
+			&.buttonPlay::before {
+				@include icon;
+				@extend %icon-play;
+			}
+			&.buttonPause::before {
+				@include icon;
+				@extend %icon-pause;
+			}
+			&PlayToggle {
+				@media (prefers-reduced-motion: reduce) {
+					display: none;
+				}
+			}
+		}
+	}
+	&SlidesNavigation {
+		flex: 0 0 100%;
+		order: 2;
+		@include flexCenter;
+		flex-direction: row;
+		> li {
+			min-height: 0;
+			position: relative;
+			overflow: hidden;
+			@include flexCenter;
+		}
+		@container carouselContainer (width > #{$slideNavBreakpoint}) {
+			flex: 0 0 $slideNavSize;
+			flex-direction: column;
+			justify-content: start;
+			> li {
+				height: 100%;
+				width: 100%;
+			}
+		}
+		&Button {
+			@include buttonReset;
+			@include flexCenter;
+			background: var(--purple-dark-020);
+			position: absolute;
+			inset: 0;
+			overflow: hidden;
+			$parent-selector: &;
+			&[aria-current="true"] {
+				#{$parent-selector}Label {
+					&::before {
+						animation-name: var(--timer-animation-name);
+					}
+				}
+			}
+			&Thumbnail {
+				height: 100%;
+				aspect-ratio: 1;
+				object-fit: cover;
+				order: 0;
+				flex: 1;
+				display: none;
+				@container carouselContainer (width > #{$slideNavBreakpoint}) {
+					display: block;
+				}
+			}
+			&Label {
+				order: 1;
+				height: 100%;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				// make image not move other content in dot thumbnail
+				position: absolute;
+				@container carouselContainer (width > #{$slideNavBreakpoint}) {
+					position: relative;
+				}
+				&::before {
+					@extend %backgroundProgress;
+				}
+				&Category,
+				&Title {
+					position: relative;
+					z-index: 1;
+				}
+				&Category {
+					order: 1;
+				}
+				&Title {
+					order: 2;
+				}
+			}
+			@container carouselContainer (width > #{$slideNavBreakpoint}) {
+				color: inherit;
+			}
+		}
+	}
+	&SlidesList {
+		&Slide {
+		}
+	}
+	&SlidesList {
+		height: 100%;
+		display: flex;
+		flex-flow: row nowrap;
+		flex: 1 1 $slideCoverBreakpoint;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		order: 1;
+		border-radius: var(--rounded-3xl);
+		/** Hide scrollbar, but show when element in focus **/
+		overflow: hidden;
+		@media (prefers-reduced-motion: reduce) {
+			scroll-behavior: auto;
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			overflow-x: scroll;
+		}
+		&Slide {
+			background: var(--purple-dark-020);
+			gap: 0.3125rem;
+			padding-block-end: 0.3125rem;
+			flex: 0 0 100%;
+			height: 100%;
+			scroll-snap-align: center;
+			height: 100%;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			&::before {
+				@extend %backgroundProgress;
+				animation-name: var(--timer-animation-name);
+			}
+			@container carouselContainer (width > #{$slideNavBreakpoint}) {
+				padding-block-end: 0;
+				h4,
+				h2 {
+					display: none;
+				}
+			}
+			&::before {
+				background: var(--purple-dark-010);
+				z-index: 0;
+			}
+			h4,
+			h2,
+			img {
+				position: relative;
+				z-index: 1;
+			}
+			h4,
+			h2 {
+				padding-inline: 0.3125rem;
+			}
+			h4 {
+				@extend %carouselCategory;
+				order: 2;
+			}
+			h2 {
+				@extend %carouselTitle;
+				order: 3;
+			}
+			img {
+				object-fit: cover;
+				width: 100%;
+				height: 100%;
+				order: 1;
+			}
+		}
+	}
+}
+
+/******************************************************************************
+*
+* STRUCTURE
+*
+*****************************************************************************/
+
+@keyframes carouselProgressAnimation {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}

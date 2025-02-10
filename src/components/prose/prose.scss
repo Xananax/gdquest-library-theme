@@ -1,0 +1,55 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+@mixin title() {
+	font-weight: 900;
+	font-size: 2rem;
+	color: white;
+	text-transform: uppercase;
+	font-family: var(--font-title);
+	padding-inline-start: 2.625rem;
+	position: relative;
+	&::before {
+		position: absolute;
+		inset-inline-start: 0;
+		top: 0.2rem;
+	}
+}
+
+.prose {
+	&Title,
+	h1 {
+		@include title();
+		&:first-child {
+			margin-block-start: 0;
+		}
+	}
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-family: var(--font-title);
+		text-transform: uppercase;
+	}
+	h3,
+	h4,
+	a {
+		color: var(--color-pink-main);
+		@include dark {
+			color: var(--color-pink-main-on-dark);
+		}
+	}
+	h2 {
+		font-weight: 700;
+		font-size: 1.5rem;
+		color: var(--purple-mid-025);
+		@include dark {
+			color: var(--purple-light-010);
+		}
+	}
+	h3 {
+		@include title();
+		font-weight: 700;
+		font-size: 1.25rem;
+	}
+}

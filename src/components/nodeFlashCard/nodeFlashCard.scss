@@ -1,0 +1,80 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+%title {
+	font-family: var(--font-title);
+	font-weight: 800;
+	color: var(--yellow);
+	text-transform: uppercase;
+	font-weight: 800;
+	margin: 0;
+}
+
+.nodeFlashCard {
+	@include listReset;
+	--accent: rgba(117, 148, 250, 1);
+	background-color: var(--purple-dark-010);
+	padding: 1.25rem;
+	border-radius: var(--rounded);
+	display: grid;
+	gap: 0.625rem;
+	&Header {
+		border: 1px solid var(--purple-mid-025);
+		background-color: var(--purple-dark-035);
+		border-radius: var(--rounded);
+		aspect-ratio: 1.33;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		justify-items: center;
+		padding: 1.875rem;
+		gap: 1.875rem;
+		&Title {
+			@extend %title;
+			color: rgba(115, 255, 109, 1);
+			font-size: 1.125rem;
+			text-transform: none;
+			margin: 0;
+		}
+		&Icon {
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			background-image: var(--node-icon);
+		}
+	}
+	&Badge {
+		font-weight: 900;
+		font-size: 1rem;
+		@include tag(0.5rem, var(--accent));
+	}
+	&Body {
+	}
+	&ShortDescription {
+		margin-block-start: 0;
+		font-weight: 700;
+		font-size: 1.25rem;
+	}
+	&Usage {
+		&Title {
+			@extend %title;
+		}
+		&Text {
+		}
+	}
+	&Examples {
+		&Title {
+			@extend %title;
+		}
+		&List {
+			// @include listReset;
+			padding-inline-start: 1rem;
+			margin-block-start: 1rem;
+			li {
+				list-style: disc;
+				//padding-inline-start: 1rem;
+			}
+		}
+	}
+}

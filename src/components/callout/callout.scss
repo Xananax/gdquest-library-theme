@@ -1,0 +1,189 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+%separator {
+	margin-left: 2.5rem; /* 40px */
+	margin-right: 2.5rem; /* 40px */
+	display: block;
+	border: 1px solid var(--callout-border-color);
+	content: "";
+}
+
+$arbitraryIconTopMargin: 1rem;
+
+[data-is="collapsible-list"] {
+	--callout-border-color: var(--color-purple-faint);
+	border: 1px solid var(--callout-border-color);
+	background-color: white;
+	border-width: 1px;
+	border-radius: var(--rounded-md);
+	display: grid;
+	@include dark() {
+		--callout-border-color: var(--color-purple-800);
+		background-color: var(--color-slate-800);
+	}
+	&:has(:target) {
+		background-color: var(--color-purple-faint);
+	}
+	dd {
+		margin-inline: 0;
+		display: grid;
+		grid-template-rows: 1fr;
+		font-weight: 400;
+		& > div {
+			overflow: hidden;
+			padding-inline: 1.875rem;
+			padding-block: 1.25rem;
+			transition: padding 300ms ease-out;
+			&:first-child {
+				padding-block-start: 0;
+				margin-block-start: 0;
+			}
+		}
+	}
+	dt {
+		--callout-icons-color: var(--color-slate-700);
+		--callout-padding-inline: 1.875rem;
+		--callout-padding: 1rem var(--callout-padding-inline) 1rem
+			calc(var(--callout-padding-inline) * 2);
+		padding: var(--callout-padding);
+		position: relative;
+		font-weight: 600;
+		&::before {
+			@extend %separator;
+			position: relative;
+			top: -1rem;
+		}
+		&:first-child::before {
+			display: none;
+		}
+		&::after {
+			@include icon();
+			font-size: 1.5rem;
+			color: var(--callout-icons-color);
+			order: -2;
+			position: absolute;
+			top: $arbitraryIconTopMargin;
+			left: var(--callout-padding-inline);
+		}
+		& > button {
+			all: inherit;
+			padding: var(--callout-padding);
+			padding-inline-start: calc(var(--callout-padding-inline) * 3);
+			cursor: pointer;
+			width: 100%;
+			position: relative;
+			&::before {
+				// chevron
+				@include icon();
+				@extend %icon-arrow-left-s-line;
+				color: var(--callout-icons-color);
+				position: absolute;
+				font-size: 1.5rem;
+				left: calc(var(--callout-padding-inline) * 2);
+				top: $arbitraryIconTopMargin;
+				transform: rotate(-180deg);
+				transition: transform 300ms ease-out;
+			}
+			&[aria-expanded="true"]::before {
+				transform: rotate(-90deg);
+			}
+		}
+		&[data-closed] {
+			& + dd:not(:target) {
+				grid-template-rows: 0fr;
+				& > div {
+					padding-block: 0;
+				}
+			}
+		}
+	}
+	&.isJSProcessed {
+		dd {
+			transition: all 300ms ease-out;
+		}
+		dt {
+			padding: 0;
+			&::before {
+				top: unset;
+			}
+		}
+	}
+}
+
+/********************************************************************************
+ *
+ * Subsquent items
+ *
+ ********************************************************************************/
+
+[data-is="collapsible-list"]:has(+ [data-is="collapsible-list"]) {
+	margin-block-end: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-width: 0;
+}
+
+[data-is="collapsible-list"] + [data-is="collapsible-list"] {
+	margin-block-start: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top-width: 0;
+	&::before {
+		@extend %separator;
+	}
+}
+
+/********************************************************************************
+ *
+ * Callout icons
+ *
+ ********************************************************************************/
+
+// to understand those slashes in content, see: https://a11ysupport.io/tests/tech__css__css_generated_content_alt
+
+[data-is="collapsible-list"] {
+	.question {
+		--callout-icons-color: var(--color-blue-secondary-2);
+		@include dark {
+			--callout-icons-color: var(--color-blue-secondary-3);
+		}
+		&::after {
+			content: "" / "question";
+			@extend %icon-question;
+		}
+	}
+
+	.info {
+		--callout-icons-color: var(--color-purple-secondary-3);
+		&::after {
+			content: "" / "information";
+			@extend %icon-information;
+		}
+	}
+
+	.troubleshoot {
+		--callout-icons-color: var(--color-slate-700);
+		&::after {
+			content: "" / "troubleshoot";
+			@extend %icon-zap;
+		}
+	}
+
+	.error,
+	.warning {
+		--callout-icons-color: var(--color-pink-main);
+		@include dark() {
+			--callout-icons-color: var(--color-pink-main-on-dark);
+		}
+		&::after {
+			content: "" / "error";
+			@extend %icon-exclamation;
+		}
+	}
+	.warning {
+		&::after {
+			content: "" / "warning";
+		}
+	}
+}

@@ -1,0 +1,182 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../../utils/contentGrid.scss" as *;
+@use "../prose/prose.scss" as prose;
+
+.contributeBlock {
+	--dark-color: rgba(26, 18, 45, 1);
+	grid-area: main;
+	h1 {
+		@include prose.title();
+	}
+	&Wrapper {
+		$s: 128px;
+		grid-column: 1 / -1;
+		background: repeating-conic-gradient(#ffffff1f 0% 25%, #ffffff2b 0% 50%)
+			50% / #{$s $s};
+		display: grid;
+		grid-template-columns: auto minmax(22.5rem, 65rem) auto;
+		grid-template-areas: "gutter1 main gutter2";
+	}
+	ul,
+	li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.gdschoolLogo,
+	.githubLogo {
+		font-size: 3rem;
+	}
+	.socialLink {
+		font-size: 2rem;
+		filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+	}
+	&Emphasized {
+		font-weight: 700;
+		color: var(--color-pink-vibrant);
+		@include dark {
+			color: var(--color-pink-main-on-dark);
+		}
+	}
+	& > ul {
+		display: flex;
+		// grid-template-columns: 1fr 1.3fr 1fr;
+		gap: 4rem;
+		padding: 4rem;
+		flex-direction: column;
+		// flex-wrap: wrap;
+		@media screen and (min-width: 50rem) {
+			flex-direction: row;
+			// gap: 2rem;
+		}
+	}
+	& > ul > li {
+		--number: 1;
+		color: var(--dark-color);
+		background: white;
+		border-radius: 0.75rem;
+		border: 4px solid var(--dark-color);
+		position: relative;
+		display: grid;
+		grid-template-rows: 1fr auto;
+		width: 100%;
+		flex: 1;
+		&::after {
+			content: var(--number);
+			font-family: var(--font-antique);
+			font-weight: 400;
+			position: absolute;
+			top: 1rem;
+			left: 50%;
+			font-size: 4.375rem;
+			font-weight: 800;
+			line-height: 1;
+			transform: translate(-50%, -100%);
+			color: var(--color-pink-vibrant);
+			@include dark {
+				color: var(--color-pink-main-on-dark);
+			}
+		}
+		& > p {
+			margin: 0;
+			padding: 1rem 1.375rem;
+			font-family: var(--font-mono);
+			text-transform: uppercase;
+			font-weight: 700;
+			font-size: 1.3125rem;
+			margin-block-end: 2rem;
+			img {
+				float: left;
+				height: 9.625rem;
+				width: auto;
+				shape-outside: var(--shape);
+				shape-image-threshold: 0;
+				shape-margin: 0.5rem;
+				margin-inline-start: -7rem;
+				margin-block-start: -3rem;
+			}
+			/*
+			&::before {
+				content: "";
+				display: block;
+				height: 9.625rem;
+				width: 9.625rem;
+				margin-inline-start: -6rem;
+				margin-block-start: -2.5rem;
+				float: left;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-image: var(--background-image);
+				shape-outside: circle(50%);
+				shape-margin: 1rem;
+				filter: drop-shadow(15.58px 15.58px 7.79px rgba(0, 0, 0, 0.25));
+			}
+			*/
+		}
+		.contributeBlockFooterLink {
+			all: unset;
+			background: transparent;
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: end;
+			cursor: pointer;
+			span {
+				background-color: var(--dark-color);
+				color: white;
+				display: block;
+				width: 100%;
+				text-align: end;
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				text-transform: uppercase;
+				font-weight: 700;
+				gap: 0.5rem;
+				padding: 0.5625rem 0.75rem;
+				&::after {
+					@include icon();
+				}
+			}
+			&Share {
+				overflow: hidden;
+				& > [data-clipboard-message] {
+					position: absolute;
+				}
+			}
+		}
+		&:nth-child(1) {
+			order: 2;
+			z-index: 1;
+			flex: 1.3;
+			transform: perspective(100px) translateZ(10px);
+			--background-image: url("/src/static/head-gobot.png");
+			--number: "1";
+			.contributeBlockFooterLink span::after {
+				@extend %icon-arrow-left-s-line;
+				transform: rotate(180deg);
+			}
+		}
+		&:nth-child(2) {
+			order: 1;
+			--background-image: url("/src/static/head-sophia.png");
+			--number: "2";
+			& > p::before {
+				width: 10rem;
+			}
+			.contributeBlockFooterLink span::after {
+				@extend %icon-pull-request;
+			}
+		}
+		&:nth-child(3) {
+			order: 3;
+			--background-image: url("/src/static/head-gdbot.png");
+			--number: "3";
+			.contributeBlockFooterLink span::after {
+				@extend %icon-share;
+			}
+		}
+	}
+}

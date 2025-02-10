@@ -1,0 +1,45 @@
+.glossaryList {
+	color: white;
+	margin-block: 2rem;
+	ol,
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		justify-content: start;
+		gap: 0.375rem;
+	}
+	a {
+		text-underline-offset: 4px;
+	}
+	h2 {
+		margin-block: 0;
+		a {
+			text-decoration: none;
+			text-transform: uppercase;
+			color: var(--color-pink-main-on-dark);
+		}
+	}
+	ol {
+		list-style-type: upper-alpha;
+		list-style-position: inside;
+		& > li {
+			list-style: none;
+			padding-block: 0.625rem;
+			margin-block: 0.625rem;
+			+ li {
+				border-top: 1px solid var(--purple-light-030);
+			}
+		}
+	}
+	ul {
+		padding-block: 0.375rem;
+		//width: max-content;
+	}
+	ul,
+	ul li {
+		list-style-type: none;
+		//min-width: 20rem;
+	}
+}

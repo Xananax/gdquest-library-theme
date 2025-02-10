@@ -1,0 +1,377 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+// $searchBreakpoint: 48rem;
+$searchBreakpoint: 1400px;
+
+.mainSearch {
+	container-name: mainSearchContainer;
+	container-type: inline-size;
+	@include flexCenter;
+	gap: 0.625rem;
+	justify-items: stretch;
+	align-items: center;
+	font-weight: 500;
+	position: relative;
+	form {
+		width: 100%;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		justify-items: stretch;
+		column-gap: 0.625rem;
+	}
+	&FiltersButton {
+		@include buttonReset;
+		@include flexCenter;
+		background: var(--purple-grey-030);
+		border-radius: var(--rounded);
+		color: var(--purple-light-030);
+		border: 1px solid var(--purple-dark-020);
+		aspect-ratio: 1;
+		padding: 0.5rem;
+		&:after {
+			@include icon;
+			@extend %icon-filter;
+			font-size: 2rem;
+		}
+		span {
+			@include srOnly;
+		}
+		@container mainSearchContainer (width > #{$searchBreakpoint}) {
+			display: none;
+		}
+	}
+	&Filters {
+		transition:
+			transform 0.4s,
+			overlay 0.4s ease-out,
+			overlay 0.4s allow-discrete,
+			display 0.4s allow-discrete;
+		transition-behavior: allow-discrete;
+		flex-direction: column;
+		z-index: 3;
+		gap: 0.625rem;
+		width: 100%;
+		background-color: var(--purple-grey-030);
+		color: inherit;
+		max-width: 22.5em;
+		max-height: 100vh;
+		max-height: 100svh;
+		height: auto;
+		border: 0 none;
+		right: 0;
+		left: auto;
+		margin: 0;
+		transform: translateX(100%);
+		&:popover-open {
+			display: flex;
+			transform: translateX(0);
+			@starting-style {
+				transform: translateX(100%);
+			}
+		}
+		&::backdrop {
+			@include modalBackdrop;
+		}
+		@container mainSearchContainer (width > #{$searchBreakpoint}) {
+			display: flex;
+			flex-direction: row;
+			position: static;
+			max-width: unset;
+			width: auto;
+			height: auto;
+			overflow: visible;
+			background: transparent;
+			background-color: transparent;
+			transform: translate(0);
+		}
+		&Header {
+			@include flexCenter;
+			@include paddingMarginReset;
+			padding: 1rem 0.625rem;
+			text-transform: uppercase;
+			font-weight: 700;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--purple-dark-010);
+			@container mainSearchContainer (width > #{$searchBreakpoint}) {
+				display: none;
+			}
+			&CloseButton {
+				@include buttonReset;
+				@include flexCenter;
+				&::after {
+					@include icon;
+					@extend %icon-close;
+					color: white;
+					font-size: 2rem;
+				}
+				span {
+					@include srOnly;
+				}
+			}
+		}
+		fieldset {
+			@include paddingMarginReset;
+			gap: 0.3125rem;
+			margin-inline-start: 1.875rem;
+			display: flex;
+			position: relative;
+			border: none;
+			@container mainSearchContainer (width > #{$searchBreakpoint}) {
+				margin: 0;
+			}
+		}
+		&Items {
+			display: flex;
+			margin-block-start: 0.625rem;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: flex-start;
+			padding: 0.625rem;
+			border-radius: var(--rounded);
+			width: 13.75rem;
+			@container mainSearchContainer (width > #{$searchBreakpoint}) {
+				border: 1px solid var(--purple-dark-020);
+				background-color: var(--purple-grey-030);
+				position: absolute;
+				max-height: 0;
+				opacity: 0;
+				overflow: hidden;
+				transform: translateY(-2rem);
+				transition:
+					opacity 0.3s,
+					transform 0.2s,
+					max-height 0s 0.5s;
+			}
+		}
+		fieldset:focus &Items,
+		fieldset:hover &Items,
+		fieldset:focus-within &Items {
+			max-height: 50rem;
+			opacity: 1;
+			transform: translateY(0);
+			transition:
+				opacity 0.3s,
+				transform 0.2s,
+				max-height 0s;
+		}
+		legend {
+			display: flex;
+			font-size: 1.125rem;
+			align-items: center;
+			font-weight: 500;
+			padding-block: 1rem;
+			width: 100%;
+			border-bottom: 4px solid var(--purple-light-020);
+			cursor: pointer;
+			text-transform: lowercase;
+			&::after {
+				@include icon;
+				@extend %icon-arrow-left-s-line;
+				color: var(--purple-light-020);
+				transform: rotate(-90deg);
+				font-size: 1.5rem;
+				margin-inline-start: 0.3rem;
+				order: -1;
+			}
+			@container mainSearchContainer (width > #{$searchBreakpoint}) {
+				background-color: var(--purple-grey-030);
+				border-radius: var(--rounded);
+				width: auto;
+				padding: 0.625rem;
+				border: 1px solid var(--purple-dark-020);
+				&::after {
+					order: 0;
+				}
+			}
+		}
+		input[type="checkbox"],
+		input[type="radio"] {
+			@include srOnly;
+			&:focus + label {
+				outline-offset: 3px;
+				outline: 1px dashed var(--purple-light-020);
+			}
+		}
+		label {
+			@include flexCenterInline;
+			gap: 0.625rem;
+			cursor: pointer;
+			padding-block: 0.625rem;
+			width: 100%;
+			justify-content: start;
+			&::before {
+				font-size: 1.5rem;
+			}
+		}
+		&ResetOption {
+			@container mainSearchContainer (width > #{$searchBreakpoint}) {
+				border-bottom: 1px solid var(--purple-light-020);
+			}
+		}
+		input[type="checkbox"] {
+			& + label::before {
+				@include icon;
+				@extend %icon-checkbox-blank;
+			}
+			&:checked + label::before {
+				color: var(--purple-light-020);
+				@include icon;
+				@extend %icon-checkbox-checked;
+			}
+		}
+		input[type="radio"] {
+			& + label::before {
+				@include icon;
+				@extend %icon-radio-blank;
+			}
+			&:checked + label::before {
+				@include icon;
+				@extend %icon-radio-checked;
+			}
+		}
+		&SubjectTags {
+			&List {
+				flex-wrap: wrap;
+				gap: 0.3125rem;
+			}
+			input[type="checkbox"] + label,
+			input[type="checkbox"]:checked + label {
+				&::before {
+					content: none;
+				}
+			}
+			label {
+				padding: 0rem 0.3125rem;
+				border-radius: 1rem;
+				width: auto;
+				border: 1px solid var(--purple-light-020);
+			}
+			input[type="checkbox"]:checked + label {
+				background-color: var(--purple-light-020);
+			}
+			&ClearLink {
+				@include buttonReset;
+				border: none;
+				text-decoration: underline;
+				text-transform: uppercase;
+				color: var(--purple-light-020);
+				text-underline-offset: 3px;
+				width: 100%;
+				text-align: left;
+				display: none;
+			}
+			input[type="checkbox"]:checked ~ &ClearLink {
+				display: block;
+			}
+		}
+	}
+	&Field {
+		grid-column: 1 / -1;
+		--purple: rgba(167, 88, 249, 1);
+		display: flex;
+		align-items: center;
+		background: rgba(48, 50, 73, 1);
+		border: 1px solid rgba(94, 45, 143, 1);
+		border-radius: 5px;
+		gap: 0.625rem;
+		width: 100%;
+		@container mainSearchContainer (width > #{$searchBreakpoint}) {
+			grid-column: unset;
+		}
+		&:focus-within {
+			border-color: var(--purple);
+		}
+		&Label {
+			@include srOnly;
+		}
+		&Input {
+			@include title;
+			padding: 0.625rem 0;
+			height: 3.125rem;
+			order: 2;
+			background: transparent;
+			border: none;
+			width: 100%;
+			color: white;
+			font-weight: 600;
+			font-size: 1rem;
+			&::placeholder {
+				color: var(--purple);
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+		&Button {
+			@include buttonReset;
+			@include flexCenter;
+			padding: 0.5rem;
+			order: 1;
+			font-size: 2rem;
+			color: var(--purple);
+			span {
+				@include srOnly;
+			}
+			&:after {
+				@include icon;
+				@extend %icon-search;
+			}
+			&:focus {
+				outline: 1px dashed var(--purple-light-020);
+			}
+		}
+	}
+	&SelectedTerms {
+		grid-column: 2;
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 0.625rem;
+		button {
+			@include buttonReset;
+			color: inherit;
+			margin-block-start: 1rem;
+		}
+		button:not(.mainSearchSelectedTermsClearAllButton) {
+			background-color: var(--purple-mid-020);
+			font-size: 1.125rem;
+			color: white;
+			border-radius: 1rem;
+			padding: 0.3125rem;
+			display: flex;
+			gap: 0.3125rem;
+			align-items: center;
+			font-weight: 500;
+			&:hover {
+				background: var(--purple-light-030);
+			}
+			&:focus {
+				outline: 1px dashed var(--purple-light-030);
+			}
+			&::after {
+				@include icon;
+				@extend %icon-close;
+			}
+		}
+		&ClearAllButton {
+			text-decoration: underline;
+			font-size: 0.875rem;
+			text-transform: uppercase;
+			order: 1;
+			&:only-child {
+				display: none;
+			}
+		}
+	}
+	noscript {
+		@include flexCenter;
+		position: absolute;
+		inset: 0;
+		z-index: 4;
+		background-color: rgba(0, 0, 0, 0.7);
+		padding: 1rem;
+		color: var(--yellow);
+		font-size: 1.2rem;
+	}
+}

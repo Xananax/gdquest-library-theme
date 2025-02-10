@@ -1,0 +1,196 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+$emailBreakpoint: 60rem;
+
+/******************************************************************************
+*
+* STYLING
+*
+*****************************************************************************/
+
+.emailCampaign {
+	container-name: emailCampaign;
+	container-type: inline-size;
+	&Form {
+		padding: 1.625rem;
+		align-items: center;
+		justify-items: center;
+		justify-content: center;
+		background:
+			linear-gradient(
+				90deg,
+				color-mix(
+						in srgb,
+						var(--purple-light-030) 20%,
+						rgba(48, 50, 73, 0.2)
+					)
+					0%,
+				color-mix(in srgb, var(--purple-light-020) 80%, transparent)
+					100%
+			),
+			repeat center/ 50px url("static/logopattern.png"),
+			linear-gradient(
+				90deg,
+				color-mix(
+						in srgb,
+						var(--purple-light-030) 10%,
+						rgba(48, 50, 73, 0.2)
+					)
+					0%,
+				var(--purple-light-020) 100%
+			);
+		display: grid;
+		position: relative;
+		grid-template-areas:
+			"img"
+			"title"
+			"field"
+			"disclaimer";
+
+		@container emailCampaign (width > #{$emailBreakpoint}) {
+			padding: 0;
+			border-radius: var(--rounded-4xl);
+			column-gap: 5rem;
+			justify-items: start;
+			align-items: center;
+			grid-template-columns: 43fr 57fr;
+			grid-template-areas:
+				"img title"
+				"img field"
+				"img disclaimer";
+			background:
+				linear-gradient(
+					90deg,
+					color-mix(in srgb, var(--purple-dark-030) 80%, transparent)
+						0%,
+					color-mix(in srgb, var(--purple-light-020) 80%, transparent)
+						100%
+				),
+				repeat center/ 50px url("static/logopattern.png"),
+				linear-gradient(
+					90deg,
+					var(--purple-dark-030) 0%,
+					var(--purple-light-020) 100%
+				);
+			&::after {
+				background: linear-gradient(
+					90deg,
+					var(--purple-light-030) 0%,
+					var(--purple-light-020) 100%
+				);
+				mask: linear-gradient(#fff, transparent);
+				content: "";
+				position: absolute;
+				inset: 0;
+				z-index: 0;
+				border-radius: inherit;
+			}
+		}
+	}
+	&Image {
+		max-width: 90%;
+		margin-block-start: -10rem;
+		grid-area: img;
+		position: relative;
+		z-index: 1;
+		@container emailCampaign (width > #{$emailBreakpoint}) {
+			margin-block-start: unset;
+			transform: scale(1.4);
+			margin-inline-start: 5rem;
+		}
+	}
+
+	&Title,
+	&Field,
+	&Disclaimer {
+		width: 80%;
+		text-align: center;
+		margin: 0 auto;
+		@container emailCampaign (width > #{$emailBreakpoint}) {
+			text-align: start;
+		}
+	}
+	&Title {
+		@include title;
+		@include paddingMarginReset;
+		grid-area: title;
+		position: relative;
+		z-index: 1;
+		align-self: end;
+		font-weight: 900;
+		font-size: 2.25rem;
+		text-transform: uppercase;
+		@container emailCampaign (width > #{$emailBreakpoint}) {
+			width: auto;
+		}
+		em {
+			font-style: normal;
+			color: var(--yellow);
+		}
+	}
+	&Field {
+		border-radius: var(--rounded);
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		grid-area: field;
+		position: relative;
+		gap: 0.3125rem;
+		z-index: 1;
+		&:focus-within {
+			outline: 1px dashed var(--yellow);
+			outline-offset: 2px;
+		}
+		@container emailCampaign (width > #{$emailBreakpoint}) {
+			flex-direction: row;
+			width: auto;
+		}
+		&EmailInput,
+		&Button {
+			@include buttonReset;
+			@include subTitleText;
+			font-size: 1.25rem;
+			font-weight: 400;
+			padding: 1rem;
+		}
+		&EmailLabel {
+			@include srOnly;
+		}
+		&EmailInput {
+			border: 1px solid white;
+			flex: 1 1 auto;
+			color: white;
+			background: transparent;
+			border-radius: var(--rounded);
+			&:focus {
+				outline: none;
+			}
+			&::placeholder {
+				color: inherit;
+			}
+		}
+		&Button {
+			font-weight: 500;
+			color: rgba(140, 101, 205, 1);
+			background: white;
+			border-radius: var(--rounded);
+			@container emailCampaign (width > #{$emailBreakpoint}) {
+				margin-inline-start: -0.5rem;
+				flex: 0 0 auto;
+				width: auto;
+			}
+		}
+	}
+	&Disclaimer {
+		color: var(--yellow);
+		grid-area: disclaimer;
+		position: relative;
+		z-index: 1;
+		@container emailCampaign (width > #{$emailBreakpoint}) {
+			margin: 0 auto;
+			width: 80%;
+			padding-block-end: 1.125rem;
+		}
+	}
+}

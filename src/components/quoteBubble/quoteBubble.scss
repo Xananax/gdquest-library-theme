@@ -1,0 +1,107 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+/******************************************************************************
+ *
+ * STYLING
+ *
+ *****************************************************************************/
+
+.quoteBubble {
+	--quote-author-image: url("/src/static/nathan_avatar.png");
+	@include paddingMarginReset;
+	width: 100%;
+	a {
+		color: var(--color-pink-main);
+		@include dark {
+			color: var(--purple-light-010);
+		}
+	}
+	&Contents {
+		--pointer-color: var(--color-pink-soft);
+		@include paddingMarginReset;
+		position: relative;
+		background-color: var(--color-pink-soft);
+		border-color: var(--color-pink-soft);
+		border-radius: var(--rounded-2xl);
+		padding: 1rem 2rem;
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		& > * {
+			position: relative;
+			z-index: 2;
+		}
+		> p:first-child,
+		> .paragraph:first-child {
+			margin-top: 0;
+		}
+		> p:last-child,
+		> .paragraph:last-child {
+			margin-bottom: 0;
+		}
+		&::after {
+			@include bubble-pointer(var(--pointer-color));
+			--bubble-pointer-size: 0.7rem;
+			--bubble-pointer-offset-x: 2rem;
+			z-index: 1;
+		}
+		@include dark() {
+			background-color: var(--purple-dark-010);
+			border-color: var(--purple-dark-010);
+			--pointer-color: var(--purple-dark-010);
+		}
+	}
+	&Author {
+		column-gap: 1rem;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			"picture name"
+			"picture title";
+		&::before {
+			content: "" / "Author's picture";
+			border-radius: 50%;
+			background-image: var(--quote-author-image);
+			background-size: cover;
+			grid-area: picture;
+			width: 3.5rem;
+			height: 3.5rem;
+			border-radius: 50%;
+			background-color: black;
+		}
+		&Name,
+		&Title {
+			@include paddingMarginReset;
+			align-self: flex-start;
+			text-align: start;
+		}
+		&Name {
+			grid-area: name;
+			font-weight: 700;
+			color: var(--color-purple-quote-bubble);
+			@include dark() {
+				color: var(--color-blue-secondary);
+			}
+		}
+		&Title {
+			grid-area: title;
+			color: var(--color-slate-600);
+			@include dark() {
+				color: var(--color-slate-400);
+			}
+		}
+	}
+}
+
+/******************************************************************************
+ *
+ * STRUCTURE
+ *
+ *****************************************************************************/
+
+.quoteBubble {
+	&Contents {
+	}
+	&Author {
+	}
+}

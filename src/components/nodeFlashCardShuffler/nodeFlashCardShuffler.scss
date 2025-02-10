@@ -1,0 +1,146 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+$nodeFlashCardBreakPoint: 50rem;
+
+.nodeFlashCardShuffler {
+	container-name: nodeFlashCardShufflerContainer;
+	container-type: inline-size;
+	max-width: 100%;
+	overflow: hidden;
+	&Wrapper {
+		display: grid;
+		background-color: var(--purple-dark-060);
+		padding: 1rem;
+		border-radius: var(--rounded-3xl);
+		border: 1px solid var(--purple-dark-010);
+		gap: 3.125rem;
+		@container nodeFlashCardShufflerContainer (width > #{$nodeFlashCardBreakPoint}) {
+			padding-block: 3.125rem;
+		}
+	}
+	&Title {
+		font-size: 1.5rem;
+		font-weight: 700;
+		@include paddingMarginReset;
+		display: flex;
+		align-items: center;
+		&::before {
+			@include icon;
+			@extend %icon-shuffle;
+			margin-inline-end: 0.3rem;
+		}
+	}
+	&Description,
+	&Button,
+	&ContentPane {
+		margin-inline: 1rem;
+		@container nodeFlashCardShufflerContainer (width > #{$nodeFlashCardBreakPoint}) {
+			margin-inline: 5rem;
+		}
+	}
+	&Description {
+		position: relative;
+		display: grid;
+		gap: 1rem;
+		p {
+			@include paddingMarginReset;
+			&:first-of-type::before {
+				@include icon;
+				@extend %icon-unlocked;
+				position: relative;
+				font-size: 1.5rem;
+				top: 0.2rem;
+				color: var(--yellow);
+			}
+		}
+		a {
+			font-weight: bold;
+		}
+		&FeatureLink {
+			color: #bd50e4;
+		}
+		@container nodeFlashCardShufflerContainer (width > #{$nodeFlashCardBreakPoint}) {
+			p:first-of-type::before {
+				left: -2.375rem;
+				position: absolute;
+
+				top: 0;
+			}
+		}
+	}
+	&Button {
+		@include raisedButtonMain;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		&::before {
+			@include icon;
+			@extend %icon-shuffle;
+			font-size: 2.5rem;
+		}
+	}
+	&ContentPane {
+		overflow-x: auto;
+		overflow-y: hidden;
+		position: relative;
+		@include hideScrollBar;
+	}
+	&Loading {
+		display: grid;
+		transform: translateY(100%);
+		opacity: 0;
+		justify-content: center;
+		align-items: center;
+		justify-items: center;
+		grid-template-areas: "stack";
+		position: absolute;
+		inset: 0;
+		background: var(--purple-dark-060);
+		transition:
+			opacity 0.3s ease-out,
+			transform 0s 1s;
+		&::before {
+			@include loadingSpinner;
+			--size: 5rem;
+		}
+		&::after {
+			@include loadingSpinner;
+			--size: 2.3rem;
+			--width: 10px;
+			--animation-speed: 0.7s;
+		}
+	}
+	&ContentPane[aria-busy="true"] &Loading {
+		transition:
+			opacity 0.3s ease-out,
+			transform 0s;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	&Grid {
+		@include listReset;
+		display: flex;
+		gap: 1.875rem;
+		&.slideIn {
+			> li {
+				opacity: 0;
+				animation:
+					fadeIn 0.5s ease-out forwards,
+					slideUpSlightly 0.5s ease-out forwards;
+				@for $i from 1 through 4 {
+					&:nth-child(#{$i}) {
+						animation-delay: 200ms * $i;
+					}
+				}
+			}
+		}
+	}
+	noscript {
+		display: block;
+		padding: 1rem;
+		background-color: var(--red);
+		color: var(--white);
+		border-radius: var(--corner-small);
+	}
+}

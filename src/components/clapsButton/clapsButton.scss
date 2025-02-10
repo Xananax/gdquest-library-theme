@@ -1,0 +1,86 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../../utils/animation.scss" as *;
+
+.clapsButton {
+	@include buttonReset;
+	justify-self: start;
+	display: flex;
+	grid-area: claps;
+	flex-wrap: wrap;
+	gap: 0.3125rem;
+	position: relative;
+	justify-content: center;
+	span {
+		display: flex;
+	}
+	&Label {
+		position: relative;
+		&::before,
+		&::after {
+			@include icon;
+			@extend %icon-clap;
+			display: block;
+			font-size: 1.4rem;
+		}
+		&::before {
+			opacity: 0;
+		}
+		&::after {
+			position: absolute;
+			inset: 0 0;
+		}
+		& > span {
+			@include srOnly;
+		}
+	}
+	&Amount {
+		position: relative;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		&Abbreviated {
+			position: absolute;
+		}
+		&Total {
+			transform: translateY(0);
+			opacity: 0;
+			background: grey;
+			color: white;
+			border-radius: 1rem;
+		}
+	}
+	&[aria-pressed="true"] {
+		.clapsButtonLabel::before {
+			animation: clap 0.5s $easeOutBack;
+		}
+		.clapsButtonAmountTotal {
+			animation: rise 1s ease-out;
+		}
+	}
+}
+
+@keyframes clap {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+	10% {
+		color: var(--color-pink-main);
+	}
+	to {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+@keyframes rise {
+	from {
+		transform: translateY(0);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(-2rem);
+		opacity: 1;
+	}
+}

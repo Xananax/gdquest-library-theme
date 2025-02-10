@@ -1,0 +1,32 @@
+.itemSummaryBrowserHero {
+	padding-block: 6rem;
+	background:
+		linear-gradient(
+			90deg,
+			color-mix(in srgb, var(--purple-light-030) 80%, transparent) 0%,
+			color-mix(in srgb, var(--purple-light-020) 80%, transparent) 100%
+		),
+		repeat center/ 50px url("static/logopattern.png"),
+		linear-gradient(
+			90deg,
+			var(--purple-light-030) 0%,
+			var(--purple-light-020) 100%
+		);
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: linear-gradient(
+			90deg,
+			var(--purple-light-030) 0%,
+			var(--purple-light-020) 100%
+		);
+		mask: linear-gradient(#fff, #fff 15%, transparent);
+	}
+	& > * {
+		position: relative;
+		z-index: 1;
+	}
+}

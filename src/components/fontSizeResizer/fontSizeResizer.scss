@@ -1,0 +1,33 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+.fontSizeResizer {
+	position: absolute;
+	inset-inline-end: 0;
+	inset-block-start: 0;
+	display: flex;
+	padding: 0.3rem;
+	button {
+		@include buttonReset;
+		padding: 0.3rem;
+		background: rgba(256, 256, 256, 0.3);
+		color: var(--purple-dark-010);
+		span {
+			@include srOnly;
+		}
+		&::before {
+			@include icon;
+		}
+	}
+	&Increase {
+		@extend %icon-font-increase;
+		border-radius: var(--rounded) 0 0 var(--rounded);
+	}
+	&Decrease {
+		@extend %icon-font-decrease;
+		border-radius: 0 var(--rounded) var(--rounded) 0;
+	}
+	&Reset {
+		@extend %icon-reset;
+	}
+}

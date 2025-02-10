@@ -1,0 +1,16 @@
+[data-is="toggler-button"] {
+	.whenNotToggled {
+		display: block;
+	}
+	.whenToggled {
+		display: none;
+	}
+	&[aria-expanded="true"] {
+		.whenNotToggled {
+			display: none;
+		}
+		.whenToggled {
+			display: block;
+		}
+	}
+}

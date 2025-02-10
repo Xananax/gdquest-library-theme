@@ -1,0 +1,13 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../../utils/contentGrid.scss" as *;
+
+.glossaryIndexPage {
+	display: grid;
+	margin-inline: auto;
+	padding-block: 4rem;
+	@include contentGrid();
+	main {
+		grid-area: main;
+	}
+}

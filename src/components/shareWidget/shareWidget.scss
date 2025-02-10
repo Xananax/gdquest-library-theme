@@ -1,0 +1,45 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../../utils/contentGrid.scss" as *;
+
+.shareWidget {
+	grid-area: actions;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-items: start;
+	align-self: start;
+	padding: 0.625rem 0.875rem;
+	gap: 1.2rem;
+	.clipboardButton {
+		position: relative;
+		&:before {
+			@include icon();
+			@extend %icon-share;
+			font-size: 1.5rem;
+			anchor-name: --anchor-el;
+		}
+		&Label {
+			@include srOnly();
+		}
+		& > [data-clipboard-message] {
+			position: absolute;
+			//opacity: 0;
+			position: absolute;
+			position-anchor: --anchor-el;
+			top: 0;
+			right: 0;
+			top: anchor(top);
+			right: anchor(center);
+			justify-self: anchor-center;
+			transition: opacity 0.2s;
+			background: black;
+			padding: 0.25rem;
+		}
+		&[aria-pressed="true"] {
+			& > [data-clipboard-message] {
+				opacity: 1;
+			}
+		}
+	}
+}

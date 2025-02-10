@@ -1,0 +1,93 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+.downloadButtonsList {
+	ul,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		gap: 3rem;
+		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+	}
+	li {
+		flex-basis: 12rem;
+		max-width: 15rem;
+		flex-grow: 1;
+	}
+	li a:first-child {
+		inherit: all;
+		height: 100%;
+		@include raisedButtonMain();
+		text-decoration: none;
+		text-transform: uppercase;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-items: center;
+		justify-content: center;
+		text-align: center;
+		position: relative;
+		&::before {
+			@include icon();
+			font-size: 1.875rem;
+		}
+		&.windows::before {
+			@extend %icon-os-windows;
+		}
+		&.macos::before {
+			@extend %icon-brand-apple;
+		}
+		&.linux::before {
+			@extend %icon-os-ubuntu;
+		}
+	}
+
+	.asterisk::before,
+	.asterisk-link::before {
+		@include icon();
+		@extend %icon-asterisk;
+		color: var(--color-mustard);
+		position: absolute;
+		font-size: 1.4rem;
+		top: 0.6rem;
+	}
+	.asterisk::before {
+		right: 0.6rem;
+	}
+	.asterisk-link {
+		position: relative;
+		padding: 0.625rem;
+		padding-inline-start: calc(0.625rem * 4);
+		margin-block-start: 1.25rem;
+		border: 1px dashed var(--color-mustard);
+		outline: 2px dashed transparent;
+		outline-offset: 0.25rem;
+		border-radius: var(--rounded);
+		&::before {
+			left: 0.6rem;
+		}
+		&:target {
+			animation: asteriskTargetAttention 1s forwards;
+		}
+	}
+}
+
+@keyframes asteriskTargetAttention {
+	0% {
+		outline-color: rgba(240, 162, 9, 0);
+	}
+	50% {
+		outline-color: rgba(240, 162, 9, 255);
+	}
+	100% {
+		outline-color: rgba(240, 162, 9, 0);
+		outline-offset: 1rem;
+	}
+}

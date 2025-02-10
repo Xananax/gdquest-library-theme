@@ -1,0 +1,160 @@
+@use "../../utils/utils.scss" as *;
+
+$nav-breakpoint: 60rem;
+$navMaxWidth: 101.25rem;
+.mainNav {
+	&Container {
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 4;
+		background: linear-gradient(
+			90deg,
+			var(--purple-light-030) 0%,
+			var(--purple-light-020) 100%
+		);
+		display: grid;
+		justify-items: center;
+		padding-inline-start: 0.625rem;
+		font-size: 1.125rem;
+		@include title;
+	}
+	&Wrapper {
+		max-width: $navMaxWidth;
+		width: 100%;
+		color: white;
+
+		display: grid;
+		grid-template-columns: min-content 1fr;
+		align-items: center;
+		justify-items: start;
+		container-name: navigation-container;
+		container-type: inline-size;
+	}
+	&Logo {
+		position: relative;
+		top: 0.5rem;
+		padding-block: 1rem;
+		font-size: 3rem;
+	}
+	&ButtonOpen,
+	&ButtonClose {
+		@include flexCenter;
+		@include buttonReset;
+		cursor: pointer;
+		@container navigation-container (width > #{$nav-breakpoint}) {
+			display: none;
+		}
+	}
+	&ButtonOpen {
+		@include burgerButton;
+		min-width: 2rem;
+		height: 100%;
+		aspect-ratio: 1;
+		margin-inline-start: auto;
+	}
+	&ButtonClose {
+		width: 2rem;
+		height: 2rem;
+		font-size: 2rem;
+		aspect-ratio: 1;
+		background: var(--purple-light-020);
+		color: white;
+		border-radius: 50%;
+		span {
+			@include srOnly;
+		}
+	}
+	&ItemsList {
+		gap: 0.2rem;
+		background: white;
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		transition:
+			transform 0.4s,
+			overlay 0.4s ease-out;
+		width: 90vw;
+		max-width: 30rem;
+		inset: unset;
+		right: 0;
+		top: 0;
+		height: 100vh;
+		height: 100dvh;
+		border-width: 0;
+		transform: translateX(100%);
+		&:popover-open {
+			transform: translateX(0);
+		}
+		&::backdrop {
+			@include modalBackdrop;
+		}
+		a {
+			color: black;
+			text-decoration: none;
+		}
+		@container navigation-container (width > #{$nav-breakpoint}) {
+			@include paddingMarginReset;
+			background: transparent;
+			transform: none;
+			width: 100%;
+			height: auto;
+			flex-direction: row;
+			position: static;
+			max-width: 100%;
+			a {
+				color: white;
+			}
+		}
+	}
+	&Item {
+		--underline-offset: 10px;
+		--underline-padding: 10px;
+		--underline-thickness: 5px;
+		--vertical-padding: 2.5rem;
+		--underline-color: var(--yellow);
+		--horizontal-padding: 0.9375rem;
+		--vertical-offset: calc(
+			var(--vertical-padding) - var(--underline-offset)
+		);
+		--total-pad: calc(
+			calc(2 * var(--horizontal-padding)) +
+				calc(2 * var(--underline-padding))
+		);
+		text-transform: uppercase;
+		text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+		font-weight: 800;
+		display: block;
+		padding: calc(var(--vertical-padding)) var(--horizontal-padding);
+		background-image: linear-gradient(
+			90deg,
+			var(--underline-color),
+			var(--underline-color)
+		);
+		padding: var(--vertical-padding) var(--horizontal-padding);
+		background-size: 0 var(--underline-thickness);
+		background-position: bottom var(--vertical-offset) left;
+		background-repeat: no-repeat;
+		transition: background-size 0.3s ease-in 0.1s;
+		&:hover,
+		&:active,
+		&.active {
+			transition: background-size 0.2s ease-out;
+			background-size: calc(100% - var(--total-pad)) 5px;
+		}
+		@container navigation-container (width > #{$nav-breakpoint}) {
+			background-position: bottom var(--vertical-offset) center;
+		}
+	}
+	&UserPanel {
+		display: flex;
+		align-items: center;
+		justify-items: center;
+		padding: 1rem;
+		font-weight: 700;
+		@container navigation-container (width > #{$nav-breakpoint}) {
+			margin-inline-start: auto;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+@use "../../utils/utils.scss" as *;
+
+$promoIntroBreakpoint: 1400px;
+
+.promoIntro {
+	container: promoIntroContainer / inline-size;
+	@include title;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 2.625rem 3.125rem;
+	h3,
+	h4 {
+		@include paddingMarginReset;
+	}
+	h3,
+	h4 {
+		text-align: center;
+	}
+	h3 {
+		color: var(--purple-light-010);
+		font-size: 2rem;
+		@container promoIntroContainer (width > #{$promoIntroBreakpoint}) {
+			text-align: start;
+		}
+	}
+	h4 {
+		font-size: 1.25rem;
+		@container promoIntroContainer (width > #{$promoIntroBreakpoint}) {
+			text-align: end;
+		}
+	}
+}

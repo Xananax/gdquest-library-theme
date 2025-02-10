@@ -1,0 +1,207 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+$footerBreakPoint: 60rem;
+
+/******************************************************************************
+ *
+ * STYLING
+ *
+ *****************************************************************************/
+
+.mainPageFooter {
+	background: url("static/footer-background.svg") no-repeat center center /
+		cover;
+	&Wrapper {
+		padding: 1.875rem;
+		row-gap: 3.75rem;
+		column-gap: 6.25rem;
+		padding-block: 2.5rem;
+		@container mainPageFooterContainer (width > #{$footerBreakPoint}) {
+			row-gap: 1.25rem;
+			padding-inline: 1rem;
+		}
+	}
+	&Socials {
+		gap: 1.25rem;
+		padding-block-end: 2.5rem;
+		border-bottom: 1px solid white;
+		justify-items: center;
+		@container mainPageFooterContainer (width > #{$footerBreakPoint}) {
+			justify-items: start;
+		}
+		&Logo {
+			font-size: 4rem;
+		}
+		&Links {
+			@container mainPageFooterContainer (width > #{$footerBreakPoint}) {
+				margin-inline-start: 5.6875rem;
+			}
+		}
+	}
+	&MailingList {
+		gap: 0.625rem;
+		max-width: 28rem;
+		&Title,
+		&Disclaimer {
+			padding: 0;
+			margin: 0;
+		}
+		&Disclaimer {
+			font-size: 0.75rem;
+		}
+		&Form {
+			border-radius: var(--rounded);
+			&:focus-within {
+				outline: dashed rgba(255, 255, 255, 0.5) 2px;
+				outline-offset: 4px;
+			}
+		}
+		input {
+			padding: 0.5rem;
+			border: 0 none;
+			background: rgba(255, 255, 255, 0.25);
+			border-radius: var(--rounded);
+			color: white;
+			font-size: 1rem;
+			&::placeholder {
+				color: white;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+		button {
+			@include subTitleText;
+			font-weight: 500;
+			padding: 0.6875rem;
+			border-radius: var(--rounded);
+			background: white;
+			color: var(--purple-mid-025);
+			border: none;
+			cursor: pointer;
+			margin-inline-start: -0.5rem;
+		}
+	}
+	&QuickLinks,
+	&About {
+		@include subTitleText;
+		gap: 1.25rem;
+		ul {
+			gap: 1rem;
+		}
+		h3 {
+			font-weight: 700;
+		}
+		a {
+			color: white;
+			font-weight: 400;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+/******************************************************************************
+*
+* STRUCTURE
+*
+*****************************************************************************/
+
+.mainPageFooter {
+	container: mainPageFooterContainer / inline-size;
+	ul,
+	li {
+		list-style: none;
+	}
+	&Wrapper,
+	&QuickLinks ul,
+	&QuickLinks ul li,
+	&About ul,
+	&About ul li {
+		list-style: none;
+	}
+	&Wrapper {
+		max-width: 100rem;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"socials"
+			"mailingList"
+			"quickLinks"
+			"about";
+		@container mainPageFooterContainer (width > #{$footerBreakPoint}) {
+			grid-template-columns: repeat(4, auto);
+			grid-template-rows: auto auto;
+			grid-template-areas:
+				"socials socials socials mailingList "
+				"quickLinks about .       mailingList";
+		}
+	}
+	&Socials {
+		grid-area: socials;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		@container mainPageFooterContainer (width > #{$footerBreakPoint}) {
+			grid-template-columns: auto auto auto;
+		}
+		&Logo {
+		}
+		&Blurb {
+			text-align: center;
+			font-size: 1rem;
+		}
+		&Links {
+			@include listReset;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1.25rem;
+			a {
+				display: block;
+				&::before {
+					font-size: 2.5rem;
+				}
+			}
+		}
+	}
+	&MailingList {
+		grid-area: mailingList;
+		display: grid;
+		justify-content: start;
+		align-items: start;
+		align-content: start;
+		&Title {
+			@include title;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		&Form {
+			display: grid;
+			grid-template-columns: 1fr auto;
+		}
+	}
+	&QuickLinks {
+		grid-area: quickLinks;
+	}
+	&About {
+		grid-area: about;
+	}
+	&QuickLinks,
+	&About {
+		display: grid;
+		justify-content: start;
+		align-items: center;
+		ul {
+			padding: 0;
+			display: grid;
+		}
+		h3 {
+			margin: 0;
+		}
+	}
+}

@@ -1,0 +1,249 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+@use "../../utils/contentGrid.scss" as grid;
+
+/******************************************************************************
+ *
+ * This element is quite complicated, so the styling is split in 4 parts;
+ * - one part about generic resets
+ * - one part about the wrapper, container, and button
+ * - one part about the sliding logic
+ * - one part about the list items
+ *
+ * On mobile, a bit of JS will press the button to hide the TOC on loading
+ *****************************************************************************/
+
+$minNavSize: 20rem; // smallest "nav" column value, see contentGrid
+$buttonWidth: 2.5rem;
+$minNavBarWidth: $minNavSize + $buttonWidth;
+$navBarBreakpoint: grid.$gridBreakPointMid + $minNavBarWidth;
+
+/******************************************************************************
+ *
+ * Generic resets
+ *
+ *****************************************************************************/
+
+[data-is="article-toc"],
+[data-is="article-toc"] ul,
+[data-is="article-toc"] li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	align-items: start;
+	align-content: start;
+}
+
+/******************************************************************************
+ *
+ * Wrapper; this controls the placement of the table of contents.
+ * The srtucture is:
+ * - Wrapper (sticky)
+ *   - Container (absolute)
+ *     - Pane (scrollable)
+ *     - Button
+ *
+ *****************************************************************************/
+
+.tableOfContents {
+	&Wrapper {
+		align-self: start;
+		z-index: 2;
+		position: sticky;
+		top: 6rem;
+	}
+	&Container {
+		left: 0;
+		transition: transform 0.2s ease-out;
+		width: 100%;
+		min-width: $minNavBarWidth;
+	}
+	&Pane {
+		background-color: var(--purple-dark-040);
+		max-height: calc(100vh - 6rem); // 6rem is the size of the header
+		background: var(--purple-dark-040);
+		overflow-y: scroll;
+		@include hideScrollBar;
+	}
+	&ToggleButton {
+		z-index: 1;
+		cursor: pointer;
+		color: var(--purple-light-010);
+		background-color: rgba(40, 28, 65, 1);
+		border: 2px solid rgba(68, 35, 105, 1);
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-end: 0;
+		transform: translateX(100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: $buttonWidth;
+		height: $buttonWidth;
+		border-radius: 0 50% 50% 0;
+		&::before {
+			@include icon();
+			font-size: 1.6rem;
+			transition: transform 0.2s ease-out;
+			@extend %icon-arrow-left-double-line;
+		}
+		span {
+			@include srOnly();
+		}
+	}
+}
+
+/******************************************************************************
+ *
+ * Toggling logic
+ *
+ *****************************************************************************/
+
+$buttonIconNormal: rotate(180deg);
+$buttonIconTransform: rotate(180deg) scaleX(-1);
+
+.tableOfContents {
+	&Wrapper {
+		grid-column: marginLeft / nav;
+	}
+	&Container {
+		position: absolute;
+		transform: translateX(-100%);
+	}
+	&Pane {
+		opacity: 0;
+		transition: opacity 0.2s ease-out;
+		pointer-events: none;
+	}
+	@at-root .isToggled &Container {
+		transform: translateX(0);
+	}
+	@at-root .isToggled &Pane {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	&ToggleButton {
+		&::before {
+			transform: $buttonIconNormal;
+		}
+		@at-root .isToggled & {
+			&::before {
+				transform: $buttonIconTransform;
+			}
+		}
+	}
+	@media (min-width: $navBarBreakpoint) {
+		&Wrapper {
+			grid-column: nav;
+		}
+		@at-root .isToggled &Container {
+			position: static; // this allows the TOC to affect the layout and to scroll out of view once the bottom of the page is reached
+		}
+	}
+}
+
+/******************************************************************************
+ *
+ * Colors and general styling of the list items
+ *
+ *****************************************************************************/
+
+.tableOfContents {
+	&MainList {
+		padding-block: 2.5rem;
+	}
+	&ListItem {
+		position: relative;
+		&.isCurrent {
+			background-color: var(--purple-dark-010);
+		}
+		&:has(.isCurrent) {
+			background-color: #5e2d8f4f; //var(--purple-dark-010);
+		}
+	}
+	&ItemLevel1 {
+		grid-template-areas: "title button";
+		grid-template-columns: 1fr min-content;
+		align-items: center;
+		&.hasSubheadings {
+			grid-template-areas: "title button" "subheadings subheadings";
+		}
+		& > a {
+			grid-area: title;
+		}
+	}
+	&ItemLevel2 {
+		font-weight: 500;
+	}
+	&Anchor {
+		text-decoration: none;
+		padding-inline: 0.625rem 1.25rem;
+		padding-block-start: 0.625rem;
+		padding-block: 0.875rem;
+		gap: 0.625rem;
+		display: flex;
+		align-items: start;
+		&LinkToH1 {
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+		&LinkToH2 {
+			justify-content: end;
+		}
+		&::before {
+			margin-top: 0.3rem;
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			inset-inline-end: 0;
+			inset-block-start: 0;
+			height: 100%;
+			border-inline-end: 3px solid var(--purple-dark-010);
+		}
+		&.isActive::after {
+			border-inline-end-color: var(--purple-light-010);
+		}
+	}
+	&SubheadingsContainer {
+		grid-area: subheadings;
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: all 0.2s ease-out;
+	}
+	&SubheadingsList {
+		overflow: hidden;
+	}
+	&FoldUnfoldButton {
+		@include buttonReset();
+		color: inherit;
+		font-size: inherit;
+		display: inline-block;
+		cursor: pointer;
+		grid-area: button;
+		display: flex;
+		align-items: center;
+		padding: 0;
+		justify-content: center;
+		align-self: stretch;
+		padding-inline: 0.3rem;
+		&::before {
+			@include icon();
+			@extend %icon-arrow-left-s-line;
+			transform: rotate(-180deg);
+			transition: all 0.2s ease-out;
+		}
+		& > span {
+			@include srOnly();
+		}
+		&[aria-expanded="true"] {
+			&::before {
+				transform: rotate(-90deg);
+			}
+		}
+	}
+	&FoldUnfoldButton[aria-expanded="true"] + &SubheadingsContainer {
+		grid-template-rows: 1fr;
+	}
+}
