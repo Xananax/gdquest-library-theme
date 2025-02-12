@@ -17,6 +17,7 @@ const processCallout = (callout) => {
 		button.setAttribute("aria-expanded", isOpen ? "true" : "false");
 		button.setAttribute("aria-controls", id);
 		button.setAttribute("aria-label", "Toggle callout");
+		button.setAttribute("type", "button")
 		button.textContent = title.textContent;
 		title.textContent = "";
 		if (!isOpen) {

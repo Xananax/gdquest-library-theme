@@ -1,0 +1,55 @@
+@use "../../utils/utils.scss" as *;
+@use "../../utils/icons.scss" as *;
+
+[data-is="collapsible-list"]{
+	dt{
+		& > button {
+			cursor: pointer;
+			position: relative;
+			&::before {
+				// chevron
+				@include icon();
+				@extend %icon-arrow-left-s-line;
+				transform: rotate(-180deg);
+				transition: transform 300ms ease-out;
+			}
+			&[aria-expanded="true"]::before {
+				transform: rotate(-90deg);
+			}
+		}
+		&[data-closed] {
+			& + dd:not(:target) {
+				grid-template-rows: 0fr;
+				& > div {
+					padding-block: 0;
+				}
+			}
+		}
+	}
+	dd{
+		margin-inline: 0;
+		display: grid;
+		grid-template-rows: 1fr;
+		& > div{
+			overflow: hidden;
+			padding-inline: 1.875rem;
+			padding-block: 1.25rem;
+			transition: padding 300ms ease-out;
+			&:first-child {
+				padding-block-start: 0;
+				margin-block-start: 0;
+			}
+		}
+	}
+	&.isJSProcessed {
+		dd {
+			transition: all 300ms ease-out;
+		}
+		dt {
+			padding: 0;
+			&::before {
+				top: unset;
+			}
+		}
+	}
+}
