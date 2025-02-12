@@ -1,7 +1,8 @@
+import "./components/authForm/authForm.mjs";
 import "./components/carousel/carousel.mjs";
-import "./components/callout/callout.mjs";
 import "./components/clapsButton/clapsButton.mjs";
 import "./components/clipboardButton/clipboardButton.mjs";
+import "./components/collapsibleList/collapsibleList.mjs";
 import "./components/fontSizeResizer/fontSizeResizer.mjs";
 import "./components/glossarySearch/glossarySearch.mjs";
 import "./components/mainSearch/mainSearch.mjs";
@@ -10,6 +11,7 @@ import "./components/nodeFlashCardShuffler/nodeFlashCardShuffler.mjs";
 import "./components/itemSummaryBrowser/itemSummaryBrowser.mjs";
 import "./components/shareWidget/shareWidget.mjs";
 import "./components/tableOfContents/tableOfContents.mjs";
+import "./components/tabList/tabList.mjs";
 import "./components/togglerButton/togglerButton.mjs";
 
 /**/
