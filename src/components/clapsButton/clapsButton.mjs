@@ -1,5 +1,3 @@
-import { isHTMLElement } from "../../utils/utils.mjs";
-
 function formatNumber(number) {
 	return number.toLocaleString("en-US", {
 		maximumFractionDigits: 2,

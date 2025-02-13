@@ -6,16 +6,3 @@
         flex-shrink: 0;
     }
 }
-
-[data-is="tab-list"]{
-    padding:0;
-    display: flex;
-    flex-wrap: wrap;
-    li {
-        list-style: none;
-    }
-    a{
-        padding: 1rem;
-        text-decoration: none;
-    }
-}

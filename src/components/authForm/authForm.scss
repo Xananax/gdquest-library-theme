@@ -1,0 +1,90 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  h2 {
+    @include title();
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+  &Tabs,
+  &TabsPanels {
+    background: white;
+    color: black;
+  }
+  &TabsPanels {
+    border-radius: var(--rounded);
+  }
+  &Tabs {
+    padding: 0;
+    margin: 0 1rem;
+    display: flex;
+    order: 2;
+    justify-content: space-around;
+    li {
+      list-style: none;
+    }
+    li,
+    a {
+      width: 100%;
+    }
+    a {
+      padding: 1rem;
+      background: orange;
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      &:focus {
+        outline: 2px dotted var(--color-purple);
+        outline-offset: 2px;
+      }
+      &[aria-selected="true"] {
+        background: inherit;
+      }
+    }
+  }
+  [data-is="collapsible-list"] {
+    .collapsibleRevealButton {
+      text-decoration: underline;
+      font-size: 0.75rem;
+      @include buttonReset();
+      &::before {
+        position: relative;
+        top: 0.2rem;
+      }
+    }
+  }
+  input {
+    all: inherit;
+    padding: 0.5rem 1rem;
+    border-radius: var(--rounded);
+    display: flex;
+    border-width: 1px;
+    border-color: var(--color-form-border);
+    color: var(--color-dark);
+    background-color: var(--color-gray-100);
+    outline-offset: 2px;
+    &:focus {
+      outline: 2px dotted var(--purple-mid-030);
+    }
+  }
+  section {
+    display: grid;
+    padding: 5rem;
+  }
+  form {
+    display: grid;
+    gap: 1rem;
+    button[type="submit"] {
+      @include raisedButtonMain();
+      --button-background-color: var(--color-yellow-secondary);
+      --button-shadow: var(--color-yellow-dark-2);
+      color: var(--color-brown-dark);
+      margin-block-start: 1rem;
+    }
+  }
+}

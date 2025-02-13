@@ -1,5 +1,5 @@
-@use "../../utils/utils.scss" as *;
-@use "../../utils/icons.scss" as *;
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
 
 $footerBreakPoint: 60rem;
 
@@ -10,7 +10,7 @@ $footerBreakPoint: 60rem;
  *****************************************************************************/
 
 .mainPageFooter {
-	background: url("static/footer-background.svg") no-repeat center center /
+	background: url("/src/static/footer-background.svg") no-repeat center center /
 		cover;
 	&Wrapper {
 		padding: 1.875rem;

@@ -8,12 +8,13 @@ const processCallout = (callout) => {
 	const titles = callout.querySelectorAll("dt");
 	titles.forEach((title) => {
 		const content = title.nextElementSibling;
-		const id = content.id || `callout-${Math.random().toString(36).slice(2)}`;
+		const id = content.id || `collapsible-${Math.random().toString(36).slice(2)}`;
 		if (!content.id) {
 			content.id = id;
 		}
 		const isOpen = title.hasAttribute("data-open");
 		const button = document.createElement("button");
+		button.classList.add('collapsibleRevealButton')
 		button.setAttribute("aria-expanded", isOpen ? "true" : "false");
 		button.setAttribute("aria-controls", id);
 		button.setAttribute("aria-label", "Toggle callout");

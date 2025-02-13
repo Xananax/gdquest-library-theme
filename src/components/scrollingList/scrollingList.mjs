@@ -1,16 +1,24 @@
 //@ts-check
-import { debounce } from "../../utils/utils.mjs";
+import { debounce } from "../../js/utils.mjs";
+
 /**
  * Enhances a grid container with slider functionality
- * @param {HTMLElement} The main container element
+ * @param {Element} slider the main container element
  */
 function initGridSlider(slider) {
-  const grid = slider.querySelector(".gridItemsList");
-  const controls = slider.querySelector(".scrollingListControls");
-  /** @type HTMLButtonElement */
-  const prevButton = slider.querySelector(".scrollingListControlsPrevious");
-  /** @type HTMLButtonElement */
-  const nextButton = slider.querySelector(".scrollingListControlsNext");
+  if(slider.classList.contains('isJSProcessed')){
+    return
+  }
+  slider.classList.add('isJSProcessed')
+
+  const grid = /** @type HTMLElement */(slider.querySelector(".gridItemsList"));
+  const controls = /** @type HTMLElement */(slider.querySelector(".scrollingListControls"));
+  const prevButton = /** @type HTMLButtonElement */(slider.querySelector(".scrollingListControlsPrevious"));
+  const nextButton = /** @type HTMLButtonElement */(slider.querySelector(".scrollingListControlsNext"));
+
+  if(!grid || !controls || !prevButton || !nextButton){
+    return
+  }
 
   let carouselWidth = 0;
   let pages = 0;
@@ -41,7 +49,7 @@ function initGridSlider(slider) {
   }
 
   function navigate(direction) {
-    nextPage = (currentPage + direction) % pages;
+    const nextPage = (currentPage + direction) % pages;
     navigateToPage(nextPage);
   }
 

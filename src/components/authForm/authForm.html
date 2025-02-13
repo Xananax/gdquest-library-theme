@@ -1,0 +1,205 @@
+<div class="authForm">
+  <ul
+    role="tablist"
+    aria-label="Login or Register forms"
+    data-is="tab-list"
+    class="authFormTabs"
+  >
+    <li role="presentation">
+      <a
+        role="tab"
+        aria-selected="true"
+        aria-controls="authLoginFormOTP"
+        href="#authLoginFormOTP"
+        id="authLoginFormOTPTab"
+        tabindex="0"
+        >Login with a one-time link</a
+      >
+    </li>
+    <li role="presentation">
+      <a
+        role="tab"
+        aria-selected="false"
+        aria-controls="authLoginFormPassword"
+        href="#authLoginFormPassword"
+        id="authLoginFormPasswordTab"
+        tabindex="0"
+        >Login with a password</a
+      >
+    </li>
+    <li role="presentation">
+      <a
+        role="tab"
+        aria-selected="false"
+        aria-controls="authRegisterForm"
+        href="#authRegisterForm"
+        id="authRegisterFormTab"
+        tabindex="0"
+        >Register</a
+      >
+    </li>
+    <li role="presentation">
+      <a
+        role="tab"
+        aria-selected="false"
+        aria-controls="authResetPasswordForm"
+        href="#authResetPasswordForm"
+        id="authResetPasswordFormTab"
+        tabindex="0"
+        >Reset password</a
+      >
+    </li>
+  </ul>
+  <div data-is="tab-panel-list" class="authFormTabsPanels">
+    <section
+      class="authLoginFormOTP"
+      id="authLoginFormOTP"
+      role="tabpanel"
+      tabindex="0"
+      aria-labelledby="authLoginFormOTPTab"
+    >
+      <h2>Send yourself a one-time link</h2>
+      <p>
+        Enter your email address and we'll send you a link to log in to your
+        account.
+      </p>
+      <form>
+        <label for="emailOTP">Email</label>
+        <input
+          type="email"
+          id="emailOTP"
+          name="email"
+          placeholder="me@example.com"
+          required
+        />
+        <button type="submit">Send link</button>
+      </form>
+      <dl data-is="collapsible-list">
+        <dt>How to use one-time links?</dt>
+        <dd>
+          <div>
+            <p>
+              One-time links allow you to log in and register without a
+              password.
+            </p>
+            <p>
+              We will send you a one-time link in your mail box. Click the link
+              to log in here. If you don't have an account, we will create one
+              automatically.
+            </p>
+            <p>
+              Each link works only once and you need to open it in the same web
+              browser.
+            </p>
+          </div>
+        </dd>
+      </dl>
+      <footer>
+        <p>
+          Do you prefer using a password?
+          <a href="#authRegisterForm">register</a> or
+          <a href="#authLoginFormPassword">login</a>
+        </p>
+      </footer>
+    </section>
+    <section
+      class="authLoginFormPassword"
+      id="authLoginFormPassword"
+      role="tabpanel"
+      tabindex="0"
+      aria-labelledby="authLoginFormOTPTab"
+    >
+      <h2>Log In</h2>
+      <form>
+        <label for="emailPassword">Email</label>
+        <input
+          type="email"
+          id="emailPassword"
+          name="email"
+          placeholder="me@example.com"
+          required
+        />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          placeholder="*****"
+          id="password"
+          name="password"
+          required
+        />
+        <dl data-is="collapsible-list">
+          <dt>Forgot your password or your password is not working?</dt>
+          <dd>
+            <div>
+              <a href="#authResetPasswordForm">Reset your password</a>
+            </div>
+          </dd>
+        </dl>
+        <button type="submit">Login</button>
+      </form>
+      <footer>
+        <p>New to GDQuest? <a href="#authRegisterForm">register</a></p>
+      </footer>
+    </section>
+    <section
+      class="authRegisterForm"
+      id="authRegisterForm"
+      role="tabpanel"
+      tabindex="0"
+      aria-labelledby="authRegisterForm"
+    >
+      <h2>Register</h2>
+      <form>
+        <label for="emailRegister">Email</label>
+        <input
+          type="email"
+          id="emailRegister"
+          name="email"
+          placeholder="me@example.com"
+          required
+        />
+        <label for="passwordRegister">Password</label>
+        <input
+          type="password"
+          placeholder="*****"
+          id="passwordRegister"
+          name="password"
+          required
+        />
+        <label for="passwordConfirm">Confirm Password</label>
+        <input
+          type="password"
+          placeholder="*****"
+          id="passwordConfirm"
+          name="passwordConfirm"
+          required
+        />
+        <button type="submit">Register</button>
+      </form>
+    </section>
+    <section
+      class="authResetPasswordForm"
+      id="authResetPasswordForm"
+      role="tabpanel"
+      tabindex="0"
+      aria-labelledby="authResetPasswordForm"
+    >
+      <h2>Reset Password</h2>
+      <p>
+        Enter your email address and we'll send you a link to reset your
+        password.
+      </p>
+      <form>
+        <label for="emailResetPassword">Email</label>
+        <input
+          type="email"
+          id="emailResetPassword"
+          name="email"
+          placeholder="me@example.com"
+          required
+        />
+        <button type="submit">Send Reset Link</button>
+      </form>
+    </section>
+  </div>
+</div>

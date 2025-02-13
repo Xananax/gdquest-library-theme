@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ title }} | GDQuest</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="./css/index.scss" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body class="dark {{ bodyclass }}">
+        <header class="mainNavContainer">
+            <module href="/src/components/mainNav/mainNav.html"></module>
+        </header>
+
+        <content></content>
+
+        <module href="/src/components/footer/footer.html"></module>
+
+        <script src="./js/index.mjs" type="module"></script>
+        <script src="./js/prism.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+@use "../../css/contentGrid.scss" as *;
+
+.searchResultsGrid{
+    &Summary {
+        @include paddingMarginReset;
+        margin-block-end: 2rem;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: var(--purple-light-005);
+        &Amount {
+            color: white;
+        }
+        &Total {
+            color: var(--purple-light-020);
+        }
+    }
+    &EndOfSearch {
+        margin-block-start: 7rem;
+        margin-block-end: 9rem;
+        display: block;
+        text-transform: uppercase;
+        font-weight: 700;
+        position: relative;
+        span {
+            position: relative;
+            z-index: 1;
+        }
+        &::before {
+            content: "";
+            z-index: 0;
+            position: absolute;
+            bottom: -14px;
+            height: 14px;
+            width: 100%;
+            // idea from https://kovart.github.io/dashed-border-generator/
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg'%3e%3cline x1='0' y1='50%25' x2='100%25' y2='50%25' stroke='%232691CEFF' stroke-width='14' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+            background-size: 28px 14px;
+            background-position: 0 7px;
+            background-repeat: repeat-x;
+        }
+        &::after {
+            content: "";
+            z-index: 0;
+            position: absolute;
+            bottom: -1.6rem;
+            right: 0;
+            width: 12.7rem;
+            height: 7.3rem;
+            aspect-ratio: 1.74;
+            background-image: url("/src/static/all-together.png");
+            background-size: contain;
+        }
+    }
+}
+

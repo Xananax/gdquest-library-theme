@@ -1,6 +1,6 @@
 // @ts-check
 // deno-lint-ignore-file no-unused-labels
-import { li, button, span, img } from "../../utils/utils.mjs";
+import { li, button, span, img } from "../../js/utils.mjs";
 
 const currentProps = {
   ariaCurrent: "true",

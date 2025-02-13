@@ -1,5 +1,5 @@
-@use "../../utils/utils.scss" as *;
-@use "../../utils/icons.scss" as *;
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
 
 @mixin title {
 	text-transform: uppercase;
@@ -130,7 +130,7 @@
 		height: 100%;
 		transform: scale(0.8);
 		background: no-repeat center/contain
-			url("static/all-together-circle.png");
+			url("/src/static/all-together-circle.png");
 	}
 	span {
 		text-align: center;

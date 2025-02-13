@@ -1,21 +1,70 @@
-<!doctype html>
-<html>
-	<head>
-		<title>Library | GDQuest</title>
-		<meta charset="UTF-8" />
-		<link rel="stylesheet" href="./styles.scss" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body class="dark">
-		<header class="mainNavContainer">
-			<include src="./src/components/mainNav/mainNav.html"></include>
-		</header>
-
-		<include src="./src/pages/itemPage/itemPage.html"></include>
-
-		<include src="./src/components/footer/footer.html"></include>
-
-		<script src="./index.mjs" type="module"></script>
-		<script src="./utils/prism.min.js"></script>
-	</body>
-</html>
+<module href="/src/_base.html" locals='{"title":"Item", "bodyclass":"itemPage"}'>
+	<module href="/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.html"
+	></module>
+	<section class="contentPageGrid">
+	<module href="/src/components/tableOfContents/tableOfContents.html"
+		></module>
+		<main class="prose">
+			<h1 class="hasIconBefore iconApp">
+				Create Your First 3D Game From Zero
+			</h1>
+			<h2>1. Setting up</h2>
+			<iframe
+				width="560"
+				height="315"
+				frameborder="0"
+				referrerpolicy="strict-origin-when-cross-origin"
+				src="https://www.youtube-nocookie.com/embed/JlgZtOFMdfc?si=NFjLw_5aUPy7yutn"
+				title="YouTube video player"
+				allow="picture-in-picture; web-share"
+				allowfullscreen
+			></iframe>
+			<module href="/src/components/callout/callout.html"></module>
+			<module href="/src/components/checkpoint/checkpoint.html"></module>
+			<h2>2. Creating the Player</h2>
+			<iframe
+				width="560"
+				height="315"
+				src="https://www.youtube-nocookie.com/embed/JlgZtOFMdfc?si=NFjLw_5aUPy7yutn"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
+			<module href="/src/components/callout/callout.html"></module>
+			<h3>Checkpoint</h3>
+			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/quoteBubble/quoteBubble.html"></module>
+		<module href="/src/components/downloadButtonsList/downloadButtonsList.html"
+			></module>
+			<h1 class="hasIconBefore iconQuestion">FAQ/Troubleshooting</h1>
+			<module href="/src/components/callout/callout.html"></module>
+			<h1 class="hasIconBefore iconPatch">Updates/Code Patches</h1>
+			<ul>
+				<li>This learning resource was created with Godot 4.3.</li>
+				<li>
+					No errors have been reported. <a href="#">REPORT AN ERROR.</a>
+				</li>
+			</ul>
+			<h1 class="hasIconBefore iconBonus">Bonus</h1>
+			<p>
+				You can go a lot further with this character controller. After
+				completing the tutorial, the snippets below will help you improve
+				the character’s feel.
+			</p>
+			<h2>Sharper Stop</h2>
+			<p>
+				The character slides a bit when the player releases the movement
+				keys. To make the character stop more abruptly, you can add a
+				stopping speed. When the character’s velocity is below this
+				threshold and the player is not moving, set the velocity to zero:
+			</p>
+			<module href="/src/components/codeBlock/codeBlock.html"></module>
+		</main>
+		<module href="/src/components/shareWidget/shareWidget.html"></module>
+		<module href="/src/components/itemPageMeta/itemPageMeta.html"></module>
+	</section>
+	<module href="/src/components/contributeBlock/contributeBlock.html"></module>
+	
+</module>

@@ -1,17 +1,6 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Library | GDQuest</title>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="./styles.scss" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body class="dark">
-        <header class="mainNavContainer">
-            <include src="./src/components/mainNav/mainNav.html"></include>
-        </header>
-        <include src="./src/components/authForm/authForm.html"></include>
+<module href="/src/_base.html" locals='{"title":"Search", "bodyclass":"searchPage"}'>
+    <main>
+        <module href="/src/components/authForm/authForm.html"></module>
+    </main>
+</module>
 
-        <script src="./index.mjs" type="module"></script>
-    </body>
-</html>

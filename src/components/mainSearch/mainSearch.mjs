@@ -1,4 +1,4 @@
-import { button } from "../../utils/utils.mjs";
+import { button } from "../../js/utils.mjs";
 
 document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
   const form = searchWrapper.querySelector("form");
