@@ -34,7 +34,26 @@
 			></iframe>
 			<module href="/src/components/callout/callout.html"></module>
 			<h3>Checkpoint</h3>
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html" line="15" diff>
+@export var speed: float = 100
+
++ func _physics_process(delta: float) -> void:
++		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+-			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 			<module href="/src/components/quoteBubble/quoteBubble.html"></module>
 		<module href="/src/components/downloadButtonsList/downloadButtonsList.html"
 			></module>
@@ -60,7 +79,26 @@
 				stopping speed. When the character’s velocity is below this
 				threshold and the player is not moving, set the velocity to zero:
 			</p>
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 		</main>
 		<module href="/src/components/shareWidget/shareWidget.html"></module>
 		<module href="/src/components/itemPageMeta/itemPageMeta.html"></module>

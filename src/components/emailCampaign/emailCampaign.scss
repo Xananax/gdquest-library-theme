@@ -102,7 +102,7 @@ $emailBreakpoint: 60rem;
 	}
 
 	&Title,
-	&Field,
+	form,
 	&Disclaimer {
 		width: 80%;
 		text-align: center;
@@ -129,7 +129,7 @@ $emailBreakpoint: 60rem;
 			color: var(--yellow);
 		}
 	}
-	&Field {
+	form {
 		border-radius: var(--rounded);
 		display: flex;
 		flex-direction: column;
@@ -146,20 +146,20 @@ $emailBreakpoint: 60rem;
 			flex-direction: row;
 			width: auto;
 		}
-		&EmailInput,
-		&Button {
+		input,
+		button {
 			@include buttonReset;
 			@include subTitleText;
 			font-size: 1.25rem;
 			font-weight: 400;
 			padding: 1rem;
 		}
-		&EmailLabel {
+		label {
 			@include srOnly;
 		}
-		&EmailInput {
-			border: 1px solid white;
+		input {
 			flex: 1 1 auto;
+			border: 1px solid white;
 			color: white;
 			background: transparent;
 			border-radius: var(--rounded);
@@ -170,7 +170,7 @@ $emailBreakpoint: 60rem;
 				color: inherit;
 			}
 		}
-		&Button {
+		button {
 			font-weight: 500;
 			color: rgba(140, 101, 205, 1);
 			background: white;

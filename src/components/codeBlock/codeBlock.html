@@ -1,22 +1,5 @@
-<pre class="line-numbers" data-start="10">
-<code class="language-gdscript">
-  @export var speed: float = 100
-
-  func _physics_process(delta: float) -> void:
-		var velocity: Vector2 = Vector2()
-		if Input.is_action_pressed("ui_right"):
-			velocity.x += 1
-		if Input.is_action_pressed("ui_left"):
-			velocity.x -= 1
-		if Input.is_action_pressed("ui_down"):
-			velocity.y += 1
-		if Input.is_action_pressed("ui_up"):
-			velocity.y -= 1
-		velocity = velocity.normalized() * speed
-		position += velocity * delta
-		if velocity.length() > 0:
-			$AnimatedSprite.play("walk")
-		else:
-			$AnimatedSprite.play("idle")
+<pre class="{{ line != null ? 'line-numbers' : '' }}" data-start="{{ line != null ? line : '' }}">
+<code class="{{ typeof(diff) !== 'undefined' ? 'language-diff-gdscript' : 'language-gdscript' }}">
+<content></content>
 </code>
 </pre>

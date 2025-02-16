@@ -12,7 +12,7 @@ const processCallout = (callout) => {
 		if (!content.id) {
 			content.id = id;
 		}
-		const isOpen = title.hasAttribute("data-open");
+		const isOpen = title.hasAttribute("data-open") && title.getAttribute("data-open") === "true";
 		const button = document.createElement("button");
 		button.classList.add('collapsibleRevealButton')
 		button.setAttribute("aria-expanded", isOpen ? "true" : "false");

@@ -1,0 +1,41 @@
+<form action="/newsletter/signup" method="POST">
+  <label for="mailinglist-{{ inputid }}">Enter your email</label>
+  <input
+    type="email"
+    placeholder="Enter your email"
+    name="email"
+    value=""
+    id="mailinglist-{{ inputid }}"
+  />
+  <input type="hidden" name="callback" value="{{ callback }}" />
+  <label
+    aria-hidden="true"
+    style="
+      border: 0;
+      opacity: 0.01;
+      pointer-events: none;
+      clip: rect(1px, 1px, 1px, 1px);
+      -webkit-clip-path: inset(50%);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      white-space: nowrap;
+    "
+  >
+    <span>Your Name</span>
+    <input
+      aria-hidden="true"
+      tabindex="-1"
+      type="text"
+      name="name"
+      autocomplete="off"
+    />
+  </label>
+  <button>
+    <span>Subscribe</span>
+  </button>
+</form>

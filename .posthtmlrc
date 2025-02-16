@@ -1,6 +1,14 @@
 {
   "plugins": {
-    "posthtml-include": {},
-    "posthtml-modules": {}
+    "posthtml-modules": {
+      "attributeAsLocals": true,
+      "expressions":{
+        "strictMode": false,
+        "locals":{
+          "class": "",
+          "diff": ""
+        }
+      }
+    }
   }
 }

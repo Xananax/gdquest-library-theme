@@ -28,7 +28,25 @@
 				current character.
 			</p>
 	
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 	
 			<p>
 				The arguments "Sophia" and "Pink" are bound to the
@@ -46,7 +64,26 @@
 				is equivalent to writing a new function that looks like this:
 			</p>
 	
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 	
 			<p>
 				If you have multiple arguments, the bound arguments will be filled
@@ -60,7 +97,26 @@
 				function:
 			</p>
 	
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 	
 			<p>
 				The pinned argument "health" or "coin" is inserted at the right.
@@ -74,7 +130,26 @@
 				entirely separate from the original.
 			</p>
 	
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 	
 			<module href="/src/components/callout/callout.html"></module>
 	
@@ -92,7 +167,26 @@
 				whatever variable you give it.
 			</p>
 	
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 	
 			<p>
 				On the other hand, lambdas don't always do that. They behave a bit
@@ -120,7 +214,26 @@
 				we get a different result:
 			</p>
 	
-			<module href="/src/components/codeBlock/codeBlock.html"></module>
+			<module href="/src/components/codeBlock/codeBlock.html">
+@export var speed: float = 100
+
+func _physics_process(delta: float) -> void:
+		var velocity: Vector2 = Vector2()
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += 1
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= 1
+		if Input.is_action_pressed("ui_down"):
+			velocity.y += 1
+		if Input.is_action_pressed("ui_up"):
+			velocity.y -= 1
+		velocity = velocity.normalized() * speed
+		position += velocity * delta
+		if velocity.length() > 0:
+			$AnimatedSprite.play("walk")
+		else:
+			$AnimatedSprite.play("idle")
+			</module>
 	
 		<module href="/src/components/glossarySeeAlsoBlock/glossarySeeAlsoBlock.html"
 			></module>
