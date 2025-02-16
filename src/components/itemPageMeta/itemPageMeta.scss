@@ -2,142 +2,142 @@
 @use "../../css/icons.scss" as *;
 
 @mixin title {
-	text-transform: uppercase;
-	font-weight: 700;
-	display: flex;
-	align-items: center;
-	gap: 1.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .itemPageMeta {
-	grid-area: meta;
-	display: flex;
-	flex-direction: column;
-	gap: 4rem;
-	&Links {
-		--padding-inline: 1.25rem;
-		background: var(--color-pink-light);
-		color: white;
-		border-radius: var(--rounded-md);
-		padding-inline: var(--padding-inline);
-		@include dark {
-			background: var(--purple-dark-010);
-		}
-		a {
-			text-decoration: none;
-			text-underline-offset: 0.2em;
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-		em {
-			font-weight: 600;
-			font-style: normal;
-		}
-		h4 {
-			@include title;
-			margin: 0;
-			padding-block-start: 1rem;
-			a {
-				color: var(--color-pink-main);
-				@include dark {
-					color: var(--color-pink-main-on-dark);
-				}
-			}
-		}
+  grid-area: meta;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  &Links {
+    --padding-inline: 1.25rem;
+    background: var(--color-pink-light);
+    color: white;
+    border-radius: var(--rounded-md);
+    padding-inline: var(--padding-inline);
+    @include dark {
+      background: var(--purple-dark-010);
+    }
+    a {
+      text-decoration: none;
+      text-underline-offset: 0.2em;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    em {
+      font-weight: 600;
+      font-style: normal;
+    }
+    h4 {
+      @include title;
+      margin: 0;
+      padding-block-start: 1rem;
+      a {
+        color: var(--color-pink-main);
+        @include dark {
+          color: var(--color-pink-main-on-dark);
+        }
+      }
+    }
 
-		& > ul {
-			padding: 0;
-			margin: 0;
-			display: grid;
-			gap: 0.625rem;
-			& > li {
-				list-style: none;
-				position: relative;
-				padding-block: 1rem 1.875rem;
-				&:not(:last-of-type)::after {
-					content: "";
-					display: block;
-					width: calc(100% + var(--padding-inline) * 2);
-					position: absolute;
-					bottom: -0.635rem;
-					left: calc(var(--padding-inline) * -1);
-					border-bottom: 0.625rem solid var(--purple-dark-040);
-				}
-				& > span {
-					@include title;
-					margin-block: 1rem;
-					&::before {
-						@include icon();
-						@extend %icon-link;
-						color: var(--purple-light-010);
-						font-size: 1.4rem;
-					}
-					&::after {
-						@include icon();
-						@extend %icon-chevron-left;
-						transform: rotate(-90deg);
-						font-size: 1.4rem;
-					}
-				}
-				ul {
-					display: grid;
-					gap: 0.625rem;
-					padding-inline-start: 1.625rem;
-				}
-				li {
-					list-style: disc;
-					&::marker {
-						font-size: 1rem;
-					}
-				}
-			}
-		}
-		ol {
-			padding: 0;
-			& > li {
-				list-style: none;
-				display: inline;
-				&:not(:first-child)::before {
-					content: "< ";
-				}
-			}
-		}
-	}
+    & > ul {
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.625rem;
+      & > li {
+        list-style: none;
+        position: relative;
+        padding-block: 1rem 1.875rem;
+        &:not(:last-of-type)::after {
+          content: "";
+          display: block;
+          width: calc(100% + var(--padding-inline) * 2);
+          position: absolute;
+          bottom: -0.635rem;
+          left: calc(var(--padding-inline) * -1);
+          border-bottom: 0.625rem solid var(--purple-dark-040);
+        }
+        & > span {
+          @include title;
+          margin-block: 1rem;
+          &::before {
+            @include icon();
+            @extend %icon-link;
+            color: var(--purple-light-010);
+            font-size: 1.4rem;
+          }
+          &::after {
+            @include icon();
+            @extend %icon-chevron-left;
+            transform: rotate(-90deg);
+            font-size: 1.4rem;
+          }
+        }
+        ul {
+          display: grid;
+          gap: 0.625rem;
+          padding-inline-start: 1.625rem;
+        }
+        li {
+          list-style: disc;
+          &::marker {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    ol {
+      padding: 0;
+      & > li {
+        list-style: none;
+        display: inline;
+        &:not(:first-child)::before {
+          content: "< ";
+        }
+      }
+    }
+  }
 }
 
 .gdquestTeachingMethod {
-	display: block;
-	margin-inline: auto;
-	margin-block-start: 1rem;
-	margin-block-end: 4.5rem;
-	font-family: var(--font-title);
-	font-weight: 900;
-	font-size: 1.3125rem;
-	width: 14rem;
-	height: 14rem;
-	aspect-ratio: 1;
-	border-radius: 50%;
-	box-shadow: 0 0 1.875rem 0 var(--purple-light-025);
-	position: relative;
-	background-color: var(--purple-dark-030);
-	text-decoration: none;
-	&::before {
-		content: "";
-		display: block;
-		aspect-ratio: 1;
-		width: 100%;
-		height: 100%;
-		transform: scale(0.8);
-		background: no-repeat center/contain
-			url("/src/static/all-together-circle.png");
-	}
-	span {
-		text-align: center;
-		display: block;
-		position: absolute;
-		bottom: 0;
-		transform-origin: 50% 0;
-		transform: translateY(70%) rotate(-5.4deg);
-	}
+  display: block;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+  margin-block-end: 4.5rem;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1.3125rem;
+  width: 14rem;
+  height: 14rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 1.875rem 0 var(--purple-light-025);
+  position: relative;
+  background-color: var(--purple-dark-030);
+  text-decoration: none;
+  &::before {
+    content: "";
+    display: block;
+    aspect-ratio: 1;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.8);
+    background: no-repeat center/contain
+      url("/src/static/all-together-circle.png");
+  }
+  span {
+    text-align: center;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transform-origin: 50% 0;
+    transform: translateY(70%) rotate(-5.4deg);
+  }
 }
