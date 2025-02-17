@@ -5,51 +5,102 @@
   display: flex;
   flex-direction: column;
   max-width: 50%;
+  background: white;
+  color: black;
+  border-radius: var(--rounded);
+  padding: 1rem;
   h2 {
     @include title();
     text-transform: uppercase;
     font-weight: 800;
   }
-  &Tabs,
   &TabsPanels {
-    background: white;
-    color: black;
-  }
-  &TabsPanels {
-    border-radius: var(--rounded);
-    [role="tabpanel"]{
-      [hidden="true"], [hidden]{
+    [role="tabpanel"] {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      &:target {
+        animation-name: slideInFromLeft, fadeIn;
+      }
+      [hidden="true"],
+      [hidden] {
         visibility: hidden;
         pointer-events: none;
       }
     }
   }
   &Tabs {
+    $gap: 0;
     padding: 0;
-    margin: 0 1rem;
+    margin: 0;
     display: flex;
     order: 2;
     justify-content: space-around;
+    gap: $gap;
+    padding: 1rem;
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    border-radius: var(--rounded);
     li {
       list-style: none;
     }
     li,
     a {
       width: 100%;
+      position: relative;
     }
     a {
       padding: 1rem;
-      background: orange;
+      background: transparent;
       display: block;
-      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       text-align: center;
+      height: 100%;
       &:focus {
         outline: 2px dotted var(--color-purple);
         outline-offset: 2px;
       }
-      &[aria-selected="true"] {
-        background: inherit;
+    }
+    li {
+      position: relative;
+      transition: color .3s ease-out .2s;
+      &:not(:last-child){
+        z-index: 2;
+      }
+      &:last-child{
+        z-index: 1;
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          background: white;
+          position: absolute;
+          border-radius: var(--rounded);
+          inset: 0;
+          z-index: -1;
+          pointer-events: none;
+          transition: transform .3s ease-in, opacity .2s ease-in-out .2s;
+          opacity: 0;
+        }
+      }
+      $maxTabs: 4;
+      $maxOffset: $maxTabs * -100%;
+      @for $i from 1 through $maxTabs {
+        &:nth-child(#{$i}):has([aria-selected="true"]) {
+          color: black;
+          & ~ li:last-child::before{
+            $offset: $i * 100%;
+            $offsetGap: $i * $gap;
+            $position: calc($maxOffset + $offset);
+            opacity: 1;
+            transform: translateX($position);
+          }
+        }
+      }
+      &:last-child:has([aria-selected="true"])::before{
+        opacity: 1;
       }
     }
   }

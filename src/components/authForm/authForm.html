@@ -9,8 +9,8 @@
       <a
         role="tab"
         aria-selected="true"
-        aria-controls="authLoginFormOTP"
-        href="#authLoginFormOTP"
+        aria-controls="otp"
+        href="#otp"
         id="authLoginFormOTPTab"
         tabindex="0"
         >Login with a one-time link</a
@@ -20,8 +20,8 @@
       <a
         role="tab"
         aria-selected="false"
-        aria-controls="authLoginFormPassword"
-        href="#authLoginFormPassword"
+        aria-controls="login"
+        href="#login"
         id="authLoginFormPasswordTab"
         tabindex="0"
         >Login with a password</a
@@ -31,8 +31,8 @@
       <a
         role="tab"
         aria-selected="false"
-        aria-controls="authRegisterForm"
-        href="#authRegisterForm"
+        aria-controls="register"
+        href="#register"
         id="authRegisterFormTab"
         tabindex="0"
         >Register</a
@@ -42,8 +42,8 @@
       <a
         role="tab"
         aria-selected="false"
-        aria-controls="authResetPasswordForm"
-        href="#authResetPasswordForm"
+        aria-controls="resetpass"
+        href="#resetpass"
         id="authResetPasswordFormTab"
         tabindex="0"
         >Reset password</a
@@ -53,7 +53,7 @@
   <div data-is="tab-panel-list" class="authFormTabsPanels">
     <section
       class="authLoginFormOTP"
-      id="authLoginFormOTP"
+      id="otp"
       role="tabpanel"
       tabindex="0"
       aria-labelledby="authLoginFormOTPTab"
@@ -97,14 +97,14 @@
       <footer>
         <p>
           Do you prefer using a password?
-          <a href="#authRegisterForm">register</a> or
-          <a href="#authLoginFormPassword">login</a>
+          <a href="#register">register</a> or
+          <a href="#login">login</a>
         </p>
       </footer>
     </section>
     <section
       class="authLoginFormPassword"
-      id="authLoginFormPassword"
+      id="login"
       role="tabpanel"
       tabindex="0"
       aria-labelledby="authLoginFormOTPTab"
@@ -131,19 +131,19 @@
           <dt>Forgot your password or your password is not working?</dt>
           <dd>
             <div>
-              <a href="#authResetPasswordForm">Reset your password</a>
+              <a href="#resetpass">Reset your password</a>
             </div>
           </dd>
         </dl>
         <button type="submit">Login</button>
       </form>
       <footer>
-        <p>New to GDQuest? <a href="#authRegisterForm">register</a></p>
+        <p>New to GDQuest? <a href="#register">register</a></p>
       </footer>
     </section>
     <section
       class="authRegisterForm"
-      id="authRegisterForm"
+      id="register"
       role="tabpanel"
       tabindex="0"
       aria-labelledby="authRegisterForm"
@@ -179,7 +179,7 @@
     </section>
     <section
       class="authResetPasswordForm"
-      id="authResetPasswordForm"
+      id="resetpass"
       role="tabpanel"
       tabindex="0"
       aria-labelledby="authResetPasswordForm"

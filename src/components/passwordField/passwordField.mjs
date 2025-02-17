@@ -10,7 +10,7 @@ function toggleVisibility(/** @type {HTMLElement} */button){
     const expanded = button.getAttribute('aria-expanded') === 'false';
     element.type = expanded ? 'text' : 'password';
     button.setAttribute('aria-expanded', String(expanded));
-    button.textContent = expanded ? 'hide characters' : 'show characters';
+    button.setText(expanded ? 'hide characters' : 'show characters');
 }
 
 function onButtonClick(evt){
@@ -33,10 +33,13 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
     button.setAttribute("aria-controls", input.getAttribute('id'))
     button.addEventListener('click',onButtonClick)
     button.appendChild(span)
+    button.setText = function(text){
+        span.textContent = text
+    }
 
     const container = document.createElement('div')
     container.classList.add('passwordContainer', 'inputContainer')
-    
+
     input.parentElement.insertBefore(container, input)
     container.appendChild(input)
     container.appendChild(button)
