@@ -35,7 +35,7 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
     button.appendChild(span)
 
     const container = document.createElement('div')
-    container.classList.add('passwordContainer inputContainer')
+    container.classList.add('passwordContainer', 'inputContainer')
     
     input.parentElement.insertBefore(container, input)
     container.appendChild(input)

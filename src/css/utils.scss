@@ -1,206 +1,199 @@
 @use "sass:list";
 
-
 // see: https://github.com/h5bp/main.css/issues/12
 // see: https://medium.com/@zellwk/a-new-and-easy-way-to-hide-content-accessibly-92e21e159b85
 @mixin srOnly {
-	border: 0 !important;
-	clip: rect(0 0 0 0) !important; /* 1 */
-	-webkit-clip-path: inset(50%) !important;
-	clip-path: inset(50%) !important; /* 2 */
-	height: auto !important;
-	margin: 0 !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
-	white-space: nowrap !important;
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: auto !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }
 
 @mixin srOnlyFocusable {
-	@include srOnly;
-	&:focus,
-	&:active {
-		clip: auto !important;
-		-webkit-clip-path: none !important;
-		clip-path: none !important;
-		height: auto !important;
-		margin: auto !important;
-		overflow: visible !important;
-		width: auto !important;
-		white-space: normal !important;
-		background: yellow;
-		color: black;
-	}
+  @include srOnly;
+  &:focus,
+  &:active {
+    clip: auto !important;
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+    height: auto !important;
+    margin: auto !important;
+    overflow: visible !important;
+    width: auto !important;
+    white-space: normal !important;
+    background: yellow;
+    color: black;
+  }
 }
 
 @mixin tag($size: 20px, $background: black) {
-	$padding-inline: 0.2rem;
-	line-height: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-block: 0.1rem 0.2rem;
-	padding-inline: $padding-inline calc($size + $padding-inline);
-	clip-path: polygon(
-		0 0,
-		calc(100% - $size) 0,
-		100% 50%,
-		calc(100% - $size) 100%,
-		0 100%
-	);
-	width: fit-content;
-	background: $background;
+  $padding-inline: 0.2rem;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 0.1rem 0.2rem;
+  padding-inline: $padding-inline calc($size + $padding-inline);
+  clip-path: polygon(
+    0 0,
+    calc(100% - $size) 0,
+    100% 50%,
+    calc(100% - $size) 100%,
+    0 100%
+  );
+  width: fit-content;
+  background: $background;
 }
 
 @mixin burgerButton {
-	span {
-		@include srOnly;
-	}
-	&::before {
-		--line-color: white;
-		--line-thickness: 4px;
-		content: "";
-		display: block;
-		width: 26px;
-		height: 24px;
-		background: linear-gradient(
-			to bottom,
-			var(--line-color),
-			var(--line-color) var(--line-thickness),
-			transparent var(--line-thickness),
-			transparent calc(50% - calc(var(--line-thickness) / 2)),
-			var(--line-color) calc(50% - calc(var(--line-thickness) / 2)),
-			var(--line-color) calc(50% + calc(var(--line-thickness) / 2)),
-			transparent calc(50% + calc(var(--line-thickness) / 2)),
-			transparent calc(100% - var(--line-thickness)),
-			var(--line-color) calc(100% - var(--line-thickness)),
-			var(--line-color) 100%
-		);
-	}
+  span {
+    @include srOnly;
+  }
+  &::before {
+    --line-color: white;
+    --line-thickness: 4px;
+    content: "";
+    display: block;
+    width: 26px;
+    height: 24px;
+    background: linear-gradient(
+      to bottom,
+      var(--line-color),
+      var(--line-color) var(--line-thickness),
+      transparent var(--line-thickness),
+      transparent calc(50% - calc(var(--line-thickness) / 2)),
+      var(--line-color) calc(50% - calc(var(--line-thickness) / 2)),
+      var(--line-color) calc(50% + calc(var(--line-thickness) / 2)),
+      transparent calc(50% + calc(var(--line-thickness) / 2)),
+      transparent calc(100% - var(--line-thickness)),
+      var(--line-color) calc(100% - var(--line-thickness)),
+      var(--line-color) 100%
+    );
+  }
 }
 
 @mixin raisedButtonMain {
-	--button-shadow: var(--purple-dark-010);
-	--button-background-color: var(--purple-mid-030);
-	@include subTitleText;
-	cursor: pointer;
-	text-decoration: none;
-	background: var(--button-background-color);
-	color: white;
-	display: flex;
-	font-weight: 700;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	box-shadow:
-		0px 6px 0px 0px var(--button-shadow),
-		inset 0px 0px 0px 0px var(--button-shadow);
-	padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-	gap: 1.875rem;
-	border-radius: var(--rounded-md);
-	border: 0 none;
-	transition:
-		transform 0.2s 0.1s,
-		box-shadow 0.2s 0.1s,
-		filter 0.8s ease-out 0.5s;
-	outline: 4px dashed transparent;
-	outline-offset: 7px;
-	&:focus {
-		outline-color: var(--button-shadow);
-	}
-	&:hover {
-		transform: translateY(-3px);
-		box-shadow:
-			0px 9px 0px 0px var(--button-shadow),
-			inset 0px 0px 0px 0px var(--button-shadow);
-		transition-delay: 0s;
-	}
-	&:active {
-		transform: translateY(3px);
-		box-shadow:
-			0px 0px 0px 0px var(--button-shadow),
-			inset 0px 6px 2px 0px var(--button-shadow);
-		transition-delay: 0s;
-	}
-	&:disabled {
-		transform: translateY(3px);
-		box-shadow:
-			0px 3px 0px 0px var(--button-shadow),
-			inset 0px 0px 0px 0px var(--button-shadow);
-		transition-delay: 0s;
-	}
-	&:disabled {
-		cursor: not-allowed;
-		filter: saturate(20%);
-		transition-delay: 0s;
-	}
+  --button-shadow: var(--purple-dark-010);
+  --button-background-color: var(--purple-mid-030);
+  @include subTitleText;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--button-background-color);
+  color: white;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0px 6px 0px 0px var(--button-shadow),
+    inset 0px 0px 0px 0px var(--button-shadow);
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  gap: 1.875rem;
+  border-radius: var(--rounded-md);
+  border: 0 none;
+  transition: transform 0.2s 0.1s, box-shadow 0.2s 0.1s,
+    filter 0.8s ease-out 0.5s;
+  outline: 4px dashed transparent;
+  outline-offset: 7px;
+  &:focus {
+    outline-color: var(--button-shadow);
+  }
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 9px 0px 0px var(--button-shadow),
+      inset 0px 0px 0px 0px var(--button-shadow);
+    transition-delay: 0s;
+  }
+  &:active {
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px 0px var(--button-shadow),
+      inset 0px 6px 2px 0px var(--button-shadow);
+    transition-delay: 0s;
+  }
+  &:disabled {
+    transform: translateY(3px);
+    box-shadow: 0px 3px 0px 0px var(--button-shadow),
+      inset 0px 0px 0px 0px var(--button-shadow);
+    transition-delay: 0s;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    filter: saturate(20%);
+    transition-delay: 0s;
+  }
 }
 
 @mixin title {
-	font-family: var(--font-title);
+  font-family: var(--font-title);
 }
 
 @mixin bodyText {
-	font-family: var(--font-body);
+  font-family: var(--font-body);
 }
 
 @mixin subTitleText {
-	font-family: var(--font-subtitle);
+  font-family: var(--font-subtitle);
 }
 
 @mixin flexCenter {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin flexCenterInline {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin buttonReset {
-	background: unset;
-	border: unset;
-	padding: unset;
-	line-height: unset;
-	cursor: pointer;
-	color: inherit;
-	&[disabled] {
-		cursor: not-allowed;
-	}
+  background: unset;
+  border: unset;
+  padding: unset;
+  line-height: unset;
+  cursor: pointer;
+  color: inherit;
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }
 
 @mixin listReset {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 @mixin paddingMarginReset {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 @mixin modalBackdrop {
-	background-color: rgba(0, 0, 0, 0.5);
-	backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
 }
 
 @mixin hideScrollBar {
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	&::-webkit-scrollbar {
-		display: none;
-	}
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @mixin modifier($rootClass) {
-	@at-root #{$rootClass} #{&} {
-		@content;
-	}
+  @at-root #{$rootClass} #{&} {
+    @content;
+  }
 }
 
 /**
@@ -208,115 +201,111 @@
   * Allows to break out of nesting for dark mode styles
   */
 @mixin dark() {
-	@include modifier(".dark") {
-		@content;
-	}
+  @include modifier(".dark") {
+    @content;
+  }
 }
 
 @mixin bubble-pointer($color: currentColor) {
-	--bubble-pointer-size: 1rem;
-	--bubble-pointer-offset-x: 0rem;
-	content: "";
-	position: absolute;
-	bottom: calc(-1 * var(--bubble-pointer-size));
-	left: calc(var(--bubble-pointer-size) + var(--bubble-pointer-offset-x));
-	transform: translate(-50%, 0) rotate(-45deg);
-	border-style: solid;
-	border-color: transparent $color $color transparent;
-	border-width: calc(var(--bubble-pointer-size) * 1.1);
-	pointer-events: none;
+  --bubble-pointer-size: 1rem;
+  --bubble-pointer-offset-x: 0rem;
+  content: "";
+  position: absolute;
+  bottom: calc(-1 * var(--bubble-pointer-size));
+  left: calc(var(--bubble-pointer-size) + var(--bubble-pointer-offset-x));
+  transform: translate(-50%, 0) rotate(-45deg);
+  border-style: solid;
+  border-color: transparent $color $color transparent;
+  border-width: calc(var(--bubble-pointer-size) * 1.1);
+  pointer-events: none;
 }
 
 @mixin loadingSpinner {
-	--bg-color: rgb(243 232 255);
-	--bg-color-dark: rgb(57 39 96);
-	--highlight-color: rgb(147 51 234);
-	--highlight-color-dark: var(--highlight-color);
-	--size: 5rem;
-	--width: 14px;
-	--animation-speed: 1s;
-	content: "";
-	height: var(--size);
-	width: var(--size);
-	animation: spinnerSpin var(--animation-speed) linear infinite;
-	border-width: var(--width);
-	border-color: var(--bg-color);
-	border-top-color: var(--highlight-color);
-	border-style: solid;
-	grid-area: stack;
-	border-radius: 9999px;
-	@include dark() {
-		border-color: var(--bg-color-dark);
-		border-top-color: var(--highlight-color-dark);
-	}
+  --bg-color: rgb(243 232 255);
+  --bg-color-dark: rgb(57 39 96);
+  --highlight-color: rgb(147 51 234);
+  --highlight-color-dark: var(--highlight-color);
+  --size: 5rem;
+  --width: 14px;
+  --animation-speed: 1s;
+  content: "";
+  height: var(--size);
+  width: var(--size);
+  animation: spinnerSpin var(--animation-speed) linear infinite;
+  border-width: var(--width);
+  border-color: var(--bg-color);
+  border-top-color: var(--highlight-color);
+  border-style: solid;
+  grid-area: stack;
+  border-radius: 9999px;
+  @include dark() {
+    border-color: var(--bg-color-dark);
+    border-top-color: var(--highlight-color-dark);
+  }
 }
 
 @mixin listPage {
-	container: listPage / inline-size;
-	display: grid;
-	grid-auto-flow: row;
-	row-gap: 4.375rem;
-	padding-block: 4.375rem;
-	padding-inline: 1rem;
-	max-width: calc(90rem + calc(2 * 4.375rem));
-	margin: 0 auto;
-	.promoIntro,
-	.promoGDSchool {
-		@container listPage (width > 1000) {
-			margin-inline: 6rem;
-		}
-	}
+  container: listPage / inline-size;
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 4.375rem;
+  padding-block: 4.375rem;
+  padding-inline: 1rem;
+  max-width: calc(90rem + calc(2 * 4.375rem));
+  margin: 0 auto;
+  .promoIntro,
+  .promoGDSchool {
+    @container listPage (width > 1000) {
+      margin-inline: 6rem;
+    }
+  }
 }
 
 @keyframes spinnerSpin {
-	from {
-		transform: rotate(0deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
 
-	to {
-		transform: rotate(360deg);
-	}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @function text-stroke($size: 2, $color: #fff, $correction: 0) {
-	$size-rounded: round($size);
-	$size-rest: $size-rounded - $size;
+  $size-rounded: round($size);
+  $size-rest: $size-rounded - $size;
 
-	$radius: $size - $correction;
-	$stroke: ();
+  $radius: $size - $correction;
+  $stroke: ();
 
-	@for $i from -$size-rounded through $size-rounded {
-		$i: $i + $size-rest;
+  @for $i from -$size-rounded through $size-rounded {
+    $i: $i + $size-rest;
 
-		@for $k from -$size-rounded through $size-rounded {
-			$k: $k + $size-rest;
+    @for $k from -$size-rounded through $size-rounded {
+      $k: $k + $size-rest;
 
-			$x: $k;
-			$y: $i;
+      $x: $k;
+      $y: $i;
 
-			@if $k > 0 {
-				$x: $k - 0.5;
-			} @else if $k < 0 {
-				$x: $k + 0.5;
-			}
+      @if $k > 0 {
+        $x: $k - 0.5;
+      } @else if $k < 0 {
+        $x: $k + 0.5;
+      }
 
-			@if $i > 0 {
-				$y: $i - 0.5;
-			} @else if $i < 0 {
-				$y: $i + 0.5;
-			}
+      @if $i > 0 {
+        $y: $i - 0.5;
+      } @else if $i < 0 {
+        $y: $i + 0.5;
+      }
 
-			@if ($x * $x + $y * $y <= $radius * $radius) {
-				$stroke: list.append(
-					$stroke,
-					$i * 1px $k * 1px 0 $color,
-					comma
-				);
-			}
-		}
-	}
+      @if ($x * $x + $y * $y <= $radius * $radius) {
+        $stroke: list.append($stroke, $i * 1px $k * 1px 0 $color, comma);
+      }
+    }
+  }
 
-	@return $stroke;
+  @return $stroke;
 }
 
 // Text stroke polyfill for Sass (https://github.com/hudochenkov/sass-text-stroke)
@@ -325,42 +314,53 @@
 // @param {Number} $correction - Corrects rounding and reduces text-shadows.
 //                For better understanding see [this CodePen](http://codepen.io/hudochenkov/pen/BNpxMr?editors=110).
 @mixin text-stroke($size: 2, $color: #fff, $correction: 0) {
-	text-shadow: text-stroke($size, $color, $correction);
-	@supports ((-webkit-text-stroke: 1px #fff) or (text-stroke: 1px #fff)) and
-		(paint-order: stroke fill) {
-		$px: $size * 1px;
-		-webkit-text-stroke: $px $color;
-		text-stroke: $px $color;
-		paint-order: stroke fill;
-		text-shadow: none;
-	}
+  text-shadow: text-stroke($size, $color, $correction);
+  @supports ((-webkit-text-stroke: 1px #fff) or (text-stroke: 1px #fff)) and
+    (paint-order: stroke fill) {
+    $px: $size * 1px;
+    -webkit-text-stroke: $px $color;
+    text-stroke: $px $color;
+    paint-order: stroke fill;
+    text-shadow: none;
+  }
 }
 
 @keyframes slideInAfterLoad {
-	from {
-		transform: translateX(50%);
-		opacity: 0;
-	}
-	to {
-		transform: translateX(0);
-		opacity: 1;
-	}
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUpSlightly {
-	from {
-		transform: translateY(3%);
-	}
-	to {
-		transform: translateY(0);
-	}
+  from {
+    transform: translateY(3%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@mixin noScriptWarning {
+  @include flexCenter;
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  color: var(--yellow);
+  font-size: 1.2rem;
 }

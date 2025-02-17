@@ -17,6 +17,12 @@
   }
   &TabsPanels {
     border-radius: var(--rounded);
+    [role="tabpanel"]{
+      [hidden="true"], [hidden]{
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
   }
   &Tabs {
     padding: 0;

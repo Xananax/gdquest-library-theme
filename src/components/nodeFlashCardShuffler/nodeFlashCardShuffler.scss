@@ -9,6 +9,7 @@ $nodeFlashCardBreakPoint: 50rem;
 	max-width: 100%;
 	overflow: hidden;
 	&Wrapper {
+		position: relative;
 		display: grid;
 		background-color: var(--purple-dark-060);
 		padding: 1rem;
@@ -137,10 +138,6 @@ $nodeFlashCardBreakPoint: 50rem;
 		}
 	}
 	noscript {
-		display: block;
-		padding: 1rem;
-		background-color: var(--red);
-		color: var(--white);
-		border-radius: var(--corner-small);
+		@include noScriptWarning;
 	}
 }

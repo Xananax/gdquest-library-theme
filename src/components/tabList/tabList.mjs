@@ -73,7 +73,6 @@ function augmentTabList(tabList) {
 
   function onHashChange(){
     const index = cache.get(location.hash);
-    console.log({hash: location.hash, index})
     if (index == null) {
       return;
     }

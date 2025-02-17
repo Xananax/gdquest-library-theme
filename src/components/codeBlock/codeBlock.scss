@@ -87,9 +87,11 @@ pre[class*="language-"].line-numbers > code {
 	content: attr(line);
 }
 
+
 // from https://github.com/PrismJS/prism-themes
 code[class*="language-"],
 pre[class*="language-"],
+pre:has(code[class*="language-"]),
 .gdquest-code,
 .gdquest-code-container {
 	text-align: left;

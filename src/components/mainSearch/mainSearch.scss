@@ -365,13 +365,6 @@ $searchBreakpoint: 1400px;
 		}
 	}
 	noscript {
-		@include flexCenter;
-		position: absolute;
-		inset: 0;
-		z-index: 4;
-		background-color: rgba(0, 0, 0, 0.7);
-		padding: 1rem;
-		color: var(--yellow);
-		font-size: 1.2rem;
+		@include noScriptWarning;
 	}
 }
