@@ -2,76 +2,87 @@
 @use "../../css/icons.scss" as *;
 
 .itemDiscordInvite {
-    display: grid;
-    position: relative;
-    max-width: 18rem;
-    margin: 0 auto;
-    border-radius: 0.5rem;
-    border-width: 1px;
-    background-image: undefined;
-    color: white;
-    box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0, 0, 0, 0.05);
-    background-image: linear-gradient(to bottom right, #6366f1, #9333ea);
-    justify-items: start;
-    text-align: start;
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    gap: 1rem;
+  display: grid;
+  position: relative;
+  max-width: 18rem;
+  margin: 0 auto;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  background-image: undefined;
+  color: white;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0, 0, 0, 0.05);
+  background-image: linear-gradient(to bottom right, #6366f1, #9333ea);
+  justify-items: start;
+  text-align: start;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  gap: 1rem;
+  @media screen and (prefers-reduced-motion: no-preference) {
+    @supports ((animation-timeline: view()) and (animation-range: 0% 100%)) { 
+      opacity: 0;
+      animation-name: fadeIn;
+      animation-fill-mode: forwards;
+      animation-timeline: view(block);
+      animation-range: contain 25% contain 75%;
+    } 
+  }
+  &::before {
+    @include icon();
+    @extend %icon-discord;
+    position: absolute;
+    display: inline-block;
+    font-size: 4.5rem;
+    top: -2rem;
+    left: 50%;
+    animation: swingWithPause 10s infinite 2s;
+    transform-origin: bottom center;
+    translate: -50%;
+  }
+  h4 {
+    margin: 0;
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 1.3125rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgb(224 231 255);
+  }
+  span {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
     &::before {
       @include icon();
-      @extend %icon-discord;
-      position: absolute;
-      font-size: 4rem;
-      top: -2rem;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    h4 {
-      margin: 0;
-      font-family: var(--font-title);
-      font-weight: 900;
-      font-size: 1.3125rem;
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    p {
-      margin: 0;
-      font-size: 0.75rem;
-      color: rgb(224 231 255);
-    }
-    span {
-      display: flex;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      &::before {
-        @include icon();
-        @extend %icon-group;
-      }
-    }
-    a {
-      text-align: center;
-      text-decoration: none;
-      display: inline-flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.375rem;
-      background-color: white;
-      color: rgb(79, 70, 229);
-      padding: 0.5rem 2rem;
-      font-size: 0.875rem;
-      line-height: 1.25rem;
-      font-weight: 500;
-      outline: 2px solid transparent;
-      outline-offset: 2px;
-      // box-shadow: 0 0 0 0px #fff, 0 0 0 calc(2px + 0px) rgb(59, 130, 246, 0.5), 0 0 #0000;
-      flex-shrink: 0;
-      transition: scale rotate;
-      transition-duration: .3s;
-      transition-timing-function: cubic-bezier(0.5, 1.8, 0.3, 0.8);
-      &:hover{
-          transform: scale(1.1, 1.1) rotate(2deg);
-      }
+      @extend %icon-group;
     }
   }
-  
+  a {
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    background-color: white;
+    color: rgb(79, 70, 229);
+    padding: 0.5rem 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    // box-shadow: 0 0 0 0px #fff, 0 0 0 calc(2px + 0px) rgb(59, 130, 246, 0.5), 0 0 #0000;
+    flex-shrink: 0;
+    transition: scale rotate;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.5, 1.8, 0.3, 0.8);
+    &:hover {
+      transform: scale(1.1, 1.1) rotate(2deg);
+    }
+  }
+}

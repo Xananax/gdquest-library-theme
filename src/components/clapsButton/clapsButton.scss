@@ -8,11 +8,12 @@
 	display: flex;
 	grid-area: claps;
 	flex-wrap: wrap;
-	gap: 0.3125rem;
+	//gap: 0.3125rem;
 	position: relative;
 	justify-content: center;
 	span {
 		display: flex;
+		align-items: center;
 	}
 	&Label {
 		position: relative;
@@ -39,6 +40,9 @@
 		text-align: center;
 		display: flex;
 		justify-content: center;
+		&Abbreviated, &Total{
+			padding: 0.3125rem;
+		}
 		&Abbreviated {
 			position: absolute;
 		}
@@ -52,35 +56,14 @@
 	}
 	&[aria-pressed="true"] {
 		.clapsButtonLabel::before {
-			animation: clap 0.5s $easeOutBack;
+			animation-name: clap, fadeOut;
+			animation-duration: 0.5s;
+			animation-timing-function: $easeOutBack;
 		}
 		.clapsButtonAmountTotal {
-			animation: rise 1s ease-out;
+			animation: riseUp, fadeIn;
+			animation-duration: 1s;
+			animation-timing-function: ease-out;
 		}
-	}
-}
-
-@keyframes clap {
-	from {
-		transform: scale(1);
-		opacity: 1;
-	}
-	10% {
-		color: var(--color-pink-main);
-	}
-	to {
-		transform: scale(2);
-		opacity: 0;
-	}
-}
-
-@keyframes rise {
-	from {
-		transform: translateY(0);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(-2rem);
-		opacity: 1;
 	}
 }

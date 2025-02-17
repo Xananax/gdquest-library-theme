@@ -1,3 +1,80 @@
 $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 $easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+
+@keyframes scaleXIn {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+
+@keyframes clap {
+	from {
+		transform: scale(1);
+		//opacity: 1;
+	}
+	10% {
+		color: var(--color-pink-main);
+	}
+	to {
+		transform: scale(2);
+		//opacity: 0;
+	}
+}
+
+@keyframes riseUp {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-2rem);
+	}
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeOut{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+@keyframes swingWithPause {
+    from {
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
+    2% {
+      transform: rotate3d(0, 0, 1, 15deg);
+    }
+    4% {
+      transform: rotate3d(0, 0, 1, -10deg);
+    }
+    6% {
+      transform: rotate3d(0, 0, 1, 5deg);
+    }
+    8% {
+      transform: rotate3d(0, 0, 1, -5deg);
+    }
+    10% {
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
+    to {
+      transform: rotate3d(0, 0, 1, 0deg);
+    }
+  }
