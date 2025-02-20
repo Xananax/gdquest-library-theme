@@ -13,7 +13,6 @@
 	gap: 1.2rem;
 	animation-name: fadeIn;
 	animation-timeline: view(10% block);
-	position: sticky;
 	top: 8rem;
 	.clipboardButton {
 		position: relative;
@@ -47,5 +46,8 @@
 				opacity: 1;
 			}
 		}
+	}
+	@media (min-width: $gridBreakPointMid){
+		position: sticky;
 	}
 }

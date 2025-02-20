@@ -2,6 +2,7 @@ import "../components/authForm/authForm.mjs";
 import "../components/carousel/carousel.mjs";
 import "../components/clapsButton/clapsButton.mjs";
 import "../components/clipboardButton/clipboardButton.mjs";
+import "../components/codeBlock/codeBlock.mjs";
 import "../components/collapsibleList/collapsibleList.mjs";
 import "../components/fontSizeResizer/fontSizeResizer.mjs";
 import "../components/glossarySearch/glossarySearch.mjs";
