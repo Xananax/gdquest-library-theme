@@ -35,7 +35,7 @@ function augmentTabList(tabList) {
     return tabs;
   }, []);
 
-  const setTabFocus = () => {
+  const setCurrentTabFromFocus = () => {
     const tab = tabs[tabFocus];
     tabs.forEach((t) => {
       if (t == tab) {
@@ -48,46 +48,47 @@ function augmentTabList(tabList) {
     });
     tab.setAttribute("aria-selected", "true");
     tab.setAttribute("tabindex", "0");
-    tab.panel.setAttribute("hidden", "false");
+    tab.panel.setAttribute("aria-hidden", "false");
     tab.panel.removeAttribute("hidden");
   };
 
-  /** @type {HTMLElement}*/ (tabList).addEventListener("keydown", (e) => {
+  const tabNext = () => (tabFocus === tabs.length - 1 ? 0 : tabFocus + 1);
+
+  const tabPrevious = () => (tabFocus === 0 ? tabs.length - 1 : tabFocus - 1);
+
+  const setNewTabFocus = (newFocus) => {
+    if (newFocus === tabFocus) {
+      return;
+    }
+    tabs[tabFocus].setAttribute("tabindex", "-1");
+    tabFocus = newFocus;
+    tabs[tabFocus].setAttribute("tabindex", "0");
+    tabs[tabFocus].focus();
+  };
+
+  /** @type {HTMLElement} */(tabList).addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-      tabs[tabFocus].setAttribute("tabindex", "-1");
-      if (e.key === "ArrowRight") {
-        tabFocus++;
-        if (tabFocus >= tabs.length) {
-          tabFocus = 0;
-        }
-      } else if (e.key === "ArrowLeft") {
-        tabFocus--;
-        if (tabFocus < 0) {
-          tabFocus = tabs.length - 1;
-        }
-      }
-      tabs[tabFocus].setAttribute("tabindex", "0");
-      tabs[tabFocus].focus();
+      const newFocus = e.key === "ArrowRight" ? tabNext() : tabPrevious();
+      setNewTabFocus(newFocus);
     }
   });
 
-  function onHashChange(){
+  function onHashChange() {
     const index = cache.get(location.hash);
     if (index == null) {
       return;
     }
     tabFocus = index;
-    setTabFocus();
+    setCurrentTabFromFocus();
   }
 
-  
   if (tabFocus === -1) {
-      tabFocus = 0;
-    }
-    
+    tabFocus = 0;
+  }
+
   window.addEventListener("hashchange", onHashChange);
-  setTabFocus();
-  onHashChange()
+  setCurrentTabFromFocus();
+  onHashChange();
 }
 
 document.querySelectorAll('[role="tablist"]').forEach(augmentTabList);

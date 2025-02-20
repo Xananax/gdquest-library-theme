@@ -32,8 +32,6 @@
 		grid-template-rows: 1fr;
 		& > div{
 			overflow: hidden;
-			padding-inline: 1.875rem;
-			padding-block: 1.25rem;
 			transition: padding 300ms ease-out;
 			&:first-child {
 				padding-block-start: 0;

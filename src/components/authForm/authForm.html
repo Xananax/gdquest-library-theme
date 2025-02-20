@@ -1,205 +1,243 @@
 <div class="authForm">
-  <ul
-    role="tablist"
-    aria-label="Login or Register forms"
-    data-is="tab-list"
-    class="authFormTabs"
-  >
-    <li role="presentation">
-      <a
-        role="tab"
-        aria-selected="true"
-        aria-controls="otp"
-        href="#otp"
-        id="authLoginFormOTPTab"
-        tabindex="0"
-        >Login with a one-time link</a
-      >
-    </li>
-    <li role="presentation">
-      <a
-        role="tab"
-        aria-selected="false"
-        aria-controls="login"
-        href="#login"
-        id="authLoginFormPasswordTab"
-        tabindex="0"
-        >Login with a password</a
-      >
-    </li>
-    <li role="presentation">
-      <a
-        role="tab"
-        aria-selected="false"
-        aria-controls="register"
-        href="#register"
-        id="authRegisterFormTab"
-        tabindex="0"
-        >Register</a
-      >
-    </li>
-    <li role="presentation">
-      <a
-        role="tab"
-        aria-selected="false"
-        aria-controls="resetpass"
-        href="#resetpass"
-        id="authResetPasswordFormTab"
-        tabindex="0"
-        >Reset password</a
-      >
-    </li>
-  </ul>
-  <div data-is="tab-panel-list" class="authFormTabsPanels">
-    <section
-      class="authLoginFormOTP"
-      id="otp"
-      role="tabpanel"
-      tabindex="0"
-      aria-labelledby="authLoginFormOTPTab"
+  <div class="authFormContent">
+    <ul
+      role="tablist"
+      aria-label="Login or Register forms"
+      data-is="tab-list"
+      class="authFormTabs"
     >
-      <h2>Send yourself a one-time link</h2>
-      <p>
-        Enter your email address and we'll send you a link to log in to your
-        account.
-      </p>
-      <form>
-        <label for="emailOTP">Email</label>
-        <input
-          type="email"
-          id="emailOTP"
-          name="email"
-          placeholder="me@example.com"
-          required
-        />
-        <button type="submit">Send link</button>
-      </form>
-      <dl data-is="collapsible-list">
-        <dt>How to use one-time links?</dt>
-        <dd>
-          <div>
-            <p>
-              One-time links allow you to log in and register without a
-              password.
-            </p>
-            <p>
-              We will send you a one-time link in your mail box. Click the link
-              to log in here. If you don't have an account, we will create one
-              automatically.
-            </p>
-            <p>
-              Each link works only once and you need to open it in the same web
-              browser.
-            </p>
-          </div>
-        </dd>
-      </dl>
-      <footer>
+      <li role="presentation">
+        <a
+          role="tab"
+          aria-selected="true"
+          aria-controls="otp"
+          href="#otp"
+          id="authLoginFormOTPTab"
+          tabindex="0"
+          >Login with a one-time link</a
+        >
+      </li>
+      <li role="presentation">
+        <a
+          role="tab"
+          aria-selected="false"
+          aria-controls="login"
+          href="#login"
+          id="authLoginFormPasswordTab"
+          tabindex="0"
+          >Login with a password</a
+        >
+      </li>
+      <li role="presentation">
+        <a
+          role="tab"
+          aria-selected="false"
+          aria-controls="register"
+          href="#register"
+          id="authRegisterFormTab"
+          tabindex="0"
+          >Register</a
+        >
+      </li>
+      <li role="presentation">
+        <a
+          role="tab"
+          aria-selected="false"
+          aria-controls="resetpass"
+          href="#resetpass"
+          id="authResetPasswordFormTab"
+          tabindex="0"
+          >Reset password</a
+        >
+      </li>
+    </ul>
+    <div data-is="tab-panel-list" class="authFormTabsPanels">
+      <section
+        class="authLoginFormOTP"
+        id="otp"
+        role="tabpanel"
+        tabindex="-1"
+        aria-labelledby="authLoginFormOTPTab"
+      >
+        <h2>Send yourself a one-time link</h2>
         <p>
-          Do you prefer using a password?
-          <a href="#register">register</a> or
-          <a href="#login">login</a>
+          Enter your email address and we'll send you a link to log in to your
+          account.
         </p>
-      </footer>
-    </section>
-    <section
-      class="authLoginFormPassword"
-      id="login"
-      role="tabpanel"
-      tabindex="0"
-      aria-labelledby="authLoginFormOTPTab"
-    >
-      <h2>Log In</h2>
-      <form>
-        <label for="emailPassword">Email</label>
-        <input
-          type="email"
-          id="emailPassword"
-          name="email"
-          placeholder="me@example.com"
-          required
-        />
-        <label for="password">Password</label>
-        <input
-          type="password"
-          placeholder="*****"
-          id="password"
-          name="password"
-          required
-        />
+        <form action="" method="POST" data-is="form-enhanced">
+          <label for="emailOTP">Email</label>
+          <input
+            type="email"
+            id="emailOTP"
+            name="email"
+            placeholder="me@example.com"
+            required
+          />
+          <input type="hidden" name="redirectTo" value="" />
+          <input type="hidden" name="action" value="otp" />
+          <button type="submit">Send link</button>
+        </form>
         <dl data-is="collapsible-list">
-          <dt>Forgot your password or your password is not working?</dt>
+          <dt>How to use one-time links?</dt>
           <dd>
             <div>
-              <a href="#resetpass">Reset your password</a>
+              <p>
+                One-time links allow you to log in and register without a
+                password.
+              </p>
+              <p>
+                We will send you a one-time link in your mail box. Click the
+                link to log in here. If you don't have an account, we will
+                create one automatically.
+              </p>
+              <p>
+                Each link works only once and you need to open it in the same
+                web browser.
+              </p>
             </div>
           </dd>
         </dl>
-        <button type="submit">Login</button>
-      </form>
-      <footer>
-        <p>New to GDQuest? <a href="#register">register</a></p>
-      </footer>
-    </section>
-    <section
-      class="authRegisterForm"
-      id="register"
-      role="tabpanel"
-      tabindex="0"
-      aria-labelledby="authRegisterForm"
-    >
-      <h2>Register</h2>
-      <form>
-        <label for="emailRegister">Email</label>
-        <input
-          type="email"
-          id="emailRegister"
-          name="email"
-          placeholder="me@example.com"
-          required
-        />
-        <label for="passwordRegister">Password</label>
-        <input
-          type="password"
-          placeholder="*****"
-          id="passwordRegister"
-          name="password"
-          required
-        />
-        <label for="passwordConfirm">Confirm Password</label>
-        <input
-          type="password"
-          placeholder="*****"
-          id="passwordConfirm"
-          name="passwordConfirm"
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
-    </section>
-    <section
-      class="authResetPasswordForm"
-      id="resetpass"
-      role="tabpanel"
-      tabindex="0"
-      aria-labelledby="authResetPasswordForm"
-    >
-      <h2>Reset Password</h2>
-      <p>
-        Enter your email address and we'll send you a link to reset your
-        password.
-      </p>
-      <form>
-        <label for="emailResetPassword">Email</label>
-        <input
-          type="email"
-          id="emailResetPassword"
-          name="email"
-          placeholder="me@example.com"
-          required
-        />
-        <button type="submit">Send Reset Link</button>
-      </form>
-    </section>
+        <footer>
+          <p>
+            Do you prefer using a password?
+            <a href="#register">register</a> or
+            <a href="#login">login</a>
+          </p>
+        </footer>
+      </section>
+      <section
+        class="authLoginFormPassword"
+        id="login"
+        role="tabpanel"
+        tabindex="-1"
+        aria-labelledby="authLoginFormOTPTab"
+      >
+        <h2>Log In</h2>
+        <form action="" method="POST" data-is="form-enhanced">
+          <label for="emailPassword">Email</label>
+          <input
+            type="email"
+            id="emailPassword"
+            name="email"
+            placeholder="me@example.com"
+            required
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            placeholder="*****"
+            id="password"
+            name="password"
+            required
+          />
+          <input type="hidden" name="redirectTo" value="" />
+          <input type="hidden" name="action" value="login" />
+          <dl data-is="collapsible-list">
+            <dt>Forgot your password or your password is not working?</dt>
+            <dd>
+              <div>
+                <a href="#resetpass">Reset your password</a>
+              </div>
+            </dd>
+          </dl>
+          <button type="submit">Login</button>
+        </form>
+        <footer>
+          <p>New to GDQuest? <a href="#register">register</a></p>
+        </footer>
+      </section>
+      <section
+        class="authRegisterForm"
+        id="register"
+        role="tabpanel"
+        tabindex="-1"
+        aria-labelledby="authRegisterForm"
+      >
+        <h2>Register</h2>
+        <form action="" method="POST" data-is="form-enhanced">
+          <label for="emailRegister">Email</label>
+          <input
+            type="email"
+            id="emailRegister"
+            name="email"
+            placeholder="me@example.com"
+            required
+          />
+          <label for="passwordRegister">Password</label>
+          <input
+            type="password"
+            placeholder="*****"
+            id="passwordRegister"
+            name="password"
+            required
+          />
+          <input type="hidden" name="redirectTo" value="" />
+          <input type="hidden" name="action" value="register" />
+          <label for="passwordConfirm">Confirm Password</label>
+          <input
+            type="password"
+            placeholder="*****"
+            id="passwordConfirm"
+            name="passwordConfirm"
+            required
+          />
+          <dl data-is="collapsible-list">
+            <dt>Password recommendations</dt>
+            <dd>
+              <div>
+                <p>
+                  Have at least 12 characters. There's a good explanation on
+                  <a
+                    href="https://www.explainxkcd.com/wiki/index.php/936:_Password_Strength"
+                    target="_blank"
+                    >XKCD</a
+                  >, and here's a table, courtesy of
+                  <a href="https://www.hivesystems.io/password"
+                    >hivesystems.io</a
+                  >:
+                </p>
+                <a
+                  href="/src/static/hive_systems_password_table.png"
+                  target="_blank"
+                >
+                  <img src="/src/static/hive_systems_password_table.png"
+                </a>
+              </div>
+            </dd>
+          </dl>
+          <button type="submit">Register</button>
+        </form>
+      </section>
+      <section
+        class="authResetPasswordForm"
+        id="resetpass"
+        role="tabpanel"
+        tabindex="-1"
+        aria-labelledby="authResetPasswordForm"
+      >
+        <h2>Reset Password</h2>
+        <p>
+          Enter your email address and we'll send you a link to reset your
+          password.
+        </p>
+        <form action="" method="POST" data-is="form-enhanced">
+          <label for="emailResetPassword">Email</label>
+          <input
+            type="email"
+            id="emailResetPassword"
+            name="email"
+            placeholder="me@example.com"
+            required
+          />
+          <input type="hidden" name="redirectTo" value="" />
+          <input type="hidden" name="action" value="resetpass" />
+          <button type="submit">Send Reset Link</button>
+        </form>
+      </section>
+    </div>
+    <noscript>
+      Login and registration require Javascript. Please enable Javascript to
+      enable this functionality!
+    </noscript>
   </div>
 </div>

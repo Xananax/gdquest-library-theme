@@ -103,7 +103,7 @@ export const posts = () => {
         if (error) {
           throw error;
         }
-        // no matter what I tried, recursive queries weren't fast enough in Postgres, so we stitch them here
+        
         const temporaryRowsMapCache = new Map(
           rows.map(({ created_at, ...post }) => [
             post.post_id,
