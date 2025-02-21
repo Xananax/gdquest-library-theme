@@ -1,58 +1,63 @@
-function formatNumber(number) {
-	return number.toLocaleString("en-US", {
-		maximumFractionDigits: 2,
-		notation: "compact",
-		compactDisplay: "short",
-	});
-}
+// @ts-check
+import { signal } from "../../js/signal.mjs";
 
+/** @type {Set<[Element, Element]>} */
 const clapsOnPage = new Set();
 
-const augmentedButton = {
-	getAmount() {
-		return parseInt(
-			this.querySelector(".clapsButtonAmountTotal").textContent ?? "0",
-			10,
-		);
-	},
-	setAmount(newAmount) {
-		this.querySelector(".clapsButtonAmountTotal").textContent = `${newAmount}`;
-		this.querySelector(".clapsButtonAmountAbbreviated").textContent =
-			formatNumber(newAmount);
-	},
-	increaseAmount() {
-		this.setAmount(this.getAmount() + 1);
-		this.setAttribute("aria-pressed", "true");
-	},
-	syncAmount() {
-		this.setAmount(this.getAmount());
-	},
-};
+const claps = signal(0);
 
-function increaseButtonsAmount() {
-	clapsOnPage.forEach((button) => button.increaseAmount());
-}
+claps.on((amount) => {
+  const formattedAmount = formatNumber(amount);
+  clapsOnPage.forEach(([total, abbreviated]) => {
+    total.textContent = `${amount}`;
+    abbreviated.textContent = formattedAmount;
+  });
+});
 
 /**
- * @param {HTMLButtonElement|null} button?
+ * @this {HTMLButtonElement}
  */
-export function processClapsButton(button) {
-	if (button.classList.contains("isJSProcessed")) {
-		return;
-	}
+function increase() {
+	this.setAttribute("aria-pressed", "true");
+	claps.set(claps.get() + 1);
+  }
 
-	button.classList.add("isJSProcessed");
-
-	Object.assign(button, augmentedButton);
-
-	button.addEventListener("click", increaseButtonsAmount);
-
-	button.syncAmount();
-	button.addEventListener("animationend", () => {
-		button.setAttribute("aria-pressed", "false");
-	});
-
-	clapsOnPage.add(button);
+function formatNumber(number = 0) {
+  return number.toLocaleString("en-US", {
+    maximumFractionDigits: 2,
+    notation: "compact",
+    compactDisplay: "short",
+  });
 }
 
-document.querySelectorAll("button.clapsButton").forEach(processClapsButton);
+document
+  .querySelectorAll("button.clapsButton")
+  .forEach(function processClapsButton(button, index) {
+    if (button.classList.contains("isJSProcessed")) {
+      return;
+    }
+
+    button.classList.add("isJSProcessed");
+
+    const total = button.querySelector(".clapsButtonAmountTotal");
+    const abbreviated = button.querySelector(".clapsButtonAmountAbbreviated");
+
+    if (!total || !abbreviated) {
+      return;
+    }
+
+    clapsOnPage.add([total, abbreviated]);
+
+    button.addEventListener("animationend", () =>
+      button.setAttribute("aria-pressed", "false")
+    );
+
+    button.addEventListener("click", increase);
+  });
+
+const firstClapElement = clapsOnPage.values().next().value;
+if (firstClapElement) {
+  const [total] = firstClapElement;
+  const amount = parseInt(total.textContent, 10);
+  claps.set(amount);
+}
