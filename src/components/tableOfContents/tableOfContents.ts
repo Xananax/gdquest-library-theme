@@ -1,8 +1,8 @@
-import { TogglerButton } from "../togglerButton/togglerButton.mjs";
+import { TogglerButton } from "../togglerButton/togglerButton.ts";
 
 const slugify = (text) => text.toLowerCase().replace(/(\s|\.)+/g, "-");
 
-const sortElementsByPosition = (a, b) =>
+const sortElementsByPosition = (a: string, b: string) =>
 	(document.getElementById(a)?.getBoundingClientRect().top ?? 0) -
 	(document.getElementById(b)?.getBoundingClientRect().top ?? 0);
 
@@ -16,12 +16,11 @@ const setOrUseId = (element) => {
 	return generatedId;
 };
 
-const clickButtonIfFound = (element) => {
-	const button =
-		element &&
+const clickButtonIfFound = (element: Element) => {
+	const button = element &&
 		Array.from(element.children).find((child) =>
-			child.matches('button[aria-expanded="false"]'),
-		);
+			child.matches('button[aria-expanded="false"]')
+		) as HTMLButtonElement | null;
 	if (button != null) {
 		button.click();
 	}
@@ -51,9 +50,11 @@ const processArticleToc = (root) => {
 	/*****************************************************************************
 	 * Handle creating headinds
 	 */
-	let lastHeading = null;
+	let lastHeading: HTMLLIElement | HTMLUListElement | null = null;
 	const headings = Array.from(
-		document.querySelectorAll("main h1, main h2, .contributeBlockWrapper h1"),
+		document.querySelectorAll(
+			"main h1, main h2, .contributeBlockWrapper h1",
+		),
 	);
 	const headingIndicesById = headings
 		.map((heading, index) => {
@@ -65,7 +66,7 @@ const processArticleToc = (root) => {
 			a.textContent = heading.textContent;
 			a.classList.add(
 				...Array.from(heading.classList).filter((c) =>
-					c.toLowerCase().includes("icon"),
+					c.toLowerCase().includes("icon")
 				),
 				CLASS_PREFIX + CLASS_ANCHOR_LINK,
 				CLASS_PREFIX + CLASS_ANCHOR_LINK_LEVEL_PREFIX + heading.tagName,
@@ -95,14 +96,18 @@ const processArticleToc = (root) => {
 						const divId = `hsub-${id}`;
 
 						const button = TogglerButton(divId, span1, span2);
-						button.classList.add(CLASS_PREFIX + CLASS_FOLD_UNFOLD_BUTTON);
+						button.classList.add(
+							CLASS_PREFIX + CLASS_FOLD_UNFOLD_BUTTON,
+						);
 
 						const ul = document.createElement("ul");
 						ul.classList.add(CLASS_PREFIX + CLASS_SUBHEADINGS_LIST);
 
 						const div = document.createElement("div");
 						div.setAttribute("id", divId);
-						div.classList.add(CLASS_PREFIX + CLASS_SUBHEADINGS_LIST_CONTAINER);
+						div.classList.add(
+							CLASS_PREFIX + CLASS_SUBHEADINGS_LIST_CONTAINER,
+						);
 						div.appendChild(ul);
 
 						lastHeading.appendChild(button);
@@ -118,7 +123,7 @@ const processArticleToc = (root) => {
 		})
 		.reverse();
 
-	const active = [];
+	const active: string[] = [];
 	const observer = new IntersectionObserver(
 		(entries) => {
 			entries.forEach((entry) => {

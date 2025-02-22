@@ -1,10 +1,9 @@
 // @ts-check
-import { signal } from "../../js/signal.mjs";
+import { Signal } from "../../js/signal.ts";
 
-/** @type {Set<[Element, Element]>} */
-const clapsOnPage = new Set();
+const clapsOnPage = new Set<[Element, Element]>();
 
-const claps = signal(0);
+const claps = Signal(0);
 
 claps.on((amount) => {
   const formattedAmount = formatNumber(amount);
@@ -14,13 +13,10 @@ claps.on((amount) => {
   });
 });
 
-/**
- * @this {HTMLButtonElement}
- */
-function increase() {
-	this.setAttribute("aria-pressed", "true");
-	claps.set(claps.get() + 1);
-  }
+function increase(this: HTMLButtonElement) {
+  this.setAttribute("aria-pressed", "true");
+  claps.set(claps.get() + 1);
+}
 
 function formatNumber(number = 0) {
   return number.toLocaleString("en-US", {
@@ -32,7 +28,7 @@ function formatNumber(number = 0) {
 
 document
   .querySelectorAll("button.clapsButton")
-  .forEach(function processClapsButton(button, index) {
+  .forEach(function processClapsButton(button) {
     if (button.classList.contains("isJSProcessed")) {
       return;
     }
@@ -48,8 +44,9 @@ document
 
     clapsOnPage.add([total, abbreviated]);
 
-    button.addEventListener("animationend", () =>
-      button.setAttribute("aria-pressed", "false")
+    button.addEventListener(
+      "animationend",
+      () => button.setAttribute("aria-pressed", "false"),
     );
 
     button.addEventListener("click", increase);

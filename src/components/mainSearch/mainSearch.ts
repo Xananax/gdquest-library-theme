@@ -1,11 +1,13 @@
-import { button } from "../../js/utils.mjs";
+import { button } from "../../js/utils.ts";
 
 document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
-  const form = searchWrapper.querySelector("form");
-
   const selectedTermsContainer = searchWrapper.querySelector(
     ".mainSearchSelectedTerms",
   );
+
+  if (!selectedTermsContainer) {
+    return;
+  }
 
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -27,8 +29,11 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
     });
   };
 
-  const removeTerm = (id) => {
-    const input = document.getElementById(id);
+  const removeTerm = (id: string) => {
+    const input = document.getElementById(id) as HTMLInputElement | null;
+    if (!input) {
+      return;
+    }
     if (input.type === "radio") {
       removeCategory(input.name);
     } else if (input.type === "checkbox") {
@@ -37,7 +42,7 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
     removeElementById(getRemoveButtonIdForInput(id));
   };
 
-  const addTerm = (id, name, label) => {
+  const addTerm = (id: string, name: string, labelText: string) => {
     selectedTermsContainer.append(
       button(
         {
@@ -46,18 +51,19 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
           type: "button",
           onClick: () => removeTerm(id),
         },
-        label,
+        labelText,
       ),
     );
   };
 
-  const onInputChange = (evt) => {
-    /** @type HTMLInputElement */
-    const input = evt.target;
+  const onInputChange = (evt: Event) => {
+    const input = evt.target as HTMLInputElement;
     const name = input.name;
     const checked = input.checked;
-    const label = input.parentElement.querySelector(`label[for=${input.id}]`);
-    const labelText = label.textContent;
+    const label = input.parentElement?.querySelector(
+      `label[for=${input.id}]`,
+    ) as HTMLLabelElement | null;
+    const labelText = label?.textContent ?? "";
     if (input.value === "") {
       removeCategory(name);
     } else if (input.type === "radio" || input.type === "checkbox") {
@@ -73,7 +79,7 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
   };
 
   const options = Array.from(
-    searchWrapper.querySelectorAll(
+    searchWrapper.querySelectorAll<HTMLLabelElement>(
       [
         ".mainSearchFiltersCategory label",
         ".mainSearchFiltersFormat label",
@@ -81,44 +87,53 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
         ".mainSearchFiltersSubjectTags label",
       ].join(","),
     ),
-  ).map((/** HTMLLabelElement */ label) => {
-    /** @type HTMLInputElement */
-    const input = document.getElementById(label.htmlFor);
+  ).reduce(
+    (arr: { label: HTMLLabelElement; input: HTMLInputElement }[], label) => {
+      const input = document.getElementById(label.htmlFor) as
+        | HTMLInputElement
+        | null;
 
-    if (!input) {
-      return;
-    }
+      if (!input) {
+        return arr;
+      }
 
-    input.addEventListener("change", onInputChange);
+      input.addEventListener("change", onInputChange);
 
-    if (
-      input.value !== "" &&
-      urlParams.getAll(input.name).indexOf(input.value) !== -1
-    ) {
-      input.checked = true;
-      addTerm(input.id, input.name, label.textContent);
-    }
+      if (
+        input.value !== "" &&
+        urlParams.getAll(input.name).indexOf(input.value) !== -1
+      ) {
+        input.checked = true;
+        addTerm(input.id, input.name, label.textContent ?? "");
+      }
 
-    return {
-      label,
-      input,
-    };
-  });
+      arr.push({
+        label,
+        input,
+      });
+      return arr;
+    },
+    [],
+  );
 
   document
-    .querySelector(".mainSearchFiltersSubjectTagsClearLink")
-    .addEventListener("click", () => {
-      options.forEach((option) => {
-        if (option.input.type === "checkbox") {
+    .querySelector(".mainSearchFiltersSubjectTagsClearLink")?.addEventListener(
+      "click",
+      () => {
+        options.forEach((option) => {
+          if (option.input.type === "checkbox") {
+            removeTerm(option.input.id);
+          }
+        });
+      },
+    );
+  document
+    .querySelector(".mainSearchSelectedTermsClearAllButton")?.addEventListener(
+      "click",
+      () => {
+        options.forEach((option) => {
           removeTerm(option.input.id);
-        }
-      });
-    });
-  document
-    .querySelector(".mainSearchSelectedTermsClearAllButton")
-    .addEventListener("click", () => {
-      options.forEach((option) => {
-        removeTerm(option.input.id);
-      });
-    });
+        });
+      },
+    );
 });

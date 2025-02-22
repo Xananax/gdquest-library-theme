@@ -1,6 +1,6 @@
 // @ts-check
 // deno-lint-ignore-file no-unused-labels
-import { li, button, span, img } from "../../js/utils.mjs";
+import { button, img, li, span } from "../../js/utils.ts";
 
 const currentProps = {
   ariaCurrent: "true",
@@ -9,15 +9,21 @@ const currentProps = {
 
 const timerTime = 8000;
 
-const setupCarousel = (carouselWrapper) => {
-  const slider = carouselWrapper.querySelector(".carouselSlidesList");
+const setupCarousel = (carouselWrapper: HTMLElement) => {
+  const slider = carouselWrapper.querySelector<HTMLElement>(
+    ".carouselSlidesList",
+  );
+
+  if (!slider) {
+    return;
+  }
 
   const slides = Array.from(
-    slider.querySelectorAll(".carouselSlidesListSlide"),
+    slider.querySelectorAll<HTMLDivElement>(".carouselSlidesListSlide"),
   ).map((slide) => {
-    const category = slide.querySelector("h4").textContent;
-    const title = slide.querySelector("h2").textContent;
-    const thumbnail = slide.querySelector("img").src;
+    const category = slide.querySelector("h4")?.textContent ?? "";
+    const title = slide.querySelector("h2")?.textContent ?? "";
+    const thumbnail = slide.querySelector("img")?.src ?? "";
     return {
       category,
       title,
@@ -26,10 +32,12 @@ const setupCarousel = (carouselWrapper) => {
   });
 
   const controller = (() => {
-    const liveRegion = carouselWrapper.querySelector(".carouselLiveRegion");
+    const liveRegion = carouselWrapper.querySelector<HTMLElement>(
+      ".carouselLiveRegion",
+    );
 
-    let currentSlide =
-      Math.ceil(slider.scrollLeft / slider.offsetWidth) % slides.length;
+    let currentSlide = Math.ceil(slider.scrollLeft / slider.offsetWidth) %
+      slides.length;
 
     const nextSlide = () => updateSlider((currentSlide + 1) % slides.length);
 
@@ -44,7 +52,9 @@ const setupCarousel = (carouselWrapper) => {
       slideButtons[nextSlide].setCurrent(true);
       currentSlide = nextSlide;
       slider.scrollLeft = slider.offsetWidth * currentSlide;
-      liveRegion.textContent = `Item ${currentSlide + 1} of ${slides.length}`;
+      if (liveRegion) {
+        liveRegion.textContent = `Item ${currentSlide + 1} of ${slides.length}`;
+      }
     };
 
     return {
@@ -64,28 +74,35 @@ const setupCarousel = (carouselWrapper) => {
     if (isReduced) {
       break handlePause;
     }
-    const pauseToggleButton = carouselWrapper.querySelector(
+    const pauseToggleButton = carouselWrapper.querySelector<HTMLButtonElement>(
       ".carouselControlsButtonPlayToggle",
     );
-    const pauseToggleButtonText = pauseToggleButton.querySelector("span");
 
-    let pauseInterval = null;
+    const pauseToggleButtonTextElement = pauseToggleButton?.querySelector<
+      HTMLSpanElement
+    >("span");
+
+    if (!pauseToggleButton || !pauseToggleButtonTextElement) {
+      break handlePause;
+    }
+
+    let pauseInterval: NodeJS.Timeout | null = null;
     let pauseRequested = false;
 
     const setPauseButton = (isPaused) => {
       if (!isPaused) {
         pauseToggleButton.classList.remove("buttonPlay");
         pauseToggleButton.classList.add("buttonPause");
-        pauseToggleButtonText.textContent = "Pause";
+        pauseToggleButtonTextElement.textContent = "Pause";
       } else {
-        pauseToggleButtonText.textContent = "Play";
+        pauseToggleButtonTextElement.textContent = "Play";
         pauseToggleButton.classList.remove("buttonPause");
         pauseToggleButton.classList.add("buttonPlay");
       }
     };
 
     const startTimer = () => {
-      clearInterval(pauseInterval);
+      clearInterval(pauseInterval as NodeJS.Timeout);
       if (pauseRequested) {
         return;
       }
@@ -99,7 +116,7 @@ const setupCarousel = (carouselWrapper) => {
     const stopTimer = () => {
       carouselWrapper.style.setProperty("--timer-time", "0ms");
       carouselWrapper.style.setProperty("--timer-animation-name", "none");
-      clearInterval(pauseInterval);
+      clearInterval(pauseInterval as NodeJS.Timeout);
       pauseInterval = null;
     };
 
@@ -127,6 +144,10 @@ const setupCarousel = (carouselWrapper) => {
     const carouselSlidesNavigationContainer = carouselWrapper.querySelector(
       ".carouselSlidesNavigation",
     );
+
+    if (!carouselSlidesNavigationContainer) {
+      return [];
+    }
 
     const currentSlideAnnouncer = span(
       {
@@ -165,8 +186,9 @@ const setupCarousel = (carouselWrapper) => {
         }),
         isCurrent && currentSlideAnnouncer,
       );
-      slideButton.addEventListener("click", () =>
-        controller.updateSlider(index),
+      slideButton.addEventListener(
+        "click",
+        () => controller.updateSlider(index),
       );
       carouselSlidesNavigationContainer.appendChild(li(slideButton));
       slideButton.setCurrent = (isCurrent) => {
@@ -184,17 +206,23 @@ const setupCarousel = (carouselWrapper) => {
       return slideButton;
     });
 
-    return slideButtons
+    return slideButtons;
   })();
 
   setupNextPrevButtons: {
     carouselWrapper
-      .querySelector(".buttonPrevious")
-      .addEventListener("click", controller.prevSlide);
+      .querySelector(".buttonPrevious")?.addEventListener(
+        "click",
+        controller.prevSlide,
+      );
     carouselWrapper
-      .querySelector(".buttonNext")
-      .addEventListener("click", controller.nextSlide);
+      .querySelector(".buttonNext")?.addEventListener(
+        "click",
+        controller.nextSlide,
+      );
   }
 };
 
-document.querySelectorAll("section.carouselWrapper").forEach(setupCarousel);
+document.querySelectorAll<HTMLElement>("section.carouselWrapper").forEach(
+  setupCarousel,
+);

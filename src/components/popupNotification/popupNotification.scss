@@ -1,0 +1,145 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.popups {
+  position: fixed;
+  inset: 0 0 0 auto;
+  display: flex;
+  width: 23rem;
+  align-items: start;
+  align-content: start;
+  z-index: 5;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.5s;
+  pointer-events: none;
+  @include hideScrollBar;
+  &Pane {
+    flex-grow: 1;
+    display: grid;
+    align-items: start;
+    align-content: start;
+    padding: 1rem;
+    width: 100%;
+  }
+}
+
+.popup {
+  --bg: white;
+  --fg: black;
+  display: grid;
+  color: var(--fg);
+  position: relative;
+  animation: notificationPopIn 0.5s ease-out forwards;
+  transform: translateY(100vh);
+  pointer-events: none;
+  margin-block-end: 1rem;
+  &:not(&Closing){
+      @for $i from 1 through 50 {
+        &:nth-child(#{$i}) {
+          animation-delay: 0.5s * $i;
+        }
+      }
+  }
+  button {
+    @include buttonReset;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0 0 auto auto;
+    pointer-events: all;
+    span {
+      @include srOnly;
+    }
+    &::before {
+      @include icon;
+      @extend %icon-close;
+      font-size: 1.5rem;
+    }
+  }
+  & > div {
+    background: color-mix(in srgb, var(--bg) 80%, white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 2px 2px 3px 3px color-mix(in srgb, var(--fg) 30%, transparent);
+    line-height: 1;
+    transition: opacity 0.5s ease-in;
+    pointer-events: none;
+    opacity: 0.9;
+    &:before {
+      @include icon;
+      display: block;
+      float: left;
+      margin-inline-end: 0.2ch;
+    }
+  }
+  &--info {
+    --bg: var(--color-blue-light);
+    --fg: var(--color-blue-700);
+    & > div::before {
+      @extend %icon-information;
+    }
+  }
+  &--warning {
+    --bg: var(--color-yellow-light);
+    --fg: var(--color-mustard);
+    & > div::before {
+      @extend %icon-info;
+    }
+  }
+  &--error {
+    --bg: var(--color-red-light);
+    --fg: var(--color-red-main);
+    & > div::before {
+      @extend %icon-info;
+    }
+  }
+  &--success {
+    --bg: var(--color-green-light);
+    --fg: var(--color-green-dark);
+    & > div::before {
+      @extend %icon-checked-circle-fill;
+    }
+  }
+  &Closing{
+    transform: translateY(0);
+    overflow: hidden;
+    height: calc-size(auto, size);
+    animation: fadeOut .5s ease-out 0s forwards, removeFromList .5s ease-out 0.3s forwards;
+  }
+}
+
+@keyframes removeFromList{
+    from{
+        height: calc-size(auto, size);
+        margin: 1rem;
+    }
+    99%{
+        height: 0;
+        margin: 0;
+    }
+    to{
+        height: 0;
+        margin: 0;
+        display: none;
+    }
+}
+
+@keyframes notificationPopIn {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
