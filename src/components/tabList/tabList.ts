@@ -1,23 +1,19 @@
-//@ts-check
-/**
- * @param {Element} tabList
- */
-function augmentTabList(tabList) {
+interface Tab extends HTMLAnchorElement {
+  panel: HTMLElement;
+}
+
+function augmentTabList(tabList: HTMLElement) {
   if (tabList.classList.contains("isJSProcessed")) {
     return;
   }
   tabList.classList.add("isJSProcessed");
 
-  /**
-   * @typedef {HTMLAnchorElement & { panel: HTMLElement}} Tab
-   */
   let tabFocus = -1;
-  /** @type {Map<string, number>} */
-  const cache = new Map();
+  const cache = new Map<string, number>();
 
-  const tabs = /** @type {Tab[]}*/ (
-    Array.from(tabList.querySelectorAll('a[href^="#"][role="tab"]'))
-  ).reduce((/** @type {Tab[]}*/ tabs, tab, index) => {
+  const tabs = (
+    Array.from(tabList.querySelectorAll<Tab>('a[href^="#"][role="tab"]'))
+  ).reduce((tabs: Tab[], tab, index) => {
     const controlledId = tab.getAttribute("aria-controls");
     if (!controlledId || !tab.hash) {
       return tabs;
@@ -37,6 +33,9 @@ function augmentTabList(tabList) {
 
   const setCurrentTabFromFocus = () => {
     const tab = tabs[tabFocus];
+    if (!tab) {
+      return;
+    }
     tabs.forEach((t) => {
       if (t == tab) {
         return;
@@ -56,17 +55,17 @@ function augmentTabList(tabList) {
 
   const tabPrevious = () => (tabFocus === 0 ? tabs.length - 1 : tabFocus - 1);
 
-  const setNewTabFocus = (newFocus) => {
+  const setNewTabFocus = (newFocus: number) => {
     if (newFocus === tabFocus) {
       return;
     }
-    tabs[tabFocus].setAttribute("tabindex", "-1");
+    tabs[tabFocus]?.setAttribute("tabindex", "-1");
     tabFocus = newFocus;
-    tabs[tabFocus].setAttribute("tabindex", "0");
-    tabs[tabFocus].focus();
+    tabs[tabFocus]?.setAttribute("tabindex", "0");
+    tabs[tabFocus]?.focus();
   };
 
-  /** @type {HTMLElement} */(tabList).addEventListener("keydown", (e) => {
+  tabList.addEventListener("keydown", (e: KeyboardEvent) => {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       const newFocus = e.key === "ArrowRight" ? tabNext() : tabPrevious();
       setNewTabFocus(newFocus);
@@ -91,4 +90,6 @@ function augmentTabList(tabList) {
   onHashChange();
 }
 
-document.querySelectorAll('[role="tablist"]').forEach(augmentTabList);
+document.querySelectorAll<HTMLElement>('[role="tablist"]').forEach(
+  augmentTabList,
+);

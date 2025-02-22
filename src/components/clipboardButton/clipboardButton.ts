@@ -1,8 +1,8 @@
-function unclickButton(button) {
+function unclickButton(button: HTMLButtonElement) {
 	button.setAttribute("aria-pressed", "false");
 }
 
-function onButtonClick(event) {
+function onclipboardButtonClick(this: HTMLButtonElement, _event: Event) {
 	const value = this.getAttribute("data-clipboard");
 	const clipboard =
 		value === "currentURL" || value == null ? window.location.href : value;
@@ -12,14 +12,14 @@ function onButtonClick(event) {
 	setTimeout(() => unclickButton(this), 2000);
 }
 
-const processClipboardButton = (button) => {
+const processClipboardButton = (button: HTMLButtonElement) => {
 	if (button.classList.contains("isJSProcessed")) {
 		return;
 	}
 	button.classList.add("isJSProcessed");
-	button.addEventListener("click", onButtonClick);
+	button.addEventListener("click", onclipboardButtonClick);
 };
 
 document
-	.querySelectorAll("button[data-is='clipboard-button']")
+	.querySelectorAll<HTMLButtonElement>("button[data-is='clipboard-button']")
 	.forEach(processClipboardButton);

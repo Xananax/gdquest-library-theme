@@ -1,6 +1,6 @@
 // @ts-check
 // deno-lint-ignore-file no-unused-labels
-import { button, img, li, span } from "../../js/utils.ts";
+import { button, img, li, span } from "../../js/utils";
 
 const currentProps = {
   ariaCurrent: "true",
@@ -44,12 +44,12 @@ const setupCarousel = (carouselWrapper: HTMLElement) => {
     const prevSlide = () =>
       updateSlider((currentSlide - 1 + slides.length) % slides.length);
 
-    const updateSlider = (nextSlide) => {
+    const updateSlider = (nextSlide: number) => {
       if (nextSlide === currentSlide) {
         return;
       }
-      slideButtons[currentSlide].setCurrent(false);
-      slideButtons[nextSlide].setCurrent(true);
+      slideButtons[currentSlide]?.setCurrent(false);
+      slideButtons[nextSlide]?.setCurrent(true);
       currentSlide = nextSlide;
       slider.scrollLeft = slider.offsetWidth * currentSlide;
       if (liveRegion) {
@@ -89,7 +89,7 @@ const setupCarousel = (carouselWrapper: HTMLElement) => {
     let pauseInterval: NodeJS.Timeout | null = null;
     let pauseRequested = false;
 
-    const setPauseButton = (isPaused) => {
+    const setPauseButton = (isPaused: boolean) => {
       if (!isPaused) {
         pauseToggleButton.classList.remove("buttonPlay");
         pauseToggleButton.classList.add("buttonPause");
@@ -185,7 +185,7 @@ const setupCarousel = (carouselWrapper: HTMLElement) => {
           ariaHidden: "true",
         }),
         isCurrent && currentSlideAnnouncer,
-      );
+      ) as HTMLButtonElement & { setCurrent: (isCurrent: boolean) => void };
       slideButton.addEventListener(
         "click",
         () => controller.updateSlider(index),
@@ -200,7 +200,7 @@ const setupCarousel = (carouselWrapper: HTMLElement) => {
         } else {
           slideButton.removeAttribute("aria-current");
           slideButton.removeAttribute("aria-disabled");
-          slideButton.removeAttribute("disabled", "true");
+          slideButton.removeAttribute("disabled");
         }
       };
       return slideButton;

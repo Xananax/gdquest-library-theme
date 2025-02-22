@@ -1,4 +1,4 @@
-import { button } from "../../js/utils.ts";
+import { button } from "../../js/utils";
 
 document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
   const selectedTermsContainer = searchWrapper.querySelector(
@@ -11,16 +11,16 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
 
   const urlParams = new URLSearchParams(window.location.search);
 
-  const getRemoveButtonIdForInput = (id) => `termButtonFor${id}`;
+  const getRemoveButtonIdForInput = (id: string) => `termButtonFor${id}`;
 
-  const removeElementById = (id) => {
+  const removeElementById = (id: string) => {
     const button = document.getElementById(id);
     if (button) {
       button.remove();
     }
   };
 
-  const removeCategory = (categoryName, exceptValue = "") => {
+  const removeCategory = (categoryName: string, exceptValue = "") => {
     options.forEach((option) => {
       if (option.input.name === categoryName) {
         option.input.checked = option.input.value === exceptValue;
@@ -49,7 +49,7 @@ document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
           id: getRemoveButtonIdForInput(id),
           class: `button-${name}`,
           type: "button",
-          onClick: () => removeTerm(id),
+          onclick: () => removeTerm(id),
         },
         labelText,
       ),

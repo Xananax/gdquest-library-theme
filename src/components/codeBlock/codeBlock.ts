@@ -1,10 +1,10 @@
-function makeSpan(className, content){
+function makeSpan(className: string, content: string){
     const span = document.createElement('span')
     span.classList.add(className)
     span.textContent = content
     return span
 }
-document.querySelectorAll('.codeBlockFileName').forEach((holderElement)=>{
+document.querySelectorAll<HTMLSpanElement>('.codeBlockFileName').forEach((holderElement)=>{
     const pathStr = holderElement.textContent
     if(pathStr == null || pathStr === ""){
         holderElement.remove()

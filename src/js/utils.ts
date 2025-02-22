@@ -1,30 +1,77 @@
-//@ts-check
+/**
+ * Helper type for DOM event handlers
+ */
+type DOMEventHandler<K extends keyof ElementEventMap> = (
+  event: ElementEventMap[K],
+) => void;
 
-export const kebabize = (/** @type string **/str) =>
+
+/**
+ * Shortcut for Object.getPrototypeOf
+ */
+export const protoOf = Object.getPrototypeOf;
+/**
+ * Object prototype, used it for comparisons
+ */
+export const objProto = protoOf({});
+
+/**
+ * Converts a camelCase string to kebab-case
+ * @param str any string
+ */
+export const kebabize = (str: string): string =>
   str.replace(
     /[A-Z]+(?![a-z])|[A-Z]/g,
     ($, ofs) => (ofs ? "-" : "") + $.toLowerCase(),
   );
 
-export const protoOf = Object.getPrototypeOf;
-export const objProto = protoOf({});
+
+type HTMLProps<T extends HTMLElement> =
+  & Partial<
+    {
+      [K in keyof T]: T[K];
+    }
+  >
+  & {
+    [K in `on${Capitalize<keyof ElementEventMap>}`]?: DOMEventHandler<
+      Uncapitalize<K extends `on${infer E}` ? E : never>
+    >;
+  }
+  & {
+    class?: string | string[];
+    className?: string | string[];
+    classList?: string | string[];
+    [key: `data${string}`]: string | number | boolean | null | undefined;
+    [key: `aria${string}`]: string | number | boolean | null | undefined;
+  };
+
+// Valid child types
+type DOMChild = string | number | Node | undefined | null | boolean;
 
 export const Dom =
-  (ns) =>
-  (name) =>
-  (...args) => {
+  <NS extends string | "" | null>(ns: NS) =>
+  <K extends keyof HTMLElementTagNameMap>(name: K) =>
+  (
+    ...args: [HTMLProps<HTMLElementTagNameMap[K]>, ...DOMChild[]] | DOMChild[]
+  ): HTMLElementTagNameMap[K] => {
     const [props, ...children] =
-      protoOf(args[0] ?? 0) === objProto ? args : [{}, ...args];
-    const dom = ns
-      ? document.createElementNS(ns, name)
-      : document.createElement(name);
+      (protoOf(args[0] ?? 0) === objProto ? args : [{}, ...args]) as [
+        HTMLProps<HTMLElementTagNameMap[K]>,
+        ...DOMChild[],
+      ];
+
+    const dom = (
+      ns ? document.createElementNS(ns, name) : document.createElement(name)
+    ) as HTMLElementTagNameMap[K];
+
     for (const [k, v] of Object.entries(props)) {
-      if (k.startsWith("on")) {
-        const event = k.slice(2);
-        dom.addEventListener(event.toLowerCase(), v);
+      if (k.startsWith("on") && typeof v === "function") {
+        const event = k.slice(2).toLowerCase() as keyof ElementEventMap;
+        dom.addEventListener(event, v as EventListener);
       } else if (k.startsWith("aria") || k.startsWith("data")) {
         const key = kebabize(k);
-        dom.setAttribute(key, v);
+        const value = v == null ? "" : String(v);
+        dom.setAttribute(key, value);
       } else if (k === "class" || k === "classList" || k === "className") {
         if (typeof v === "string") {
           dom.classList.add(v);
@@ -32,41 +79,43 @@ export const Dom =
           dom.classList.add(...v);
         }
       } else {
-        dom.setAttribute(k, v);
+        const value = v == null ? "" : String(v);
+        dom.setAttribute(k, value);
       }
     }
-    for (const child of children.flat(Infinity)) {
-      typeof child !== "undefined" &&
-        typeof child !== "boolean" &&
-        dom.append(child);
+
+    for (const child of (children.flat(Infinity) as DOMChild[])) {
+      if (child != null && typeof child !== "boolean") {
+        if (typeof child === "number") {
+          dom.append(child + "");
+        } else {
+          dom.append(child);
+        }
+      }
     }
+
     return dom;
   };
 
 export const El = Dom("");
 
-export const [ul, li, button, span, div, img] = [
-  "ul",
-  "li",
-  "button",
-  "span",
-  "div",
-  "img",
-].map(El);
+export const ul = El("ul");
+export const li = El("li");
+export const button = El("button");
+export const span = El("span");
+export const div = El("div");
+export const img = El("img");
 
-export const debounce = (fn, delay = 250) => {
-  let resizeTimeout = null;
+export const debounce = (fn: () => void, delay = 250) => {
+  let resizeTimeout: NodeJS.Timeout | null = null;
   return () => {
-    clearTimeout(resizeTimeout);
+    clearTimeout(resizeTimeout as NodeJS.Timeout);
     resizeTimeout = setTimeout(() => {
       fn();
     }, delay);
   };
 };
 
-/**
- * 
- * @param {any} el 
- * @returns {el is HTMLElement}
- */
-export const isHTMLElement = (el) => typeof el === 'object' && !('nodeName' in el) && typeof el.nodeName === 'undefined'
+export const isHTMLElement = (el: any): el is HTMLElement =>
+  typeof el === "object" && !("nodeName" in el) &&
+  typeof el.nodeName === "undefined";

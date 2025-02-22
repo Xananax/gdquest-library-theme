@@ -1,12 +1,12 @@
-import { TogglerButton } from "../togglerButton/togglerButton.ts";
+import { TogglerButton } from "../togglerButton/togglerButton";
 
-const slugify = (text) => text.toLowerCase().replace(/(\s|\.)+/g, "-");
+const slugify = (text: string) => text.toLowerCase().replace(/(\s|\.)+/g, "-");
 
 const sortElementsByPosition = (a: string, b: string) =>
 	(document.getElementById(a)?.getBoundingClientRect().top ?? 0) -
 	(document.getElementById(b)?.getBoundingClientRect().top ?? 0);
 
-const setOrUseId = (element) => {
+const setOrUseId = (element: HTMLElement) => {
 	const id = element.getAttribute("id");
 	if (id != null && id !== "") {
 		return id;
@@ -16,7 +16,7 @@ const setOrUseId = (element) => {
 	return generatedId;
 };
 
-const clickButtonIfFound = (element: Element) => {
+const clickButtonIfFound = (element: HTMLElement) => {
 	const button = element &&
 		Array.from(element.children).find((child) =>
 			child.matches('button[aria-expanded="false"]')
@@ -40,7 +40,7 @@ const CLASS_LIST_ITEM = "ListItem";
 const CLASS_LIST_ITEM_LEVEL_PREFIX = "ItemLevel";
 const CLASS_FOLD_UNFOLD_BUTTON = "FoldUnfoldButton";
 
-const processArticleToc = (root) => {
+const processArticleToc = (root: HTMLElement) => {
 	if (root.classList.contains("isJSProcessed")) {
 		return;
 	}
@@ -52,12 +52,12 @@ const processArticleToc = (root) => {
 	 */
 	let lastHeading: HTMLLIElement | HTMLUListElement | null = null;
 	const headings = Array.from(
-		document.querySelectorAll(
+		document.querySelectorAll<HTMLHeadingElement>(
 			"main h1, main h2, .contributeBlockWrapper h1",
 		),
 	);
 	const headingIndicesById = headings
-		.map((heading, index) => {
+		.map((heading) => {
 			const id = setOrUseId(heading);
 			const level = parseInt(heading.tagName.replace("H", ""), 10);
 
@@ -148,21 +148,28 @@ const processArticleToc = (root) => {
 				if (found || id === last) {
 					found = true;
 					const anchor = root.querySelector(`[href="#${id}"]`);
+					if (!anchor) {
+						continue;
+					}
 					anchor.classList.add(CLASS_ANCHOR_SCROLLED_PAST);
 					if (id === last) {
 						const li = anchor.parentElement;
+						if (!li) {
+							continue;
+						}
 						li.classList.add(CLASS_CURRENT_LIST_ITEM);
 						if (li.classList.contains(CLASS_HAS_CHILDREN)) {
 							clickButtonIfFound(li);
 						} else {
-							const parentLi = li.parentNode.closest("li");
-							clickButtonIfFound(parentLi);
+							const parentLi = (li.parentNode as HTMLUListElement)
+								.closest("li");
+							parentLi && clickButtonIfFound(parentLi);
 						}
 					}
 				} else {
 					root
-						.querySelector(`[href="#${id}"]`)
-						.classList.remove(CLASS_ANCHOR_SCROLLED_PAST);
+						.querySelector<HTMLAnchorElement>(`[href="#${id}"]`)
+						?.classList.remove(CLASS_ANCHOR_SCROLLED_PAST);
 				}
 			}
 		},
@@ -171,9 +178,11 @@ const processArticleToc = (root) => {
 	headings.forEach((h) => observer.observe(h));
 };
 
-document.querySelectorAll('[data-is="article-toc"]').forEach(processArticleToc);
+document.querySelectorAll<HTMLElement>('[data-is="article-toc"]').forEach(
+	processArticleToc,
+);
 
-const processNavigationBehavior = (button) => {
+const processNavigationBehavior = (button: HTMLButtonElement) => {
 	// By default, the navigation is shown until the toggle is pressed, but on mobile,
 	// the navigation is hidden by default.
 	// We will do a media query that checks if there's enough space for the navigation to be shown.
@@ -191,5 +200,7 @@ const processNavigationBehavior = (button) => {
 };
 
 document
-	.querySelectorAll("#tableOfContents button.tableOfContentsToggleButton")
+	.querySelectorAll<HTMLButtonElement>(
+		"#tableOfContents button.tableOfContentsToggleButton",
+	)
 	.forEach(processNavigationBehavior);

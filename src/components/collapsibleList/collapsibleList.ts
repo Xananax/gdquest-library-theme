@@ -1,13 +1,18 @@
 const wasProcessedClass = "isJSProcessed";
 
-const processCallout = (callout) => {
-	if (callout.classList.contains(wasProcessedClass)) {
+const processCallout = (collapsiblesList: HTMLDListElement) => {
+	
+	if (collapsiblesList.classList.contains(wasProcessedClass)) {
 		return;
 	}
-	callout.classList.add(wasProcessedClass);
-	const titles = callout.querySelectorAll("dt");
+	collapsiblesList.classList.add(wasProcessedClass);
+	const titles = collapsiblesList.querySelectorAll<HTMLElement>("dt");
+
 	titles.forEach((title) => {
-		const content = title.nextElementSibling;
+		const content = title.nextElementSibling as HTMLElement | null;
+		if (!content) {
+			return;
+		}
 		const id = content.id || `collapsible-${Math.random().toString(36).slice(2)}`;
 		if (!content.id) {
 			content.id = id;
@@ -43,5 +48,5 @@ const processCallout = (callout) => {
 };
 
 document
-	.querySelectorAll('[data-is="collapsible-list"]')
+	.querySelectorAll<HTMLDListElement>('[data-is="collapsible-list"]')
 	.forEach(processCallout);

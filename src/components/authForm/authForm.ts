@@ -1,14 +1,15 @@
-/** @type {Record<string, string>} */
-const params = new Proxy(new URLSearchParams(window.location.search), {
+import { supabase } from "../../js/supabase/supabase";
+
+const params = new Proxy<any>(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) =>
-    searchParams.has(prop) ? searchParams.get(prop) : "",
-});
+    typeof prop === 'string' && searchParams.has(prop) ? searchParams.get(prop) : "",
+}) as {[key:string]: string};
 
 const { email, redirect_to } = params;
 
-if (email !== "") {
+if (email != null && email !== "") {
   document
-    .querySelectorAll('input[type="email"][name="email"]')
+    .querySelectorAll<HTMLInputElement>('input[type="email"][name="email"]')
     .forEach((input) => {
       if (input.value === "") {
         input.value = email;
@@ -16,9 +17,9 @@ if (email !== "") {
     });
 }
 
-if (redirect_to !== "") {
+if (redirect_to != null && redirect_to !== "") {
   document
-    .querySelectorAll('input[type="hidden"][name="redirectTo"]')
+    .querySelectorAll<HTMLInputElement>('input[type="hidden"][name="redirectTo"]')
     .forEach((input) => {
       if (input.value === "") {
         input.value = redirect_to;
@@ -30,7 +31,7 @@ function onSupabaseLoginFinished({ user, session, error }) {}
 
 function onSupabasePasswordReset({ data, error }) {}
 
-async function signUp({ email, password, confirmPassword }) {
+async function signUp({ email, password, confirmPassword, redirectTo }: { email: string, password: string, confirmPassword: string, redirectTo: string }) {
   if (password !== confirmPassword) {
     throw new Error("passwords do not match");
   }
@@ -43,33 +44,30 @@ async function signUp({ email, password, confirmPassword }) {
  *
  * @param {Event} evt
  */
-function onEnhancedFormSubmit(event) {
+function onEnhancedFormSubmit(event: SubmitEvent) {
   event.preventDefault();
-  const form = /** @type {HTMLFormElement} */ (event.currentTarget);
-  const formData = new FormData(form);
-  const { email, password, passwordConfirm, redirectTo, action } =
-    /** @type {Record<string, string | undefined>}*/ (
-      Object.fromEntries(formData)
-    );
+  const form = event.currentTarget as HTMLFormElement;
+  const formData = (new FormData(form)).entries().map(([key, value]) => [key, value+''] as const);
+  const { email, password, passwordConfirm, redirectTo, action } = Object.fromEntries(formData)
   action === "otp"
     ? supabase.auth
-        .signIn({ email }, { redirectTo })
+        .signInWithOtp({ email, options:{ emailRedirectTo: redirectTo || '' } })
         .then(onSupabaseLoginFinished)
     : action === "login"
     ? supabase.auth
-        .signIn({ email, password }, { redirectTo })
+        .signInWithPassword({ email, password }, { redirectTo })
         .then(onSupabaseLoginFinished)
     : action === "register"
-    ? signUp({ email, password, confirmPassword })
+    ? signUp({ email, password, confirmPassword, redirectTo })
     : action === "resetpass"
-    ? supabase.auth.api
+    ? supabase.auth
         .resetPasswordForEmail(email, { redirectTo })
         .then(onSupabasePasswordReset)
     : null;
 }
 
 document
-  .querySelectorAll('form[data-is="form-enhanced"]')
-  .forEach((/** @type {HTMLFormElement} */ form) =>
+  .querySelectorAll<HTMLFormElement>('form[data-is="form-enhanced"]')
+  .forEach((form) =>
     form.addEventListener("submit", onEnhancedFormSubmit)
   );

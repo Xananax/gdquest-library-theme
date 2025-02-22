@@ -1,5 +1,5 @@
 // @ts-check
-import { Signal } from "../../js/signal.ts";
+import { Signal } from "../../js/signal";
 
 const clapsOnPage = new Set<[Element, Element]>();
 
@@ -55,6 +55,6 @@ document
 const firstClapElement = clapsOnPage.values().next().value;
 if (firstClapElement) {
   const [total] = firstClapElement;
-  const amount = parseInt(total.textContent, 10);
+  const amount = parseInt(total.textContent ?? "0", 10);
   claps.set(amount);
 }

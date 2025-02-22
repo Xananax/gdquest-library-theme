@@ -1,20 +1,20 @@
 //@ts-check
-import { debounce } from "../../js/utils.ts";
+import { debounce } from "../../js/utils";
 
 /**
  * Enhances a grid container with slider functionality
- * @param {Element} slider the main container element
+ * @param slider the main container element
  */
-function initGridSlider(slider) {
+function initGridSlider(slider: Element) {
   if(slider.classList.contains('isJSProcessed')){
     return
   }
   slider.classList.add('isJSProcessed')
 
-  const grid = /** @type HTMLElement */(slider.querySelector(".gridItemsList"));
-  const controls = /** @type HTMLElement */(slider.querySelector(".scrollingListControls"));
-  const prevButton = /** @type HTMLButtonElement */(slider.querySelector(".scrollingListControlsPrevious"));
-  const nextButton = /** @type HTMLButtonElement */(slider.querySelector(".scrollingListControlsNext"));
+  const grid = slider.querySelector<HTMLElement>(".gridItemsList")
+  const controls = slider.querySelector<HTMLElement>(".scrollingListControls")
+  const prevButton = slider.querySelector<HTMLButtonElement>(".scrollingListControlsPrevious")
+  const nextButton = slider.querySelector<HTMLButtonElement>(".scrollingListControlsNext")
 
   if(!grid || !controls || !prevButton || !nextButton){
     return
@@ -24,7 +24,7 @@ function initGridSlider(slider) {
   let pages = 0;
   let currentPage = 0;
 
-  function init() {
+  const init = () => {
     controls.removeAttribute("hidden");
     slider.classList.add("isScrolling");
     slider.ariaRoleDescription = "carousel";
@@ -32,7 +32,6 @@ function initGridSlider(slider) {
     prevButton.addEventListener("click", () => navigate(-1));
     nextButton.addEventListener("click", () => navigate(1));
 
-    let resizeTimeout = null;
     window.addEventListener("resize", debounce(calculateDimensions));
 
     grid.addEventListener("scrollend", updateButtonState);
@@ -40,7 +39,7 @@ function initGridSlider(slider) {
     calculateDimensions();
   }
 
-  function calculateDimensions() {
+  const calculateDimensions = () => {
     carouselWidth = grid.offsetWidth;
     pages = Math.ceil(grid.scrollWidth / carouselWidth);
     currentPage = Math.floor(grid.scrollLeft / grid.offsetWidth);
@@ -48,17 +47,17 @@ function initGridSlider(slider) {
     navigateToPage(currentPage);
   }
 
-  function navigate(direction) {
+  const navigate = (direction: number) => {
     const nextPage = (currentPage + direction) % pages;
     navigateToPage(nextPage);
   }
 
-  function navigateToPage(pageNumber) {
+  const navigateToPage = (pageNumber: number) => {
     currentPage = pageNumber;
     grid.scrollLeft = pageNumber * carouselWidth;
   }
 
-  function updateButtonState() {
+  const updateButtonState = () => {
     prevButton.disabled = currentPage === 0;
     nextButton.disabled = currentPage === pages - 1;
   }

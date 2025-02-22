@@ -1,4 +1,4 @@
-function toggleButton() {
+function toggleButton(this: HTMLButtonElement) {
 	const expanded = this.getAttribute("aria-expanded") === "true";
 	this.setAttribute("aria-expanded", expanded ? "false" : "true");
 	const targetElementID = this.getAttribute("aria-controls");
@@ -9,13 +9,14 @@ function toggleButton() {
 		return;
 	}
 	const targetToggledClassName = this.getAttribute("data-toggled-class");
+	if(targetToggledClassName){
 	if (expanded) {
 		targetElement.classList.remove(targetToggledClassName);
 	} else {
 		targetElement.classList.add(targetToggledClassName);
-	}
+	}}
 }
-export const processTogglerButton = (button) => {
+export const processTogglerButton = (button: HTMLButtonElement) => {
 	if (
 		!button ||
 		!(button.tagName === "BUTTON") ||
@@ -29,7 +30,7 @@ export const processTogglerButton = (button) => {
 	button.addEventListener("click", toggleButton);
 };
 
-export const TogglerButton = (controls, ...children) => {
+export const TogglerButton = (controls: string, ...children: Element[]) => {
 	const button = document.createElement("button");
 	button.setAttribute("aria-expanded", "false");
 	button.setAttribute("aria-label", "Toggle content");
@@ -45,5 +46,5 @@ export const TogglerButton = (controls, ...children) => {
 };
 
 document
-	.querySelectorAll("button[data-is='toggler-button']")
+	.querySelectorAll<HTMLButtonElement>("button[data-is='toggler-button']")
 	.forEach(processTogglerButton);

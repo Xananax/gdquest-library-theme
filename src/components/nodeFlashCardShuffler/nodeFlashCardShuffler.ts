@@ -2,13 +2,17 @@
 // move loading outside of container without using display: none
 //
 document.querySelectorAll(".nodeFlashCardShuffler").forEach((element) => {
-  const contentPane = element.querySelector(
+  const contentPane = element.querySelector<HTMLElement>(
     ".nodeFlashCardShufflerContentPane",
   );
-  const buttons = element.querySelectorAll(
+  const buttons = element.querySelectorAll<HTMLElement>(
     "button.nodeFlashCardShufflerButton",
   );
-  const grid = element.querySelector(".nodeFlashCardShufflerGrid");
+  const grid = element.querySelector<HTMLElement>(".nodeFlashCardShufflerGrid");
+
+  if(!contentPane || !grid){
+    return
+  }
 
   const loadNewCards = () => {
     contentPane.setAttribute("aria-busy", "true");
