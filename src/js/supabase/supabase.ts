@@ -1,5 +1,5 @@
 // @ts-check
-import { createClient } from "@supabase/supabase-js";
+import { AuthError, createClient, PostgrestError } from "@supabase/supabase-js";
 import { type Database } from "./database";
 import { PostId } from "./nominal";
 
@@ -14,8 +14,13 @@ if (SUPABASE_URL === "" || SUPABASE_ANON_KEY === "") {
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-export const getSession = ({ onSessionChanged, onError }) => {
-  async function signInWithOTP(email) {
+interface GetSessionProps{
+  onSessionChanged: (session: any) => void;
+  onError: (error: any) => void;
+}
+
+export const getSession = ({ onSessionChanged, onError }:GetSessionProps) => {
+  async function signInWithOTP(email: string) {
     const { data, error } = await supabase.auth.signInWithOtp({
       email,
     });
@@ -42,7 +47,11 @@ export const getSession = ({ onSessionChanged, onError }) => {
 
   async function signUpWithEmail(email: string, password: string, passwordConfirm: string) {
     if (password !== passwordConfirm) {
-      return { error: "Password and Confirm Password are not the same" };
+      const error = new AuthError("Password and Confirm Password are not the same");
+      error.status = 400;
+      error.code = "password_mismatch" as const;
+      onError(error);
+      return
     }
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -77,7 +86,7 @@ export const getSession = ({ onSessionChanged, onError }) => {
   return { signInWithOTP, logout, signUpWithEmail, signInWithPassword };
 };
 
-const handleSupabaseResponse = ({ error, data }) => {
+const handleSupabaseResponse = <T>({ error, data }:{error:PostgrestError, data: null} | {error:null, data: T}) => {
   if (error) {
     console.error(error);
     throw Error;
@@ -99,7 +108,7 @@ const sortPosts = (a: Post, b: Post) =>
   b.created_at.getTime() - a.created_at.getTime();
 
 export const posts = () => {
-  const getPostsListBySlug = (post_slug) =>
+  const getPostsListBySlug = (post_slug: string) =>
     supabase
       .from("posts_with_meta")
       .select("*")
