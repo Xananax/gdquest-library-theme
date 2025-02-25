@@ -8,7 +8,7 @@ import "../components/fontSizeResizer/fontSizeResizer.ts";
 import "../components/glossarySearch/glossarySearch.ts";
 import "../components/mainSearch/mainSearch.ts";
 import "../components/passwordField/passwordField.ts";
-import "../components/popupNotification/popupNotification.ts";
+import "../components/userMessages/userMessages.ts";
 import "../components/scrollingList/scrollingList.ts";
 import "../components/nodeFlashCardShuffler/nodeFlashCardShuffler.ts";
 import "../components/itemSummaryBrowser/itemSummaryBrowser.ts";

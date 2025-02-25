@@ -1,5 +1,5 @@
 // @ts-check
-import { Signal } from "../../js/signal";
+import { Signal } from "../../js/framework/Signal";
 
 const clapsOnPage = new Set<[Element, Element]>();
 

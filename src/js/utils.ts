@@ -1,29 +1,12 @@
+import { isObject } from "./framework/isObject";
+import { kebabize } from "./framework/kebabize";
+
 /**
  * Helper type for DOM event handlers
  */
 type DOMEventHandler<K extends keyof ElementEventMap> = (
   event: ElementEventMap[K],
 ) => void;
-
-
-/**
- * Shortcut for Object.getPrototypeOf
- */
-export const protoOf = Object.getPrototypeOf;
-/**
- * Object prototype, used it for comparisons
- */
-export const objProto = protoOf({});
-
-/**
- * Converts a camelCase string to kebab-case
- * @param str any string
- */
-export const kebabize = (str: string): string =>
-  str.replace(
-    /[A-Z]+(?![a-z])|[A-Z]/g,
-    ($, ofs) => (ofs ? "-" : "") + $.toLowerCase(),
-  );
 
 
 type HTMLProps<T extends HTMLElement> =
@@ -55,7 +38,7 @@ export const Dom =
     ...args: [HTMLProps<HTMLElementTagNameMap[K]>, ...DOMChild[]] | DOMChild[]
   ): HTMLElementTagNameMap[K] => {
     const [props, ...children] =
-      (protoOf(args[0] ?? 0) === objProto ? args : [{}, ...args]) as [
+      (isObject(args[0])? args : [{}, ...args]) as [
         HTMLProps<HTMLElementTagNameMap[K]>,
         ...DOMChild[],
       ];
@@ -105,16 +88,6 @@ export const button = El("button");
 export const span = El("span");
 export const div = El("div");
 export const img = El("img");
-
-export const debounce = (fn: () => void, delay = 250) => {
-  let resizeTimeout: NodeJS.Timeout | null = null;
-  return () => {
-    clearTimeout(resizeTimeout as NodeJS.Timeout);
-    resizeTimeout = setTimeout(() => {
-      fn();
-    }, delay);
-  };
-};
 
 export const isHTMLElement = (el: any): el is HTMLElement =>
   typeof el === "object" && !("nodeName" in el) &&

@@ -1,5 +1,4 @@
-//@ts-check
-import { debounce } from "../../js/utils";
+import { debounce } from "../../js/framework/debounce";
 
 /**
  * Enhances a grid container with slider functionality

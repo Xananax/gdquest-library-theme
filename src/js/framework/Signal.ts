@@ -1,12 +1,15 @@
+/**
+ * Return this from a transform function to skip rerendering
+ */
 export const SKIP = Symbol("SKIP");
 export type SKIP = typeof SKIP;
 
-interface SignalTransform<T, R = T> {
+export interface SignalTransform<T, R = T> {
 	(newValue: T, oldValue: T, skip: SKIP): T | SKIP;
 	(newValue: R, oldValue: T, skip: SKIP): T | SKIP;
 }
 
-interface SignalOptions<T, R> {
+export interface SignalOptions<T, R> {
 	/**
 	 * A function to transform the value as it comes in. can return SKIP to skip rerendering
 	 * @param newValue
@@ -17,7 +20,8 @@ interface SignalOptions<T, R> {
 	transform?: SignalTransform<T, R>;
 }
 
-const noOp = <T>(v: T) => v as unknown as T;
+export const noOp = <T>(v: T) => v as unknown as T;
+
 /**
  * A reactive value.
  * @param value initial value
@@ -69,7 +73,7 @@ export const Signal = <
 	 */
 	const get = () => value;
 
-	const signal = { on: on, off: off, set, get };
+	const signal = { on, off, set, get };
 	return signal;
 };
 
