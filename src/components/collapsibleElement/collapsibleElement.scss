@@ -1,0 +1,45 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+summary {
+  display: flex;
+  align-items: center;
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+  &::marker,
+  &::-webkit-details-marker {
+    font-size: 0;
+    color: transparent;
+    display: none;
+  }
+  &::after {
+    @include icon();
+    @extend %icon-arrow-left-s-line;
+    transform: rotate(-180deg);
+    transition: transform 300ms ease-out;
+  }
+}
+
+[open] summary::after {
+  transform: rotate(-90deg);
+}
+
+details {
+  overflow: hidden;
+  &::details-content {
+    block-size: 0;
+    transition-property: block-size, content-visibility;
+    transition-duration: 1s;
+    transition-behavior: allow-discrete;
+  }
+
+  &:open::details-content {
+    block-size: auto;
+    content-visibility: visible;
+  }
+}

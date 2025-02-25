@@ -1,49 +1,66 @@
+import van from "vanjs-core";
+
+const { add, tags: { button } } = van;
 const wasProcessedClass = "isJSProcessed";
 
+type RevealButtonElement = HTMLButtonElement & {
+	content: HTMLElement;
+	caption: HTMLElement;
+};
+
+function onRevealButtonClick(this: RevealButtonElement) {
+	const shouldOpen = this.getAttribute("aria-expanded") !== "true";
+	if (shouldOpen) {
+		this.setAttribute("aria-expanded", "true");
+		this.content.removeAttribute("aria-hidden");
+		this.caption.removeAttribute("data-closed");
+	} else {
+		this.setAttribute("aria-expanded", "false");
+		this.content.setAttribute("aria-hidden", "true");
+		this.caption.setAttribute("data-closed", "");
+	}
+}
+
 const processCallout = (collapsiblesList: HTMLDListElement) => {
-	
 	if (collapsiblesList.classList.contains(wasProcessedClass)) {
 		return;
 	}
 	collapsiblesList.classList.add(wasProcessedClass);
-	const titles = collapsiblesList.querySelectorAll<HTMLElement>("dt");
+	const captions = collapsiblesList.querySelectorAll<HTMLElement>("dt");
 
-	titles.forEach((title) => {
-		const content = title.nextElementSibling as HTMLElement | null;
+	captions.forEach((caption) => {
+		const content = caption.nextElementSibling as HTMLElement | null;
 		if (!content) {
 			return;
 		}
-		const id = content.id || `collapsible-${Math.random().toString(36).slice(2)}`;
+		const id = content.id ||
+			`collapsible-${Math.random().toString(36).slice(2)}`;
 		if (!content.id) {
 			content.id = id;
 		}
-		const isOpen = title.hasAttribute("data-open") && title.getAttribute("data-open") === "true";
-		const button = document.createElement("button");
-		button.classList.add('collapsibleRevealButton')
-		button.setAttribute("aria-expanded", isOpen ? "true" : "false");
-		button.setAttribute("aria-controls", id);
-		button.setAttribute("aria-label", "Toggle callout");
-		button.setAttribute("type", "button")
-		button.textContent = title.textContent;
-		title.textContent = "";
+		const isOpen = caption.hasAttribute("data-open") &&
+			caption.getAttribute("data-open") === "true";
+
+		const revealBtn: RevealButtonElement = Object.assign(
+			button({
+				class: "collapsibleRevealButton",
+				"aria-expanded": isOpen ? "true" : "false",
+				"aria-controls": id,
+				"aria-label": "Toggle callout",
+				onclick: onRevealButtonClick,
+				type: "button",
+			}, caption.textContent),
+			{ content, caption },
+		);
+
+		caption.textContent = "";
+
 		if (!isOpen) {
 			content.setAttribute("aria-hidden", "true");
-			title.setAttribute("data-closed", "");
+			caption.setAttribute("data-closed", "");
 		}
-		title.appendChild(button);
 
-		button.addEventListener("click", () => {
-			const shouldOpen = button.getAttribute("aria-expanded") !== "true";
-			if (shouldOpen) {
-				button.setAttribute("aria-expanded", "true");
-				content.setAttribute("aria-hidden", "false");
-				title.removeAttribute("data-closed");
-			} else {
-				button.setAttribute("aria-expanded", "false");
-				content.setAttribute("aria-hidden", "true");
-				title.setAttribute("data-closed", "");
-			}
-		});
+		add(caption, revealBtn);
 	});
 };
 

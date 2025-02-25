@@ -4,6 +4,10 @@
 
 :root {
   interpolate-size: allow-keywords;
+  --icon-color: var(--purple-mid-025);
+    @include dark {
+      --icon-color: var(--purple-light-010);
+    }
 }
 
 [hidden] {
@@ -147,10 +151,7 @@ a.socialLink {
   &::before {
     @include icon();
     position: relative;
-    color: var(--purple-mid-025);
-    @include dark {
-      color: var(--purple-light-010);
-    }
+    color: var(--icon-color);
   }
   &.iconApp {
     @extend %icon-window;
@@ -172,6 +173,9 @@ a.socialLink {
   }
   &.iconPatch {
     @extend %icon-patch;
+  }
+  &.iconCode{
+    @extend %icon-terminal-window-fill;
   }
 }
 
@@ -197,5 +201,12 @@ a.socialLink {
   @include contentGrid();
   main {
     grid-area: main;
+    //display: grid;
+    //grid-template-areas:"left main right";
+    //grid-template-columns: 200px 1fr 200px;
+    //& > * {
+    //  //grid-area: main;
+    //  //grid-column: -1 / 1;
+    //}
   }
 }

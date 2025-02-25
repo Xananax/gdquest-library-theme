@@ -25,6 +25,7 @@ $gridMinMargin: 1rem;
 		"marginLeft nav meta marginRight";
 	row-gap: 2rem;
 }
+
 @mixin gridMid() {
 	// breakpoint is 41.25 + 3.75 + 22.5 = 67.5rem
 	grid-template-columns:
@@ -41,13 +42,13 @@ $gridMinMargin: 1rem;
 
 @mixin gridLarge() {
 	// breakpoint is 20 + 2.5 + 41.25 + 3.75 + 22.5 = 90rem
-	grid-template-columns: minmax($gridMinMargin, auto) // left margin
+	grid-template-columns: minmax($gridMinMargin, auto) // marginLfet
 		minmax(20rem, 33.125rem) // nav
-		minmax(2.5rem, 15.625rem) // gutter
+		minmax(2.5rem, 15.625rem) // gutterLeft
 		minmax(41.25rem, 62.5rem) // main
-		minmax(3.75rem, 15.625rem) // gutter
+		minmax(3.75rem, 15.625rem) // actions
 		minmax(22.5rem, 33.125rem) // meta
-		minmax($gridMinMargin, auto); // right margin
+		minmax($gridMinMargin, auto); // marginRight
 }
 
 @mixin contentGrid() {

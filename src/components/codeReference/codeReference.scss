@@ -1,0 +1,32 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.codeReference{
+    margin-block-start: 2rem;
+    display: grid;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: rgb(46 16 101);
+    padding-block: 1.75rem;
+    //grid-area: gutterLeft / actions;
+    summary{
+        h1, h2, h3, h4{
+            font-family: var(--title);
+            color: var(--color-coderef-title);
+        }
+        h1{
+            font-size: 2.25rem;
+            --icon-color: var(--color-coderef-title);
+            @include dark(){
+                --icon-color: var(--color-coderef-title);
+            }
+        }
+        &::after{
+            color: var(--color-coderef-title);
+            font-size: 2.3rem;
+        }
+    }
+    &Content{
+        padding: 1rem;
+    }
+}

@@ -7,7 +7,6 @@
 	color: white;
 	text-transform: uppercase;
 	font-family: var(--font-title);
-	padding-inline-start: 2.625rem;
 	position: relative;
 	&::before {
 		position: absolute;
@@ -19,6 +18,7 @@
 .prose {
 	&Title,
 	h1 {
+		padding-inline-start: 2.625rem;
 		@include title();
 		&:first-child {
 			margin-block-start: 0;

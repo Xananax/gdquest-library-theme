@@ -24,6 +24,7 @@
 	],
 	"dependencies": {
 		"@supabase/supabase-js": "^2.48.1",
-		"type-fest": "^4.35.0"
+		"type-fest": "^4.35.0",
+		"vanjs-core": "^1.5.3"
 	}
 }

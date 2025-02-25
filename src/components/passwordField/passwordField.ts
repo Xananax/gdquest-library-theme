@@ -1,23 +1,25 @@
-interface PasswordButton extends HTMLButtonElement{ setText: (text: string) => void }
+import van from "vanjs-core";
 
+const { add, tags: { button, span, div } } = van;
 
-function toggleVisibility(button: PasswordButton){
-    
-    const controlId = button.getAttribute('aria-controls')
+interface PasswordButton extends HTMLButtonElement{ buttonLabel: HTMLSpanElement, setText: (text: string) => void }
+
+function setPasswordButtonText(this: PasswordButton, text: string){
+    this.buttonLabel.textContent = text
+}
+
+function onclipboardButtonClick(this: PasswordButton){
+    const controlId = this.getAttribute('aria-controls')
     const element = document.querySelector<HTMLInputElement>(`#${controlId}`)
     
     if(!element){
         return
     }
 
-    const expanded = button.getAttribute('aria-expanded') === 'false';
+    const expanded = this.getAttribute('aria-expanded') === 'false';
     element.type = expanded ? 'text' : 'password';
-    button.setAttribute('aria-expanded', String(expanded));
-    button.setText(expanded ? 'hide characters' : 'show characters');
-}
-
-function onclipboardButtonClick(this: PasswordButton){
-    toggleVisibility(this)
+    this.setAttribute('aria-expanded', String(expanded));
+    this.setText(expanded ? 'hide characters' : 'show characters');
 }
 
 document.querySelectorAll('input[type="password"]').forEach(input=>{
@@ -27,24 +29,20 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
     }
     input.classList.add('isJSProcessed')
     
-    const span = document.createElement('span')
-    span.textContent = 'show characters'
+    const buttonLabel = span('show characters')
 
-    const button = document.createElement('button') as PasswordButton
-    button.classList.add('passwordContainerRevealButton')
-    button.setAttribute('aria-expanded', 'false')
-    button.setAttribute("type", "button")
-    button.setAttribute("aria-controls", id)
-    button.addEventListener('click', onclipboardButtonClick)
-    button.appendChild(span)
-    button.setText = function(text){
-        span.textContent = text
-    }
+    const revealButon: PasswordButton = Object.assign(button({
+        class: 'passwordContainerRevealButton',
+        'aria-expanded': 'false',
+        type: 'button',
+        'aria-controls': id,
+        onclick: onclipboardButtonClick
+    }, buttonLabel), { buttonLabel, setText: setPasswordButtonText })
 
-    const container = document.createElement('div')
-    container.classList.add('passwordContainer', 'inputContainer')
+    const container = div({
+        class: 'passwordContainer inputContainer'
+    })
 
     input.parentElement?.insertBefore(container, input)
-    container.appendChild(input)
-    container.appendChild(button)
+    add(container, input, revealButon)
 })

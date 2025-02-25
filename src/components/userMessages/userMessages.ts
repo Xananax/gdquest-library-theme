@@ -1,38 +1,44 @@
 import {
-    type UserMessageType,
     userMessagesCollection,
+    type UserMessageType,
 } from "../../js/userMessagesCollection";
+import van from "vanjs-core";
+
+const { add, tags: { span, div, button } } = van;
 
 const classPrefix = "userMessage";
 
-const container = document.createElement("div");
-container.classList.add(`${classPrefix}sPane`);
+const container = div(
+    { class: `${classPrefix}sPane` },
+);
 
-const notificationsWrapper = document.createElement("div");
-notificationsWrapper.classList.add(`${classPrefix}s`);
-notificationsWrapper.appendChild(container);
+add(
+    document.body,
+    div({
+        class: `${classPrefix}s`,
+    }, container),
+);
 
-document.body.appendChild(notificationsWrapper);
+const addUserMessageElement = (
+    id: string,
+    message: string,
+    type: UserMessageType,
+) => {
+    const popup = div(
+        {
+            role: "alert",
+            "aria-live": "assertive",
+            "aria-atomic": "true",
+            id,
+            class: `${classPrefix} ${classPrefix}--${type}`,
+        },
+        div(message),
+        button({
+            "aria-controls": id,
+        }, span("Close")),
+    );
 
-const addUserMessageElement = (id: string, message: string, type: UserMessageType) => {
-    const contents = document.createElement("div");
-    contents.textContent = message;
-
-    const buttonSpan = document.createElement("span");
-    buttonSpan.textContent = "Close";
-
-    const closeButton = document.createElement("button");
-    closeButton.setAttribute("aria-controls", id);
-    closeButton.appendChild(buttonSpan);
-
-    const popup = document.createElement("div");
-    popup.classList.add(classPrefix);
-    popup.classList.add(`${classPrefix}--${type}`);
-    popup.appendChild(contents);
-    popup.appendChild(closeButton);
-    popup.id = id;
-
-    container.appendChild(popup);
+    add(container, popup);
 };
 
 container.addEventListener("click", (event) => {

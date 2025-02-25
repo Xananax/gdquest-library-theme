@@ -1,3 +1,7 @@
+import van from "vanjs-core";
+
+const { tags: { button } } = van;
+
 function toggleButton(this: HTMLButtonElement) {
 	const expanded = this.getAttribute("aria-expanded") === "true";
 	this.setAttribute("aria-expanded", expanded ? "false" : "true");
@@ -9,12 +13,13 @@ function toggleButton(this: HTMLButtonElement) {
 		return;
 	}
 	const targetToggledClassName = this.getAttribute("data-toggled-class");
-	if(targetToggledClassName){
-	if (expanded) {
-		targetElement.classList.remove(targetToggledClassName);
-	} else {
-		targetElement.classList.add(targetToggledClassName);
-	}}
+	if (targetToggledClassName) {
+		if (expanded) {
+			targetElement.classList.remove(targetToggledClassName);
+		} else {
+			targetElement.classList.add(targetToggledClassName);
+		}
+	}
 }
 export const processTogglerButton = (button: HTMLButtonElement) => {
 	if (
@@ -30,19 +35,21 @@ export const processTogglerButton = (button: HTMLButtonElement) => {
 	button.addEventListener("click", toggleButton);
 };
 
-export const TogglerButton = (controls: string, ...children: Element[]) => {
-	const button = document.createElement("button");
-	button.setAttribute("aria-expanded", "false");
-	button.setAttribute("aria-label", "Toggle content");
-	button.setAttribute("data-is", "toggler-button");
-	if (controls) {
-		button.setAttribute("aria-controls", controls);
-	}
-	if (children && children.length) {
-		button.append(...children);
-	}
-	processTogglerButton(button);
-	return button;
+export const TogglerButton = (
+	props: { "aria-controls": string } & Record<string, any>,
+	...children: Element[]
+) => {
+	const toggleButton = button(
+		{
+			"aria-expanded": "false",
+			"aria-label": "Toggle content",
+			"data-is": "toggler-button",
+			...props,
+		},
+		...children,
+	);
+	processTogglerButton(toggleButton);
+	return toggleButton;
 };
 
 document

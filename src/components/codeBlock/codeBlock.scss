@@ -3,6 +3,8 @@ pre {
   overflow-x: auto;
 }
 
+
+
 .codeBlockFileName {
   position: absolute;
   inset: 0 0 auto auto;
@@ -14,21 +16,19 @@ pre {
   width: min-content;
   overflow: hidden;
   font-size: 0.92rem;
-  &Protocol,
-  &Slash {
-    opacity: 0.6;
-  }
-  &Protocol,
-  &Slash,
-  &Directory {
-    flex-shrink: 1;
-    max-width: 0;
-    overflow: hidden;
-    transition: max-width 0.2s ease-out;
+  .fileInText{
+    &Protocol,
+    &Slash,
+    &Directory {
+      flex-shrink: 1;
+      max-width: 0;
+      overflow: hidden;
+      transition: max-width 0.2s ease-out;
+    }
   }
   &:hover,
   &:focus {
-    .codeBlockFileName {
+    .fileInText {
       &Protocol,
       &Slash,
       &Directory {

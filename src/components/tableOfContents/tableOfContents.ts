@@ -1,4 +1,7 @@
+import van from "vanjs-core";
 import { TogglerButton } from "../togglerButton/togglerButton";
+
+const { add, tags: { span, div, a, li, ul } } = van;
 
 const slugify = (text: string) => text.toLowerCase().replace(/(\s|\.)+/g, "-");
 
@@ -61,62 +64,68 @@ const processArticleToc = (root: HTMLElement) => {
 			const id = setOrUseId(heading);
 			const level = parseInt(heading.tagName.replace("H", ""), 10);
 
-			const a = document.createElement("a");
-			a.href = `#${id}`;
-			a.textContent = heading.textContent;
-			a.classList.add(
-				...Array.from(heading.classList).filter((c) =>
-					c.toLowerCase().includes("icon")
-				),
-				CLASS_PREFIX + CLASS_ANCHOR_LINK,
-				CLASS_PREFIX + CLASS_ANCHOR_LINK_LEVEL_PREFIX + heading.tagName,
+			const listItem = li(
+				{
+					class: [
+						CLASS_PREFIX + CLASS_LIST_ITEM_LEVEL_PREFIX + level,
+						CLASS_PREFIX + CLASS_LIST_ITEM,
+					].join(" "),
+				},
+				a({
+					href: `#${id}`,
+					class: [
+						...Array.from(heading.classList).filter((c) =>
+							c.toLowerCase().includes("icon")
+						),
+						CLASS_PREFIX + CLASS_ANCHOR_LINK,
+						CLASS_PREFIX + CLASS_ANCHOR_LINK_LEVEL_PREFIX +
+						heading.tagName,
+					].filter(Boolean).join(" "),
+				}, heading.textContent),
 			);
-
-			const li = document.createElement("li");
-			li.classList.add(
-				CLASS_PREFIX + CLASS_LIST_ITEM_LEVEL_PREFIX + level,
-				CLASS_PREFIX + CLASS_LIST_ITEM,
-			);
-			li.appendChild(a);
 
 			if (level === 1) {
-				lastHeading = li;
-				root.appendChild(li);
+				lastHeading = listItem;
+				add(root, listItem);
 			} else {
 				if (lastHeading) {
 					if (lastHeading.tagName === "LI") {
-						const span1 = document.createElement("span");
-						span1.classList.add("whenNotToggled");
-						span1.textContent = BUTTON_TEXT_CLOSED;
-
-						const span2 = document.createElement("span");
-						span2.classList.add("whenToggled");
-						span2.textContent = BUTTON_TEXT_OPEN;
-
 						const divId = `hsub-${id}`;
 
-						const button = TogglerButton(divId, span1, span2);
-						button.classList.add(
-							CLASS_PREFIX + CLASS_FOLD_UNFOLD_BUTTON,
+						const revealButton = TogglerButton(
+							{
+								'aria-controls': divId,
+								class: CLASS_PREFIX + CLASS_FOLD_UNFOLD_BUTTON
+							}
+							,
+							span({
+								class: "whenNotToggled",
+								textContent: BUTTON_TEXT_CLOSED,
+							}),
+							span({
+								class: "whenToggled",
+								textContent: BUTTON_TEXT_OPEN,
+							}),
 						);
 
-						const ul = document.createElement("ul");
-						ul.classList.add(CLASS_PREFIX + CLASS_SUBHEADINGS_LIST);
+						const list = ul({
+							class: CLASS_PREFIX + CLASS_SUBHEADINGS_LIST,
+						});
 
-						const div = document.createElement("div");
-						div.setAttribute("id", divId);
-						div.classList.add(
-							CLASS_PREFIX + CLASS_SUBHEADINGS_LIST_CONTAINER,
-						);
-						div.appendChild(ul);
+						const listWrapper = div({
+							id: divId,
+							class: CLASS_PREFIX +
+								CLASS_SUBHEADINGS_LIST_CONTAINER,
+						}, list);
 
-						lastHeading.appendChild(button);
+						add(listWrapper, list);
+						add(lastHeading, revealButton, listWrapper)
+
 						lastHeading.classList.add(CLASS_HAS_CHILDREN);
-						lastHeading.appendChild(div);
 
-						lastHeading = ul;
+						lastHeading = list;
 					}
-					lastHeading.appendChild(li);
+					lastHeading.appendChild(listItem);
 				}
 			}
 			return id;

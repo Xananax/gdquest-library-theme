@@ -1,0 +1,82 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+[data-is="file-in-text"] {
+  position: relative;
+  color: white;
+  background-color: rgb(100 116 139);
+  word-break: break-word;
+  border-radius: var(--rounded);
+  padding-inline: 0.25rem;
+  cursor: pointer;
+  &::before {
+    @include icon;
+    @extend %icon-file-fill;
+    position: relative;
+    top: 0.15rem;
+    margin-inline-end: 0.3ch;
+  }
+  .fileInText {
+    &Tooltip {
+      position: absolute;
+      background: #696868;
+      padding: 0.2rem 0.4rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      z-index: 1;
+      inset-block-start: -0.8rem;
+      inset-inline-start: 50%;
+      transform: translate(-50%, 0);
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      transition-property: opacity, transform;
+      transition-duration: 0.2s, 0.3s;
+      transition-timing-function: ease-out;
+      &::after {
+        content: "";
+        position: absolute;
+        border-width: 0.6rem;
+        inset-block-start: 100%;
+        inset-inline-start: 50%;
+        border-color: #696868 transparent transparent transparent;
+        border-style: solid;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+    }
+  }
+  &:hover, &:focus {
+    .fileInText {
+      &Tooltip {
+        pointer-events: all;
+        opacity: 1;
+        transform: translate(-50%, -100%);
+      }
+    }
+  }
+}
+
+.fileInText {
+  &Protocol,
+  &Slash {
+    opacity: 0.7;
+  }
+  // "directory" | "gdscript" | "scene" | "image" | "file" | "text"
+  // see: splitStringToParts.ts
+  &-directory::before {
+    @extend %icon-folder-fill;
+  }
+  &-gdscript::before {
+    @extend %icon-file-code-fill;
+  }
+  &-scene::before {
+    @extend %icon-file-settings-fill;
+  }
+  &-image::before {
+    @extend %icon-file-image-fill;
+  }
+  &-text::before{
+    @extend %icon-file-text-fill;
+  }
+}
