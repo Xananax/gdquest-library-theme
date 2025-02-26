@@ -1,11 +1,13 @@
-// @ts-check
-import { Signal } from "../../js/framework/Signal";
+import van, { type State } from "vanjs-core";
+
+const { state, derive} = van;
 
 const clapsOnPage = new Set<[Element, Element]>();
 
-const claps = Signal(0);
+const claps = state(0);
 
-claps.on((amount) => {
+derive(() => {
+  const amount = claps.val
   const formattedAmount = formatNumber(amount);
   clapsOnPage.forEach(([total, abbreviated]) => {
     total.textContent = `${amount}`;
@@ -15,7 +17,7 @@ claps.on((amount) => {
 
 function increase(this: HTMLButtonElement) {
   this.setAttribute("aria-pressed", "true");
-  claps.set(claps.get() + 1);
+  claps.val += 1
 }
 
 function formatNumber(number = 0) {
@@ -56,5 +58,5 @@ const firstClapElement = clapsOnPage.values().next().value;
 if (firstClapElement) {
   const [total] = firstClapElement;
   const amount = parseInt(total.textContent ?? "0", 10);
-  claps.set(amount);
+  claps.val = amount
 }
