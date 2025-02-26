@@ -1,6 +1,5 @@
-import van from "vanjs-core";
+import { add, button } from '../../js/framework/h';
 
-const { add, tags: { button } } = van;
 const wasProcessedClass = "isJSProcessed";
 
 type RevealButtonElement = HTMLButtonElement & {
@@ -44,9 +43,9 @@ const processCallout = (collapsiblesList: HTMLDListElement) => {
 		const revealBtn: RevealButtonElement = Object.assign(
 			button({
 				class: "collapsibleRevealButton",
-				"aria-expanded": isOpen ? "true" : "false",
-				"aria-controls": id,
-				"aria-label": "Toggle callout",
+				ariaExpanded: isOpen ? "true" : "false",
+				ariaControls: id,
+				ariaLabel: "Toggle callout",
 				onclick: onRevealButtonClick,
 				type: "button",
 			}, caption.textContent),

@@ -1,6 +1,4 @@
-import van from "vanjs-core";
-
-const { add, tags: { button, span, div } } = van;
+import { add, button, span, div } from '../../js/framework/h';
 
 interface PasswordButton extends HTMLButtonElement{ buttonLabel: HTMLSpanElement, setText: (text: string) => void }
 
@@ -29,18 +27,18 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
     }
     input.classList.add('isJSProcessed')
     
-    const buttonLabel = span('show characters')
+    const buttonLabel = span(null, 'show characters')
 
     const revealButon: PasswordButton = Object.assign(button({
         class: 'passwordContainerRevealButton',
-        'aria-expanded': 'false',
+        ariaExpanded: 'false',
         type: 'button',
-        'aria-controls': id,
-        onclick: onclipboardButtonClick
+        ariaControls: id,
+        onClick: onclipboardButtonClick,
     }, buttonLabel), { buttonLabel, setText: setPasswordButtonText })
 
     const container = div({
-        class: 'passwordContainer inputContainer'
+        class: ['passwordContainer', 'inputContainer']
     })
 
     input.parentElement?.insertBefore(container, input)

@@ -1,7 +1,6 @@
 import { splitStringToParts } from "../../js/framework/splitStringToParts";
-import van from "vanjs-core";
+import { add, span } from '../../js/framework/h';
 
-const { add, tags: { span } } = van;
 const classPrefix = "fileInText";
 
 export const splitHTMLElementTextContent = (holderElement: HTMLElement) => {

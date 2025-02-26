@@ -1,7 +1,5 @@
-import van from "vanjs-core";
+import { add, span, div, a, li, ul } from '../../js/framework/h';
 import { TogglerButton } from "../togglerButton/togglerButton";
-
-const { add, tags: { span, div, a, li, ul } } = van;
 
 const slugify = (text: string) => text.toLowerCase().replace(/(\s|\.)+/g, "-");
 
@@ -69,7 +67,7 @@ const processArticleToc = (root: HTMLElement) => {
 					class: [
 						CLASS_PREFIX + CLASS_LIST_ITEM_LEVEL_PREFIX + level,
 						CLASS_PREFIX + CLASS_LIST_ITEM,
-					].join(" "),
+					],
 				},
 				a({
 					href: `#${id}`,
@@ -80,7 +78,7 @@ const processArticleToc = (root: HTMLElement) => {
 						CLASS_PREFIX + CLASS_ANCHOR_LINK,
 						CLASS_PREFIX + CLASS_ANCHOR_LINK_LEVEL_PREFIX +
 						heading.tagName,
-					].filter(Boolean).join(" "),
+					],
 				}, heading.textContent),
 			);
 
@@ -94,18 +92,16 @@ const processArticleToc = (root: HTMLElement) => {
 
 						const revealButton = TogglerButton(
 							{
-								'aria-controls': divId,
+								ariaControls: divId,
 								class: CLASS_PREFIX + CLASS_FOLD_UNFOLD_BUTTON
 							}
 							,
 							span({
 								class: "whenNotToggled",
-								textContent: BUTTON_TEXT_CLOSED,
-							}),
+							}, BUTTON_TEXT_CLOSED),
 							span({
 								class: "whenToggled",
-								textContent: BUTTON_TEXT_OPEN,
-							}),
+							}, BUTTON_TEXT_OPEN),
 						);
 
 						const list = ul({

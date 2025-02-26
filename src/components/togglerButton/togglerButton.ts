@@ -1,6 +1,5 @@
-import van from "vanjs-core";
+import { button } from '../../js/framework/h';
 
-const { tags: { button } } = van;
 
 function toggleButton(this: HTMLButtonElement) {
 	const expanded = this.getAttribute("aria-expanded") === "true";
@@ -36,14 +35,14 @@ export const processTogglerButton = (button: HTMLButtonElement) => {
 };
 
 export const TogglerButton = (
-	props: { "aria-controls": string } & Record<string, any>,
+	props: { ariaControls: string } & Record<string, any>,
 	...children: Element[]
 ) => {
 	const toggleButton = button(
 		{
-			"aria-expanded": "false",
-			"aria-label": "Toggle content",
-			"data-is": "toggler-button",
+			ariaExpanded: "false",
+			ariaLabel: "Toggle content",
+			dataIs: "toggler-button",
 			...props,
 		},
 		...children,

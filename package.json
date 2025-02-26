@@ -16,15 +16,14 @@
 		"parcel": "^2.0.0",
 		"posthtml-include": "^2.0.1",
 		"posthtml-modules": "^0.9.1",
-		"svgo": "^3.3.2"
+		"svgo": "^3.3.2",
+		"type-fest": "^4.35.0"
 	},
 	"keywords": [
 		"css",
 		"javascript"
 	],
 	"dependencies": {
-		"@supabase/supabase-js": "^2.48.1",
-		"type-fest": "^4.35.0",
-		"vanjs-core": "^1.5.3"
+		"@supabase/supabase-js": "^2.48.1"
 	}
 }

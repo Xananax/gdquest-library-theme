@@ -2,9 +2,7 @@ import {
     userMessagesCollection,
     type UserMessageType,
 } from "../../js/userMessagesCollection";
-import van from "vanjs-core";
-
-const { add, tags: { span, div, button } } = van;
+import { add, span, div, button } from '../../js/framework/h';
 
 const classPrefix = "userMessage";
 
@@ -27,15 +25,15 @@ const addUserMessageElement = (
     const popup = div(
         {
             role: "alert",
-            "aria-live": "assertive",
-            "aria-atomic": "true",
+            ariaLive: "assertive",
+            ariaAtomic: "true",
             id,
-            class: `${classPrefix} ${classPrefix}--${type}`,
+            class: [classPrefix, `${classPrefix}--${type}`],
         },
-        div(message),
+        div(null, message),
         button({
-            "aria-controls": id,
-        }, span("Close")),
+            ariaControls: id,
+        }, span(null, "Close")),
     );
 
     add(container, popup);
