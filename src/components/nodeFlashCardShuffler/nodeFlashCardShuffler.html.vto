@@ -32,12 +32,9 @@
 			aria-busy="false"
 		>
 			<ul class="nodeFlashCardShufflerGrid" role="list">
-			<module href="/src/components/nodeFlashCard/nodeFlashCard.html"
-				></module>
-			<module href="/src/components/nodeFlashCard/nodeFlashCard.html"
-				></module>
-			<module href="/src/components/nodeFlashCard/nodeFlashCard.html"
-				></module>
+			{{ include "/src/components/nodeFlashCard/nodeFlashCard.html" }}
+			{{ include "/src/components/nodeFlashCard/nodeFlashCard.html" }}
+			{{ include "/src/components/nodeFlashCard/nodeFlashCard.html" }}
 			</ul>
 			<div class="nodeFlashCardShufflerLoading" aria-hidden="true"></div>
 		</div>

@@ -8,12 +8,12 @@
     </head>
     <body class="dark {{ bodyclass }}">
         <header class="mainNavContainer">
-            <module href="/src/components/mainNav/mainNav.html"></module>
+            {{ include "/src/components/mainNav/mainNav.html" }}
         </header>
 
         <content></content>
 
-        <module href="/src/components/footer/footer.html"></module>
+        {{ include "/src/components/footer/footer.html" }}
 
         <script src="./js/index.ts" type="module"></script>
         <script src="./js/prism.js"></script>

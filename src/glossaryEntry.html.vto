@@ -1,9 +1,7 @@
 <module href="/src/_base.html" locals='{"title":"Entry | Glossary", "bodyclass":"glossaryEntryPage"}'>
-	<module href="/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.html"
-	></module>
+	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.html" }}
 	<section class="contentPageGrid">
-	<module href="/src/components/tableOfContents/tableOfContents.html"
-		></module>
+	{{ include "/src/components/tableOfContents/tableOfContents.html" }}
 		<main class="prose">
 			<h1 class="hasIconBefore iconApp">Bound Functions</h1>
 	
@@ -151,7 +149,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("idle")
 			</module>
 	
-			<module href="/src/components/callout/callout.html"></module>
+			{{ include "/src/components/callout/callout.html" }}
 	
 			<h2>Bound functions and lambdas</h2>
 	
@@ -235,11 +233,10 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("idle")
 			</module>
 	
-		<module href="/src/components/glossarySeeAlsoBlock/glossarySeeAlsoBlock.html"
-			></module>
+		{{ include "/src/components/glossarySeeAlsoBlock/glossarySeeAlsoBlock.html" }}
 		</main>
-		<module href="/src/components/itemPageMeta/itemPageMeta.html"></module>
+		{{ include "/src/components/itemPageMeta/itemPageMeta.html" }}
 	</section>
-	<module href="/src/components/contributeBlock/contributeBlock.html"></module>
+	{{ include "/src/components/contributeBlock/contributeBlock.html" }}
 	
 </module>
