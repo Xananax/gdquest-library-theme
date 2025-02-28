@@ -146,7 +146,7 @@ pre:has(code[class*="language-"]) {
   &::selection {
     background: #643971;
   }
-  .line-numbers {
+  &.line-numbers {
     position: relative;
     padding-left: 3.8em;
     counter-reset: linenumber;

@@ -1,5 +1,1 @@
-<pre
-  class="{{ typeof(line) !== 'undefined' ? 'line-numbers' : '' }}"
-  data-start="{{ typeof(line) !== 'undefined' ? line : '1' }}"
-><if condition="typeof(file) !== 'undefined' && file !== ''"><span class="codeBlockFileName">{{file}}</span></if><code class="{{ typeof(diff) !== 'undefined' ? 'language-diff-gdscript' : 'language-gdscript' }}">{{ content }}</code>
-</pre>
+<pre {{ if it.line }}class="line-numbers"{{ /if }} data-start="{{ if it.line }}{{ it.line }}{{ else }}1{{ /if }}">{{ if it.file }}<span class="codeBlockFileName">{{file}}</span>{{ /if }}<code class="{{ if it.diff }}language-diff-gdscript{{ else }}language-gdscript{{ /if }}">{{ content }}</code></pre>

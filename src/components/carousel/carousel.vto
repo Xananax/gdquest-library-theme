@@ -48,14 +48,10 @@
       aria-roledescription="slide"
       aria-labelledby="carousel_item-1_heading"
     >
-      {{ layout "/src/components/carouselSlideContent/carouselSlideContent.vto"
-        { 
-          title: "Latest",
+      {{ include "/src/components/carouselSlideContent/carouselSlideContent.vto" {  title: "Latest",
           caption: "Code a third person 3D character controller with smooth movement",
-          src: "components/carousel/examples/card_image_1.jpg"
-        }
-      }}
-      {{ /layout }}
+          src: "components/carousel/examples/card_image_1.jpg",
+        } }}
     </li>
     <li
       class="carouselSlidesListSlide"
@@ -64,14 +60,10 @@
       aria-roledescription="slide"
       aria-labelledby="carousel_item-2_heading"
     >
-      {{ layout "/src/components/carouselSlideContent/carouselSlideContent.vto"
-        {
-          title:"Trending",
+      {{ include "/src/components/carouselSlideContent/carouselSlideContent.vto" { title:"Trending",
           caption:"Create your first 2D game from zero in Godot 4",
           src:"components/carousel/examples/card_image_2.jpg",
-        }
-      }}
-      {{ /layout }}
+        } }}
     </li>
     <li
       class="carouselSlidesListSlide"
@@ -80,14 +72,10 @@
       aria-roledescription="slide"
       aria-labelledby="carousel_item-3_heading"
     >
-      {{ layout "/src/components/carouselSlideContent/carouselSlideContent.vto"
-        {
-          title: "Recommended",
+      {{ include "/src/components/carouselSlideContent/carouselSlideContent.vto" { title: "Recommended",
           caption: "Take this interactive tour to learn Godot's interface",
           src: "components/carousel/examples/card_image_3.png",
-        }
-      }}
-      {{ /layout }}
+        } }}
     </li>
   </ul>
 </section>

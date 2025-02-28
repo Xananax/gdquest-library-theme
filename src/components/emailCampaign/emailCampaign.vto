@@ -8,7 +8,7 @@
     <h4 class="emailCampaignTitle">
       <em>Free library</em> new releases straight to your inbox!
     </h4>
-    {{ include "/src/components/mailingListCollector/mailingListCollector.vto" inputid="caompaign" callback="https://www.gdquest.com" }}
+    {{ include "/src/components/mailingListCollector/mailingListCollector.vto" { inputid: "campaign", callback: "https://www.gdquest.com" } }}
     <p class="emailCampaignDisclaimer">
       By subscribing, you agree to receive the latest announcements, releases,
       and sales from GDQuest. Read our
