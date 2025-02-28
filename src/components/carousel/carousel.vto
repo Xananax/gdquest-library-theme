@@ -48,13 +48,14 @@
       aria-roledescription="slide"
       aria-labelledby="carousel_item-1_heading"
     >
-      <module
-        href="/src/components/carouselSlideContent/carouselSlideContent.vto"
-        title="Latest"
-        caption="Code a third person 3D character controller with smooth movement"
-        src="components/carousel/examples/card_image_1.jpg"
-      >
-      </module>
+      {{ layout "/src/components/carouselSlideContent/carouselSlideContent.vto"
+        { 
+          title: "Latest",
+          caption: "Code a third person 3D character controller with smooth movement",
+          src: "components/carousel/examples/card_image_1.jpg"
+        }
+      }}
+      {{ /layout }}
     </li>
     <li
       class="carouselSlidesListSlide"
@@ -63,13 +64,14 @@
       aria-roledescription="slide"
       aria-labelledby="carousel_item-2_heading"
     >
-      <module
-        href="/src/components/carouselSlideContent/carouselSlideContent.vto"
-        title="Trending"
-        caption="Create your first 2D game from zero in Godot 4"
-        src="components/carousel/examples/card_image_2.jpg"
-      >
-      </module>
+      {{ layout "/src/components/carouselSlideContent/carouselSlideContent.vto"
+        {
+          title:"Trending",
+          caption:"Create your first 2D game from zero in Godot 4",
+          src:"components/carousel/examples/card_image_2.jpg",
+        }
+      }}
+      {{ /layout }}
     </li>
     <li
       class="carouselSlidesListSlide"
@@ -78,13 +80,14 @@
       aria-roledescription="slide"
       aria-labelledby="carousel_item-3_heading"
     >
-      <module
-        href="/src/components/carouselSlideContent/carouselSlideContent.vto"
-        title="Recommended"
-        caption="Take this interactive tour to learn Godot's interface"
-        src="components/carousel/examples/card_image_3.png"
-      >
-      </module>
+      {{ layout "/src/components/carouselSlideContent/carouselSlideContent.vto"
+        {
+          title: "Recommended",
+          caption: "Take this interactive tour to learn Godot's interface",
+          src: "components/carousel/examples/card_image_3.png",
+        }
+      }}
+      {{ /layout }}
     </li>
   </ul>
 </section>

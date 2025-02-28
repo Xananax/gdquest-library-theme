@@ -1,4 +1,4 @@
-{{ layout "/src/_base.vto" locals='{"title":"Item", "bodyclass":"itemPage"}' }}
+{{ layout "/src/_base.vto" {title:"Item", bodyclass:"itemPage"} }}
 	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" }}
 	<section class="contentPageGrid">
 	{{ include "/src/components/tableOfContents/tableOfContents.vto" }}
@@ -52,7 +52,7 @@
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 			{{ include "/src/components/quoteBubble/quoteBubble.vto" }}
 		{{ include "/src/components/downloadButtonsList/downloadButtonsList.vto" }}
 			<h1 class="hasIconBefore iconQuestion">FAQ/Troubleshooting</h1>
@@ -77,8 +77,8 @@
 				stopping speed. When the character’s velocity is below this
 				threshold and the player is not moving, set the velocity to zero:
 			</p>
-			{{ layout "/src/components/codeReference/codeReference.vto" file="res://path-to/the-file.gd" }}
-			{{ layout "/src/components/codeBlock/codeBlock.vto" line="10" file="res://path-to/the-file.gd" }}
+			{{ layout "/src/components/codeReference/codeReference.vto" {file:"res://path-to/the-file.gd"} }}
+			{{ layout "/src/components/codeBlock/codeBlock.vto" {line:"10" file:"res://path-to/the-file.gd"} }}
 @export var speed: float = 100
 
 func _physics_process(delta: float) -> void:
@@ -97,12 +97,12 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
-		</module>
+			{{ /layout }}
+		{{ /layout }}
 		</main>
 		{{ include "/src/components/shareWidget/shareWidget.vto" }}
 		{{ include "/src/components/itemPageMeta/itemPageMeta.vto" }}
 	</section>
 	{{ include "/src/components/contributeBlock/contributeBlock.vto" }}
 	
-</module>
+{{ /layout }}

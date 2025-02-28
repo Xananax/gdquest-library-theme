@@ -1,4 +1,4 @@
-{{ layout "/src/_base.vto" locals='{"title":"Library", "bodyclass":"homePages"}' }}
+{{ layout "/src/_base.vto" {title:"Library", bodyclass:"homePages"} }}
     <main id="main" class="listPage mainPage">
         {{ include "/src/components/welcomeText/welcomeText.vto" }}
         
@@ -8,17 +8,15 @@
         {{ include "/src/components/scrollingList/scrollingList.vto" }}
     
         {{ include "/src/components/emailCampaign/emailCampaign.vto" }}
-        {{ layout "/src/components/scrollingList/scrollingList.vto" }}</module
-        >{{ layout "/src/components/scrollingList/scrollingList.vto" }}</module
-        >{{ layout "/src/components/scrollingList/scrollingList.vto" }}</module
-        >{{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
     
-        <module
-            href="./src/components/nodeFlashCardShuffler/nodeFlashCardShuffler.vto"
-        ></module>
+        {{ include "/src/components/nodeFlashCardShuffler/nodeFlashCardShuffler.vto" }}
     
         {{ include "/src/components/promoIntro/promoIntro.vto" }}
     
         {{ include "/src/components/promoGDSchool/promoGDSchool.vto" }}
     </main>
-</module>
+{{ /layout }}

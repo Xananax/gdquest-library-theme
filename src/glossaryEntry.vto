@@ -1,4 +1,4 @@
-{{ layout "/src/_base.vto" locals='{"title":"Entry | Glossary", "bodyclass":"glossaryEntryPage"}' }}
+{{ layout "/src/_base.vto" {title:"Entry | Glossary", bodyclass:"glossaryEntryPage"} }}
 	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" }}
 	<section class="contentPageGrid">
 	{{ include "/src/components/tableOfContents/tableOfContents.vto" }}
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 	
 			<p>
 				The arguments "Sophia" and "Pink" are bound to the
@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 	
 			<p>
 				If you have multiple arguments, the bound arguments will be filled
@@ -114,7 +114,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 	
 			<p>
 				The pinned argument "health" or "coin" is inserted at the right.
@@ -147,7 +147,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 	
 			{{ include "/src/components/callout/callout.vto" }}
 	
@@ -184,7 +184,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 	
 			<p>
 				On the other hand, lambdas don't always do that. They behave a bit
@@ -231,7 +231,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("walk")
 		else:
 			$AnimatedSprite.play("idle")
-			</module>
+			{{ /layout }}
 	
 		{{ include "/src/components/glossarySeeAlsoBlock/glossarySeeAlsoBlock.vto" }}
 		</main>
@@ -239,4 +239,4 @@ func _physics_process(delta: float) -> void:
 	</section>
 	{{ include "/src/components/contributeBlock/contributeBlock.vto" }}
 	
-</module>
+{{ /layout }}
