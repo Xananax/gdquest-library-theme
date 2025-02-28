@@ -1,1 +1,5 @@
-<pre {{ if line }}class="line-numbers"{{ /if }} data-start="{{ if line }}{{ line }}{{ else }}1{{ /if }}">{{ if file }}<span class="codeBlockFileName">{{file}}</span>{{ /if }}<code class="{{ if diff }}language-diff-gdscript{{ else }}language-gdscript{{ /if }}">{{ content }}</code></pre>
+<pre {{ if line }}class="line-numbers"{{ /if }} data-start="{{ if line }}{{ line }}{{ else }}1{{ /if }}">
+{{- if file -}}<span class="codeBlockFileName">{{file}}</span>{{- /if -}}
+<code class="{{- if diff -}}language-diff-gdscript{{ else }}language-gdscript{{ /if }}">
+{{- content -}}
+</code></pre>
