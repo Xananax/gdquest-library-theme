@@ -149,7 +149,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("idle")
 			{{ /layout }}
 	
-			{ --{ include "/src/components/callout/callout.vto" }}
+			{{ include "/src/components/callout/callout.vto" }}
 	
 			<h2>Bound functions and lambdas</h2>
 	
@@ -235,7 +235,7 @@ func _physics_process(delta: float) -> void:
 	
 		{{ include "/src/components/glossarySeeAlsoBlock/glossarySeeAlsoBlock.vto" }}
 		</main>
-		{ --{ include "/src/components/itemPageMeta/itemPageMeta.vto" }}
+		{{ include "/src/components/itemPageMeta/itemPageMeta.vto" }}
 	</section>
 	{{ include "/src/components/contributeBlock/contributeBlock.vto" }}
 	
