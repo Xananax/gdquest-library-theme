@@ -1,0 +1,291 @@
+<div class="mainSearch makeUsableWhenJSLoads" style="pointer-events: none">
+    <form
+        role="search"
+        method="GET"
+        aria-label="Filter items"
+        action="search.vto"
+    >
+        <div class="mainSearchFilters" id="mainSearchFilters" popover>
+            <h5 class="mainSearchFiltersHeader">
+                <span>Filters</span>
+                <button
+                    class="mainSearchFiltersHeaderCloseButton"
+                    popovertarget="mainSearchFilters"
+                    popovertargetaction="hide"
+                    type="button"
+                >
+                    <span>Close Filters</span>
+                </button>
+            </h5>
+            <fieldset class="mainSearchFiltersCategory">
+                <legend>Category</legend>
+                <div
+                    class="mainSearchFiltersItems"
+                    id="mainSearchFiltersCategoryItems"
+                >
+                    <input
+                        type="radio"
+                        name="categories"
+                        value=""
+                        id="mainSearchFiltersCategoryAll"
+                        checked="checked"
+                    />
+                    <label
+                        for="mainSearchFiltersCategoryAll"
+                        class="mainSearchFiltersResetOption"
+                        >All</label
+                    >
+                    <input
+                        type="radio"
+                        name="categories"
+                        value="learning_resources"
+                        id="mainSearchFiltersCategoryLearningResources"
+                    />
+                    <label for="mainSearchFiltersCategoryLearningResources"
+                        >Learning resources</label
+                    >
+                    <input
+                        type="radio"
+                        name="categories"
+                        value="assets_models"
+                        id="mainSearchFiltersCategoryAssetsModels"
+                    />
+                    <label for="mainSearchFiltersCategoryAssetsModels"
+                        >Assets, Models</label
+                    >
+                    <input
+                        type="radio"
+                        name="categories"
+                        value="shaders"
+                        id="mainSearchFiltersCategoryShaders"
+                    />
+                    <label for="mainSearchFiltersCategoryShaders"
+                        >Shaders</label
+                    >
+                    <input
+                        type="radio"
+                        name="categories"
+                        value="tools_plugins"
+                        id="mainSearchFiltersCategoryToolsPlugins"
+                    />
+                    <label for="mainSearchFiltersCategoryToolsPlugins"
+                        >Tools, Plugins</label
+                    >
+                </div>
+            </fieldset>
+            <fieldset class="mainSearchFiltersSubjectTags">
+                <legend>Tags</legend>
+                <div
+                    class="mainSearchFiltersItems mainSearchFiltersSubjectTagsList"
+                >
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="2D"
+                        id="mainSearchFiltersTag2D"
+                    />
+                    <label for="mainSearchFiltersTag2D">2D</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="3D"
+                        id="mainSearchFiltersTag3D"
+                    />
+                    <label for="mainSearchFiltersTag3D">3D</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="character_controller"
+                        id="mainSearchFiltersTagCharacterController"
+                    />
+                    <label for="mainSearchFiltersTagCharacterController"
+                        >Character Controller</label
+                    >
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="animation"
+                        id="mainSearchFiltersTagAnimation"
+                    />
+                    <label for="mainSearchFiltersTagAnimation">Animation</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="shader"
+                        id="mainSearchFiltersTagShader"
+                    />
+                    <label for="mainSearchFiltersTagShader">Shader</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="gdscript"
+                        id="mainSearchFiltersTagGdscript"
+                    />
+                    <label for="mainSearchFiltersTagGdscript">GDScript</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="state_machines"
+                        id="mainSearchFiltersTagStateMachines"
+                    />
+                    <label for="mainSearchFiltersTagStateMachines"
+                        >State Machines</label
+                    >
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="tilemaps"
+                        id="mainSearchFiltersTagTilemaps"
+                    />
+                    <label for="mainSearchFiltersTagTilemaps">Tilemaps</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="input"
+                        id="mainSearchFiltersTagInput"
+                    />
+                    <label for="mainSearchFiltersTagInput">Input</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="signals"
+                        id="mainSearchFiltersTagSignals"
+                    />
+                    <label for="mainSearchFiltersTagSignals">Signals</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="arrays"
+                        id="mainSearchFiltersTagArrays"
+                    />
+                    <label for="mainSearchFiltersTagArrays">Arrays</label>
+                    <input
+                        type="checkbox"
+                        name="tags"
+                        value="clipping_mask"
+                        id="mainSearchFiltersTagClippingMask"
+                    />
+                    <label for="mainSearchFiltersTagClippingMask"
+                        >Clipping Mask</label
+                    >
+                    <button
+                        type="button"
+                        class="mainSearchFiltersSubjectTagsClearLink showWhenJSLoads"
+                    >
+                        clear all tags
+                    </button>
+                </div>
+            </fieldset>
+            <fieldset class="mainSearchFiltersFormat">
+                <legend>Format</legend>
+                <div class="mainSearchFiltersItems">
+                    <input
+                        type="radio"
+                        name="format"
+                        value=""
+                        id="mainSearchFiltersFormatAll"
+                        checked="checked"
+                    />
+                    <label
+                        for="mainSearchFiltersFormatAll"
+                        class="mainSearchFiltersResetOption"
+                        >All</label
+                    >
+                    <input
+                        type="radio"
+                        name="format"
+                        value="video"
+                        id="mainSearchFiltersFormatVideo"
+                    />
+                    <label for="mainSearchFiltersFormatVideo">Video</label>
+                    <input
+                        type="radio"
+                        name="format"
+                        value="web_guide"
+                        id="mainSearchFiltersFormatWebGuide"
+                    />
+                    <label for="mainSearchFiltersFormatWebGuide"
+                        >Web Guide</label
+                    >
+                    <input
+                        type="radio"
+                        name="format"
+                        value="interactive"
+                        id="mainSearchFiltersFormatInteractive"
+                    />
+                    <label for="mainSearchFiltersFormatInteractive"
+                        >Interactive</label
+                    >
+                    <input
+                        type="radio"
+                        name="format"
+                        value="downloadable"
+                        id="mainSearchFiltersFormatDownloadable"
+                    />
+                    <label for="mainSearchFiltersFormatDownloadable"
+                        >Downloadable Files</label
+                    >
+                </div>
+            </fieldset>
+            <fieldset class="mainSearchFiltersGodotVersion">
+                <legend>Version</legend>
+                <div class="mainSearchFiltersItems">
+                    <input
+                        type="radio"
+                        name="godot_version"
+                        value=""
+                        id="mainSearchFiltersGodotVersionAny"
+                        checked="checked"
+                    />
+                    <label
+                        for="mainSearchFiltersGodotVersionAny"
+                        class="mainSearchFiltersResetOption"
+                        >Any</label
+                    >
+                    <input
+                        type="radio"
+                        name="godot_version"
+                        value="4.x"
+                        id="mainSearchFiltersGodotVersion4"
+                    />
+                    <label for="mainSearchFiltersGodotVersion4">4.x</label>
+                    <input
+                        type="radio"
+                        name="godot_version"
+                        value="3.x"
+                        id="mainSearchFiltersGodotVersion3"
+                    />
+                    <label for="mainSearchFiltersGodotVersion3">3.x</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="mainSearchField">
+            <label for="mainSearchFieldInput" class="mainSearchFieldLabel">
+                Filter Items</label
+            >
+            <input
+                type="search"
+                name="search"
+                id="mainSearchFieldInput"
+                placeholder="Type one or several keywords"
+                class="mainSearchFieldInput"
+            />
+            <button type="submit" class="mainSearchFieldButton">
+                <span>Submit Search Query</span>
+            </button>
+        </div>
+        <div class="mainSearchSelectedTerms">
+            <button class="mainSearchSelectedTermsClearAllButton" type="button">
+                clear all
+            </button>
+        </div>
+    </form>
+    <button class="mainSearchFiltersButton" popovertarget="mainSearchFilters">
+        <span>Open Filter options</span>
+    </button>
+    <noscript>
+        this search box runs in the client and depends on Javascript. It won't
+        work with Javascript disabled!
+    </noscript>
+</div>

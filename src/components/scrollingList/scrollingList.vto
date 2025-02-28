@@ -1,0 +1,19 @@
+<div class="scrollingList">
+	<h3 class="scrollingListHeader">
+		<a href="#" class="scrollingListHeaderTitle">Recent Releases</a>
+		<a href="glossary.vto" class="scrollingListHeaderSeeMoreButton"
+			>Search the Glossary</a
+		>
+		<div class="scrollingListControls" hidden>
+			<button class="scrollingListControlsPrevious">
+				<span>Previous Page</span>
+			</button>
+			<button class="scrollingListControlsNext">
+				<span>Next Page</span>
+			</button>
+		</div>
+	</h3>
+	<div class="scrollingListContainer">
+	{{ include "/src/components/gridItemsList/gridItemsList.vto" }}
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<section class="itemSummaryBrowser">
+	<div class="itemSummaryBrowserDisplay">
+		<div class="itemSummaryBrowserDisplayLoading"></div>
+	{{ include "/src/components/itemSummaryCard/itemSummaryCard.vto" }}
+	</div>
+	<div class="itemSummaryBrowserButtons">
+		<a class="itemSummaryBrowserBrowseButton" href="search.vto">
+			<span
+				class="itemSummaryBrowserButtonIcon itemSummaryBrowserBrowseButtonIcon"
+				aria-hidden="true"
+			></span>
+			<span class="itemSummaryBrowserButtonLabel"
+				>Browse the library</span
+			>
+		</a>
+		<button class="itemSummaryBrowserRandomButton">
+			<span
+				class="itemSummaryBrowserButtonIcon itemSummaryBrowserRandomButtonIcon"
+				aria-hidden="true"
+			></span>
+			<span class="itemSummaryBrowserButtonLabel"
+				>Pull a random title</span
+			>
+		</button>
+		<noscript>
+			To shuffle cards, javascript is required! Please enable it to get a random card
+		</noscript>
+	</div>
+</section>

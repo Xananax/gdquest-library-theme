@@ -1,0 +1,46 @@
+<div class="nodeFlashCardShuffler">
+	<div class="nodeFlashCardShufflerWrapper">
+		<h4 class="nodeFlashCardShufflerTitle">Node Flashcards Shuffler</h4>
+		<noscript>
+			this shuffler runs in the client and depends on Javascript. It won't
+			work with Javascript disabled!
+		</noscript>
+		<div class="nodeFlashCardShufflerDescription">
+			<p>
+				This feature of GDQuest's Free Library comes from
+				<a href="#">Node Essentials</a>.
+			</p>
+
+			<p>
+				Node Essentials is GDQuest's best kept secret for intermediate
+				and experienced gamedevs. It is a handy recipe book to quickly
+				look up and recreate 100+ popular game mechanics using 40 of
+				Godot's most powerful nodes.
+				<a href="#" class="nodeFlashCardShufflerDescriptionFeatureLink"
+					>Check out Node Essentials.</a
+				>
+			</p>
+		</div>
+
+		<button class="nodeFlashCardShufflerButton">
+			<span> Shuffle to get new node flashcards </span>
+		</button>
+
+		<div
+			class="nodeFlashCardShufflerContentPane"
+			aria-live="polite"
+			aria-busy="false"
+		>
+			<ul class="nodeFlashCardShufflerGrid" role="list">
+			{{ include "/src/components/nodeFlashCard/nodeFlashCard.vto" }}
+			{{ include "/src/components/nodeFlashCard/nodeFlashCard.vto" }}
+			{{ include "/src/components/nodeFlashCard/nodeFlashCard.vto" }}
+			</ul>
+			<div class="nodeFlashCardShufflerLoading" aria-hidden="true"></div>
+		</div>
+
+		<button class="nodeFlashCardShufflerButton">
+			<span> Shuffle to get new node flashcards </span>
+		</button>
+	</div>
+</div>
