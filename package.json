@@ -3,11 +3,12 @@
 	"version": "1.0.0",
 	"description": "The JavaScript template",
 	"scripts": {
-		"start": "parcel ./src/*.html",
-		"build": "parcel build ./src/*.html",
-		"build-github": "parcel build ./src/*.html --public-url https://xananax.github.io/gdquest-library-theme/"
+		"start": "parcel ./src/*.vto",
+		"build": "parcel build ./src/*.vto",
+		"build-github": "parcel build ./src/*.vto --public-url https://xananax.github.io/gdquest-library-theme/"
 	},
 	"devDependencies": {
+		"@parcel/plugin": "^2.13.3",
 		"@parcel/transformer-sass": "2.13.3",
 		"@types/node": "^22.13.1",
 		"babel-eslint": "^10.1.0",
@@ -17,7 +18,8 @@
 		"posthtml-include": "^2.0.1",
 		"posthtml-modules": "^0.9.1",
 		"svgo": "^3.3.2",
-		"type-fest": "^4.35.0"
+		"type-fest": "^4.35.0",
+		"ventojs": "^1.12.15"
 	},
 	"keywords": [
 		"css",
