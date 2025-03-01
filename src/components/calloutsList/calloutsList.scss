@@ -94,7 +94,7 @@ $arbitraryIconTopMargin: 1rem;
  *
  ********************************************************************************/
 
- calloutsList:has(+ .calloutsList) {
+.calloutsList:has(+ .calloutsList) {
 	margin-block-end: 0;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;

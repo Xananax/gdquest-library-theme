@@ -18,7 +18,16 @@
 				referrerpolicy="strict-origin-when-cross-origin"
 				allowfullscreen
 			></iframe>
-			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
+			{{ layout "/src/components/calloutsListSingleItem/calloutsListSingleItem.vto" { title: "Did my cat die?" } }}
+
+      Don't you know? Cats have 9 lives.
+
+      {{ /layout }}
+      {{ layout "/src/components/calloutsListSingleItem/calloutsListSingleItem.vto" { title: "What about my dog?", open: true } }}
+
+      Dogs are immortal; they cannot die.
+
+      {{ /layout }}
 			<h3>Checkpoint</h3>
 			{{ layout "/src/components/codeBlock/codeBlock.vto" { diff: true } }}
 @export var speed: float = 100

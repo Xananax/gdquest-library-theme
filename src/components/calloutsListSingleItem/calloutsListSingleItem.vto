@@ -1,0 +1,9 @@
+{{#- 
+  At the moment, the parser can't collapse multiple callouts in a single list, so each callout will contain a single element list.
+  Once the parser can coalesce multiple callouts into a single list, this file can be deleted.
+-#}}
+{{ layout "/src/components/collapsibleList/collapsibleList.vto" { className: "calloutsList" } }}
+{{ layout "/src/components/calloutItem/calloutItem.vto" }}
+  {{- content -}}
+{{ /layout }}
+{{ layout }}

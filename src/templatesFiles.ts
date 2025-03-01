@@ -58,6 +58,7 @@ export type TemplateFileName =
   | "authForm"
   | "footer"
   | "mainNav"
+  | "calloutsListSingleItem"
 
 export const templatesFiles = {
   pageGlossary: { 
@@ -271,5 +272,9 @@ export const templatesFiles = {
   mainNav: { 
     relPath: "mainNav/mainNav.vto",
     fullPath: "src/components/mainNav/mainNav.vto" 
+  },
+  calloutsListSingleItem: { 
+    relPath: "calloutsListSingleItem/calloutsListSingleItem.vto",
+    fullPath: "src/components/calloutsListSingleItem/calloutsListSingleItem.vto" 
   },
 } satisfies Record<TemplateFileName, { relPath: string, fullPath: string }>
