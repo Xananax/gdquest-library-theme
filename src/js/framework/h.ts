@@ -1,4 +1,4 @@
-import { createElement as h, elementsFactory } from "./createElement";
+import { createElement as h, elementsFactory } from "./createElement.ts";
 
 export const { h1, h2, h3, a, div, ul, li, span, button, form } =
     elementsFactory(

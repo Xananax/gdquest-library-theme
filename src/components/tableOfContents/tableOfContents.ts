@@ -1,5 +1,5 @@
-import { add, span, div, a, li, ul } from '../../js/framework/h';
-import { TogglerButton } from "../togglerButton/togglerButton";
+import { add, span, div, a, li, ul } from '../../js/framework/h.ts';
+import { TogglerButton } from "../togglerButton/togglerButton.ts";
 
 const slugify = (text: string) => text.toLowerCase().replace(/(\s|\.)+/g, "-");
 

@@ -1,5 +1,5 @@
-import { splitStringToParts } from "../../js/framework/splitStringToParts";
-import { add, span } from '../../js/framework/h';
+import { splitStringToParts } from "../../js/framework/splitStringToParts.ts";
+import { add, span } from '../../js/framework/h.ts';
 
 const classPrefix = "fileInText";
 

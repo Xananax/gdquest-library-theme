@@ -1,6 +1,6 @@
 import { SetNonNullable, type MergeDeep } from "type-fest";
 
-import { type Database as GeneratedDatabase, Json } from "./database-generated";
+import { type Database as GeneratedDatabase, Json } from "./database-generated.ts";
 import {
   PostId,
   NotificationPostId,

@@ -1,5 +1,5 @@
-import { type AttributesKeys } from "./attributesTypes";
-import { type BindedFunction } from "./makeNodeSignalBinder";
+import { type AttributesKeys } from "./attributesTypes.ts";
+import { type BindedFunction } from "./makeNodeSignalBinder.ts";
 
 /**
  * All possible values for a `class` property

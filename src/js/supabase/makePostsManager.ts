@@ -1,4 +1,4 @@
-import { Database, PostgrestError, PostId, supabase } from "./supabase";
+import { Database, PostgrestError, PostId, supabase } from "./supabase.ts";
 
 const handleSupabaseResponse = <T>(
     { error, data }: { error: PostgrestError; data: null } | {

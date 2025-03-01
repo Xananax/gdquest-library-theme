@@ -1,4 +1,4 @@
-import { button } from "../../js/utils";
+import { button } from "../../js/utils.ts";
 
 document.querySelectorAll(".mainSearch").forEach((searchWrapper) => {
   const selectedTermsContainer = searchWrapper.querySelector(

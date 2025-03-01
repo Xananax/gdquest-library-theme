@@ -1,5 +1,5 @@
-import { MapSignal } from "./framework/MapSignal";
-import { LocalStorageSignalAdapter } from "./framework/LocalStorageSignalAdapter";
+import { MapSignal } from "./framework/MapSignal.ts";
+import { LocalStorageSignalAdapter } from "./framework/LocalStorageSignalAdapter.ts";
 
 export const TYPE_SUCCESS = "success";
 export const TYPE_ERROR = "error";

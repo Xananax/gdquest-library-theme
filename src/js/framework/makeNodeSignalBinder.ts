@@ -1,4 +1,4 @@
-import { type Signal } from "./Signal";
+import { type Signal } from "./Signal.ts";
 import { type WritableKeysOf } from "type-fest";
 
 export type Attribute = WritableKeysOf<Element>;

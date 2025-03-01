@@ -1,5 +1,5 @@
-import { type Signal} from "./Signal";
-import { type Json } from "./types";
+import { type Signal} from "./Signal.ts";
+import { type Json } from "./types.ts";
 
 /**
  * Creates a localstorage adapter around the provided signal and returns the signal.

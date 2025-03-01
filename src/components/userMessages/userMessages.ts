@@ -1,8 +1,8 @@
 import {
     userMessagesCollection,
     type UserMessageType,
-} from "../../js/userMessagesCollection";
-import { add, span, div, button } from '../../js/framework/h';
+} from "../../js/userMessagesCollection.ts";
+import { add, span, div, button } from '../../js/framework/h.ts';
 
 const classPrefix = "userMessage";
 

@@ -1,7 +1,7 @@
-import { type Session, type User } from "./supabase";
-import { Signal } from "../framework/Signal";
-import { makeSessionManager } from "./makeSessionManager";
-import { TYPE_INFO, userMessagesCollection } from "../userMessagesCollection";
+import { type Session, type User } from "./supabase.ts";
+import { Signal } from "../framework/Signal.ts";
+import { makeSessionManager } from "./makeSessionManager.ts";
+import { TYPE_INFO, userMessagesCollection } from "../userMessagesCollection.ts";
 
 const WAITING_CONFIRMATION = Symbol("WAITING_CONFIRMATION");
 

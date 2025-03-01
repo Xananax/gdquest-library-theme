@@ -1,4 +1,4 @@
-import { supabase } from "../../js/supabase/supabase";
+// import { supabase } from "../../js/supabase/supabase.ts";
 
 const params = new Proxy<any>(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) =>
@@ -49,6 +49,7 @@ function onEnhancedFormSubmit(event: SubmitEvent) {
   const form = event.currentTarget as HTMLFormElement;
   const formData = (new FormData(form)).entries().map(([key, value]) => [key, value+''] as const);
   const { email, password, passwordConfirm, redirectTo, action } = Object.fromEntries(formData)
+  /*
   action === "otp"
     ? supabase.auth
         .signInWithOtp({ email, options:{ emailRedirectTo: redirectTo || '' } })
@@ -64,6 +65,7 @@ function onEnhancedFormSubmit(event: SubmitEvent) {
         .resetPasswordForEmail(email, { redirectTo })
         .then(onSupabasePasswordReset)
     : null;
+  */
 }
 
 document

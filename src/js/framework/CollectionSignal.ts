@@ -1,4 +1,4 @@
-import { Signal } from "./Signal";
+import { Signal } from "./Signal.ts";
 
 /**
  * Reactive collection. Builds on {@see Signal}

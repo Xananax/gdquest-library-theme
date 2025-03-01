@@ -1,6 +1,6 @@
 // @ts-check
 import { createClient, PostgrestError, AuthError, Session, User } from "@supabase/supabase-js";
-import { type Database } from "./database";
+import { type Database } from "./database.ts";
 
 export { AuthError };
 export type { Database, PostgrestError, Session, User };

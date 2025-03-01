@@ -1,4 +1,4 @@
-import { supabase, AuthError, type Session, type User } from "./supabase";
+import { supabase, AuthError, type Session, type User } from "./supabase.ts";
 
 interface GetSessionProps {
   onSessionChanged: (session: Session | null) => void;

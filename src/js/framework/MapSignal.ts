@@ -1,4 +1,4 @@
-import { noOp, Signal, type SignalOptions } from "./Signal";
+import { noOp, Signal, type SignalOptions } from "./Signal.ts";
 
 /**
  * Reactive hashmap. Builds on {@see Signal}

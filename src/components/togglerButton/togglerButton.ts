@@ -1,4 +1,4 @@
-import { button } from '../../js/framework/h';
+import { button } from '../../js/framework/h.ts';
 
 
 function toggleButton(this: HTMLButtonElement) {

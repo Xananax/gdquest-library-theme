@@ -1,5 +1,5 @@
-import { isObject } from "./framework/isObject";
-import { kebabize } from "./framework/kebabize";
+import { isObject } from "./framework/isObject.ts";
+import { kebabize } from "./framework/kebabize.ts";
 
 /**
  * Helper type for DOM event handlers
