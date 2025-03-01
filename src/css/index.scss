@@ -6,8 +6,7 @@
 @use "./animation.scss";
 
 @use "../components/authForm/authForm.scss";
-@use "../components/authFormFullPageWrapper/authFormFullPageWrapper.scss";
-@use "../components/callout/callout.scss";
+@use "../components/calloutsList/calloutsList.scss";
 @use "../components/carousel/carousel.scss";
 @use "../components/checkpoint/checkpoint.scss";
 @use "../components/clapsButton/clapsButton.scss";
@@ -37,15 +36,16 @@
 @use "../components/mainSearch/mainSearch.scss";
 @use "../components/nodeFlashCard/nodeFlashCard.scss";
 @use "../components/nodeFlashCardShuffler/nodeFlashCardShuffler.scss";
+@use "../components/pageAuth/pageAuth.scss";
 @use "../components/passwordField/passwordField.scss";
-@use "../components/userMessages/userMessages.scss";
 @use "../components/promoGDSchool/promoGDSchool.scss";
 @use "../components/promoIntro/promoIntro.scss";
 @use "../components/quoteBubble/quoteBubble.scss";
 @use "../components/scrollingList/scrollingList.scss";
 @use "../components/searchResultsGrid/searchResultsGrid.scss";
-@use "../components/welcomeText/welcomeText.scss";
 @use "../components/shareWidget/shareWidget.scss";
 @use "../components/tableOfContents/tableOfContents.scss";
 @use "../components/tabList/tabList.scss";
 @use "../components/togglerButton/togglerButton.scss";
+@use "../components/userMessages/userMessages.scss";
+@use "../components/welcomeText/welcomeText.scss";

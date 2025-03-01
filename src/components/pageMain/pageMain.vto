@@ -1,0 +1,24 @@
+{{ layout "/src/_base.vto" { pageTitle: "Library", bodyclass: "homePages" } }}
+    <main id="main" class="listPage mainPage">
+        {{ include "/src/components/welcomeText/welcomeText.vto" }}
+        
+        {{ include "/src/components/carousel/carousel.vto" }}
+        {{#- TODO: pass data to carousel -#}}
+        {{ include "/src/components/mainSearch/mainSearch.vto" }}
+    
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+    
+        {{ include "/src/components/emailCampaign/emailCampaign.vto" }}
+        {{#- TODO: pass data to sliders -#}}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+        {{ include "/src/components/scrollingList/scrollingList.vto" }}
+    
+        {{ include "/src/components/nodeFlashCardShuffler/nodeFlashCardShuffler.vto" }}
+    
+        {{ include "/src/components/promoIntro/promoIntro.vto" }}
+    
+        {{ include "/src/components/promoGDSchool/promoGDSchool.vto" }}
+    </main>
+{{ /layout }}

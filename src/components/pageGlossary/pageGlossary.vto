@@ -1,0 +1,14 @@
+{{ layout "/src/_base.vto" { pageTitle:"Glossary", bodyclass:"glossaryPage" } }}
+	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" }}
+	<section class="contentPageGrid">
+		{{ include "/src/components/tableOfContents/tableOfContents.vto" }}
+		<main>
+			<h1 class="hasIconBefore iconApp proseTitle">GDQuest Glossary</h1>
+		{{ include "/src/components/glossarySearch/glossarySearch.vto" }}
+		{{ include "/src/components/glossaryList/glossaryList.vto" }}
+    {{#- TODO: fill glossary with actual data -#}}
+		</main>
+		{{ include "/src/components/itemPageMeta/itemPageMeta.vto" }}
+	</section>
+	{{ include "/src/components/contributeBlock/contributeBlock.vto" }}
+{{ /layout }}

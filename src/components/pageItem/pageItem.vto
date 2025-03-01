@@ -1,0 +1,11 @@
+{{ layout "/src/_base.vto" { pageTitle:"Item", bodyclass:"itemPage"} }}
+	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" }}
+	<section class="contentPageGrid">
+	{{ include "/src/components/tableOfContents/tableOfContents.vto" }}
+		<main class="prose">
+      {{ content }}
+    </main>
+		{{ include "/src/components/shareWidget/shareWidget.vto" }}
+		{{ include "/src/components/itemPageMeta/itemPageMeta.vto" }}
+	</section>
+{{ include "/src/components/contributeBlock/contributeBlock.vto" }}

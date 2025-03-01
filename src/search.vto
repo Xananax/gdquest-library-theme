@@ -1,16 +1,1 @@
-{{ layout "/src/_base.vto" { title: `Search${ it.title ? ' | ' + it.title : '' }` , bodyclass:"searchPage"} }}
-    <main id="main" class="listPage">
-        {{ include "/src/components/welcomeText/welcomeText.vto" }}
-    
-        {{ include "/src/components/carousel/carousel.vto" }}
-        {{ include "/src/components/mainSearch/mainSearch.vto" }}
-    
-        {{ include "/src/components/searchResultsGrid/searchResultsGrid.vto" }}
-    
-        {{ include "/src/components/emailCampaign/emailCampaign.vto" }}
-    
-        {{ include "/src/components/promoIntro/promoIntro.vto" }}
-    
-        {{ include "/src/components/promoGDSchool/promoGDSchool.vto" }}
-    </main>
-{{ /layout }}
+{{ include "/src/components/pageSearch/pageSearch.vto" }}

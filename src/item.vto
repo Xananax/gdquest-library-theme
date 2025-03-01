@@ -1,8 +1,4 @@
-{{ layout "/src/_base.vto" {title:"Item", bodyclass:"itemPage"} }}
-	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" }}
-	<section class="contentPageGrid">
-	{{ include "/src/components/tableOfContents/tableOfContents.vto" }}
-		<main class="prose">
+{{ layout "/src/components/pageItem/pageItem.vto" }}
 			<h1 class="hasIconBefore iconApp">
 				Create Your First 3D Game From Zero
 			</h1>
@@ -17,7 +13,7 @@
 				allow="picture-in-picture; web-share"
 				allowfullscreen
 			></iframe>
-			{{ include "/src/components/callout/callout.vto" }}
+			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
 			{{ include "/src/components/discordLetterInvite/discordLetterInvite.vto" { inviteid: "xK6zbqENsJ" } }}
 			{{ include "/src/components/checkpoint/checkpoint.vto" }}
 			<h2>2. Creating the Player</h2>
@@ -31,7 +27,7 @@
 				referrerpolicy="strict-origin-when-cross-origin"
 				allowfullscreen
 			></iframe>
-			{{ include "/src/components/callout/callout.vto" }}
+			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
 			<h3>Checkpoint</h3>
 			{{ layout "/src/components/codeBlock/codeBlock.vto" { diff: true } }}
 @export var speed: float = 100
@@ -56,7 +52,7 @@
 			{{ include "/src/components/quoteBubble/quoteBubble.vto" }}
 		{{ include "/src/components/downloadButtonsList/downloadButtonsList.vto" }}
 			<h1 class="hasIconBefore iconQuestion">FAQ/Troubleshooting</h1>
-			{{ include "/src/components/callout/callout.vto" }}
+			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
 			<h1 class="hasIconBefore iconPatch">Updates/Code Patches</h1>
 			<ul>
 				<li>This learning resource was created with Godot 4.3.</li>
@@ -99,10 +95,4 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite.play("idle")
 			{{ /layout }}
 		{{ /layout }}
-		</main>
-		{{ include "/src/components/shareWidget/shareWidget.vto" }}
-		{{ include "/src/components/itemPageMeta/itemPageMeta.vto" }}
-	</section>
-	{{ include "/src/components/contributeBlock/contributeBlock.vto" }}
-	
 {{ /layout }}

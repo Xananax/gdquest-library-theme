@@ -1,5 +1,5 @@
-{{ layout "/src/components/collapsibleList/collapsibleList.vto" { className: "calloutsList" } }}
-	{{ layout "/src/components/collapsibleItem/collapsibleItem.vto" { type:"question", open: false, title: "I don’t get the same type hints you’re getting in the editor" } }}
+{{ layout "/src/components/calloutsList/calloutsList.vto" }}
+	{{ layout "/src/components/calloutItem/calloutItem.vto" { title: "I don’t get the same type hints you’re getting in the editor" } }}
 		<p>
 			There are a few different ways that you can do it. One of them
 			is using calc-size(), which has some extra things you could do
@@ -24,7 +24,7 @@
 			it!
 		</p>
 	{{ /layout }}
-	{{ layout "/src/components/collapsibleItem/collapsibleItem.vto" { type: "info", open: true, title: "Why do I need to place the expressions dictionary before the dialogue_items array?" } }}
+	{{ layout "/src/components/calloutItem/calloutItem.vto" { type: "info", open: true, title: "Why do I need to place the expressions dictionary before the dialogue_items array?" } }}
 		<p>
 			There are a few different ways that you can do it. One of them
 			is using calc-size(), which has some extra things you could do
