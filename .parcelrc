@@ -2,5 +2,7 @@
     "extends": "@parcel/config-default",
     "transformers": {
       "*.vto": ["./parcel-transformer-vento.mjs"]
-    }
+    },
+    "resolvers": ["parcel-resolver-ignore", "..."],
+    "reporters": [ "...", "parcel-reporter-static-files-copy"]
   }

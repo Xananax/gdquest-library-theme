@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 .quoteBubble {
-	--quote-author-image: url("/src/static/nathan_avatar.png");
+	--quote-author-image: url("/nathan_avatar.png");
 	@include paddingMarginReset;
 	width: 100%;
 	a {

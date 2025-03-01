@@ -149,7 +149,7 @@
 		}
 		&:nth-child(1) {
 			transform: perspective(100px) translateZ(10px);
-			--background-image: url("/src/static/head-gobot.png");
+			--background-image: url("/head-gobot.png");
 			--number: "1";
 			.contributeBlockFooterLink span::after {
 				@extend %icon-arrow-left-s-line;
@@ -157,7 +157,7 @@
 			}
 		}
 		&:nth-child(2) {
-			--background-image: url("/src/static/head-sophia.png");
+			--background-image: url("/head-sophia.png");
 			--number: "2";
 			& > p::before {
 				width: 10rem;
@@ -167,7 +167,7 @@
 			}
 		}
 		&:nth-child(3) {
-			--background-image: url("/src/static/head-gdbot.png");
+			--background-image: url("/head-gdbot.png");
 			--number: "3";
 			.contributeBlockFooterLink span::after {
 				@extend %icon-share;

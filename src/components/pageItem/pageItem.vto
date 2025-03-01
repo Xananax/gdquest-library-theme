@@ -1,6 +1,7 @@
-{{ layout "/src/_base.vto" { pageTitle:"Item", bodyclass:"itemPage"} }}
+{{ layout "/src/_base.vto" { pageTitle: title || "Item", bodyclass:"itemPage"} }}
 	{{ include "/src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" }}
 	<section class="contentPageGrid">
+    <h1>{{ title }}</h1
 	{{ include "/src/components/tableOfContents/tableOfContents.vto" }}
 		<main class="prose">
       {{ content }}

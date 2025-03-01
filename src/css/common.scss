@@ -85,7 +85,7 @@ body:has([popover]:popover-open) {
 .gdquestLogo,
 .gdschoolLogo,
 .githubLogo {
-  background-image: url("/src/static/gdquest_logo.svg");
+  background-image: url("/gdquest_logo.svg");
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -106,11 +106,11 @@ body:has([popover]:popover-open) {
 }
 
 .gdschoolLogo {
-  background-image: url("/src/static/gdschool_logo_dark.svg");
+  background-image: url("/gdschool_logo_dark.svg");
 }
 
 .githubLogo {
-  background-image: url("/src/static/github_logo.svg");
+  background-image: url("/github_logo.svg");
   filter: drop-shadow(0 2px 1.77px rgba(0, 0, 0, 0.25));
 }
 

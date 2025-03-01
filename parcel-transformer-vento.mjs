@@ -2,6 +2,10 @@
 import vento from "ventojs";
 import { Transformer } from "@parcel/plugin";
 
+const defaultLocals = {
+  prismUrl: "/prism.js",
+  staticRoot: "/"
+}
 
 export default new Transformer({
     async loadConfig({config}) {
@@ -38,7 +42,7 @@ export default new Transformer({
         asset.type = 'html';
 
         const template = await env.load(asset.filePath);
-        const result = await template({});
+        const result = await template(defaultLocals);
 
         asset.setCode(result.content);
 

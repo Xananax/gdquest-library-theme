@@ -42,7 +42,7 @@ $promoGDSchoolBreakpoint: 1000px;
 			&::before {
 				content: "";
 				display: block;
-				background: no-repeat url("/src/static/gdschool_logo.svg") 0%
+				background: no-repeat url("/gdschool_logo.svg") 0%
 					center / contain;
 				height: 100%;
 				aspect-ratio: 3.5;

@@ -16,6 +16,7 @@ import "../components/shareWidget/shareWidget.ts";
 import "../components/tableOfContents/tableOfContents.ts";
 import "../components/tabList/tabList.ts";
 import "../components/togglerButton/togglerButton.ts";
+import "./prism.js";
 
 /**/
 
