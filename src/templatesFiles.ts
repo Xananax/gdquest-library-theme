@@ -23,6 +23,7 @@ export type TemplateFileName =
   | "quoteBubble"
   | "collapsibleElement"
   | "calloutsList"
+  | "videoEmbed"
   | "promoIntro"
   | "nodeFlashCardShuffler"
   | "checkpoint"
@@ -130,6 +131,10 @@ export const templatesFiles = {
   calloutsList: { 
     relPath: "calloutsList/calloutsList.vto",
     fullPath: "src/components/calloutsList/calloutsList.vto" 
+  },
+  videoEmbed: { 
+    relPath: "videoEmbed/videoEmbed.vto",
+    fullPath: "src/components/videoEmbed/videoEmbed.vto" 
   },
   promoIntro: { 
     relPath: "promoIntro/promoIntro.vto",

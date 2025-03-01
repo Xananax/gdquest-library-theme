@@ -1,5 +1,5 @@
 iframe[src*="youtube.com"],
-iframe[src*="youtube-nocookie.com"] {
+iframe[src*="youtube-nocookie.com"], iframe[src*="vimeo.com"] {
 	display: block;
 	width: 100%;
 	max-width: 100%;

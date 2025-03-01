@@ -2,7 +2,6 @@
 @use "./colors.scss";
 @use "./spacing.scss";
 @use "./common.scss";
-@use "./videoEmbed.scss";
 @use "./animation.scss";
 
 @use "../components/authForm/authForm.scss";
@@ -49,4 +48,5 @@
 @use "../components/taxonomyPageHeader/taxonomyPageHeader.scss";
 @use "../components/togglerButton/togglerButton.scss";
 @use "../components/userMessages/userMessages.scss";
+@use "../components/videoEmbed/videoEmbed.scss";
 @use "../components/welcomeText/welcomeText.scss";

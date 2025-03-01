@@ -1,0 +1,36 @@
+{{>
+
+const url = it.url || "";
+
+if (!url) {
+  throw new Error("No `url` property provided for VideoEmbed");
+}
+
+const youtubeUrlRegex =
+  /(?:youtube\.com(?:\/watch\?.*v=|\/embed\/)|youtu\.be\/)(?<videoId>[a-zA-Z_\d-]+)\??/;
+const vimeoUrlRegex =
+  /vimeo\.com\/(video\/)?(?<videoId>\d+)(?:(\?h=|\/)(?<unlistedHash>[0-9a-z]+))?/;
+
+let provider = "youtube";
+
+let videoId = url.match(youtubeUrlRegex)?.groups?.videoId ?? ""
+let videoSrc = `https://www.youtube-nocookie.com/embed/${videoId}`
+
+if (videoId == null || videoId === "") {
+  provider = "vimeo";
+  videoId = url.match(vimeoUrlRegex)?.groups?.videoId ?? "";
+  videoSrc = `https://player.vimeo.com/video/${videoId}`;
+  if (videoId == null || videoId === "") {
+    provider = ""
+  }
+}
+
+}}
+
+{{ if provider === "" }}
+  <p>Invalid video URL: {{ url }}</p>
+{{ else }}
+<div class="videoEmbed video-{{ provider }}">
+<iframe src="{{ videoSrc }}" title="{{ title || "video" }}" width="560" height="315" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="picture-in-picture; web-share" allowfullscreen />
+</div>
+{{ /if }}

@@ -1,18 +1,9 @@
-{{ layout "/src/components/pageItem/pageItem.vto" }}
+{{ layout "/src/components/pageItem/pageItem.vto" { title: "Some Item" } }}
 			<h1 class="hasIconBefore iconApp">
 				Create Your First 3D Game From Zero
 			</h1>
 			<h2>1. Setting up</h2>
-			<iframe
-				width="560"
-				height="315"
-				frameborder="0"
-				referrerpolicy="strict-origin-when-cross-origin"
-				src="https://www.youtube-nocookie.com/embed/JlgZtOFMdfc?si=NFjLw_5aUPy7yutn"
-				title="YouTube video player"
-				allow="picture-in-picture; web-share"
-				allowfullscreen
-			></iframe>
+			{{ include "/src/components/videoEmbed/videoEmbed.vto" { title: "Test", "url": "https://www.youtube.com/watch?v=JlgZtOFMdfc" } }}
 			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
 			{{ include "/src/components/discordLetterInvite/discordLetterInvite.vto" { inviteid: "xK6zbqENsJ" } }}
 			{{ include "/src/components/checkpoint/checkpoint.vto" }}

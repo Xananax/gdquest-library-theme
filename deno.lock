@@ -26,6 +26,8 @@
         "npm:babel-eslint@^10.1.0",
         "npm:buffer@^6.0.3",
         "npm:eslint@^7.2.0",
+        "npm:parcel-reporter-static-files-copy@^1.5.3",
+        "npm:parcel-resolver-ignore@^2.2.0",
         "npm:parcel@2",
         "npm:posthtml-include@^2.0.1",
         "npm:posthtml-modules@~0.9.1",
