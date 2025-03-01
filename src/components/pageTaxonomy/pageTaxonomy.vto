@@ -1,0 +1,19 @@
+{{ layout "/src/_base.vto" { title: `Search${ pageTitle ? ' | ' + pageTitle : '' }` , bodyclass:"searchPage"} }}
+    <main id="main" class="listPage">
+        {{ include "/src/components/taxonomyPageHeader/taxonomyPageHeader.vto" { 
+  title: title || "Taxonomy", 
+  cover: cover,
+  description: description || "Items with this tag"
+} }}
+    
+        {{ include "/src/components/mainSearch/mainSearch.vto" }}
+    
+        {{ include "/src/components/searchResultsGrid/searchResultsGrid.vto" }}
+    
+        {{ include "/src/components/emailCampaign/emailCampaign.vto" }}
+    
+        {{ include "/src/components/promoIntro/promoIntro.vto" }}
+    
+        {{ include "/src/components/promoGDSchool/promoGDSchool.vto" }}
+    </main>
+{{ /layout }}

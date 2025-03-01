@@ -1,0 +1,21 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.taxonomyPageHeader{
+	@include title;
+	font-weight: 700;
+	font-size: 1.5rem;
+	display: grid;
+	grid-auto-flow: row;
+	gap: 1.875rem;
+	h1,
+	p {
+		@include paddingMarginReset;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+  img{
+    width: 100%;
+  }
+}

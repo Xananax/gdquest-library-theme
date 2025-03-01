@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"description": "The JavaScript template",
 	"scripts": {
-		"start": "parcel ./src/*.vto",
-		"build": "parcel build ./src/*.vto",
-		"build-github": "parcel build ./src/*.vto --public-url https://xananax.github.io/gdquest-library-theme/"
+		"start": "rm -rf .parcel-cache && parcel ./src/*.vto",
+		"build": "rm -rf .parcel-cache && parcel build ./src/*.vto",
+		"build-github": "rm -rf .parcel-cache && parcel build ./src/*.vto --public-url https://xananax.github.io/gdquest-library-theme/"
 	},
 	"devDependencies": {
 		"@parcel/plugin": "^2.13.3",

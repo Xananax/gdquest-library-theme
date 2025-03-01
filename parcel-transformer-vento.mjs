@@ -21,12 +21,10 @@ export default new Transformer({
         return contents;
     },
     async transform({asset, config}) {
-        // Configure Nunjucks
         const env = vento({
             ...config
         });
 
-        // Run the register function from the config
         if (config.register) {
             config.register({
                 vento,
