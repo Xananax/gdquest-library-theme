@@ -4,7 +4,9 @@ import { Transformer } from "@parcel/plugin";
 
 const defaultLocals = {
   prismUrl: "/prism.js",
-  staticRoot: "/"
+  staticRoot: "/",
+  cssUrl: "/src/css/index.scss",
+  jsUrl: "/src/js/index.ts"
 }
 
 export default new Transformer({

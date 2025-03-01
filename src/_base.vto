@@ -3,7 +3,7 @@
     <head>
         <title>{{ pageTitle }} | GDQuest</title>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="./css/index.scss" />
+        <link rel="stylesheet" href="{{ cssUrl }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body class="dark {{ bodyclass }}">
@@ -15,6 +15,6 @@
 
         {{ include "/src/components/footer/footer.vto" }}
 
-        <script src="./js/index.ts" type="module"></script>
+        <script src="{{ jsUrl }}" type="module"></script>
     </body>
 </html>
