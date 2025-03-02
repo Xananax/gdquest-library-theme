@@ -153,28 +153,28 @@ a.socialLink {
     position: relative;
     color: var(--icon-color);
   }
-  &.iconApp {
+  &.icon-app {
     @extend %icon-window;
   }
-  &.iconDownload {
+  &.icon-download {
     @extend %icon-folder-download;
   }
-  &.iconQuestion {
+  &.icon-question {
     @extend %icon-question-circle;
   }
-  &.iconBonus {
+  &.icon-bonus {
     @extend %icon-vip-diamond;
   }
-  &.iconContribute {
+  &.icon-contribute {
     @extend %icon-github-line;
   }
-  &.iconGithub {
+  &.icon-github {
     @extend %icon-github-line;
   }
-  &.iconPatch {
+  &.icon-patch {
     @extend %icon-patch;
   }
-  &.iconCode{
+  &.icon-code{
     @extend %icon-terminal-window-fill;
   }
 }

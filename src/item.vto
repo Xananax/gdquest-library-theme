@@ -1,7 +1,7 @@
 {{ layout "/src/components/pageItem/pageItem.vto" { title: "Some Item" } }}
-			<h1 class="hasIconBefore iconApp">
-				Create Your First 3D Game From Zero
-			</h1>
+			{{- layout "/src/components/sectionTitle/sectionTitle.vto" { icon: "app" } -}}
+        Create Your First 3D Game From Zero
+      {{- /layout -}}
 			<h2>1. Setting up</h2>
 			{{ include "/src/components/videoEmbed/videoEmbed.vto" { title: "Test", "url": "https://www.youtube.com/watch?v=JlgZtOFMdfc" } }}
 			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
@@ -51,16 +51,22 @@
 			{{ /layout }}
 			{{ include "/src/components/quoteBubble/quoteBubble.vto" }}
 		{{ include "/src/components/downloadButtonsList/downloadButtonsList.vto" }}
-			<h1 class="hasIconBefore iconQuestion">FAQ/Troubleshooting</h1>
+			{{- layout "/src/components/sectionTitle/sectionTitle.vto" { icon: "question" } -}}
+        FAQ/Troubleshooting
+      {{- /layout -}}
 			{{ include "/src/components/exampleCallout/exampleCallout.vto" }}
-			<h1 class="hasIconBefore iconPatch">Updates/Code Patches</h1>
+			{{- layout "/src/components/sectionTitle/sectionTitle.vto" { icon: "patch" } -}}
+        Updates/Code Patches
+      {{- /layout -}}
 			<ul>
 				<li>This learning resource was created with Godot 4.3.</li>
 				<li>
 					No errors have been reported. <a href="#">REPORT AN ERROR.</a>
 				</li>
 			</ul>
-			<h1 class="hasIconBefore iconBonus">Bonus</h1>
+      {{- layout "/src/components/sectionTitle/sectionTitle.vto" { icon: "bonus" } -}}
+        Bonus
+      {{- /layout -}}
 			<p>
 				You can go a lot further with this character controller. After
 				completing the tutorial, the snippets below will help you improve

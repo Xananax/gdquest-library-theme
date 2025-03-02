@@ -56,6 +56,7 @@ export type TemplateFileName =
   | "itemCard"
   | "glossaryList"
   | "authForm"
+  | "sectionTitle"
   | "footer"
   | "mainNav"
   | "calloutsListSingleItem"
@@ -264,6 +265,10 @@ export const templatesFiles = {
   authForm: { 
     relPath: "authForm/authForm.vto",
     fullPath: "src/components/authForm/authForm.vto" 
+  },
+  sectionTitle: { 
+    relPath: "sectionTitle/sectionTitle.vto",
+    fullPath: "src/components/sectionTitle/sectionTitle.vto" 
   },
   footer: { 
     relPath: "footer/footer.vto",

@@ -1,5 +1,9 @@
 <details open class="codeReference">
-    <summary><h1 class="hasIconBefore iconCode">Code Reference</h1></summary>
+    <summary>
+    {{- layout "/src/components/sectionTitle/sectionTitle.vto" { icon: "code" } -}}
+        {{- title || "Code Reference" -}}
+    {{- /layout -}}
+    </summary>
     <div class="codeReferenceContent">
         <p>Here's the complete code for the {{ include "/src/components/fileInText/fileInText.vto" { file: it.file } }} script at the end of this lesson:</p>
         {{ content }}
