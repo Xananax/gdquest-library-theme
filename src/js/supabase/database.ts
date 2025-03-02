@@ -5,7 +5,7 @@ import {
   PostId,
   NotificationPostId,
   NotificationContentId,
-} from "../framework/nominal";
+} from "../framework/nominalTypes.ts";
 
 /** Shortcut to the Stripe address type */
 export type Address = any;

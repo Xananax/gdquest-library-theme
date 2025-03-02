@@ -4,12 +4,14 @@
 		<h4 class="itemSummaryCardTitle">
 			<a href="item.vto">Create your first 3D Game from Zero</a>
 		</h4>
-		<h3 class="itemSummaryCardDate">2024/12/03</h3>
+		<h3 class="itemSummaryCardDate">{{ date_modified && date_modified.dateDDMMYYYY.toReversed().join("/") }}</h3>
+    {{- if cover -}}
 		<img
 			class="itemSummaryCardCover"
-			src="./components/itemSummaryCard/example.jpeg"
+			src="/{{ cover.relPath }}"
 			alt=""
 		/>
+    {{- /if -}}
 		<dl class="itemSummaryCardAttributes">
 			<div>
 				<dt>Type</dt>
@@ -66,9 +68,9 @@
 		</dl>
 		<dl class="itemSummaryCardDates">
 			<dt>Created</dt>
-			<dl>2024/10/12</dl>
+			<dl>{{ date_created && date_created.dateDDMMYYYY.toReversed().join("/") }}</dl>
 			<dt>Updated</dt>
-			<dl>2024/12/03</dl>
+			<dl>{{ date_modified && date_modified.dateDDMMYYYY.toReversed().join("/") }}</dl>
 		</dl>
 		{{ include "/src/components/clapsButton/clapsButton.vto" { claps: 45000 } }}
 	</article>

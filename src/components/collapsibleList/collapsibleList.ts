@@ -1,4 +1,4 @@
-import { add, button } from '../../js/framework/h.ts';
+import { add, button } from '../../js/deps.ts';
 
 const wasProcessedClass = "isJSProcessed";
 

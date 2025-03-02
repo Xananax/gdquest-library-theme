@@ -1,4 +1,4 @@
-import { add, button, span, div } from '../../js/framework/h.ts';
+import { add, button, span, div } from '../../js/deps.ts';
 
 interface PasswordButton extends HTMLButtonElement{ buttonLabel: HTMLSpanElement, setText: (text: string) => void }
 

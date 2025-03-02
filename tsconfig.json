@@ -30,7 +30,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowUnreachableCode": false,
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
     "allowUnusedLabels": false,
     "noImplicitUseStrict": false,
     "suppressExcessPropertyErrors": false,

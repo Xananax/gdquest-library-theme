@@ -1,6 +1,6 @@
 // @ts-check
 // deno-lint-ignore-file no-unused-labels
-import { button, img, li, span } from "../../js/utils.ts";
+import { button, img, li, span } from "../../js/deps.ts";
 
 const currentProps = {
   ariaCurrent: "true",
@@ -190,7 +190,7 @@ const setupCarousel = (carouselWrapper: HTMLElement) => {
         "click",
         () => controller.updateSlider(index),
       );
-      carouselSlidesNavigationContainer.appendChild(li(slideButton));
+      carouselSlidesNavigationContainer.appendChild(li(null, slideButton));
       slideButton.setCurrent = (isCurrent) => {
         if (isCurrent) {
           slideButton.setAttribute("aria-current", "true");

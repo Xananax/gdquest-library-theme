@@ -1,27 +1,35 @@
 {{>
 
 const url = it.url || "";
+makeGifLike = it.makeGifLike || false;
 
 if (!url) {
   throw new Error("No `url` property provided for VideoEmbed");
 }
 
+let provider = ""
+let videoId = ""
+let videoSrc = ""
+
 const youtubeUrlRegex =
   /(?:youtube\.com(?:\/watch\?.*v=|\/embed\/)|youtu\.be\/)(?<videoId>[a-zA-Z_\d-]+)\??/;
-const vimeoUrlRegex =
-  /vimeo\.com\/(video\/)?(?<videoId>\d+)(?:(\?h=|\/)(?<unlistedHash>[0-9a-z]+))?/;
 
-let provider = "youtube";
+videoId = url.match(youtubeUrlRegex)?.groups?.videoId ?? ""
+if(videoId != null && videoId !== ""){
+  provider = "youtube";
+  videoSrc = `https://www.youtube-nocookie.com/embed/${videoId}`
+}else{
+  const vimeoUrlRegex = /vimeo\.com\/(video\/)?(?<videoId>\d+)(?:(\?h=|\/)(?<unlistedHash>[0-9a-z]+))?/;
+  const { videoId, unlistedHash } = url.match(vimeoUrlRegex)?.groups ?? { videoId: "", unlistedHash: "" };
 
-let videoId = url.match(youtubeUrlRegex)?.groups?.videoId ?? ""
-let videoSrc = `https://www.youtube-nocookie.com/embed/${videoId}`
-
-if (videoId == null || videoId === "") {
-  provider = "vimeo";
-  videoId = url.match(vimeoUrlRegex)?.groups?.videoId ?? "";
-  videoSrc = `https://player.vimeo.com/video/${videoId}`;
-  if (videoId == null || videoId === "") {
-    provider = ""
+  if (videoId != null && videoId !== "") {
+    provider = "vimeo";
+    const params = [
+      unlistedHash !== undefined ? `h=${unlistedHash}` : "",
+      makeGifLike ? "autoplay=1&loop=1&muted=1&controls=0" : "",
+      "badge=0"
+    ].join("&")
+    videoSrc = `https://player.vimeo.com/video/${videoId}?${params}`
   }
 }
 

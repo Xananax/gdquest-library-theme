@@ -1,4 +1,4 @@
-import { button } from '../../js/framework/h.ts';
+import { button } from '../../../../process-course-utils/src/web/h.js';
 
 
 function toggleButton(this: HTMLButtonElement) {

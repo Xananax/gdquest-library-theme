@@ -13,3 +13,15 @@ iframe[src*="youtube-nocookie.com"], iframe[src*="vimeo.com"] {
 		margin-bottom: 1.125rem;
 	}
 }
+
+.videoEmbed{
+  padding:56.25% 0 0 0;
+  position:relative;
+  iframe[src*="youtube.com"], iframe[src*="youtube-nocookie.com"], iframe[src*="vimeo.com"]{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+}

@@ -1,68 +1,77 @@
 import {
-    userMessagesCollection,
-    type UserMessageType,
-} from "../../js/userMessagesCollection.ts";
-import { add, span, div, button } from '../../js/framework/h.ts';
+  add,
+  span,
+  div,
+  button,
+  userMessagesCollection,
+  type UserMessageType,
+} from "../../js/deps.ts";
 
 const classPrefix = "userMessage";
 
-const container = div(
-    { class: `${classPrefix}sPane` },
-);
+const container = div({ class: `${classPrefix}sPane` });
 
 add(
-    document.body,
-    div({
-        class: `${classPrefix}s`,
-    }, container),
+  document.body,
+  div(
+    {
+      class: `${classPrefix}s`,
+    },
+    container
+  )
 );
 
 const addUserMessageElement = (
-    id: string,
-    message: string,
-    type: UserMessageType,
+  id: string,
+  message: string,
+  type: UserMessageType
 ) => {
-    const popup = div(
-        {
-            role: "alert",
-            ariaLive: "assertive",
-            ariaAtomic: "true",
-            id,
-            class: [classPrefix, `${classPrefix}--${type}`],
-        },
-        div(null, message),
-        button({
-            ariaControls: id,
-        }, span(null, "Close")),
-    );
+  const popup = div(
+    {
+      role: "alert",
+      ariaLive: "assertive",
+      ariaAtomic: "true",
+      id,
+      class: [classPrefix, `${classPrefix}--${type}`],
+    },
+    div(null, message),
+    button(
+      {
+        ariaControls: id,
+      },
+      span(null, "Close")
+    )
+  );
 
-    add(container, popup);
+  add(container, popup);
 };
 
 container.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    if (target.tagName === "BUTTON") {
-        const id = target.getAttribute("aria-controls");
-        id && userMessagesCollection.remove(id);
-    }
+  const target = event.target as HTMLElement;
+  if (target.tagName === "BUTTON") {
+    const id = target.getAttribute("aria-controls");
+    id && userMessagesCollection.remove(id);
+  }
 });
 
 // we wait for the animation to end before removing the element
 container.addEventListener("animationend", (event) => {
-    const target = event.target as HTMLElement;
-    if (target.classList.contains(`${classPrefix}Closing`)) {
-        target.remove();
-    }
+  const target = event.target as HTMLElement;
+  if (target.classList.contains(`${classPrefix}Closing`)) {
+    target.remove();
+  }
 });
 
-userMessagesCollection.entries().forEach(([id, { message, type }]) =>
+userMessagesCollection
+  .entries()
+  .forEach(([id, { message, type }]) =>
     addUserMessageElement(id, message, type)
-);
+  );
 
 userMessagesCollection.onMessageAdded((id, { message, type }) =>
-    addUserMessageElement(id, message, type)
+  addUserMessageElement(id, message, type)
 );
 
 userMessagesCollection.onMessageRemoved((id) =>
-    document.getElementById(id)?.classList.add(`${classPrefix}Closing`)
+  document.getElementById(id)?.classList.add(`${classPrefix}Closing`)
 );

@@ -1,4 +1,4 @@
-import { Signal } from "../../js/framework/Signal.ts";
+import { Signal } from "../../js/deps.ts";
 
 const clapsOnPage = new Set<[Element, Element]>();
 

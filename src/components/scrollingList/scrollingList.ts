@@ -1,4 +1,4 @@
-import { debounce } from "../../js/framework/debounce.ts";
+import { debounce } from "../../js/deps.ts";
 
 /**
  * Enhances a grid container with slider functionality

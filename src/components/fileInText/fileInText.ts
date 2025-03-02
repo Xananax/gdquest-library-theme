@@ -1,5 +1,4 @@
-import { splitStringToParts } from "../../js/framework/splitStringToParts.ts";
-import { add, span } from '../../js/framework/h.ts';
+import { splitPathStringToParts, add, span } from "../../js/deps.ts";
 
 const classPrefix = "fileInText";
 
@@ -11,7 +10,7 @@ export const splitHTMLElementTextContent = (holderElement: HTMLElement) => {
     }
     const fileOnly = holderElement.hasAttribute("data-file-only");
 
-    const pathParts = splitStringToParts(pathStr);
+    const pathParts = splitPathStringToParts(pathStr);
     let recipient = holderElement;
     if (fileOnly) {
         const label = span(
