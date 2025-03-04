@@ -18,6 +18,8 @@ import "../components/tabList/tabList.ts";
 import "../components/togglerButton/togglerButton.ts";
 import "./prism.js";
 
+import { autoFetchWhenSubmit } from "./deps.ts";
+
 /**/
 
 /*
@@ -52,3 +54,18 @@ document
       a.getAttribute("href") == window.location.pathname &&
       a.classList.add("active")
   );
+
+document.querySelectorAll('form[data-is-autofetch]').forEach((form) => {
+  const onSubmit = autoFetchWhenSubmit({
+    callback: (err, result) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      if (result) {
+        console.log(result);
+      }
+    }
+  })
+  form.addEventListener("submit", onSubmit)
+})

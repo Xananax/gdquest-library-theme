@@ -1,0 +1,10 @@
+/** Only temporary, we can remove this once we don't use embedded forms anymore */
+
+.iframe[data-is-mailinglist] {
+  padding: 0;
+  border: 0;
+  body{
+    margin: 0;
+    padding: 0;
+  }
+}

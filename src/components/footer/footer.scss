@@ -89,6 +89,8 @@ $footerBreakPoint: 60rem;
 		justify-content: start;
 		align-items: start;
 		align-content: start;
+    grid-template-rows: auto 1fr;
+    position: relative;
 		&Title,
 		&Disclaimer {
 			padding: 0;
@@ -102,6 +104,15 @@ $footerBreakPoint: 60rem;
 		&Disclaimer {
 			font-size: 0.75rem;
 		}
+    iframe{
+      width: 100%;
+      border: none;
+      padding: 0;
+      margin: -8px;
+      justify-self: stretch;
+      align-self: stretch;
+      height: 100%;
+    }
 		form {
 			display: grid;
 			grid-template-columns: 1fr auto;

@@ -1,4 +1,5 @@
-<form action="/newsletter/signup" method="POST">
+{{ if signupFormIframe === 'gdschool' }}
+<form action="https://school.gdquest.com/newsletter/signup" method="POST" data-is-autofetch="true">
   <label for="mailinglist-{{ inputid }}">Enter your email</label>
   <input
     type="email"
@@ -39,3 +40,6 @@
     <span>Subscribe</span>
   </button>
 </form>
+{{ else }}
+<iframe src="{{ signupFormIFrame }}"/>
+{{ /if}}

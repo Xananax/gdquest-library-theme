@@ -15,4 +15,5 @@ export {
   userMessagesCollection,
   type UserMessageType,
 } from "../../../process-course-utils/src/web/userMessagesCollection.ts";
-export { type NominalType } from '../../../process-course-utils/src/any/NominalType.ts';
+export { type NominalType } from "../../../process-course-utils/src/any/NominalType.ts";
+export { autoFetchWhenSubmit } from "./../../../process-course-utils/src/web/autoFetchWhenSubmit";
