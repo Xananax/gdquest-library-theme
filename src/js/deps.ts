@@ -7,7 +7,7 @@ export {
   div,
   ul,
   a,
-} from "../../../process-course-utils/src/web/h.ts";
+} from "../../../process-course-utils/src/any/createElement/h.web.ts";
 export { Signal } from "../../../process-course-utils/src/any/Signal.ts";
 export { splitPathStringToParts } from "../../../process-course-utils/src/any/splitPathStringToParts.ts";
 export { debounce } from "../../../process-course-utils/src/any/debounce.ts";
