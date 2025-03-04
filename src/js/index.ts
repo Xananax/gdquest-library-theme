@@ -35,12 +35,20 @@ mainElement &&
   });
 /**/
 
-document.querySelectorAll(".showWhenJSLoads").forEach((element) => {
-	element.removeAttribute("hidden");
-});
+document
+  .querySelectorAll<HTMLElement>(".showWhenJSLoads")
+  .forEach((element) => element.removeAttribute("hidden"));
 
 document
-	.querySelectorAll<HTMLElement>(".makeUsableWhenJSLoads")
-	.forEach((/** HTMLElement */ element) => {
-		element.style.removeProperty("pointer-events");
-	});
+  .querySelectorAll<HTMLElement>(".makeUsableWhenJSLoads")
+  .forEach((element) =>
+    element.style.removeProperty("pointer-events")
+  );
+
+document
+  .querySelectorAll("a")
+  .forEach(
+    (a) =>
+      a.getAttribute("href") == window.location.pathname &&
+      a.classList.add("active")
+  );
