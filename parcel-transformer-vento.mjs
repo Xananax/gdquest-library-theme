@@ -6,7 +6,15 @@ const defaultLocals = {
   prismUrl: "/prism.js",
   staticRoot: "/",
   cssUrl: "/src/css/index.scss",
-  jsUrl: "/src/js/index.ts"
+  jsUrl: "/src/js/index.ts",
+  mainNavLinks: [
+    { label: 'Free Library', url: '/' },
+    { label: 'GDSchool', url: 'https://school.gdquest.com' },
+    { label: 'Educator Hub', url: '/educators' },
+    { label: 'GDQuest\'s Method', url: '/method' },
+  ],
+  showItemSummaryCardButtons: true,
+  showClapsButton: true
 }
 
 export default new Transformer({

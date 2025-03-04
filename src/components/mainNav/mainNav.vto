@@ -11,10 +11,9 @@
     >
       <span>close</span>
     </button>
-    <a class="mainNavItem" href="#">Free Library</a>
-    <a class="mainNavItem" href="#">GDSchool</a>
-    <a class="mainNavItem" href="#">Educator Hub</a>
-    <a class="mainNavItem" href="#">GDQuest's Method</a>
+    {{ for link of mainNavLinks }}
+      <a class="mainNavItem {{ link.className ? link.className : '' }}" href="{{ link.url }}">{{ link.label }}</a>
+    {{ /for }}
     {{ include "/src/components/fontSizeResizer/fontSizeResizer.vto" }}
     <div class="mainNavSecondaryItems">
       <a href="auth.vto" class="buttonOutline buttonLogin">

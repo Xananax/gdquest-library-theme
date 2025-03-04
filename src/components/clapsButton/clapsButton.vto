@@ -1,3 +1,4 @@
+{{ if showClapsButton }}
 <button
 	class="clapsButton"
 	title="Clap"
@@ -14,3 +15,6 @@
 		<span class="clapsButtonAmountTotal" aria-live="polite">{{ claps || 0 }}</span>
 	</span>
 </button>
+{{ else }}
+<!-- Claps button is hidden -->
+{{ /if }}

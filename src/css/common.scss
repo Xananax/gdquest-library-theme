@@ -40,6 +40,10 @@ a {
   color: inherit;
 }
 
+a[href^="http"]{
+  cursor: grab;
+}
+
 .button {
   &Outline {
     padding: 1rem;
@@ -148,9 +152,12 @@ a.socialLink {
 }
 
 .hasIconBefore {
+  padding-inline-start: 2ch;
   &::before {
     @include icon();
-    position: relative;
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.2ch;
     color: var(--icon-color);
   }
   &.icon-app {

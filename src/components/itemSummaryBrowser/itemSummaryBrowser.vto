@@ -3,6 +3,7 @@
 		<div class="itemSummaryBrowserDisplayLoading"></div>
 	{{ include "/src/components/itemSummaryCard/itemSummaryCard.vto" }}
 	</div>
+  {{ if showItemSummaryCardButtons }}
 	<div class="itemSummaryBrowserButtons">
 		<a class="itemSummaryBrowserBrowseButton" href="search.vto">
 			<span
@@ -26,4 +27,5 @@
 			To shuffle cards, javascript is required! Please enable it to get a random card
 		</noscript>
 	</div>
+  {{ /if }}
 </section>

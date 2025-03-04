@@ -8,17 +8,11 @@
 	text-transform: uppercase;
 	font-family: var(--font-title);
 	position: relative;
-	&::before {
-		position: absolute;
-		inset-inline-start: 0;
-		top: 0.2rem;
-	}
 }
 
 .prose {
 	&Title,
 	h1 {
-		padding-inline-start: 2.625rem;
 		@include title();
 		&:first-child {
 			margin-block-start: 0;
