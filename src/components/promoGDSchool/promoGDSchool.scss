@@ -7,6 +7,9 @@ $promoGDSchoolBreakpoint: 1000px;
 	container-name: promoGDSchoolContainer;
 	container-type: inline-size;
 	--color: var(--purple-mid-025);
+  &:first-child {
+    margin-block-start: 25vh;
+  }
 	&Title {
 		@include title;
 		@include paddingMarginReset;

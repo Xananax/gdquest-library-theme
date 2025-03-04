@@ -7,6 +7,7 @@
 @use "../components/authForm/authForm.scss";
 @use "../components/calloutsList/calloutsList.scss";
 @use "../components/carousel/carousel.scss";
+@use "../components/challenge/challenge.scss";
 @use "../components/checkpoint/checkpoint.scss";
 @use "../components/clapsButton/clapsButton.scss";
 @use "../components/clipboardButton/clipboardButton.scss";
@@ -25,6 +26,8 @@
 @use "../components/glossarySearch/glossarySearch.scss";
 @use "../components/glossarySeeAlsoBlock/glossarySeeAlsoBlock.scss";
 @use "../components/gridItemsList/gridItemsList.scss";
+@use "../components/headerSiteSearch/headerSiteSearch.scss";
+@use "../components/hint/hint.scss";
 @use "../components/itemDiscordInvite/itemDiscordInvite.scss";
 @use "../components/itemPageMeta/itemPageMeta.scss";
 @use "../components/itemCard/itemCard.scss";

@@ -17,7 +17,9 @@ const defaultLocals = {
   showClapsButton: true,
   signupFormIFrame: 'https://cdn.forms-content.sg-form.com/19d386b7-ea38-11ef-afd6-f2ea452526b2',
   showPageMetaLinks: true,
-  showTeachingMethodLink: true
+  showTeachingMethodLink: true,
+  showLoginButton: false,
+  showMainMenuSearch: true
 }
 
 export default new Transformer({

@@ -1,0 +1,35 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.headerSiteSearch{
+  padding: 0.5rem 0.3125rem;
+  font-family: var(--font-title);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-purple-main);
+  background: white;
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  padding-inline: 1rem;
+  &Input{
+    padding: 0;
+    outline: 0 none;
+    border: 0 none;
+  }
+  &:focus-within{
+    outline: 2px dashed var(--color-yellow-main);
+    outline-offset: 2px;
+  }
+  &Button{
+    @include buttonReset;
+    span{
+      @include srOnly;
+    }
+    &::before{
+      @include icon();
+      @extend %icon-search;
+      font-size: 1.5rem;
+    }
+  }
+}

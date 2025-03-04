@@ -1,0 +1,10 @@
+<details class="hint">
+  {{ if title }}
+  <summary>{{ title }}</summary>
+  {{ else }}
+  <summary>Click to reveal <strong> Hint</strong></summary>
+  {{ /if }}
+  <div class="hintContent">
+    {{ content }}
+  </div>
+</details>

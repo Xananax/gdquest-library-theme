@@ -11,14 +11,19 @@
     >
       <span>close</span>
     </button>
-    {{ for link of mainNavLinks }}
+    {{- for link of mainNavLinks -}}
       <a class="mainNavItem {{ link.className ? link.className : '' }}" href="{{ link.url }}">{{ link.label }}</a>
-    {{ /for }}
+    {{- /for -}}
     {{ include "/src/components/fontSizeResizer/fontSizeResizer.vto" }}
     <div class="mainNavSecondaryItems">
+      {{- if showLoginButton -}}
       <a href="auth.vto" class="buttonOutline buttonLogin">
         <span>Login</span>
       </a>
+      {{- /if -}}
+      {{- if showMainMenuSearch -}}
+        {{- include "/src/components/headerSiteSearch/headerSiteSearch.vto" -}}
+      {{- /if -}}
       <a href="https://discord.gg/87NNb3Z" class="socialLink">
         <span>Join us on Discord</span>
       </a>

@@ -1,0 +1,31 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+details.hint {
+  color: currentColor;
+  counter-increment: hint;
+  summary {
+    user-select: none;
+    cursor: pointer;
+    strong {
+      &::after{
+        content: counter(hint);
+        margin-inline-start: 0.5ch;
+      }
+      margin-inline-start: 0.5ch;
+    }
+    &::after {
+      content: none;
+    }
+    &:before {
+      @include icon();
+      @extend %icon-eye-close;
+      margin-inline-end: 0.5ch;
+    }
+  }
+  &[open] {
+    summary::before {
+      @extend %icon-eye;
+    }
+  }
+}

@@ -17,6 +17,7 @@ export type TemplateFileName =
   | "discordLetterInvite"
   | "promoGDSchool"
   | "itemSummaryBrowserHero"
+  | "hint"
   | "pageGlossaryEntry"
   | "mainSearch"
   | "mailingListCollector"
@@ -47,6 +48,7 @@ export type TemplateFileName =
   | "pageSearch"
   | "shareWidget"
   | "calloutItem"
+  | "headerSiteSearch"
   | "gridItemsList"
   | "tableOfContents"
   | "collapsibleItem"
@@ -55,6 +57,7 @@ export type TemplateFileName =
   | "emailCampaign"
   | "itemCard"
   | "glossaryList"
+  | "challenge"
   | "authForm"
   | "sectionTitle"
   | "footer"
@@ -109,6 +112,10 @@ export const templatesFiles = {
   itemSummaryBrowserHero: { 
     relPath: "itemSummaryBrowserHero/itemSummaryBrowserHero.vto",
     fullPath: "src/components/itemSummaryBrowserHero/itemSummaryBrowserHero.vto" 
+  },
+  hint: { 
+    relPath: "hint/hint.vto",
+    fullPath: "src/components/hint/hint.vto" 
   },
   pageGlossaryEntry: { 
     relPath: "pageGlossaryEntry/pageGlossaryEntry.vto",
@@ -230,6 +237,10 @@ export const templatesFiles = {
     relPath: "calloutItem/calloutItem.vto",
     fullPath: "src/components/calloutItem/calloutItem.vto" 
   },
+  headerSiteSearch: { 
+    relPath: "headerSiteSearch/headerSiteSearch.vto",
+    fullPath: "src/components/headerSiteSearch/headerSiteSearch.vto" 
+  },
   gridItemsList: { 
     relPath: "gridItemsList/gridItemsList.vto",
     fullPath: "src/components/gridItemsList/gridItemsList.vto" 
@@ -261,6 +272,10 @@ export const templatesFiles = {
   glossaryList: { 
     relPath: "glossaryList/glossaryList.vto",
     fullPath: "src/components/glossaryList/glossaryList.vto" 
+  },
+  challenge: { 
+    relPath: "challenge/challenge.vto",
+    fullPath: "src/components/challenge/challenge.vto" 
   },
   authForm: { 
     relPath: "authForm/authForm.vto",
