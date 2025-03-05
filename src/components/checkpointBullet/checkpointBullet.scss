@@ -1,0 +1,17 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+%checkpointBullet{
+  &::before {
+    @include icon();
+    @extend %icon-check-double;
+    color: var(--purple-mid-025);
+    @include dark {
+      color: rgba(186, 50, 255, 1); /* #BA32FF */
+    }
+  }
+}
+
+.checkpointBullet{
+  @extend %checkpointBullet;
+}

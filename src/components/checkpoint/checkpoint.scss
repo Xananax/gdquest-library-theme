@@ -1,5 +1,6 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
+@use "../checkpointBullet/checkpointBullet.scss" as *;
 
 .checkpoint {
 	ul,
@@ -7,13 +8,6 @@
 		list-style-type: none;
 	}
 	li {
-		&::before {
-			@include icon();
-			@extend %icon-check-double;
-			color: var(--purple-mid-025);
-			@include dark {
-				color: rgba(186, 50, 255, 1); /* #BA32FF */
-			}
-		}
+    @extend %checkpointBullet;
 	}
 }

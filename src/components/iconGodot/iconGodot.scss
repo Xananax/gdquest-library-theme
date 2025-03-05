@@ -1,0 +1,2925 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.iconGodot {
+  --icon-background-color: transparent;
+  --icon-size: 1.2em;
+  font-family: var(--font-mono);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  mask-size: 100% 100%;
+  height: var(--icon-size);
+  width: var(--icon-size);
+  display: inline-block;
+  position: relative;
+  top: 0.25em;
+  margin-inline: 0.1ch;
+  background-image: var(--image);
+  background-color: var(--icon-background-color);
+  outline: 0.15em solid var(--icon-background-color);
+  &[class$="-currentColor"],
+  &[class*="-currentColor "],
+  &UseCurrentColor {
+    background-image: none;
+    background-color: currentColor;
+    mask-image: var(--image);
+    outline: none;
+  }
+  &AsMask {
+    background-image: none;
+    background-color: currentColor;
+    mask-image: var(--image);
+    outline: none;
+  }
+  &Label{
+    @include srOnly();
+  }
+}
+
+.iconGodot-TileSelection {
+  --image: url(/icons/godot/TileSelection.svg);
+}
+.iconGodot-CSGCombiner3D {
+  --image: url(/icons/godot/CSGCombiner3D.svg);
+}
+.iconGodot-Dictionary {
+  --image: url(/icons/godot/Dictionary.svg);
+}
+.iconGodot-RangeSliderLeft {
+  --image: url(/icons/godot/RangeSliderLeft.svg);
+}
+.iconGodot-GuiRadioUnchecked {
+  --image: url(/icons/godot/GuiRadioUnchecked.svg);
+}
+.iconGodot-Script {
+  --image: url(/icons/godot/Script.svg);
+}
+.iconGodot-LightOccluder2D {
+  --image: url(/icons/godot/LightOccluder2D.svg);
+}
+.iconGodot-TabBar {
+  --image: url(/icons/godot/TabBar.svg);
+}
+.iconGodot-Shortcut {
+  --image: url(/icons/godot/Shortcut.svg);
+}
+.iconGodot-Transform3D {
+  --image: url(/icons/godot/Transform3D.svg);
+}
+.iconGodot-MoveUp {
+  --image: url(/icons/godot/MoveUp.svg);
+}
+.iconGodot-Bone {
+  --image: url(/icons/godot/Bone.svg);
+}
+.iconGodot-FileThumbnail {
+  --image: url(/icons/godot/FileThumbnail.svg);
+}
+.iconGodot-PlayOverlay {
+  --image: url(/icons/godot/PlayOverlay.svg);
+}
+.iconGodot-Pause {
+  --image: url(/icons/godot/Pause.svg);
+}
+.iconGodot-VisualShaderNodeBooleanUniform {
+  --image: url(/icons/godot/VisualShaderNodeBooleanUniform.svg);
+}
+.iconGodot-XRNode3D {
+  --image: url(/icons/godot/XRNode3D.svg);
+}
+.iconGodot-SpinBox {
+  --image: url(/icons/godot/SpinBox.svg);
+}
+.iconGodot-GuiOptionArrow {
+  --image: url(/icons/godot/GuiOptionArrow.svg);
+}
+.iconGodot-Plane {
+  --image: url(/icons/godot/Plane.svg);
+}
+.iconGodot-GizmoLightmapProbe {
+  --image: url(/icons/godot/GizmoLightmapProbe.svg);
+}
+.iconGodot-StatusSuccess {
+  --image: url(/icons/godot/StatusSuccess.svg);
+}
+.iconGodot-GridToggle {
+  --image: url(/icons/godot/GridToggle.svg);
+}
+.iconGodot-FileTree {
+  --image: url(/icons/godot/FileTree.svg);
+}
+.iconGodot-Godot {
+  --image: url(/icons/godot/Godot.svg);
+}
+.iconGodot-CreateNewSceneFrom {
+  --image: url(/icons/godot/CreateNewSceneFrom.svg);
+}
+.iconGodot-StatusIndicator {
+  --image: url(/icons/godot/StatusIndicator.svg);
+}
+.iconGodot-SpringBoneSimulator3D {
+  --image: url(/icons/godot/SpringBoneSimulator3D.svg);
+}
+.iconGodot-SnapGrid {
+  --image: url(/icons/godot/SnapGrid.svg);
+}
+.iconGodot-TrackCapture {
+  --image: url(/icons/godot/TrackCapture.svg);
+}
+.iconGodot-Quad {
+  --image: url(/icons/godot/Quad.svg);
+}
+.iconGodot-Panel {
+  --image: url(/icons/godot/Panel.svg);
+}
+.iconGodot-XRBodyModifier3D {
+  --image: url(/icons/godot/XRBodyModifier3D.svg);
+}
+.iconGodot-Forward {
+  --image: url(/icons/godot/Forward.svg);
+}
+.iconGodot-TransitionEndBig {
+  --image: url(/icons/godot/TransitionEndBig.svg);
+}
+.iconGodot-RangeSliderRight {
+  --image: url(/icons/godot/RangeSliderRight.svg);
+}
+.iconGodot-FontFile {
+  --image: url(/icons/godot/FontFile.svg);
+}
+.iconGodot-ImageTexture {
+  --image: url(/icons/godot/ImageTexture.svg);
+}
+.iconGodot-KeyBezierPoint {
+  --image: url(/icons/godot/KeyBezierPoint.svg);
+}
+.iconGodot-PackedStringArray {
+  --image: url(/icons/godot/PackedStringArray.svg);
+}
+.iconGodot-BezierHandlesLinear {
+  --image: url(/icons/godot/BezierHandlesLinear.svg);
+}
+.iconGodot-MenuButton {
+  --image: url(/icons/godot/MenuButton.svg);
+}
+.iconGodot-ControlAlignCenterRight {
+  --image: url(/icons/godot/ControlAlignCenterRight.svg);
+}
+.iconGodot-PageNext {
+  --image: url(/icons/godot/PageNext.svg);
+}
+.iconGodot-VisualShaderNodeVec3Uniform {
+  --image: url(/icons/godot/VisualShaderNodeVec3Uniform.svg);
+}
+.iconGodot-InterpRaw {
+  --image: url(/icons/godot/InterpRaw.svg);
+}
+.iconGodot-SubViewportContainer {
+  --image: url(/icons/godot/SubViewportContainer.svg);
+}
+.iconGodot-EditorHandle {
+  --image: url(/icons/godot/EditorHandle.svg);
+}
+.iconGodot-Notification {
+  --image: url(/icons/godot/Notification.svg);
+}
+.iconGodot-EditPivot {
+  --image: url(/icons/godot/EditPivot.svg);
+}
+.iconGodot-VisualShaderNodeVectorLen {
+  --image: url(/icons/godot/VisualShaderNodeVectorLen.svg);
+}
+.iconGodot-Close {
+  --image: url(/icons/godot/Close.svg);
+}
+.iconGodot-Quaternion {
+  --image: url(/icons/godot/Quaternion.svg);
+}
+.iconGodot-Label {
+  --image: url(/icons/godot/Label.svg);
+}
+.iconGodot-MemberSignal {
+  --image: url(/icons/godot/MemberSignal.svg);
+}
+.iconGodot-ScriptCreate {
+  --image: url(/icons/godot/ScriptCreate.svg);
+}
+.iconGodot-GPUParticlesCollisionBox3D {
+  --image: url(/icons/godot/GPUParticlesCollisionBox3D.svg);
+}
+.iconGodot-Unlock {
+  --image: url(/icons/godot/Unlock.svg);
+}
+.iconGodot-KeyPosition {
+  --image: url(/icons/godot/KeyPosition.svg);
+}
+.iconGodot-CurveIn {
+  --image: url(/icons/godot/CurveIn.svg);
+}
+.iconGodot-VisualShaderNodeExpression {
+  --image: url(/icons/godot/VisualShaderNodeExpression.svg);
+}
+.iconGodot-GuiRadioChecked {
+  --image: url(/icons/godot/GuiRadioChecked.svg);
+}
+.iconGodot-ThemeRemoveCustomItems {
+  --image: url(/icons/godot/ThemeRemoveCustomItems.svg);
+}
+.iconGodot-AudioListener3D {
+  --image: url(/icons/godot/AudioListener3D.svg);
+}
+.iconGodot-CheckButton {
+  --image: url(/icons/godot/CheckButton.svg);
+}
+.iconGodot-CompressedTexture3D {
+  --image: url(/icons/godot/CompressedTexture3D.svg);
+}
+.iconGodot-AnimatedTexture {
+  --image: url(/icons/godot/AnimatedTexture.svg);
+}
+.iconGodot-GuiEllipsis {
+  --image: url(/icons/godot/GuiEllipsis.svg);
+}
+.iconGodot-NavigationPolygon {
+  --image: url(/icons/godot/NavigationPolygon.svg);
+}
+.iconGodot-CollisionPolygon3D {
+  --image: url(/icons/godot/CollisionPolygon3D.svg);
+}
+.iconGodot-FolderBrowse {
+  --image: url(/icons/godot/FolderBrowse.svg);
+}
+.iconGodot-FadeDisabled {
+  --image: url(/icons/godot/FadeDisabled.svg);
+}
+.iconGodot-Translation {
+  --image: url(/icons/godot/Translation.svg);
+}
+.iconGodot-StyleBoxLine {
+  --image: url(/icons/godot/StyleBoxLine.svg);
+}
+.iconGodot-AnimationTrackGroup {
+  --image: url(/icons/godot/AnimationTrackGroup.svg);
+}
+.iconGodot-NotificationDisabled {
+  --image: url(/icons/godot/NotificationDisabled.svg);
+}
+.iconGodot-LightmapProbe {
+  --image: url(/icons/godot/LightmapProbe.svg);
+}
+.iconGodot-SnapDisable {
+  --image: url(/icons/godot/SnapDisable.svg);
+}
+.iconGodot-RemoteTransform2D {
+  --image: url(/icons/godot/RemoteTransform2D.svg);
+}
+.iconGodot-CollisionShape2D {
+  --image: url(/icons/godot/CollisionShape2D.svg);
+}
+.iconGodot-RayCast2D {
+  --image: url(/icons/godot/RayCast2D.svg);
+}
+.iconGodot-Help {
+  --image: url(/icons/godot/Help.svg);
+}
+.iconGodot-KeyEasedSelected {
+  --image: url(/icons/godot/KeyEasedSelected.svg);
+}
+.iconGodot-KeySelected {
+  --image: url(/icons/godot/KeySelected.svg);
+}
+.iconGodot-CompressedTexture2D {
+  --image: url(/icons/godot/CompressedTexture2D.svg);
+}
+.iconGodot-GuiSliderGrabberHl {
+  --image: url(/icons/godot/GuiSliderGrabberHl.svg);
+}
+.iconGodot-GPUParticlesAttractorVectorField3D {
+  --image: url(/icons/godot/GPUParticlesAttractorVectorField3D.svg);
+}
+.iconGodot-PackedVector4Array {
+  --image: url(/icons/godot/PackedVector4Array.svg);
+}
+.iconGodot-PlaceholderMesh {
+  --image: url(/icons/godot/PlaceholderMesh.svg);
+}
+.iconGodot-PointMesh {
+  --image: url(/icons/godot/PointMesh.svg);
+}
+.iconGodot-RotateLeft {
+  --image: url(/icons/godot/RotateLeft.svg);
+}
+.iconGodot-GizmoLight {
+  --image: url(/icons/godot/GizmoLight.svg);
+}
+.iconGodot-CSGSphere3D {
+  --image: url(/icons/godot/CSGSphere3D.svg);
+}
+.iconGodot-FlowContainer {
+  --image: url(/icons/godot/FlowContainer.svg);
+}
+.iconGodot-InterpLinearAngle {
+  --image: url(/icons/godot/InterpLinearAngle.svg);
+}
+.iconGodot-TitleBarLogo {
+  --image: url(/icons/godot/TitleBarLogo.svg);
+}
+.iconGodot-DebugStep {
+  --image: url(/icons/godot/DebugStep.svg);
+}
+.iconGodot-XRHandModifier3D {
+  --image: url(/icons/godot/XRHandModifier3D.svg);
+}
+.iconGodot-ViewportSpeed {
+  --image: url(/icons/godot/ViewportSpeed.svg);
+}
+.iconGodot-GPUParticlesAttractorSphere3D {
+  --image: url(/icons/godot/GPUParticlesAttractorSphere3D.svg);
+}
+.iconGodot-AnimationAutoFit {
+  --image: url(/icons/godot/AnimationAutoFit.svg);
+}
+.iconGodot-Tools {
+  --image: url(/icons/godot/Tools.svg);
+}
+.iconGodot-Bone2D {
+  --image: url(/icons/godot/Bone2D.svg);
+}
+.iconGodot-BoneMapHumanBody {
+  --image: url(/icons/godot/BoneMapHumanBody.svg);
+}
+.iconGodot-MemberConstant {
+  --image: url(/icons/godot/MemberConstant.svg);
+}
+.iconGodot-GuiToggleOffMirrored {
+  --image: url(/icons/godot/GuiToggleOffMirrored.svg);
+}
+.iconGodot-NodeInfo {
+  --image: url(/icons/godot/NodeInfo.svg);
+}
+.iconGodot-NextFrame {
+  --image: url(/icons/godot/NextFrame.svg);
+}
+.iconGodot-Rename {
+  --image: url(/icons/godot/Rename.svg);
+}
+.iconGodot-PathFollow2D {
+  --image: url(/icons/godot/PathFollow2D.svg);
+}
+.iconGodot-KeyNext {
+  --image: url(/icons/godot/KeyNext.svg);
+}
+.iconGodot-SignalsAndGroups {
+  --image: url(/icons/godot/SignalsAndGroups.svg);
+}
+.iconGodot-EditorPlugin {
+  --image: url(/icons/godot/EditorPlugin.svg);
+}
+.iconGodot-KeyScale {
+  --image: url(/icons/godot/KeyScale.svg);
+}
+.iconGodot-NewRoot {
+  --image: url(/icons/godot/NewRoot.svg);
+}
+.iconGodot-Vector4i {
+  --image: url(/icons/godot/Vector4i.svg);
+}
+.iconGodot-FileAccess {
+  --image: url(/icons/godot/FileAccess.svg);
+}
+.iconGodot-GuiCheckedDisabled {
+  --image: url(/icons/godot/GuiCheckedDisabled.svg);
+}
+.iconGodot-Curve {
+  --image: url(/icons/godot/Curve.svg);
+}
+.iconGodot-MultiMesh {
+  --image: url(/icons/godot/MultiMesh.svg);
+}
+.iconGodot-Color {
+  --image: url(/icons/godot/Color.svg);
+}
+.iconGodot-SphereMesh {
+  --image: url(/icons/godot/SphereMesh.svg);
+}
+.iconGodot-VehicleWheel3D {
+  --image: url(/icons/godot/VehicleWheel3D.svg);
+}
+.iconGodot-EditKey {
+  --image: url(/icons/godot/EditKey.svg);
+}
+.iconGodot-ToolRotate {
+  --image: url(/icons/godot/ToolRotate.svg);
+}
+.iconGodot-Onion {
+  --image: url(/icons/godot/Onion.svg);
+}
+.iconGodot-CodeHighlighter {
+  --image: url(/icons/godot/CodeHighlighter.svg);
+}
+.iconGodot-ArrowLeft {
+  --image: url(/icons/godot/ArrowLeft.svg);
+}
+.iconGodot-GradientTexture1D {
+  --image: url(/icons/godot/GradientTexture1D.svg);
+}
+.iconGodot-AudioStreamMicrophone {
+  --image: url(/icons/godot/AudioStreamMicrophone.svg);
+}
+.iconGodot-GuiViewportVhsplitter {
+  --image: url(/icons/godot/GuiViewportVhsplitter.svg);
+}
+.iconGodot-KeyValue {
+  --image: url(/icons/godot/KeyValue.svg);
+}
+.iconGodot-MethodOverrideAndSlot {
+  --image: url(/icons/godot/MethodOverrideAndSlot.svg);
+}
+.iconGodot-LocalVariable {
+  --image: url(/icons/godot/LocalVariable.svg);
+}
+.iconGodot-Area2D {
+  --image: url(/icons/godot/Area2D.svg);
+}
+.iconGodot-World3D {
+  --image: url(/icons/godot/World3D.svg);
+}
+.iconGodot-PortableCompressedTexture2D {
+  --image: url(/icons/godot/PortableCompressedTexture2D.svg);
+}
+.iconGodot-VSlider {
+  --image: url(/icons/godot/VSlider.svg);
+}
+.iconGodot-Sprite2D {
+  --image: url(/icons/godot/Sprite2D.svg);
+}
+.iconGodot-NodeWarnings4Plus {
+  --image: url(/icons/godot/NodeWarnings4Plus.svg);
+}
+.iconGodot-Marker2D {
+  --image: url(/icons/godot/Marker2D.svg);
+}
+.iconGodot-VisualShaderNodeFloatFunc {
+  --image: url(/icons/godot/VisualShaderNodeFloatFunc.svg);
+}
+.iconGodot-InputEventScreenDrag {
+  --image: url(/icons/godot/InputEventScreenDrag.svg);
+}
+.iconGodot-Groups {
+  --image: url(/icons/godot/Groups.svg);
+}
+.iconGodot-StaticBody2D {
+  --image: url(/icons/godot/StaticBody2D.svg);
+}
+.iconGodot-TransitionEndAutoBig {
+  --image: url(/icons/godot/TransitionEndAutoBig.svg);
+}
+.iconGodot-CSGCapsule3D {
+  --image: url(/icons/godot/CSGCapsule3D.svg);
+}
+.iconGodot-Gizmo3DSamplePlayer {
+  --image: url(/icons/godot/Gizmo3DSamplePlayer.svg);
+}
+.iconGodot-Checkerboard {
+  --image: url(/icons/godot/Checkerboard.svg);
+}
+.iconGodot-World2D {
+  --image: url(/icons/godot/World2D.svg);
+}
+.iconGodot-AnimatableBody3D {
+  --image: url(/icons/godot/AnimatableBody3D.svg);
+}
+.iconGodot-Node {
+  --image: url(/icons/godot/Node.svg);
+}
+.iconGodot-CombineLines {
+  --image: url(/icons/godot/CombineLines.svg);
+}
+.iconGodot-NavigationLink3D {
+  --image: url(/icons/godot/NavigationLink3D.svg);
+}
+.iconGodot-Object {
+  --image: url(/icons/godot/Object.svg);
+}
+.iconGodot-EditorHandleAdd {
+  --image: url(/icons/godot/EditorHandleAdd.svg);
+}
+.iconGodot-ToolBoneSelect {
+  --image: url(/icons/godot/ToolBoneSelect.svg);
+}
+.iconGodot-GuiToggleOnDisabledMirrored {
+  --image: url(/icons/godot/GuiToggleOnDisabledMirrored.svg);
+}
+.iconGodot-ShaderGlobalsOverride {
+  --image: url(/icons/godot/ShaderGlobalsOverride.svg);
+}
+.iconGodot-PlayCustom {
+  --image: url(/icons/godot/PlayCustom.svg);
+}
+.iconGodot-GuiScrollArrowRight {
+  --image: url(/icons/godot/GuiScrollArrowRight.svg);
+}
+.iconGodot-CurveLinear {
+  --image: url(/icons/godot/CurveLinear.svg);
+}
+.iconGodot-NoiseTexture2D {
+  --image: url(/icons/godot/NoiseTexture2D.svg);
+}
+.iconGodot-CollisionPolygon2D {
+  --image: url(/icons/godot/CollisionPolygon2D.svg);
+}
+.iconGodot-Decal {
+  --image: url(/icons/godot/Decal.svg);
+}
+.iconGodot-GridMap {
+  --image: url(/icons/godot/GridMap.svg);
+}
+.iconGodot-CylinderMesh {
+  --image: url(/icons/godot/CylinderMesh.svg);
+}
+.iconGodot-EditorPathSharpHandle {
+  --image: url(/icons/godot/EditorPathSharpHandle.svg);
+}
+.iconGodot-Gradient {
+  --image: url(/icons/godot/Gradient.svg);
+}
+.iconGodot-CanvasGroup {
+  --image: url(/icons/godot/CanvasGroup.svg);
+}
+.iconGodot-GuiToggleOffDisabledMirrored {
+  --image: url(/icons/godot/GuiToggleOffDisabledMirrored.svg);
+}
+.iconGodot-ThumbnailWait {
+  --image: url(/icons/godot/ThumbnailWait.svg);
+}
+.iconGodot-TileMap {
+  --image: url(/icons/godot/TileMap.svg);
+}
+.iconGodot-SoftBody3D {
+  --image: url(/icons/godot/SoftBody3D.svg);
+}
+.iconGodot-GizmoDirectionalLight {
+  --image: url(/icons/godot/GizmoDirectionalLight.svg);
+}
+.iconGodot-FontVariation {
+  --image: url(/icons/godot/FontVariation.svg);
+}
+.iconGodot-CSGBox3D {
+  --image: url(/icons/godot/CSGBox3D.svg);
+}
+.iconGodot-Ruler {
+  --image: url(/icons/godot/Ruler.svg);
+}
+.iconGodot-Vector4 {
+  --image: url(/icons/godot/Vector4.svg);
+}
+.iconGodot-SpringArm3D {
+  --image: url(/icons/godot/SpringArm3D.svg);
+}
+.iconGodot-Debug {
+  --image: url(/icons/godot/Debug.svg);
+}
+.iconGodot-Nil {
+  --image: url(/icons/godot/Nil.svg);
+}
+.iconGodot-AudioBusLayout {
+  --image: url(/icons/godot/AudioBusLayout.svg);
+}
+.iconGodot-Zoom {
+  --image: url(/icons/godot/Zoom.svg);
+}
+.iconGodot-MirrorX {
+  --image: url(/icons/godot/MirrorX.svg);
+}
+.iconGodot-EditorPathSmoothHandle {
+  --image: url(/icons/godot/EditorPathSmoothHandle.svg);
+}
+.iconGodot-VideoStreamTheora {
+  --image: url(/icons/godot/VideoStreamTheora.svg);
+}
+.iconGodot-TransitionSyncAuto {
+  --image: url(/icons/godot/TransitionSyncAuto.svg);
+}
+.iconGodot-KeyBezierSelected {
+  --image: url(/icons/godot/KeyBezierSelected.svg);
+}
+.iconGodot-Projection {
+  --image: url(/icons/godot/Projection.svg);
+}
+.iconGodot-PagePrevious {
+  --image: url(/icons/godot/PagePrevious.svg);
+}
+.iconGodot-TransitionImmediate {
+  --image: url(/icons/godot/TransitionImmediate.svg);
+}
+.iconGodot-LightmapGIData {
+  --image: url(/icons/godot/LightmapGIData.svg);
+}
+.iconGodot-Key {
+  --image: url(/icons/godot/Key.svg);
+}
+.iconGodot-VisualShaderNodeVectorDistance {
+  --image: url(/icons/godot/VisualShaderNodeVectorDistance.svg);
+}
+.iconGodot-2D {
+  --image: url(/icons/godot/2D.svg);
+}
+.iconGodot-FileBroken {
+  --image: url(/icons/godot/FileBroken.svg);
+}
+.iconGodot-PickerCursor {
+  --image: url(/icons/godot/PickerCursor.svg);
+}
+.iconGodot-NewKey {
+  --image: url(/icons/godot/NewKey.svg);
+}
+.iconGodot-BoneMapHumanFace {
+  --image: url(/icons/godot/BoneMapHumanFace.svg);
+}
+.iconGodot-KeyXPosition {
+  --image: url(/icons/godot/KeyXPosition.svg);
+}
+.iconGodot-MultiMeshInstance2D {
+  --image: url(/icons/godot/MultiMeshInstance2D.svg);
+}
+.iconGodot-VisualShaderNodeTexture3DUniform {
+  --image: url(/icons/godot/VisualShaderNodeTexture3DUniform.svg);
+}
+.iconGodot-PageFirst {
+  --image: url(/icons/godot/PageFirst.svg);
+}
+.iconGodot-Favorites {
+  --image: url(/icons/godot/Favorites.svg);
+}
+.iconGodot-GPUParticles3D {
+  --image: url(/icons/godot/GPUParticles3D.svg);
+}
+.iconGodot-ResourcePreloader {
+  --image: url(/icons/godot/ResourcePreloader.svg);
+}
+.iconGodot-CurveTilt {
+  --image: url(/icons/godot/CurveTilt.svg);
+}
+.iconGodot-AudioBusBypass {
+  --image: url(/icons/godot/AudioBusBypass.svg);
+}
+.iconGodot-PlayBackwards {
+  --image: url(/icons/godot/PlayBackwards.svg);
+}
+.iconGodot-Vector2 {
+  --image: url(/icons/godot/Vector2.svg);
+}
+.iconGodot-BezierHandlesBalanced {
+  --image: url(/icons/godot/BezierHandlesBalanced.svg);
+}
+.iconGodot-RibbonTrailMesh {
+  --image: url(/icons/godot/RibbonTrailMesh.svg);
+}
+.iconGodot-Generic6DOFJoint3D {
+  --image: url(/icons/godot/Generic6DOFJoint3D.svg);
+}
+.iconGodot-KeyRotation {
+  --image: url(/icons/godot/KeyRotation.svg);
+}
+.iconGodot-SeparationRayShape2D {
+  --image: url(/icons/godot/SeparationRayShape2D.svg);
+}
+.iconGodot-TransitionImmediateAutoBig {
+  --image: url(/icons/godot/TransitionImmediateAutoBig.svg);
+}
+.iconGodot-VisualShaderPort {
+  --image: url(/icons/godot/VisualShaderPort.svg);
+}
+.iconGodot-AutoTriangle {
+  --image: url(/icons/godot/AutoTriangle.svg);
+}
+.iconGodot-RID {
+  --image: url(/icons/godot/RID.svg);
+}
+.iconGodot-AudioStreamPlayer2D {
+  --image: url(/icons/godot/AudioStreamPlayer2D.svg);
+}
+.iconGodot-VisualShaderNodeTransformCompose {
+  --image: url(/icons/godot/VisualShaderNodeTransformCompose.svg);
+}
+.iconGodot-BaseButton {
+  --image: url(/icons/godot/BaseButton.svg);
+}
+.iconGodot-ClassList {
+  --image: url(/icons/godot/ClassList.svg);
+}
+.iconGodot-ParticleProcessMaterial {
+  --image: url(/icons/godot/ParticleProcessMaterial.svg);
+}
+.iconGodot-Texture2DArray {
+  --image: url(/icons/godot/Texture2DArray.svg);
+}
+.iconGodot-NavigationAgent2D {
+  --image: url(/icons/godot/NavigationAgent2D.svg);
+}
+.iconGodot-ShaderInclude {
+  --image: url(/icons/godot/ShaderInclude.svg);
+}
+.iconGodot-NinePatchRect {
+  --image: url(/icons/godot/NinePatchRect.svg);
+}
+.iconGodot-VisualShaderNodeTextureUniformTriplanar {
+  --image: url(/icons/godot/VisualShaderNodeTextureUniformTriplanar.svg);
+}
+.iconGodot-PackedFloat32Array {
+  --image: url(/icons/godot/PackedFloat32Array.svg);
+}
+.iconGodot-SpotLight3D {
+  --image: url(/icons/godot/SpotLight3D.svg);
+}
+.iconGodot-Filesystem {
+  --image: url(/icons/godot/Filesystem.svg);
+}
+.iconGodot-InterpCubicAngle {
+  --image: url(/icons/godot/InterpCubicAngle.svg);
+}
+.iconGodot-Animation {
+  --image: url(/icons/godot/Animation.svg);
+}
+.iconGodot-ContainerLayout {
+  --image: url(/icons/godot/ContainerLayout.svg);
+}
+.iconGodot-CameraTexture {
+  --image: url(/icons/godot/CameraTexture.svg);
+}
+.iconGodot-ZoomLess {
+  --image: url(/icons/godot/ZoomLess.svg);
+}
+.iconGodot-GizmoCPUParticles3D {
+  --image: url(/icons/godot/GizmoCPUParticles3D.svg);
+}
+.iconGodot-GPUParticlesCollisionHeightField3D {
+  --image: url(/icons/godot/GPUParticlesCollisionHeightField3D.svg);
+}
+.iconGodot-ActionCut {
+  --image: url(/icons/godot/ActionCut.svg);
+}
+.iconGodot-Skeleton3D {
+  --image: url(/icons/godot/Skeleton3D.svg);
+}
+.iconGodot-WarningPattern {
+  --image: url(/icons/godot/WarningPattern.svg);
+}
+.iconGodot-AudioBusSolo {
+  --image: url(/icons/godot/AudioBusSolo.svg);
+}
+.iconGodot-MarginContainer {
+  --image: url(/icons/godot/MarginContainer.svg);
+}
+.iconGodot-TerrainMatchSides {
+  --image: url(/icons/godot/TerrainMatchSides.svg);
+}
+.iconGodot-PageLast {
+  --image: url(/icons/godot/PageLast.svg);
+}
+.iconGodot-KeyBezierHandle {
+  --image: url(/icons/godot/KeyBezierHandle.svg);
+}
+.iconGodot-VScrollBar {
+  --image: url(/icons/godot/VScrollBar.svg);
+}
+.iconGodot-ORMMaterial3D {
+  --image: url(/icons/godot/ORMMaterial3D.svg);
+}
+.iconGodot-FadeIn {
+  --image: url(/icons/godot/FadeIn.svg);
+}
+.iconGodot-MaterialPreviewCube {
+  --image: url(/icons/godot/MaterialPreviewCube.svg);
+}
+.iconGodot-NavigationObstacle3D {
+  --image: url(/icons/godot/NavigationObstacle3D.svg);
+}
+.iconGodot-GuiScrollGrabberHl {
+  --image: url(/icons/godot/GuiScrollGrabberHl.svg);
+}
+.iconGodot-HScrollBar {
+  --image: url(/icons/godot/HScrollBar.svg);
+}
+.iconGodot-Ungroup {
+  --image: url(/icons/godot/Ungroup.svg);
+}
+.iconGodot-SeparationRayShape3D {
+  --image: url(/icons/godot/SeparationRayShape3D.svg);
+}
+.iconGodot-MainMovieWrite {
+  --image: url(/icons/godot/MainMovieWrite.svg);
+}
+.iconGodot-AudioStreamWAV {
+  --image: url(/icons/godot/AudioStreamWAV.svg);
+}
+.iconGodot-TileUnchecked {
+  --image: url(/icons/godot/TileUnchecked.svg);
+}
+.iconGodot-ControlAlignTopRight {
+  --image: url(/icons/godot/ControlAlignTopRight.svg);
+}
+.iconGodot-EditorControlAnchor {
+  --image: url(/icons/godot/EditorControlAnchor.svg);
+}
+.iconGodot-VBoxContainer {
+  --image: url(/icons/godot/VBoxContainer.svg);
+}
+.iconGodot-ScriptExtend {
+  --image: url(/icons/godot/ScriptExtend.svg);
+}
+.iconGodot-KeyXScale {
+  --image: url(/icons/godot/KeyXScale.svg);
+}
+.iconGodot-ArrowUp {
+  --image: url(/icons/godot/ArrowUp.svg);
+}
+.iconGodot-NavigationMesh {
+  --image: url(/icons/godot/NavigationMesh.svg);
+}
+.iconGodot-UseBlendEnable {
+  --image: url(/icons/godot/UseBlendEnable.svg);
+}
+.iconGodot-TerrainMatchCornersAndSides {
+  --image: url(/icons/godot/TerrainMatchCornersAndSides.svg);
+}
+.iconGodot-FileMediumThumb {
+  --image: url(/icons/godot/FileMediumThumb.svg);
+}
+.iconGodot-Area3D {
+  --image: url(/icons/godot/Area3D.svg);
+}
+.iconGodot-ConfirmationDialog {
+  --image: url(/icons/godot/ConfirmationDialog.svg);
+}
+.iconGodot-File {
+  --image: url(/icons/godot/File.svg);
+}
+.iconGodot-AudioStreamMP3 {
+  --image: url(/icons/godot/AudioStreamMP3.svg);
+}
+.iconGodot-FPS {
+  --image: url(/icons/godot/FPS.svg);
+}
+.iconGodot-Parallax2D {
+  --image: url(/icons/godot/Parallax2D.svg);
+}
+.iconGodot-Basis {
+  --image: url(/icons/godot/Basis.svg);
+}
+.iconGodot-SphereShape3D {
+  --image: url(/icons/godot/SphereShape3D.svg);
+}
+.iconGodot-VisualShaderNodeGlobalExpression {
+  --image: url(/icons/godot/VisualShaderNodeGlobalExpression.svg);
+}
+.iconGodot-PolygonPathFinder {
+  --image: url(/icons/godot/PolygonPathFinder.svg);
+}
+.iconGodot-Info {
+  --image: url(/icons/godot/Info.svg);
+}
+.iconGodot-FileDialog {
+  --image: url(/icons/godot/FileDialog.svg);
+}
+.iconGodot-Camera2D {
+  --image: url(/icons/godot/Camera2D.svg);
+}
+.iconGodot-PlaceholderTexture3D {
+  --image: url(/icons/godot/PlaceholderTexture3D.svg);
+}
+.iconGodot-ControlAlignHCenterWide {
+  --image: url(/icons/godot/ControlAlignHCenterWide.svg);
+}
+.iconGodot-ReverseGradient {
+  --image: url(/icons/godot/ReverseGradient.svg);
+}
+.iconGodot-GuiSpace {
+  --image: url(/icons/godot/GuiSpace.svg);
+}
+.iconGodot-X509Certificate {
+  --image: url(/icons/godot/X509Certificate.svg);
+}
+.iconGodot-Curve3D {
+  --image: url(/icons/godot/Curve3D.svg);
+}
+.iconGodot-KeyTrackBlendShape {
+  --image: url(/icons/godot/KeyTrackBlendShape.svg);
+}
+.iconGodot-CapsuleShape2D {
+  --image: url(/icons/godot/CapsuleShape2D.svg);
+}
+.iconGodot-MeshLibrary {
+  --image: url(/icons/godot/MeshLibrary.svg);
+}
+.iconGodot-TransitionSyncBig {
+  --image: url(/icons/godot/TransitionSyncBig.svg);
+}
+.iconGodot-TransitionImmediateBig {
+  --image: url(/icons/godot/TransitionImmediateBig.svg);
+}
+.iconGodot-GPUParticlesCollisionSphere3D {
+  --image: url(/icons/godot/GPUParticlesCollisionSphere3D.svg);
+}
+.iconGodot-Play {
+  --image: url(/icons/godot/Play.svg);
+}
+.iconGodot-PopupMenu {
+  --image: url(/icons/godot/PopupMenu.svg);
+}
+.iconGodot-Warning {
+  --image: url(/icons/godot/Warning.svg);
+}
+.iconGodot-PreviewRotate {
+  --image: url(/icons/godot/PreviewRotate.svg);
+}
+.iconGodot-Pin {
+  --image: url(/icons/godot/Pin.svg);
+}
+.iconGodot-GuiScrollGrabber {
+  --image: url(/icons/godot/GuiScrollGrabber.svg);
+}
+.iconGodot-Container {
+  --image: url(/icons/godot/Container.svg);
+}
+.iconGodot-NodePath {
+  --image: url(/icons/godot/NodePath.svg);
+}
+.iconGodot-ControlAlignLeftWide {
+  --image: url(/icons/godot/ControlAlignLeftWide.svg);
+}
+.iconGodot-GuiScrollBg {
+  --image: url(/icons/godot/GuiScrollBg.svg);
+}
+.iconGodot-TileMapLayer {
+  --image: url(/icons/godot/TileMapLayer.svg);
+}
+.iconGodot-Texture2D {
+  --image: url(/icons/godot/Texture2D.svg);
+}
+.iconGodot-Path2D {
+  --image: url(/icons/godot/Path2D.svg);
+}
+.iconGodot-SpringBoneCollision3D {
+  --image: url(/icons/godot/SpringBoneCollision3D.svg);
+}
+.iconGodot-PackedInt32Array {
+  --image: url(/icons/godot/PackedInt32Array.svg);
+}
+.iconGodot-GPUParticlesAttractorBox3D {
+  --image: url(/icons/godot/GPUParticlesAttractorBox3D.svg);
+}
+.iconGodot-RemoveInternal {
+  --image: url(/icons/godot/RemoveInternal.svg);
+}
+.iconGodot-StyleBoxEmpty {
+  --image: url(/icons/godot/StyleBoxEmpty.svg);
+}
+.iconGodot-RigidBody2D {
+  --image: url(/icons/godot/RigidBody2D.svg);
+}
+.iconGodot-GroupViewport {
+  --image: url(/icons/godot/GroupViewport.svg);
+}
+.iconGodot-KeyboardPhysical {
+  --image: url(/icons/godot/KeyboardPhysical.svg);
+}
+.iconGodot-Duplicate {
+  --image: url(/icons/godot/Duplicate.svg);
+}
+.iconGodot-Line2D {
+  --image: url(/icons/godot/Line2D.svg);
+}
+.iconGodot-CollisionShape3D {
+  --image: url(/icons/godot/CollisionShape3D.svg);
+}
+.iconGodot-Editor3DHandle {
+  --image: url(/icons/godot/Editor3DHandle.svg);
+}
+.iconGodot-MenuBar {
+  --image: url(/icons/godot/MenuBar.svg);
+}
+.iconGodot-MeshInstance3D {
+  --image: url(/icons/godot/MeshInstance3D.svg);
+}
+.iconGodot-Mesh {
+  --image: url(/icons/godot/Mesh.svg);
+}
+.iconGodot-GizmoFogVolume {
+  --image: url(/icons/godot/GizmoFogVolume.svg);
+}
+.iconGodot-Sky {
+  --image: url(/icons/godot/Sky.svg);
+}
+.iconGodot-SpriteFrames {
+  --image: url(/icons/godot/SpriteFrames.svg);
+}
+.iconGodot-VideoStream {
+  --image: url(/icons/godot/VideoStream.svg);
+}
+.iconGodot-MultiplayerSynchronizer {
+  --image: url(/icons/godot/MultiplayerSynchronizer.svg);
+}
+.iconGodot-VisibleOnScreenNotifier2D {
+  --image: url(/icons/godot/VisibleOnScreenNotifier2D.svg);
+}
+.iconGodot-RichTextEffect {
+  --image: url(/icons/godot/RichTextEffect.svg);
+}
+.iconGodot-GuiRadioCheckedDisabled {
+  --image: url(/icons/godot/GuiRadioCheckedDisabled.svg);
+}
+.iconGodot-2DNodes {
+  --image: url(/icons/godot/2DNodes.svg);
+}
+.iconGodot-CSGCylinder3D {
+  --image: url(/icons/godot/CSGCylinder3D.svg);
+}
+.iconGodot-GuiDropdown {
+  --image: url(/icons/godot/GuiDropdown.svg);
+}
+.iconGodot-CurveDelete {
+  --image: url(/icons/godot/CurveDelete.svg);
+}
+.iconGodot-Slot {
+  --image: url(/icons/godot/Slot.svg);
+}
+.iconGodot-RayCast3D {
+  --image: url(/icons/godot/RayCast3D.svg);
+}
+.iconGodot-ReferenceRect {
+  --image: url(/icons/godot/ReferenceRect.svg);
+}
+.iconGodot-MarkerSelected {
+  --image: url(/icons/godot/MarkerSelected.svg);
+}
+.iconGodot-XRFaceModifier3D {
+  --image: url(/icons/godot/XRFaceModifier3D.svg);
+}
+.iconGodot-CircleShape2D {
+  --image: url(/icons/godot/CircleShape2D.svg);
+}
+.iconGodot-CurveCurve {
+  --image: url(/icons/godot/CurveCurve.svg);
+}
+.iconGodot-EditorPositionUnselected {
+  --image: url(/icons/godot/EditorPositionUnselected.svg);
+}
+.iconGodot-StaticBody3D {
+  --image: url(/icons/godot/StaticBody3D.svg);
+}
+.iconGodot-ConcavePolygonShape3D {
+  --image: url(/icons/godot/ConcavePolygonShape3D.svg);
+}
+.iconGodot-VisualShaderNodeIntFunc {
+  --image: url(/icons/godot/VisualShaderNodeIntFunc.svg);
+}
+.iconGodot-InputEventMouseButton {
+  --image: url(/icons/godot/InputEventMouseButton.svg);
+}
+.iconGodot-InterpCubic {
+  --image: url(/icons/godot/InterpCubic.svg);
+}
+.iconGodot-GridContainer {
+  --image: url(/icons/godot/GridContainer.svg);
+}
+.iconGodot-DampedSpringJoint2D {
+  --image: url(/icons/godot/DampedSpringJoint2D.svg);
+}
+.iconGodot-SpringBoneCollisionPlane3D {
+  --image: url(/icons/godot/SpringBoneCollisionPlane3D.svg);
+}
+.iconGodot-PlayStartBackwards {
+  --image: url(/icons/godot/PlayStartBackwards.svg);
+}
+.iconGodot-AudioStreamRandomizer {
+  --image: url(/icons/godot/AudioStreamRandomizer.svg);
+}
+.iconGodot-GizmoCamera3D {
+  --image: url(/icons/godot/GizmoCamera3D.svg);
+}
+.iconGodot-MissingNode {
+  --image: url(/icons/godot/MissingNode.svg);
+}
+.iconGodot-FontSize {
+  --image: url(/icons/godot/FontSize.svg);
+}
+.iconGodot-Viewport {
+  --image: url(/icons/godot/Viewport.svg);
+}
+.iconGodot-ControlAlignCenterTop {
+  --image: url(/icons/godot/ControlAlignCenterTop.svg);
+}
+.iconGodot-Back {
+  --image: url(/icons/godot/Back.svg);
+}
+.iconGodot-Error {
+  --image: url(/icons/godot/Error.svg);
+}
+.iconGodot-ProjectList {
+  --image: url(/icons/godot/ProjectList.svg);
+}
+.iconGodot-Vector2i {
+  --image: url(/icons/godot/Vector2i.svg);
+}
+.iconGodot-VisualShaderNodeColorConstant {
+  --image: url(/icons/godot/VisualShaderNodeColorConstant.svg);
+}
+.iconGodot-HTTPRequest {
+  --image: url(/icons/godot/HTTPRequest.svg);
+}
+.iconGodot-GeometryInstance3D {
+  --image: url(/icons/godot/GeometryInstance3D.svg);
+}
+.iconGodot-ProjectIconLoading {
+  --image: url(/icons/godot/ProjectIconLoading.svg);
+}
+.iconGodot-NavigationAgent3D {
+  --image: url(/icons/godot/NavigationAgent3D.svg);
+}
+.iconGodot-GridLayout {
+  --image: url(/icons/godot/GridLayout.svg);
+}
+.iconGodot-SyntaxHighlighter {
+  --image: url(/icons/godot/SyntaxHighlighter.svg);
+}
+.iconGodot-VisualShaderNodeIntOp {
+  --image: url(/icons/godot/VisualShaderNodeIntOp.svg);
+}
+.iconGodot-ColorPick {
+  --image: url(/icons/godot/ColorPick.svg);
+}
+.iconGodot-CurveTexture {
+  --image: url(/icons/godot/CurveTexture.svg);
+}
+.iconGodot-Occluder3D {
+  --image: url(/icons/godot/Occluder3D.svg);
+}
+.iconGodot-StyleBoxTexture {
+  --image: url(/icons/godot/StyleBoxTexture.svg);
+}
+.iconGodot-LookAtModifier3D {
+  --image: url(/icons/godot/LookAtModifier3D.svg);
+}
+.iconGodot-FileBigThumb {
+  --image: url(/icons/godot/FileBigThumb.svg);
+}
+.iconGodot-BoneAttachment3D {
+  --image: url(/icons/godot/BoneAttachment3D.svg);
+}
+.iconGodot-Range {
+  --image: url(/icons/godot/Range.svg);
+}
+.iconGodot-Stop {
+  --image: url(/icons/godot/Stop.svg);
+}
+.iconGodot-GuiVisibilityXray {
+  --image: url(/icons/godot/GuiVisibilityXray.svg);
+}
+.iconGodot-RectangleShape2D {
+  --image: url(/icons/godot/RectangleShape2D.svg);
+}
+.iconGodot-MaterialPreviewLight2 {
+  --image: url(/icons/godot/MaterialPreviewLight2.svg);
+}
+.iconGodot-MatchCase {
+  --image: url(/icons/godot/MatchCase.svg);
+}
+.iconGodot-Image {
+  --image: url(/icons/godot/Image.svg);
+}
+.iconGodot-Folder {
+  --image: url(/icons/godot/Folder.svg);
+}
+.iconGodot-KeyTrackScale {
+  --image: url(/icons/godot/KeyTrackScale.svg);
+}
+.iconGodot-DebugSkipBreakpointsOff {
+  --image: url(/icons/godot/DebugSkipBreakpointsOff.svg);
+}
+.iconGodot-Progress8 {
+  --image: url(/icons/godot/Progress8.svg);
+}
+.iconGodot-GuiResizer {
+  --image: url(/icons/godot/GuiResizer.svg);
+}
+.iconGodot-InsertBefore {
+  --image: url(/icons/godot/InsertBefore.svg);
+}
+.iconGodot-MethodOverride {
+  --image: url(/icons/godot/MethodOverride.svg);
+}
+.iconGodot-GuiToggleOff {
+  --image: url(/icons/godot/GuiToggleOff.svg);
+}
+.iconGodot-OneWayTile {
+  --image: url(/icons/godot/OneWayTile.svg);
+}
+.iconGodot-DirectionalLight2D {
+  --image: url(/icons/godot/DirectionalLight2D.svg);
+}
+.iconGodot-SphereOccluder3D {
+  --image: url(/icons/godot/SphereOccluder3D.svg);
+}
+.iconGodot-KeyInvalid {
+  --image: url(/icons/godot/KeyInvalid.svg);
+}
+.iconGodot-InputEventJoypadMotion {
+  --image: url(/icons/godot/InputEventJoypadMotion.svg);
+}
+.iconGodot-PluginScript {
+  --image: url(/icons/godot/PluginScript.svg);
+}
+.iconGodot-PhysicalBone2D {
+  --image: url(/icons/godot/PhysicalBone2D.svg);
+}
+.iconGodot-Panels2Alt {
+  --image: url(/icons/godot/Panels2Alt.svg);
+}
+.iconGodot-GizmoDecal {
+  --image: url(/icons/godot/GizmoDecal.svg);
+}
+.iconGodot-FogVolume {
+  --image: url(/icons/godot/FogVolume.svg);
+}
+.iconGodot-Curve2D {
+  --image: url(/icons/godot/Curve2D.svg);
+}
+.iconGodot-JoyAxis {
+  --image: url(/icons/godot/JoyAxis.svg);
+}
+.iconGodot-Modifiers {
+  --image: url(/icons/godot/Modifiers.svg);
+}
+.iconGodot-Blend {
+  --image: url(/icons/godot/Blend.svg);
+}
+.iconGodot-TexturePreviewChannels {
+  --image: url(/icons/godot/TexturePreviewChannels.svg);
+}
+.iconGodot-GuiGraphNodePort {
+  --image: url(/icons/godot/GuiGraphNodePort.svg);
+}
+.iconGodot-VisualShaderNodeComment {
+  --image: url(/icons/godot/VisualShaderNodeComment.svg);
+}
+.iconGodot-VisualShaderNodeVectorFunc {
+  --image: url(/icons/godot/VisualShaderNodeVectorFunc.svg);
+}
+.iconGodot-EditorPosition {
+  --image: url(/icons/godot/EditorPosition.svg);
+}
+.iconGodot-Eraser {
+  --image: url(/icons/godot/Eraser.svg);
+}
+.iconGodot-ColorRect {
+  --image: url(/icons/godot/ColorRect.svg);
+}
+.iconGodot-BoneMapperHandle {
+  --image: url(/icons/godot/BoneMapperHandle.svg);
+}
+.iconGodot-VisualShaderNodeColorUniform {
+  --image: url(/icons/godot/VisualShaderNodeColorUniform.svg);
+}
+.iconGodot-Edit {
+  --image: url(/icons/godot/Edit.svg);
+}
+.iconGodot-TransitionImmediateAuto {
+  --image: url(/icons/godot/TransitionImmediateAuto.svg);
+}
+.iconGodot-ThemeSelectFull {
+  --image: url(/icons/godot/ThemeSelectFull.svg);
+}
+.iconGodot-PreviewEnvironment {
+  --image: url(/icons/godot/PreviewEnvironment.svg);
+}
+.iconGodot-MeshTexture {
+  --image: url(/icons/godot/MeshTexture.svg);
+}
+.iconGodot-AudioStreamPlayer {
+  --image: url(/icons/godot/AudioStreamPlayer.svg);
+}
+.iconGodot-RootMotionView {
+  --image: url(/icons/godot/RootMotionView.svg);
+}
+.iconGodot-bool {
+  --image: url(/icons/godot/bool.svg);
+}
+.iconGodot-EditorPivot {
+  --image: url(/icons/godot/EditorPivot.svg);
+}
+.iconGodot-String {
+  --image: url(/icons/godot/String.svg);
+}
+.iconGodot-KeyboardError {
+  --image: url(/icons/godot/KeyboardError.svg);
+}
+.iconGodot-ToolMove {
+  --image: url(/icons/godot/ToolMove.svg);
+}
+.iconGodot-PlayRemote {
+  --image: url(/icons/godot/PlayRemote.svg);
+}
+.iconGodot-TransitionSyncAutoBig {
+  --image: url(/icons/godot/TransitionSyncAutoBig.svg);
+}
+.iconGodot-NavigationLink2D {
+  --image: url(/icons/godot/NavigationLink2D.svg);
+}
+.iconGodot-Shader {
+  --image: url(/icons/godot/Shader.svg);
+}
+.iconGodot-NavigationRegion3D {
+  --image: url(/icons/godot/NavigationRegion3D.svg);
+}
+.iconGodot-KeyBezier {
+  --image: url(/icons/godot/KeyBezier.svg);
+}
+.iconGodot-MultiMeshInstance3D {
+  --image: url(/icons/godot/MultiMeshInstance3D.svg);
+}
+.iconGodot-ActionCopy {
+  --image: url(/icons/godot/ActionCopy.svg);
+}
+.iconGodot-GuiVisibilityVisible {
+  --image: url(/icons/godot/GuiVisibilityVisible.svg);
+}
+.iconGodot-MissingResource {
+  --image: url(/icons/godot/MissingResource.svg);
+}
+.iconGodot-NodeWarnings3 {
+  --image: url(/icons/godot/NodeWarnings3.svg);
+}
+.iconGodot-WorldEnvironment {
+  --image: url(/icons/godot/WorldEnvironment.svg);
+}
+.iconGodot-QuadMesh {
+  --image: url(/icons/godot/QuadMesh.svg);
+}
+.iconGodot-Node3D {
+  --image: url(/icons/godot/Node3D.svg);
+}
+.iconGodot-GuiTreeArrowLeft {
+  --image: url(/icons/godot/GuiTreeArrowLeft.svg);
+}
+.iconGodot-CharacterBody2D {
+  --image: url(/icons/godot/CharacterBody2D.svg);
+}
+.iconGodot-MemberTheme {
+  --image: url(/icons/godot/MemberTheme.svg);
+}
+.iconGodot-AudioListener2D {
+  --image: url(/icons/godot/AudioListener2D.svg);
+}
+.iconGodot-HBoxContainer {
+  --image: url(/icons/godot/HBoxContainer.svg);
+}
+.iconGodot-GodotFile {
+  --image: url(/icons/godot/GodotFile.svg);
+}
+.iconGodot-PhysicalBoneSimulator3D {
+  --image: url(/icons/godot/PhysicalBoneSimulator3D.svg);
+}
+.iconGodot-TerrainPath {
+  --image: url(/icons/godot/TerrainPath.svg);
+}
+.iconGodot-HelpSearch {
+  --image: url(/icons/godot/HelpSearch.svg);
+}
+.iconGodot-QuadOccluder3D {
+  --image: url(/icons/godot/QuadOccluder3D.svg);
+}
+.iconGodot-VisualInstance3D {
+  --image: url(/icons/godot/VisualInstance3D.svg);
+}
+.iconGodot-OverbrightIndicator {
+  --image: url(/icons/godot/OverbrightIndicator.svg);
+}
+.iconGodot-GuiTabDropMark {
+  --image: url(/icons/godot/GuiTabDropMark.svg);
+}
+.iconGodot-Timer {
+  --image: url(/icons/godot/Timer.svg);
+}
+.iconGodot-Save {
+  --image: url(/icons/godot/Save.svg);
+}
+.iconGodot-GridMinimap {
+  --image: url(/icons/godot/GridMinimap.svg);
+}
+.iconGodot-CurveXYZTexture {
+  --image: url(/icons/godot/CurveXYZTexture.svg);
+}
+.iconGodot-Logo {
+  --image: url(/icons/godot/Logo.svg);
+}
+.iconGodot-CurveCreate {
+  --image: url(/icons/godot/CurveCreate.svg);
+}
+.iconGodot-ToolConnect {
+  --image: url(/icons/godot/ToolConnect.svg);
+}
+.iconGodot-Progress5 {
+  --image: url(/icons/godot/Progress5.svg);
+}
+.iconGodot-ThemeDeselectAll {
+  --image: url(/icons/godot/ThemeDeselectAll.svg);
+}
+.iconGodot-VSeparator {
+  --image: url(/icons/godot/VSeparator.svg);
+}
+.iconGodot-UseBlendDisable {
+  --image: url(/icons/godot/UseBlendDisable.svg);
+}
+.iconGodot-Camera {
+  --image: url(/icons/godot/Camera.svg);
+}
+.iconGodot-StyleBoxGrid {
+  --image: url(/icons/godot/StyleBoxGrid.svg);
+}
+.iconGodot-Progress2 {
+  --image: url(/icons/godot/Progress2.svg);
+}
+.iconGodot-CanvasItem {
+  --image: url(/icons/godot/CanvasItem.svg);
+}
+.iconGodot-PlaceholderTexture2D {
+  --image: url(/icons/godot/PlaceholderTexture2D.svg);
+}
+.iconGodot-GuiChecked {
+  --image: url(/icons/godot/GuiChecked.svg);
+}
+.iconGodot-3D {
+  --image: url(/icons/godot/3D.svg);
+}
+.iconGodot-NodeDisabled {
+  --image: url(/icons/godot/NodeDisabled.svg);
+}
+.iconGodot-RichTextLabel {
+  --image: url(/icons/godot/RichTextLabel.svg);
+}
+.iconGodot-GuiTreeArrowRight {
+  --image: url(/icons/godot/GuiTreeArrowRight.svg);
+}
+.iconGodot-NodeWarning {
+  --image: url(/icons/godot/NodeWarning.svg);
+}
+.iconGodot-BusVuActive {
+  --image: url(/icons/godot/BusVuActive.svg);
+}
+.iconGodot-Environment {
+  --image: url(/icons/godot/Environment.svg);
+}
+.iconGodot-ShapeCast3D {
+  --image: url(/icons/godot/ShapeCast3D.svg);
+}
+.iconGodot-int {
+  --image: url(/icons/godot/int.svg);
+}
+.iconGodot-PanelContainer {
+  --image: url(/icons/godot/PanelContainer.svg);
+}
+.iconGodot-ArrowRight {
+  --image: url(/icons/godot/ArrowRight.svg);
+}
+.iconGodot-ToolScale {
+  --image: url(/icons/godot/ToolScale.svg);
+}
+.iconGodot-Unfavorite {
+  --image: url(/icons/godot/Unfavorite.svg);
+}
+.iconGodot-ReparentToNewNode {
+  --image: url(/icons/godot/ReparentToNewNode.svg);
+}
+.iconGodot-ConcavePolygonShape2D {
+  --image: url(/icons/godot/ConcavePolygonShape2D.svg);
+}
+.iconGodot-Signals {
+  --image: url(/icons/godot/Signals.svg);
+}
+.iconGodot-CPUParticles2D {
+  --image: url(/icons/godot/CPUParticles2D.svg);
+}
+.iconGodot-AssetLib {
+  --image: url(/icons/godot/AssetLib.svg);
+}
+.iconGodot-GuiProgressBar {
+  --image: url(/icons/godot/GuiProgressBar.svg);
+}
+.iconGodot-History {
+  --image: url(/icons/godot/History.svg);
+}
+.iconGodot-Progress6 {
+  --image: url(/icons/godot/Progress6.svg);
+}
+.iconGodot-VisualShaderNodeFloatOp {
+  --image: url(/icons/godot/VisualShaderNodeFloatOp.svg);
+}
+.iconGodot-TransitionEndAuto {
+  --image: url(/icons/godot/TransitionEndAuto.svg);
+}
+.iconGodot-CSGMesh3D {
+  --image: url(/icons/godot/CSGMesh3D.svg);
+}
+.iconGodot-GuiScrollArrowRightHl {
+  --image: url(/icons/godot/GuiScrollArrowRightHl.svg);
+}
+.iconGodot-BezierHandlesMirror {
+  --image: url(/icons/godot/BezierHandlesMirror.svg);
+}
+.iconGodot-GuiTabMenuHl {
+  --image: url(/icons/godot/GuiTabMenuHl.svg);
+}
+.iconGodot-Anchor {
+  --image: url(/icons/godot/Anchor.svg);
+}
+.iconGodot-Heart {
+  --image: url(/icons/godot/Heart.svg);
+}
+.iconGodot-SceneUniqueName {
+  --image: url(/icons/godot/SceneUniqueName.svg);
+}
+.iconGodot-Variant {
+  --image: url(/icons/godot/Variant.svg);
+}
+.iconGodot-XROrigin3D {
+  --image: url(/icons/godot/XROrigin3D.svg);
+}
+.iconGodot-EditorHandleDisabled {
+  --image: url(/icons/godot/EditorHandleDisabled.svg);
+}
+.iconGodot-AnimatedSprite2D {
+  --image: url(/icons/godot/AnimatedSprite2D.svg);
+}
+.iconGodot-ScrollContainer {
+  --image: url(/icons/godot/ScrollContainer.svg);
+}
+.iconGodot-GizmoGPUParticles3D {
+  --image: url(/icons/godot/GizmoGPUParticles3D.svg);
+}
+.iconGodot-ControlAlignTopWide {
+  --image: url(/icons/godot/ControlAlignTopWide.svg);
+}
+.iconGodot-PinPressed {
+  --image: url(/icons/godot/PinPressed.svg);
+}
+.iconGodot-ThemeRemoveAllItems {
+  --image: url(/icons/godot/ThemeRemoveAllItems.svg);
+}
+.iconGodot-Vector3i {
+  --image: url(/icons/godot/Vector3i.svg);
+}
+.iconGodot-GuiTab {
+  --image: url(/icons/godot/GuiTab.svg);
+}
+.iconGodot-ParallaxLayer {
+  --image: url(/icons/godot/ParallaxLayer.svg);
+}
+.iconGodot-VisualShaderNodeColorOp {
+  --image: url(/icons/godot/VisualShaderNodeColorOp.svg);
+}
+.iconGodot-NoiseTexture3D {
+  --image: url(/icons/godot/NoiseTexture3D.svg);
+}
+.iconGodot-Progress7 {
+  --image: url(/icons/godot/Progress7.svg);
+}
+.iconGodot-Load {
+  --image: url(/icons/godot/Load.svg);
+}
+.iconGodot-ExpandTree {
+  --image: url(/icons/godot/ExpandTree.svg);
+}
+.iconGodot-IOSDeviceWireless {
+  --image: url(/icons/godot/IOSDeviceWireless.svg);
+}
+.iconGodot-GuiToggleOnMirrored {
+  --image: url(/icons/godot/GuiToggleOnMirrored.svg);
+}
+.iconGodot-KeepAspect {
+  --image: url(/icons/godot/KeepAspect.svg);
+}
+.iconGodot-ThemeSelectAll {
+  --image: url(/icons/godot/ThemeSelectAll.svg);
+}
+.iconGodot-FileList {
+  --image: url(/icons/godot/FileList.svg);
+}
+.iconGodot-Array {
+  --image: url(/icons/godot/Array.svg);
+}
+.iconGodot-MiniObject {
+  --image: url(/icons/godot/MiniObject.svg);
+}
+.iconGodot-VisualShaderNodeVectorDecompose {
+  --image: url(/icons/godot/VisualShaderNodeVectorDecompose.svg);
+}
+.iconGodot-ControlAlignCenterLeft {
+  --image: url(/icons/godot/ControlAlignCenterLeft.svg);
+}
+.iconGodot-PackedDataContainer {
+  --image: url(/icons/godot/PackedDataContainer.svg);
+}
+.iconGodot-Cubemap {
+  --image: url(/icons/godot/Cubemap.svg);
+}
+.iconGodot-PackedVector2Array {
+  --image: url(/icons/godot/PackedVector2Array.svg);
+}
+.iconGodot-ColorPickerButton {
+  --image: url(/icons/godot/ColorPickerButton.svg);
+}
+.iconGodot-MoveLeft {
+  --image: url(/icons/godot/MoveLeft.svg);
+}
+.iconGodot-ControlAlignCenterBottom {
+  --image: url(/icons/godot/ControlAlignCenterBottom.svg);
+}
+.iconGodot-Game {
+  --image: url(/icons/godot/Game.svg);
+}
+.iconGodot-ControlAlignVCenterWide {
+  --image: url(/icons/godot/ControlAlignVCenterWide.svg);
+}
+.iconGodot-Collapse {
+  --image: url(/icons/godot/Collapse.svg);
+}
+.iconGodot-VoxelGI {
+  --image: url(/icons/godot/VoxelGI.svg);
+}
+.iconGodot-FadeOut {
+  --image: url(/icons/godot/FadeOut.svg);
+}
+.iconGodot-InputEventScreenTouch {
+  --image: url(/icons/godot/InputEventScreenTouch.svg);
+}
+.iconGodot-CheckBox {
+  --image: url(/icons/godot/CheckBox.svg);
+}
+.iconGodot-TileSet {
+  --image: url(/icons/godot/TileSet.svg);
+}
+.iconGodot-CurveOut {
+  --image: url(/icons/godot/CurveOut.svg);
+}
+.iconGodot-CanvasModulate {
+  --image: url(/icons/godot/CanvasModulate.svg);
+}
+.iconGodot-Path3D {
+  --image: url(/icons/godot/Path3D.svg);
+}
+.iconGodot-ConvexPolygonShape2D {
+  --image: url(/icons/godot/ConvexPolygonShape2D.svg);
+}
+.iconGodot-ConeTwistJoint3D {
+  --image: url(/icons/godot/ConeTwistJoint3D.svg);
+}
+.iconGodot-TubeTrailMesh {
+  --image: url(/icons/godot/TubeTrailMesh.svg);
+}
+.iconGodot-GuiRadioUncheckedDisabled {
+  --image: url(/icons/godot/GuiRadioUncheckedDisabled.svg);
+}
+.iconGodot-ControlAlignTopLeft {
+  --image: url(/icons/godot/ControlAlignTopLeft.svg);
+}
+.iconGodot-ArrowDown {
+  --image: url(/icons/godot/ArrowDown.svg);
+}
+.iconGodot-CSharpScript {
+  --image: url(/icons/godot/CSharpScript.svg);
+}
+.iconGodot-HFlowContainer {
+  --image: url(/icons/godot/HFlowContainer.svg);
+}
+.iconGodot-AnimatableBody2D {
+  --image: url(/icons/godot/AnimatableBody2D.svg);
+}
+.iconGodot-SegmentShape2D {
+  --image: url(/icons/godot/SegmentShape2D.svg);
+}
+.iconGodot-Sort {
+  --image: url(/icons/godot/Sort.svg);
+}
+.iconGodot-CodeFoldDownArrow {
+  --image: url(/icons/godot/CodeFoldDownArrow.svg);
+}
+.iconGodot-Control {
+  --image: url(/icons/godot/Control.svg);
+}
+.iconGodot-ToolPan {
+  --image: url(/icons/godot/ToolPan.svg);
+}
+.iconGodot-VisualShaderGraphTextureUniform {
+  --image: url(/icons/godot/VisualShaderGraphTextureUniform.svg);
+}
+.iconGodot-CylinderShape3D {
+  --image: url(/icons/godot/CylinderShape3D.svg);
+}
+.iconGodot-Transform2D {
+  --image: url(/icons/godot/Transform2D.svg);
+}
+.iconGodot-Loop {
+  --image: url(/icons/godot/Loop.svg);
+}
+.iconGodot-YSort {
+  --image: url(/icons/godot/YSort.svg);
+}
+.iconGodot-Grid {
+  --image: url(/icons/godot/Grid.svg);
+}
+.iconGodot-VisualShaderNodeTransformUniform {
+  --image: url(/icons/godot/VisualShaderNodeTransformUniform.svg);
+}
+.iconGodot-Node2D {
+  --image: url(/icons/godot/Node2D.svg);
+}
+.iconGodot-ButtonGroup {
+  --image: url(/icons/godot/ButtonGroup.svg);
+}
+.iconGodot-KeyboardLabel {
+  --image: url(/icons/godot/KeyboardLabel.svg);
+}
+.iconGodot-XRCamera3D {
+  --image: url(/icons/godot/XRCamera3D.svg);
+}
+.iconGodot-AcceptDialog {
+  --image: url(/icons/godot/AcceptDialog.svg);
+}
+.iconGodot-MainPlay {
+  --image: url(/icons/godot/MainPlay.svg);
+}
+.iconGodot-FolderMediumThumb {
+  --image: url(/icons/godot/FolderMediumThumb.svg);
+}
+.iconGodot-GuiUncheckedDisabled {
+  --image: url(/icons/godot/GuiUncheckedDisabled.svg);
+}
+.iconGodot-BoxContainer {
+  --image: url(/icons/godot/BoxContainer.svg);
+}
+.iconGodot-GuiVsplitter {
+  --image: url(/icons/godot/GuiVsplitter.svg);
+}
+.iconGodot-Marker3D {
+  --image: url(/icons/godot/Marker3D.svg);
+}
+.iconGodot-TorusMesh {
+  --image: url(/icons/godot/TorusMesh.svg);
+}
+.iconGodot-StyleBoxFlat {
+  --image: url(/icons/godot/StyleBoxFlat.svg);
+}
+.iconGodot-ToolSelect {
+  --image: url(/icons/godot/ToolSelect.svg);
+}
+.iconGodot-Joypad {
+  --image: url(/icons/godot/Joypad.svg);
+}
+.iconGodot-SkeletonIK3D {
+  --image: url(/icons/godot/SkeletonIK3D.svg);
+}
+.iconGodot-MoveRight {
+  --image: url(/icons/godot/MoveRight.svg);
+}
+.iconGodot-VisualShaderNodeVectorCompose {
+  --image: url(/icons/godot/VisualShaderNodeVectorCompose.svg);
+}
+.iconGodot-ExternalLink {
+  --image: url(/icons/godot/ExternalLink.svg);
+}
+.iconGodot-SplitContainer {
+  --image: url(/icons/godot/SplitContainer.svg);
+}
+.iconGodot-Time {
+  --image: url(/icons/godot/Time.svg);
+}
+.iconGodot-ControlAlignBottomWide {
+  --image: url(/icons/godot/ControlAlignBottomWide.svg);
+}
+.iconGodot-RetargetModifier3D {
+  --image: url(/icons/godot/RetargetModifier3D.svg);
+}
+.iconGodot-DebugNext {
+  --image: url(/icons/godot/DebugNext.svg);
+}
+.iconGodot-BezierHandlesFree {
+  --image: url(/icons/godot/BezierHandlesFree.svg);
+}
+.iconGodot-TextEditorPlay {
+  --image: url(/icons/godot/TextEditorPlay.svg);
+}
+.iconGodot-DebugSkipBreakpointsOn {
+  --image: url(/icons/godot/DebugSkipBreakpointsOn.svg);
+}
+.iconGodot-PickerShapeRectangle {
+  --image: url(/icons/godot/PickerShapeRectangle.svg);
+}
+.iconGodot-UndoRedo {
+  --image: url(/icons/godot/UndoRedo.svg);
+}
+.iconGodot-TrackDiscrete {
+  --image: url(/icons/godot/TrackDiscrete.svg);
+}
+.iconGodot-JoyButton {
+  --image: url(/icons/godot/JoyButton.svg);
+}
+.iconGodot-BoxShape3D {
+  --image: url(/icons/godot/BoxShape3D.svg);
+}
+.iconGodot-SliderJoint3D {
+  --image: url(/icons/godot/SliderJoint3D.svg);
+}
+.iconGodot-AnimationPlayer {
+  --image: url(/icons/godot/AnimationPlayer.svg);
+}
+.iconGodot-HSplitContainer {
+  --image: url(/icons/godot/HSplitContainer.svg);
+}
+.iconGodot-InsertAfter {
+  --image: url(/icons/godot/InsertAfter.svg);
+}
+.iconGodot-GuiSliderGrabber {
+  --image: url(/icons/godot/GuiSliderGrabber.svg);
+}
+.iconGodot-GuiIndeterminate {
+  --image: url(/icons/godot/GuiIndeterminate.svg);
+}
+.iconGodot-InputEventJoypadButton {
+  --image: url(/icons/godot/InputEventJoypadButton.svg);
+}
+.iconGodot-PlaneMesh {
+  --image: url(/icons/godot/PlaneMesh.svg);
+}
+.iconGodot-Performance {
+  --image: url(/icons/godot/Performance.svg);
+}
+.iconGodot-Popup {
+  --image: url(/icons/godot/Popup.svg);
+}
+.iconGodot-FilenameFilter {
+  --image: url(/icons/godot/FilenameFilter.svg);
+}
+.iconGodot-Callable {
+  --image: url(/icons/godot/Callable.svg);
+}
+.iconGodot-AnimationFilter {
+  --image: url(/icons/godot/AnimationFilter.svg);
+}
+.iconGodot-MovePoint {
+  --image: url(/icons/godot/MovePoint.svg);
+}
+.iconGodot-GuiVisibilityHidden {
+  --image: url(/icons/godot/GuiVisibilityHidden.svg);
+}
+.iconGodot-LineEdit {
+  --image: url(/icons/godot/LineEdit.svg);
+}
+.iconGodot-WorldBoundaryShape3D {
+  --image: url(/icons/godot/WorldBoundaryShape3D.svg);
+}
+.iconGodot-VoxelGIData {
+  --image: url(/icons/godot/VoxelGIData.svg);
+}
+.iconGodot-CenterContainer {
+  --image: url(/icons/godot/CenterContainer.svg);
+}
+.iconGodot-VisualShaderNodeTransformVecMult {
+  --image: url(/icons/godot/VisualShaderNodeTransformVecMult.svg);
+}
+.iconGodot-InputEventMouseMotion {
+  --image: url(/icons/godot/InputEventMouseMotion.svg);
+}
+.iconGodot-MemberOperator {
+  --image: url(/icons/godot/MemberOperator.svg);
+}
+.iconGodot-NavigationObstacle2D {
+  --image: url(/icons/godot/NavigationObstacle2D.svg);
+}
+.iconGodot-FileDeadBigThumb {
+  --image: url(/icons/godot/FileDeadBigThumb.svg);
+}
+.iconGodot-CenterView {
+  --image: url(/icons/godot/CenterView.svg);
+}
+.iconGodot-IOSDeviceWired {
+  --image: url(/icons/godot/IOSDeviceWired.svg);
+}
+.iconGodot-GuiResizerTopLeft {
+  --image: url(/icons/godot/GuiResizerTopLeft.svg);
+}
+.iconGodot-PlayScene {
+  --image: url(/icons/godot/PlayScene.svg);
+}
+.iconGodot-GuiUnchecked {
+  --image: url(/icons/godot/GuiUnchecked.svg);
+}
+.iconGodot-GradientTexture2D {
+  --image: url(/icons/godot/GradientTexture2D.svg);
+}
+.iconGodot-Vector3 {
+  --image: url(/icons/godot/Vector3.svg);
+}
+.iconGodot-AudioStream {
+  --image: url(/icons/godot/AudioStream.svg);
+}
+.iconGodot-DistractionFree {
+  --image: url(/icons/godot/DistractionFree.svg);
+}
+.iconGodot-AnimationMixer {
+  --image: url(/icons/godot/AnimationMixer.svg);
+}
+.iconGodot-DirectionalLight3D {
+  --image: url(/icons/godot/DirectionalLight3D.svg);
+}
+.iconGodot-CodeFoldedRightArrow {
+  --image: url(/icons/godot/CodeFoldedRightArrow.svg);
+}
+.iconGodot-AnimationLibrary {
+  --image: url(/icons/godot/AnimationLibrary.svg);
+}
+.iconGodot-TrackColor {
+  --image: url(/icons/godot/TrackColor.svg);
+}
+.iconGodot-OmniLight3D {
+  --image: url(/icons/godot/OmniLight3D.svg);
+}
+.iconGodot-CodeEdit {
+  --image: url(/icons/godot/CodeEdit.svg);
+}
+.iconGodot-AABB {
+  --image: url(/icons/godot/AABB.svg);
+}
+.iconGodot-InputEventMagnifyGesture {
+  --image: url(/icons/godot/InputEventMagnifyGesture.svg);
+}
+.iconGodot-GizmoLightmapGI {
+  --image: url(/icons/godot/GizmoLightmapGI.svg);
+}
+.iconGodot-MakeFloating {
+  --image: url(/icons/godot/MakeFloating.svg);
+}
+.iconGodot-Bucket {
+  --image: url(/icons/godot/Bucket.svg);
+}
+.iconGodot-CPUParticles3D {
+  --image: url(/icons/godot/CPUParticles3D.svg);
+}
+.iconGodot-Tween {
+  --image: url(/icons/godot/Tween.svg);
+}
+.iconGodot-OccluderInstance3D {
+  --image: url(/icons/godot/OccluderInstance3D.svg);
+}
+.iconGodot-FontItem {
+  --image: url(/icons/godot/FontItem.svg);
+}
+.iconGodot-PlayStart {
+  --image: url(/icons/godot/PlayStart.svg);
+}
+.iconGodot-Override {
+  --image: url(/icons/godot/Override.svg);
+}
+.iconGodot-ProgressBar {
+  --image: url(/icons/godot/ProgressBar.svg);
+}
+.iconGodot-FolderCreate {
+  --image: url(/icons/godot/FolderCreate.svg);
+}
+.iconGodot-ControlAlignBottomLeft {
+  --image: url(/icons/godot/ControlAlignBottomLeft.svg);
+}
+.iconGodot-ProceduralSkyMaterial {
+  --image: url(/icons/godot/ProceduralSkyMaterial.svg);
+}
+.iconGodot-LabelSettings {
+  --image: url(/icons/godot/LabelSettings.svg);
+}
+.iconGodot-GuiHsplitter {
+  --image: url(/icons/godot/GuiHsplitter.svg);
+}
+.iconGodot-KeyAnimation {
+  --image: url(/icons/godot/KeyAnimation.svg);
+}
+.iconGodot-BoneMapperHandleSelected {
+  --image: url(/icons/godot/BoneMapperHandleSelected.svg);
+}
+.iconGodot-Texture3D {
+  --image: url(/icons/godot/Texture3D.svg);
+}
+.iconGodot-AudioStreamPolyphonic {
+  --image: url(/icons/godot/AudioStreamPolyphonic.svg);
+}
+.iconGodot-Add {
+  --image: url(/icons/godot/Add.svg);
+}
+.iconGodot-ControlAlignRightWide {
+  --image: url(/icons/godot/ControlAlignRightWide.svg);
+}
+.iconGodot-Marker {
+  --image: url(/icons/godot/Marker.svg);
+}
+.iconGodot-EditInternal {
+  --image: url(/icons/godot/EditInternal.svg);
+}
+.iconGodot-DebugContinue {
+  --image: url(/icons/godot/DebugContinue.svg);
+}
+.iconGodot-MaterialPreviewSphere {
+  --image: url(/icons/godot/MaterialPreviewSphere.svg);
+}
+.iconGodot-CapsuleShape3D {
+  --image: url(/icons/godot/CapsuleShape3D.svg);
+}
+.iconGodot-InputEventShortcut {
+  --image: url(/icons/godot/InputEventShortcut.svg);
+}
+.iconGodot-Label3D {
+  --image: url(/icons/godot/Label3D.svg);
+}
+.iconGodot-GuiScrollArrowLeftHl {
+  --image: url(/icons/godot/GuiScrollArrowLeftHl.svg);
+}
+.iconGodot-PointLight2D {
+  --image: url(/icons/godot/PointLight2D.svg);
+}
+.iconGodot-TextEdit {
+  --image: url(/icons/godot/TextEdit.svg);
+}
+.iconGodot-StringName {
+  --image: url(/icons/godot/StringName.svg);
+}
+.iconGodot-InterpWrapClamp {
+  --image: url(/icons/godot/InterpWrapClamp.svg);
+}
+.iconGodot-TabContainer {
+  --image: url(/icons/godot/TabContainer.svg);
+}
+.iconGodot-Panels1 {
+  --image: url(/icons/godot/Panels1.svg);
+}
+.iconGodot-ColorPicker {
+  --image: url(/icons/godot/ColorPicker.svg);
+}
+.iconGodot-StandardMaterial3D {
+  --image: url(/icons/godot/StandardMaterial3D.svg);
+}
+.iconGodot-Enum {
+  --image: url(/icons/godot/Enum.svg);
+}
+.iconGodot-CharacterBody3D {
+  --image: url(/icons/godot/CharacterBody3D.svg);
+}
+.iconGodot-GizmoSpotLight {
+  --image: url(/icons/godot/GizmoSpotLight.svg);
+}
+.iconGodot-Clear {
+  --image: url(/icons/godot/Clear.svg);
+}
+.iconGodot-GraphEdit {
+  --image: url(/icons/godot/GraphEdit.svg);
+}
+.iconGodot-VehicleBody3D {
+  --image: url(/icons/godot/VehicleBody3D.svg);
+}
+.iconGodot-BoneMapHumanLeftHand {
+  --image: url(/icons/godot/BoneMapHumanLeftHand.svg);
+}
+.iconGodot-MemberConstructor {
+  --image: url(/icons/godot/MemberConstructor.svg);
+}
+.iconGodot-CodeRegionFoldedRightArrow {
+  --image: url(/icons/godot/CodeRegionFoldedRightArrow.svg);
+}
+.iconGodot-RigidBody3D {
+  --image: url(/icons/godot/RigidBody3D.svg);
+}
+.iconGodot-EditorCurveHandle {
+  --image: url(/icons/godot/EditorCurveHandle.svg);
+}
+.iconGodot-AtlasTexture {
+  --image: url(/icons/godot/AtlasTexture.svg);
+}
+.iconGodot-InputEventMIDI {
+  --image: url(/icons/godot/InputEventMIDI.svg);
+}
+.iconGodot-PinJoint2D {
+  --image: url(/icons/godot/PinJoint2D.svg);
+}
+.iconGodot-Window {
+  --image: url(/icons/godot/Window.svg);
+}
+.iconGodot-Unlinked {
+  --image: url(/icons/godot/Unlinked.svg);
+}
+.iconGodot-PrismMesh {
+  --image: url(/icons/godot/PrismMesh.svg);
+}
+.iconGodot-LinkOverlay {
+  --image: url(/icons/godot/LinkOverlay.svg);
+}
+.iconGodot-CurveInOut {
+  --image: url(/icons/godot/CurveInOut.svg);
+}
+.iconGodot-CSGPolygon3D {
+  --image: url(/icons/godot/CSGPolygon3D.svg);
+}
+.iconGodot-Camera3D {
+  --image: url(/icons/godot/Camera3D.svg);
+}
+.iconGodot-XRController3D {
+  --image: url(/icons/godot/XRController3D.svg);
+}
+.iconGodot-CodeRegionFoldDownArrow {
+  --image: url(/icons/godot/CodeRegionFoldDownArrow.svg);
+}
+.iconGodot-Terminal {
+  --image: url(/icons/godot/Terminal.svg);
+}
+.iconGodot-TileChecked {
+  --image: url(/icons/godot/TileChecked.svg);
+}
+.iconGodot-AnimationAutoFitBezier {
+  --image: url(/icons/godot/AnimationAutoFitBezier.svg);
+}
+.iconGodot-FileDeadMediumThumb {
+  --image: url(/icons/godot/FileDeadMediumThumb.svg);
+}
+.iconGodot-ColorPickerBarArrow {
+  --image: url(/icons/godot/ColorPickerBarArrow.svg);
+}
+.iconGodot-Uv {
+  --image: url(/icons/godot/Uv.svg);
+}
+.iconGodot-TextFile {
+  --image: url(/icons/godot/TextFile.svg);
+}
+.iconGodot-VisibleOnScreenEnabler3D {
+  --image: url(/icons/godot/VisibleOnScreenEnabler3D.svg);
+}
+.iconGodot-Rectangle {
+  --image: url(/icons/godot/Rectangle.svg);
+}
+.iconGodot-NonFavorite {
+  --image: url(/icons/godot/NonFavorite.svg);
+}
+.iconGodot-Hsize {
+  --image: url(/icons/godot/Hsize.svg);
+}
+.iconGodot-GuiToggleOnDisabled {
+  --image: url(/icons/godot/GuiToggleOnDisabled.svg);
+}
+.iconGodot-GuiIndeterminateDisabled {
+  --image: url(/icons/godot/GuiIndeterminateDisabled.svg);
+}
+.iconGodot-PlayTravel {
+  --image: url(/icons/godot/PlayTravel.svg);
+}
+.iconGodot-Panels4 {
+  --image: url(/icons/godot/Panels4.svg);
+}
+.iconGodot-KeyCall {
+  --image: url(/icons/godot/KeyCall.svg);
+}
+.iconGodot-ImportCheck {
+  --image: url(/icons/godot/ImportCheck.svg);
+}
+.iconGodot-PackedVector3Array {
+  --image: url(/icons/godot/PackedVector3Array.svg);
+}
+.iconGodot-TextureButton {
+  --image: url(/icons/godot/TextureButton.svg);
+}
+.iconGodot-BoneMapperHandleCircle {
+  --image: url(/icons/godot/BoneMapperHandleCircle.svg);
+}
+.iconGodot-GodotMonochrome {
+  --image: url(/icons/godot/GodotMonochrome.svg);
+}
+.iconGodot-GuiClose {
+  --image: url(/icons/godot/GuiClose.svg);
+}
+.iconGodot-GraphElement {
+  --image: url(/icons/godot/GraphElement.svg);
+}
+.iconGodot-KeyAudio {
+  --image: url(/icons/godot/KeyAudio.svg);
+}
+.iconGodot-EditorBoneHandle {
+  --image: url(/icons/godot/EditorBoneHandle.svg);
+}
+.iconGodot-GuiMiniCheckerboard {
+  --image: url(/icons/godot/GuiMiniCheckerboard.svg);
+}
+.iconGodot-AutoKey {
+  --image: url(/icons/godot/AutoKey.svg);
+}
+.iconGodot-ToolTriangle {
+  --image: url(/icons/godot/ToolTriangle.svg);
+}
+.iconGodot-ImporterMeshInstance3D {
+  --image: url(/icons/godot/ImporterMeshInstance3D.svg);
+}
+.iconGodot-PathFollow3D {
+  --image: url(/icons/godot/PathFollow3D.svg);
+}
+.iconGodot-Panels3 {
+  --image: url(/icons/godot/Panels3.svg);
+}
+.iconGodot-AudioStreamGenerator {
+  --image: url(/icons/godot/AudioStreamGenerator.svg);
+}
+.iconGodot-RegionEdit {
+  --image: url(/icons/godot/RegionEdit.svg);
+}
+.iconGodot-Skeleton2D {
+  --image: url(/icons/godot/Skeleton2D.svg);
+}
+.iconGodot-SubViewport {
+  --image: url(/icons/godot/SubViewport.svg);
+}
+.iconGodot-ReflectionProbe {
+  --image: url(/icons/godot/ReflectionProbe.svg);
+}
+.iconGodot-MaterialPreviewLight1 {
+  --image: url(/icons/godot/MaterialPreviewLight1.svg);
+}
+.iconGodot-XRAnchor3D {
+  --image: url(/icons/godot/XRAnchor3D.svg);
+}
+.iconGodot-TransitionSync {
+  --image: url(/icons/godot/TransitionSync.svg);
+}
+.iconGodot-RemoteTransform3D {
+  --image: url(/icons/godot/RemoteTransform3D.svg);
+}
+.iconGodot-LightmapGI {
+  --image: url(/icons/godot/LightmapGI.svg);
+}
+.iconGodot-MeshItem {
+  --image: url(/icons/godot/MeshItem.svg);
+}
+.iconGodot-TerrainConnect {
+  --image: url(/icons/godot/TerrainConnect.svg);
+}
+.iconGodot-ZoomMore {
+  --image: url(/icons/godot/ZoomMore.svg);
+}
+.iconGodot-ImageTexture3D {
+  --image: url(/icons/godot/ImageTexture3D.svg);
+}
+.iconGodot-MemberMethod {
+  --image: url(/icons/godot/MemberMethod.svg);
+}
+.iconGodot-PopupPanel {
+  --image: url(/icons/godot/PopupPanel.svg);
+}
+.iconGodot-VSplitContainer {
+  --image: url(/icons/godot/VSplitContainer.svg);
+}
+.iconGodot-PhysicalSkyMaterial {
+  --image: url(/icons/godot/PhysicalSkyMaterial.svg);
+}
+.iconGodot-FileBrokenBigThumb {
+  --image: url(/icons/godot/FileBrokenBigThumb.svg);
+}
+.iconGodot-PreviewSun {
+  --image: url(/icons/godot/PreviewSun.svg);
+}
+.iconGodot-ListSelect {
+  --image: url(/icons/godot/ListSelect.svg);
+}
+.iconGodot-ZoomReset {
+  --image: url(/icons/godot/ZoomReset.svg);
+}
+.iconGodot-Signal {
+  --image: url(/icons/godot/Signal.svg);
+}
+.iconGodot-VisualShaderNodeTexture2DArrayUniform {
+  --image: url(/icons/godot/VisualShaderNodeTexture2DArrayUniform.svg);
+}
+.iconGodot-Rect2 {
+  --image: url(/icons/godot/Rect2.svg);
+}
+.iconGodot-CurveOutIn {
+  --image: url(/icons/godot/CurveOutIn.svg);
+}
+.iconGodot-MirrorY {
+  --image: url(/icons/godot/MirrorY.svg);
+}
+.iconGodot-GraphFrame {
+  --image: url(/icons/godot/GraphFrame.svg);
+}
+.iconGodot-FileBrowse {
+  --image: url(/icons/godot/FileBrowse.svg);
+}
+.iconGodot-HSlider {
+  --image: url(/icons/godot/HSlider.svg);
+}
+.iconGodot-Font {
+  --image: url(/icons/godot/Font.svg);
+}
+.iconGodot-ParallaxBackground {
+  --image: url(/icons/godot/ParallaxBackground.svg);
+}
+.iconGodot-AudioStreamPlayer3D {
+  --image: url(/icons/godot/AudioStreamPlayer3D.svg);
+}
+.iconGodot-RegEx {
+  --image: url(/icons/godot/RegEx.svg);
+}
+.iconGodot-RotateRight {
+  --image: url(/icons/godot/RotateRight.svg);
+}
+.iconGodot-VisualShaderNodeCurveXYZTexture {
+  --image: url(/icons/godot/VisualShaderNodeCurveXYZTexture.svg);
+}
+.iconGodot-CameraAttributes {
+  --image: url(/icons/godot/CameraAttributes.svg);
+}
+.iconGodot-Polygon2D {
+  --image: url(/icons/godot/Polygon2D.svg);
+}
+.iconGodot-PingPongLoop {
+  --image: url(/icons/godot/PingPongLoop.svg);
+}
+.iconGodot-CopyNodePath {
+  --image: url(/icons/godot/CopyNodePath.svg);
+}
+.iconGodot-GizmoVoxelGI {
+  --image: url(/icons/godot/GizmoVoxelGI.svg);
+}
+.iconGodot-AutoPlay {
+  --image: url(/icons/godot/AutoPlay.svg);
+}
+.iconGodot-FogMaterial {
+  --image: url(/icons/godot/FogMaterial.svg);
+}
+.iconGodot-PlaceholderMaterial {
+  --image: url(/icons/godot/PlaceholderMaterial.svg);
+}
+.iconGodot-GuiToggleOffDisabled {
+  --image: url(/icons/godot/GuiToggleOffDisabled.svg);
+}
+.iconGodot-ControlAlignCenter {
+  --image: url(/icons/godot/ControlAlignCenter.svg);
+}
+.iconGodot-Reparent {
+  --image: url(/icons/godot/Reparent.svg);
+}
+.iconGodot-GuiScrollGrabberPressed {
+  --image: url(/icons/godot/GuiScrollGrabberPressed.svg);
+}
+.iconGodot-PackedScene {
+  --image: url(/icons/godot/PackedScene.svg);
+}
+.iconGodot-GDScript {
+  --image: url(/icons/godot/GDScript.svg);
+}
+.iconGodot-Snap {
+  --image: url(/icons/godot/Snap.svg);
+}
+.iconGodot-ArrayOccluder3D {
+  --image: url(/icons/godot/ArrayOccluder3D.svg);
+}
+.iconGodot-New {
+  --image: url(/icons/godot/New.svg);
+}
+.iconGodot-RandomNumberGenerator {
+  --image: url(/icons/godot/RandomNumberGenerator.svg);
+}
+.iconGodot-EditorPositionPrevious {
+  --image: url(/icons/godot/EditorPositionPrevious.svg);
+}
+.iconGodot-InterpWrapLoop {
+  --image: url(/icons/godot/InterpWrapLoop.svg);
+}
+.iconGodot-InterpLinear {
+  --image: url(/icons/godot/InterpLinear.svg);
+}
+.iconGodot-BoxOccluder3D {
+  --image: url(/icons/godot/BoxOccluder3D.svg);
+}
+.iconGodot-TerrainMatchCorners {
+  --image: url(/icons/godot/TerrainMatchCorners.svg);
+}
+.iconGodot-uint {
+  --image: url(/icons/godot/uint.svg);
+}
+.iconGodot-CapsuleMesh {
+  --image: url(/icons/godot/CapsuleMesh.svg);
+}
+.iconGodot-AudioStreamOggVorbis {
+  --image: url(/icons/godot/AudioStreamOggVorbis.svg);
+}
+.iconGodot-SnapTimeline {
+  --image: url(/icons/godot/SnapTimeline.svg);
+}
+.iconGodot-LockViewport {
+  --image: url(/icons/godot/LockViewport.svg);
+}
+.iconGodot-BackBufferCopy {
+  --image: url(/icons/godot/BackBufferCopy.svg);
+}
+.iconGodot-StatusWarning {
+  --image: url(/icons/godot/StatusWarning.svg);
+}
+.iconGodot-VisibleOnScreenEnabler2D {
+  --image: url(/icons/godot/VisibleOnScreenEnabler2D.svg);
+}
+.iconGodot-TextMesh {
+  --image: url(/icons/godot/TextMesh.svg);
+}
+.iconGodot-ToolAddNode {
+  --image: url(/icons/godot/ToolAddNode.svg);
+}
+.iconGodot-ProfilerAutostartWarning {
+  --image: url(/icons/godot/ProfilerAutostartWarning.svg);
+}
+.iconGodot-GizmoReflectionProbe {
+  --image: url(/icons/godot/GizmoReflectionProbe.svg);
+}
+.iconGodot-GuiViewportVdiagsplitter {
+  --image: url(/icons/godot/GuiViewportVdiagsplitter.svg);
+}
+.iconGodot-PackedFloat64Array {
+  --image: url(/icons/godot/PackedFloat64Array.svg);
+}
+.iconGodot-PackedInt64Array {
+  --image: url(/icons/godot/PackedInt64Array.svg);
+}
+.iconGodot-FadeCross {
+  --image: url(/icons/godot/FadeCross.svg);
+}
+.iconGodot-Group {
+  --image: url(/icons/godot/Group.svg);
+}
+.iconGodot-ControlAlignFullRect {
+  --image: url(/icons/godot/ControlAlignFullRect.svg);
+}
+.iconGodot-Keyboard {
+  --image: url(/icons/godot/Keyboard.svg);
+}
+.iconGodot-BuildCSharp {
+  --image: url(/icons/godot/BuildCSharp.svg);
+}
+.iconGodot-float {
+  --image: url(/icons/godot/float.svg);
+}
+.iconGodot-FolderBigThumb {
+  --image: url(/icons/godot/FolderBigThumb.svg);
+}
+.iconGodot-KeyBlendShape {
+  --image: url(/icons/godot/KeyBlendShape.svg);
+}
+.iconGodot-VisualShaderNodeFloatUniform {
+  --image: url(/icons/godot/VisualShaderNodeFloatUniform.svg);
+}
+.iconGodot-PickerShapeRectangleWheel {
+  --image: url(/icons/godot/PickerShapeRectangleWheel.svg);
+}
+.iconGodot-AutoEnd {
+  --image: url(/icons/godot/AutoEnd.svg);
+}
+.iconGodot-FileDead {
+  --image: url(/icons/godot/FileDead.svg);
+}
+.iconGodot-PanoramaSkyMaterial {
+  --image: url(/icons/godot/PanoramaSkyMaterial.svg);
+}
+.iconGodot-Bake {
+  --image: url(/icons/godot/Bake.svg);
+}
+.iconGodot-EditBezier {
+  --image: url(/icons/godot/EditBezier.svg);
+}
+.iconGodot-PickerCursorBg {
+  --image: url(/icons/godot/PickerCursorBg.svg);
+}
+.iconGodot-BoneMapHumanRightHand {
+  --image: url(/icons/godot/BoneMapHumanRightHand.svg);
+}
+.iconGodot-MemberProperty {
+  --image: url(/icons/godot/MemberProperty.svg);
+}
+.iconGodot-MeshInstance2D {
+  --image: url(/icons/godot/MeshInstance2D.svg);
+}
+.iconGodot-VisualShaderNodeIntUniform {
+  --image: url(/icons/godot/VisualShaderNodeIntUniform.svg);
+}
+.iconGodot-VisibleOnScreenNotifier3D {
+  --image: url(/icons/godot/VisibleOnScreenNotifier3D.svg);
+}
+.iconGodot-ConvexPolygonShape3D {
+  --image: url(/icons/godot/ConvexPolygonShape3D.svg);
+}
+.iconGodot-ArrayMesh {
+  --image: url(/icons/godot/ArrayMesh.svg);
+}
+.iconGodot-GraphNode {
+  --image: url(/icons/godot/GraphNode.svg);
+}
+.iconGodot-GuiSpinboxUpdownDisabled {
+  --image: url(/icons/godot/GuiSpinboxUpdownDisabled.svg);
+}
+.iconGodot-TripleBar {
+  --image: url(/icons/godot/TripleBar.svg);
+}
+.iconGodot-Panels3Alt {
+  --image: url(/icons/godot/Panels3Alt.svg);
+}
+.iconGodot-HSeparator {
+  --image: url(/icons/godot/HSeparator.svg);
+}
+.iconGodot-CurveConstant {
+  --image: url(/icons/godot/CurveConstant.svg);
+}
+.iconGodot-OptionButton {
+  --image: url(/icons/godot/OptionButton.svg);
+}
+.iconGodot-DirAccess {
+  --image: url(/icons/godot/DirAccess.svg);
+}
+.iconGodot-CollapseTree {
+  --image: url(/icons/godot/CollapseTree.svg);
+}
+.iconGodot-AnimationTrackList {
+  --image: url(/icons/godot/AnimationTrackList.svg);
+}
+.iconGodot-InputEventPanGesture {
+  --image: url(/icons/godot/InputEventPanGesture.svg);
+}
+.iconGodot-ExpandBottomDock {
+  --image: url(/icons/godot/ExpandBottomDock.svg);
+}
+.iconGodot-ReloadSmall {
+  --image: url(/icons/godot/ReloadSmall.svg);
+}
+.iconGodot-ViewportTexture {
+  --image: url(/icons/godot/ViewportTexture.svg);
+}
+.iconGodot-MaterialPreviewQuad {
+  --image: url(/icons/godot/MaterialPreviewQuad.svg);
+}
+.iconGodot-Breakpoint {
+  --image: url(/icons/godot/Breakpoint.svg);
+}
+.iconGodot-KeyTrackPosition {
+  --image: url(/icons/godot/KeyTrackPosition.svg);
+}
+.iconGodot-SystemFont {
+  --image: url(/icons/godot/SystemFont.svg);
+}
+.iconGodot-GuiSpinboxDown {
+  --image: url(/icons/godot/GuiSpinboxDown.svg);
+}
+.iconGodot-ActionPaste {
+  --image: url(/icons/godot/ActionPaste.svg);
+}
+.iconGodot-ScriptCreateDialog {
+  --image: url(/icons/godot/ScriptCreateDialog.svg);
+}
+.iconGodot-SpringBoneCollisionCapsule3D {
+  --image: url(/icons/godot/SpringBoneCollisionCapsule3D.svg);
+}
+.iconGodot-Progress4 {
+  --image: url(/icons/godot/Progress4.svg);
+}
+.iconGodot-GuiTabMenu {
+  --image: url(/icons/godot/GuiTabMenu.svg);
+}
+.iconGodot-GrooveJoint2D {
+  --image: url(/icons/godot/GrooveJoint2D.svg);
+}
+.iconGodot-NavigationRegion2D {
+  --image: url(/icons/godot/NavigationRegion2D.svg);
+}
+.iconGodot-ControlLayout {
+  --image: url(/icons/godot/ControlLayout.svg);
+}
+.iconGodot-ShaderMaterial {
+  --image: url(/icons/godot/ShaderMaterial.svg);
+}
+.iconGodot-ControlAlignBottomRight {
+  --image: url(/icons/godot/ControlAlignBottomRight.svg);
+}
+.iconGodot-GDScriptInternal {
+  --image: url(/icons/godot/GDScriptInternal.svg);
+}
+.iconGodot-ObjectDisabled {
+  --image: url(/icons/godot/ObjectDisabled.svg);
+}
+.iconGodot-LinkButton {
+  --image: url(/icons/godot/LinkButton.svg);
+}
+.iconGodot-ImportFail {
+  --image: url(/icons/godot/ImportFail.svg);
+}
+.iconGodot-ViewportZoom {
+  --image: url(/icons/godot/ViewportZoom.svg);
+}
+.iconGodot-CanvasTexture {
+  --image: url(/icons/godot/CanvasTexture.svg);
+}
+.iconGodot-CubemapArray {
+  --image: url(/icons/godot/CubemapArray.svg);
+}
+.iconGodot-HingeJoint3D {
+  --image: url(/icons/godot/HingeJoint3D.svg);
+}
+.iconGodot-ShapeCast2D {
+  --image: url(/icons/godot/ShapeCast2D.svg);
+}
+.iconGodot-Rect2i {
+  --image: url(/icons/godot/Rect2i.svg);
+}
+.iconGodot-TimelineIndicator {
+  --image: url(/icons/godot/TimelineIndicator.svg);
+}
+.iconGodot-VideoStreamPlayer {
+  --image: url(/icons/godot/VideoStreamPlayer.svg);
+}
+.iconGodot-PolygonOccluder3D {
+  --image: url(/icons/godot/PolygonOccluder3D.svg);
+}
+.iconGodot-EditAddRemove {
+  --image: url(/icons/godot/EditAddRemove.svg);
+}
+.iconGodot-TouchScreenButton {
+  --image: url(/icons/godot/TouchScreenButton.svg);
+}
+.iconGodot-CanvasLayer {
+  --image: url(/icons/godot/CanvasLayer.svg);
+}
+.iconGodot-ScriptRemove {
+  --image: url(/icons/godot/ScriptRemove.svg);
+}
+.iconGodot-IOSSimulator {
+  --image: url(/icons/godot/IOSSimulator.svg);
+}
+.iconGodot-InputEventAction {
+  --image: url(/icons/godot/InputEventAction.svg);
+}
+.iconGodot-PickerShapeCircle {
+  --image: url(/icons/godot/PickerShapeCircle.svg);
+}
+.iconGodot-GuiSpinboxUpdown {
+  --image: url(/icons/godot/GuiSpinboxUpdown.svg);
+}
+.iconGodot-InstanceOptions {
+  --image: url(/icons/godot/InstanceOptions.svg);
+}
+.iconGodot-SampleLibrary {
+  --image: url(/icons/godot/SampleLibrary.svg);
+}
+.iconGodot-VisualShaderNodeCurveTexture {
+  --image: url(/icons/godot/VisualShaderNodeCurveTexture.svg);
+}
+.iconGodot-CurveClose {
+  --image: url(/icons/godot/CurveClose.svg);
+}
+.iconGodot-GPUParticlesCollisionSDF3D {
+  --image: url(/icons/godot/GPUParticlesCollisionSDF3D.svg);
+}
+.iconGodot-Lock {
+  --image: url(/icons/godot/Lock.svg);
+}
+.iconGodot-Button {
+  --image: url(/icons/godot/Button.svg);
+}
+.iconGodot-RegExMatch {
+  --image: url(/icons/godot/RegExMatch.svg);
+}
+.iconGodot-GPUParticles2D {
+  --image: url(/icons/godot/GPUParticles2D.svg);
+}
+.iconGodot-PackedByteArray {
+  --image: url(/icons/godot/PackedByteArray.svg);
+}
+.iconGodot-TextureProgressBar {
+  --image: url(/icons/godot/TextureProgressBar.svg);
+}
+.iconGodot-VcsBranches {
+  --image: url(/icons/godot/VcsBranches.svg);
+}
+.iconGodot-CameraAttributesPractical {
+  --image: url(/icons/godot/CameraAttributesPractical.svg);
+}
+.iconGodot-AnimationTree {
+  --image: url(/icons/godot/AnimationTree.svg);
+}
+.iconGodot-Progress1 {
+  --image: url(/icons/godot/Progress1.svg);
+}
+.iconGodot-CSGTorus3D {
+  --image: url(/icons/godot/CSGTorus3D.svg);
+}
+.iconGodot-ShowInFileSystem {
+  --image: url(/icons/godot/ShowInFileSystem.svg);
+}
+.iconGodot-ImmediateMesh {
+  --image: url(/icons/godot/ImmediateMesh.svg);
+}
+.iconGodot-Sprite3D {
+  --image: url(/icons/godot/Sprite3D.svg);
+}
+.iconGodot-MoveDown {
+  --image: url(/icons/godot/MoveDown.svg);
+}
+.iconGodot-VisualShaderNodeTransformDecompose {
+  --image: url(/icons/godot/VisualShaderNodeTransformDecompose.svg);
+}
+.iconGodot-TileMapHighlightSelected {
+  --image: url(/icons/godot/TileMapHighlightSelected.svg);
+}
+.iconGodot-MultiplayerSpawner {
+  --image: url(/icons/godot/MultiplayerSpawner.svg);
+}
+.iconGodot-InputEventKey {
+  --image: url(/icons/godot/InputEventKey.svg);
+}
+.iconGodot-VisualShader {
+  --image: url(/icons/godot/VisualShader.svg);
+}
+.iconGodot-BusVuFrozen {
+  --image: url(/icons/godot/BusVuFrozen.svg);
+}
+.iconGodot-EditorFileDialog {
+  --image: url(/icons/godot/EditorFileDialog.svg);
+}
+.iconGodot-CameraAttributesPhysical {
+  --image: url(/icons/godot/CameraAttributesPhysical.svg);
+}
+.iconGodot-GuiTreeArrowDown {
+  --image: url(/icons/godot/GuiTreeArrowDown.svg);
+}
+.iconGodot-MemberAnnotation {
+  --image: url(/icons/godot/MemberAnnotation.svg);
+}
+.iconGodot-VisualShaderNodeCubemap {
+  --image: url(/icons/godot/VisualShaderNodeCubemap.svg);
+}
+.iconGodot-TrackContinuous {
+  --image: url(/icons/godot/TrackContinuous.svg);
+}
+.iconGodot-SnapKeys {
+  --image: url(/icons/godot/SnapKeys.svg);
+}
+.iconGodot-KeyValueEased {
+  --image: url(/icons/godot/KeyValueEased.svg);
+}
+.iconGodot-NodeWarnings2 {
+  --image: url(/icons/godot/NodeWarnings2.svg);
+}
+.iconGodot-VisualShaderNodeCubemapUniform {
+  --image: url(/icons/godot/VisualShaderNodeCubemapUniform.svg);
+}
+.iconGodot-GuiSpinboxUp {
+  --image: url(/icons/godot/GuiSpinboxUp.svg);
+}
+.iconGodot-PinJoint3D {
+  --image: url(/icons/godot/PinJoint3D.svg);
+}
+.iconGodot-SkeletonModifier3D {
+  --image: url(/icons/godot/SkeletonModifier3D.svg);
+}
+.iconGodot-VisualShaderNodeInput {
+  --image: url(/icons/godot/VisualShaderNodeInput.svg);
+}
+.iconGodot-KeyXRotation {
+  --image: url(/icons/godot/KeyXRotation.svg);
+}
+.iconGodot-OccluderPolygon2D {
+  --image: url(/icons/godot/OccluderPolygon2D.svg);
+}
+.iconGodot-GuiToggleOn {
+  --image: url(/icons/godot/GuiToggleOn.svg);
+}
+.iconGodot-ColorTrackVu {
+  --image: url(/icons/godot/ColorTrackVu.svg);
+}
+.iconGodot-Line {
+  --image: url(/icons/godot/Line.svg);
+}
+.iconGodot-VFlowContainer {
+  --image: url(/icons/godot/VFlowContainer.svg);
+}
+.iconGodot-ItemList {
+  --image: url(/icons/godot/ItemList.svg);
+}
+.iconGodot-GuiViewportHdiagsplitter {
+  --image: url(/icons/godot/GuiViewportHdiagsplitter.svg);
+}
+.iconGodot-Search {
+  --image: url(/icons/godot/Search.svg);
+}
+.iconGodot-TransitionEnd {
+  --image: url(/icons/godot/TransitionEnd.svg);
+}
+.iconGodot-FlipWinding {
+  --image: url(/icons/godot/FlipWinding.svg);
+}
+.iconGodot-PhysicsMaterial {
+  --image: url(/icons/godot/PhysicsMaterial.svg);
+}
+.iconGodot-SpringBoneCollisionSphere3D {
+  --image: url(/icons/godot/SpringBoneCollisionSphere3D.svg);
+}
+.iconGodot-VisualShaderNodeTextureUniform {
+  --image: url(/icons/godot/VisualShaderNodeTextureUniform.svg);
+}
+.iconGodot-KeyTrackRotation {
+  --image: url(/icons/godot/KeyTrackRotation.svg);
+}
+.iconGodot-BoxMesh {
+  --image: url(/icons/godot/BoxMesh.svg);
+}
+.iconGodot-HeightMapShape3D {
+  --image: url(/icons/godot/HeightMapShape3D.svg);
+}
+.iconGodot-WorldBoundaryShape2D {
+  --image: url(/icons/godot/WorldBoundaryShape2D.svg);
+}
+.iconGodot-PackedColorArray {
+  --image: url(/icons/godot/PackedColorArray.svg);
+}
+.iconGodot-Instance {
+  --image: url(/icons/godot/Instance.svg);
+}
+.iconGodot-CryptoKey {
+  --image: url(/icons/godot/CryptoKey.svg);
+}
+.iconGodot-Progress3 {
+  --image: url(/icons/godot/Progress3.svg);
+}
+.iconGodot-CanvasItemMaterial {
+  --image: url(/icons/godot/CanvasItemMaterial.svg);
+}
+.iconGodot-Tree {
+  --image: url(/icons/godot/Tree.svg);
+}
+.iconGodot-StatusError {
+  --image: url(/icons/godot/StatusError.svg);
+}
+.iconGodot-GuiScrollArrowLeft {
+  --image: url(/icons/godot/GuiScrollArrowLeft.svg);
+}
+.iconGodot-PhysicalBone3D {
+  --image: url(/icons/godot/PhysicalBone3D.svg);
+}
+.iconGodot-AudioBusMute {
+  --image: url(/icons/godot/AudioBusMute.svg);
+}
+.iconGodot-Remove {
+  --image: url(/icons/godot/Remove.svg);
+}
+.iconGodot-AspectRatioContainer {
+  --image: url(/icons/godot/AspectRatioContainer.svg);
+}
+.iconGodot-Reload {
+  --image: url(/icons/godot/Reload.svg);
+}
+.iconGodot-ErrorWarning {
+  --image: url(/icons/godot/ErrorWarning.svg);
+}
+.iconGodot-DefaultProjectIcon {
+  --image: url(/icons/godot/DefaultProjectIcon.svg);
+}
+.iconGodot-GuiTreeUpdown {
+  --image: url(/icons/godot/GuiTreeUpdown.svg);
+}
+.iconGodot-Panels2 {
+  --image: url(/icons/godot/Panels2.svg);
+}
+.iconGodot-BitMap {
+  --image: url(/icons/godot/BitMap.svg);
+}
+.iconGodot-TextureRect {
+  --image: url(/icons/godot/TextureRect.svg);
+}
+.iconGodot-GuiProgressFill {
+  --image: url(/icons/godot/GuiProgressFill.svg);
+}
+.iconGodot-CurveEdit {
+  --image: url(/icons/godot/CurveEdit.svg);
+}
+.iconGodot-SpriteSheet {
+  --image: url(/icons/godot/SpriteSheet.svg);
+}
+.iconGodot-Mouse {
+  --image: url(/icons/godot/Mouse.svg);
+}
+.iconGodot-AnimatedSprite3D {
+  --image: url(/icons/godot/AnimatedSprite3D.svg);
+}
+.iconGodot-Paint {
+  --image: url(/icons/godot/Paint.svg);
+}
+.iconGodot-Theme {
+  --image: url(/icons/godot/Theme.svg);
+}
+.iconGodot-GizmoAudioListener3D {
+  --image: url(/icons/godot/GizmoAudioListener3D.svg);
+}

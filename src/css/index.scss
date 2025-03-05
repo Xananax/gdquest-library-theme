@@ -9,9 +9,11 @@
 @use "../components/carousel/carousel.scss";
 @use "../components/challenge/challenge.scss";
 @use "../components/checkpoint/checkpoint.scss";
+@use "../components/checkpointBullet/checkpointBullet.scss";
 @use "../components/clapsButton/clapsButton.scss";
 @use "../components/clipboardButton/clipboardButton.scss";
 @use "../components/codeBlock/codeBlock.scss";
+@use "../components/codeErrorInText/codeErrorInText.scss";
 @use "../components/codeReference/codeReference.scss";
 @use "../components/collapsibleElement/collapsibleElement.scss";
 @use "../components/collapsibleList/collapsibleList.scss";
@@ -28,6 +30,7 @@
 @use "../components/gridItemsList/gridItemsList.scss";
 @use "../components/headerSiteSearch/headerSiteSearch.scss";
 @use "../components/hint/hint.scss";
+@use "../components/iconGodot/iconGodot.scss";
 @use "../components/itemDiscordInvite/itemDiscordInvite.scss";
 @use "../components/itemPageMeta/itemPageMeta.scss";
 @use "../components/itemCard/itemCard.scss";
@@ -38,12 +41,14 @@
 @use "../components/mainSearch/mainSearch.scss";
 @use "../components/nodeFlashCard/nodeFlashCard.scss";
 @use "../components/nodeFlashCardShuffler/nodeFlashCardShuffler.scss";
+@use "../components/note/note.scss";
 @use "../components/pageAuth/pageAuth.scss";
 @use "../components/passwordField/passwordField.scss";
 @use "../components/promoGDSchool/promoGDSchool.scss";
 @use "../components/promoIntro/promoIntro.scss";
 @use "../components/quoteBubble/quoteBubble.scss";
 @use "../components/scrollingList/scrollingList.scss";
+@use "../components/settingsInText/settingsInText.scss";
 @use "../components/searchResultsGrid/searchResultsGrid.scss";
 @use "../components/shareWidget/shareWidget.scss";
 @use "../components/tableOfContents/tableOfContents.scss";

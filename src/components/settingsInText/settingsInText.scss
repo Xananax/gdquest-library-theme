@@ -1,0 +1,45 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.settingsInText{
+  font-family: var(--font-mono);
+  border-radius: 0.5rem; /* 8px */
+  white-space: nowrap;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+  background-color: rgb(229 231 235);
+  border: 1px solid rgb(229 231 235);
+  box-shadow: 2px 2px 3px 0px rgb(164, 165, 168, 0.4);
+  &Section {
+    &First:before,
+    &:after {
+      @include icon();
+      color: rgb(107 114 128);
+      top: 0.1875rem;
+      position: relative;
+    }
+    &First:before{
+      @extend %icon-draggable;
+    }
+    &:after{
+      @extend %icon-arrow-left;
+      transform: rotate(180deg);
+    }
+    &Last {
+      &:after {
+        content: none;
+      }
+    }
+  }
+  @include dark(){
+    background-color: rgb(55 65 81);
+    color: white;
+    border-color: rgb(92, 96, 102);
+    .section {
+      &.first:before,
+      &:after {
+        color: rgb(156 163 175);
+      }
+    }
+  }
+}

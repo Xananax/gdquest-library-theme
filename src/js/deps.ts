@@ -1,12 +1,6 @@
-export {
+import {
+  h,
   add,
-  button,
-  img,
-  li,
-  span,
-  div,
-  ul,
-  a,
 } from "../../../process-course-utils/src/any/createElement/h.web.ts";
 export { Signal } from "../../../process-course-utils/src/any/Signal.ts";
 export { splitPathStringToParts } from "../../../process-course-utils/src/any/splitPathStringToParts.ts";
@@ -17,3 +11,7 @@ export {
 } from "../../../process-course-utils/src/web/userMessagesCollection.ts";
 export { type NominalType } from "../../../process-course-utils/src/any/NominalType.ts";
 export { autoFetchWhenSubmit } from "./../../../process-course-utils/src/web/autoFetchWhenSubmit.ts";
+
+export const { button, img, li, span, div, ul, a, pre, code } = h;
+
+export { add };

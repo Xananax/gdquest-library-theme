@@ -214,3 +214,64 @@ a.socialLink {
     //}
   }
 }
+
+
+kbd {
+  position: relative;
+  top: -2px;
+  white-space: nowrap;
+    text-wrap-mode: nowrap;
+  border-radius: .125rem;
+  padding: .125rem .25rem;
+  text-wrap: nowrap;
+  font-size: .75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: rgb(243 244 246);
+  color: rgb(31 41 55);
+  box-shadow: 0 2px var(--un-shadow-color,#888);
+  outline-width: 1px;
+  outline-color: rgb(136 136 136);
+  outline-style: solid;
+
+  .keyOfSequence {
+    &:after,
+    &:before {
+      color: rgb(96 165 250);
+      @include dark(){
+        color: rgb(147 197 253);
+      }
+    }
+    &:after {
+      content: "+";
+      margin: 0 0.2em;
+    }
+    &:last-child::after {
+      content: none;
+    }
+    &[class^="before:"]:before,
+    &[class*=" before:"]:before {
+      width: 1rem;
+      height: 1rem;
+      font-size: 1rem;
+      position: relative;
+      top: 0.27rem;
+    }
+  }
+
+  .letters-1 {
+    text-transform: uppercase;
+  }
+}
+
+
+/** TODO: make Prism inline highlighting work */
+code:not([class]), code[class=""], code.language-gdscript {
+  background-color: rgba(203,213,225,.3);
+  word-break: break-word;
+  display: inline;
+  background-color: rgba(203,213,225,.3);
+  padding: .125rem;
+  font-family: var(--font-mono);
+}

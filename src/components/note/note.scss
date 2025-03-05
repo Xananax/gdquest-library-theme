@@ -1,0 +1,41 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.note {
+  border-width: 1px;
+  border-style: dashed;
+  border-color: #c28307;
+  border-radius: 0.375rem;
+  padding: 0.625rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  
+  &Icon {
+    @include icon();
+    @extend %icon-note;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    background-color: #f0a209;
+    position: relative;
+    top: 0.1rem;
+  }
+  
+  &Title {
+    color: #c28307;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  &Description {
+    color: #5b537d;
+    font-style: italic;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    @include dark(){
+      color: rgb(209 213 219);
+    }
+  }
+}

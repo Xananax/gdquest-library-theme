@@ -1,0 +1,24 @@
+@use "../../css/utils.scss" as *;
+
+.codeErrorInText {
+  --error-bg-color: #c41d3c3c;
+  --error-text-color: #c41d3d;
+  --error-padding-x: 0.25rem;
+  --error-padding-y: 0.25rem;
+  background-color: var(--error-bg-color);
+  box-decoration-break: clone;
+  padding: 0 var(--error-padding-x);
+  box-shadow:
+    0 var(--error-padding-y) 0 var(--error-bg-color),
+    0 calc(-1 * var(--error-padding-y)) 0 var(--error-bg-color);
+  color: var(--error-text-color);
+  @apply font-mono;
+  & > p,
+  & > .paragraph {
+    display: inline;
+  }
+  @include dark(){
+    --error-bg-color: #c41d3c75;
+    --error-text-color: #ff417d;
+  }
+}
