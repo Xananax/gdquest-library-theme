@@ -3,7 +3,6 @@ pre {
   overflow-x: auto;
 }
 
-
 .codeBlockFileName {
   position: absolute;
   inset: 0 0 auto auto;
@@ -15,7 +14,7 @@ pre {
   width: min-content;
   overflow: hidden;
   font-size: 0.92rem;
-  .fileInText{
+  .fileInText {
     &Protocol,
     &Slash,
     &Directory {
@@ -156,18 +155,20 @@ pre:has(code[class*="language-"]) {
   }
 }
 
-/*
-:not(pre) > code[class*="language-"] {
-  white-space: normal;
-  border-radius: 0.2em;
-  padding: 0.1em;
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
 }
-*/
 
-.language-css > code,
-.language-sass > code,
-.language-scss > code {
-  color: #fd9170;
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.15em 0.2em 0.05em;
+  border-radius: 0.3em;
+  border: 0.13em solid hsl(30, 20%, 40%);
+  box-shadow: 1px 1px 0.3em -0.1em black inset;
+  white-space: normal;
 }
 
 [class*="language-"] .namespace {
@@ -320,4 +321,93 @@ pre:has(code[class*="language-"]) {
   &.variable {
     color: #63c259;
   }
+}
+
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em; /* Same as .prism’s padding-top */
+
+  background: hsla(24, 20%, 50%, 0.08);
+  background: linear-gradient(
+    to right,
+    hsla(24, 20%, 50%, 0.1) 70%,
+    hsla(24, 20%, 50%, 0)
+  );
+
+  pointer-events: none;
+
+  line-height: inherit;
+  white-space: pre;
+}
+
+@media print {
+  .line-highlight {
+    /*
+		 * This will prevent browsers from replacing the background color with white.
+		 * It's necessary because the element is layered on top of the displayed code.
+		 */
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: 0.4em;
+  left: 0.6em;
+  min-width: 1em;
+  padding: 0 0.5em;
+  background-color: hsla(24, 20%, 50%, 0.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: 0.3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+.line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: 0.4em;
+}
+
+.line-numbers .line-highlight:before,
+.line-numbers .line-highlight:after {
+  content: none;
+}
+
+pre[id].linkable-line-numbers span.line-numbers-rows {
+  pointer-events: all;
+}
+pre[id].linkable-line-numbers span.line-numbers-rows > span:before {
+  cursor: pointer;
+}
+pre[id].linkable-line-numbers span.line-numbers-rows > span:hover:before {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+pre.diff-highlight > code .token.deleted:not(.prefix),
+pre > code.diff-highlight .token.deleted:not(.prefix) {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: inherit;
+  display: block;
+}
+
+pre.diff-highlight > code .token.inserted:not(.prefix),
+pre > code.diff-highlight .token.inserted:not(.prefix) {
+  background-color: rgba(0, 255, 128, 0.1);
+  color: inherit;
+  display: block;
 }

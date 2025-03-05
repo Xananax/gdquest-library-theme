@@ -16,6 +16,9 @@
       "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
     }
   },
+  "remote": {
+    "https://deno.land/x/fest@4.13.2/mod.ts": "8dd20290582d5ba500ceb3e91f1cc69dcc23e096445a4db8c7ae85520cca82f1"
+  },
   "workspace": {
     "packageJson": {
       "dependencies": [

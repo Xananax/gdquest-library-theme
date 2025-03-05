@@ -178,8 +178,8 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 	}
 	&Anchor {
 		text-decoration: none;
-		padding-inline: 0.625rem 1.25rem;
-		padding-block-start: 0.625rem;
+    padding-inline-start: 0.625rem;
+    padding-inline-end: 1.25rem;
 		padding-block: 0.875rem;
 		gap: 0.625rem;
 		display: flex;
@@ -205,6 +205,10 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 		&.isActive::after {
 			border-inline-end-color: var(--purple-light-010);
 		}
+    &.hasIconBefore::before{
+      margin-inline-end: 0.2ch;
+      top: 0;
+    }
 	}
 	&SubheadingsContainer {
 		grid-area: subheadings;

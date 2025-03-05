@@ -1,9 +1,10 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
 
-summary {
+.disclosureSummary {
   display: flex;
   align-items: center;
+  position: relative;
   h1,
   h2,
   h3,
@@ -20,26 +21,39 @@ summary {
   &::after {
     @include icon();
     @extend %icon-arrow-left-s-line;
-    transform: rotate(-180deg);
+    transform: rotate(-90deg);
     transition: transform 300ms ease-out;
   }
+  .collapsibleRevealButton {
+    @include buttonReset();
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+    span {
+      @include srOnly();
+    }
+  }
+  &[data-closed] {
+    &::after {
+      transform: rotate(-180deg);
+    }
+  }
 }
 
-[open] summary::after {
-  transform: rotate(-90deg);
+.disclosureDetails {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease-out;
+  & > &Content {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: padding 0.3s ease-out;
+  }
 }
 
-details {
-  overflow: hidden;
-  &::details-content {
-    block-size: 0;
-    transition-property: block-size, content-visibility;
-    transition-duration: 1s;
-    transition-behavior: allow-discrete;
-  }
-
-  &:open::details-content {
-    block-size: auto;
-    content-visibility: visible;
-  }
+.disclosureSummary[data-closed] + .disclosureDetails {
+  grid-template-rows: 0fr;
 }

@@ -22,7 +22,6 @@ export type TemplateFileName =
   | "mainSearch"
   | "mailingListCollector"
   | "quoteBubble"
-  | "collapsibleElement"
   | "calloutsList"
   | "videoEmbed"
   | "promoIntro"
@@ -40,6 +39,7 @@ export type TemplateFileName =
   | "itemDiscordInvite"
   | "welcomeText"
   | "pageMain"
+  | "openGraphTags"
   | "taxonomyPageHeader"
   | "glossarySeeAlsoBlock"
   | "collapsibleList"
@@ -133,10 +133,6 @@ export const templatesFiles = {
     relPath: "quoteBubble/quoteBubble.vto",
     fullPath: "src/components/quoteBubble/quoteBubble.vto" 
   },
-  collapsibleElement: { 
-    relPath: "collapsibleElement/collapsibleElement.vto",
-    fullPath: "src/components/collapsibleElement/collapsibleElement.vto" 
-  },
   calloutsList: { 
     relPath: "calloutsList/calloutsList.vto",
     fullPath: "src/components/calloutsList/calloutsList.vto" 
@@ -204,6 +200,10 @@ export const templatesFiles = {
   pageMain: { 
     relPath: "pageMain/pageMain.vto",
     fullPath: "src/components/pageMain/pageMain.vto" 
+  },
+  openGraphTags: { 
+    relPath: "openGraphTags/openGraphTags.vto",
+    fullPath: "src/components/openGraphTags/openGraphTags.vto" 
   },
   taxonomyPageHeader: { 
     relPath: "taxonomyPageHeader/taxonomyPageHeader.vto",

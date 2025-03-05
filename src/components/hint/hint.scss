@@ -1,16 +1,17 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
 
-details.hint {
+.hint {
   color: currentColor;
   counter-increment: hint;
-  summary {
+  position: relative;
+  .disclosureSummary {
     user-select: none;
     cursor: pointer;
     strong {
-      &::after{
+      &::after {
         content: counter(hint);
-        margin-inline-start: 0.5ch;
+        margin-inline-start: 0.3ch;
       }
       margin-inline-start: 0.5ch;
     }
@@ -19,13 +20,40 @@ details.hint {
     }
     &:before {
       @include icon();
-      @extend %icon-eye-close;
+      @extend %icon-eye;
       margin-inline-end: 0.5ch;
     }
   }
-  &[open] {
-    summary::before {
-      @extend %icon-eye;
+
+  .disclosureSummary {
+    position: relative;
+  }
+
+  .disclosureDetails {
+    top: 0;
+    left: 0;
+    transition: grid-template-rows 0.3s ease-out, opacity 0.3s ease-out;
+  }
+
+  &.isJSProcessed{
+    .hintLabel {
+      transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
+      opacity: 0;
+      pointer-events: none;
+      max-height: 0;
+    }
+    .disclosureSummary[data-closed] {
+      &::before {
+        @extend %icon-eye-close;
+      }
+      .hintLabel {
+        opacity: 1;
+        pointer-events: all;
+        max-height: 3rem;
+      }
+      & + .disclosureDetails {
+        opacity: 0;
+      }
     }
   }
 }

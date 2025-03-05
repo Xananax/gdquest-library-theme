@@ -149,12 +149,11 @@ a.socialLink {
 }
 
 .hasIconBefore {
-  padding-inline-start: 2ch;
   &::before {
     @include icon();
-    position: absolute;
-    inset-inline-start: 0;
-    top: 0.2ch;
+    margin-inline-end: 0.3ch;
+    position: relative;
+    top: 0.1ch;
     color: var(--icon-color);
   }
   &.icon-app {
@@ -267,11 +266,10 @@ kbd {
 
 
 /** TODO: make Prism inline highlighting work */
-code:not([class]), code[class=""], code.language-gdscript {
-  background-color: rgba(203,213,225,.3);
+code:not([class]), code[class=""], :not(pre) > code.language-gdscript {
+  background-color: #202020;
   word-break: break-word;
   display: inline;
-  background-color: rgba(203,213,225,.3);
   padding: .125rem;
   font-family: var(--font-mono);
 }

@@ -9,16 +9,23 @@
     background-color: rgb(46 16 101);
     padding-block: 1.75rem;
     //grid-area: gutterLeft / actions;
-    summary{
+    .disclosureSummary{
+        cursor: pointer;
         h1, h2, h3, h4{
             font-family: var(--title);
             color: var(--color-coderef-title);
         }
-        h1{
+        .codeReferenceTitle{
+            position: relative;
             font-size: 2.25rem;
             --icon-color: var(--color-coderef-title);
             @include dark(){
                 --icon-color: var(--color-coderef-title);
+            }
+            &::before{
+              margin-inline-end: 0.4ch;
+              margin-inline-start: 0.4ch;
+              top: 0.2ch;
             }
         }
         &::after{

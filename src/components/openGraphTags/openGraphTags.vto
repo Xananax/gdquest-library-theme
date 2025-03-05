@@ -1,0 +1,19 @@
+{{- if title -}}
+<meta property="og:title" content="{{ title }}">
+<meta name="twitter:title" content="{{ title}}">
+{{- /if -}}
+{{- if description -}}
+<meta name="description" content="{{ description }}" />
+<meta name="twitter:description" content="{{ description }}">
+<meta property="og:description" content="{{ description }}">
+{{- /if -}}
+{{- if siteUrl && cover -}}
+<meta property="og:image" content="{{ siteUrl }}/{{ cover.relPath }}">
+<meta name="twitter:image" content="{{ siteUrl }}/{{ cover.relPath }}">
+{{- /if -}}
+{{- if siteUrl -}}
+<meta property="og:url" content="{{ siteUrl }}">
+<meta name="twitter:url" content="{{ siteUrl }}">
+{{- /if -}}
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">

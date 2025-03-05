@@ -1,17 +1,33 @@
 import { tmpl, ValidChild } from "../../depsServer.ts";
 import { SectionTitle as SectionTitle } from "./../sectionTitle/sectionTitle.html.ts";
 import { FileInText as FileInText } from "./../fileInText/fileInText.html.ts";
-const { details, summary, div, p } = tmpl;
+import { CollapsibleElement } from "../collapsibleElement/collapsibleElement.html.ts";
+const { p, div } = tmpl;
+
+interface CodeReferenceProps {
+  title: string;
+  file: string;
+  closed: boolean;
+  open: boolean;
+}
 
 export const CodeReference = (
-  { title = "Code Reference", file = "" }: Partial<{ title: string; file: string }>,
+  { title = "Code Reference", file = "", closed = true }: CodeReferenceProps,
   ...content: ValidChild[]
 ) =>
-  details(
-    { open: true, className: "codeReference" },
-    summary(null, SectionTitle({ icon: "code" }, title)),
+  CollapsibleElement(
+    {
+      isOpen: !closed,
+      className: "codeReference",
+      title: SectionTitle(
+        { icon: "code", level: 4, className: ["codeReferenceTitle"] },
+        title
+      ),
+    },
     div(
-      { className: "codeReferenceContent" },
+      {
+        className: "codeReferenceContent",
+      },
       p(
         null,
         "Here's the complete code for the ",
