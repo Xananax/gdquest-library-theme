@@ -1,8 +1,6 @@
 import { tmpl, ValidChild } from "../../depsServer.ts";
-import { SectionTitle as SectionTitle } from "./../sectionTitle/sectionTitle.html.ts";
-import { FileInText as FileInText } from "./../fileInText/fileInText.html.ts";
 import { CollapsibleElement } from "../collapsibleElement/collapsibleElement.html.ts";
-const { p, div, span, strong } = tmpl;
+const { div, span, strong } = tmpl;
 
 interface HintProps {
   title: string;

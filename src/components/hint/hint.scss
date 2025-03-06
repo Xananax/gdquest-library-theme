@@ -5,6 +5,8 @@
   color: currentColor;
   counter-increment: hint;
   position: relative;
+  min-height: 1rem;
+  margin-block-end: 0.5rem;
   .disclosureSummary {
     user-select: none;
     cursor: pointer;
@@ -26,16 +28,26 @@
   }
 
   .disclosureSummary {
-    position: relative;
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    grid-template-columns: auto 1fr;
   }
 
   .disclosureDetails {
-    top: 0;
-    left: 0;
-    transition: grid-template-rows 0.3s ease-out, opacity 0.3s ease-out;
+    margin-inline-start: 2ch;
+    top: -0.2rem;
+    position: relative;
   }
 
-  &.isJSProcessed{
+  &.isJSProcessed {
+    .disclosureSummary {
+      position: absolute;
+      inset: 0;
+    }
+    .disclosureDetails {
+      transition: grid-template-rows 0.3s ease-out, opacity 0.3s ease-out;
+    }
     .hintLabel {
       transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
       opacity: 0;

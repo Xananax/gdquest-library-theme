@@ -4,7 +4,6 @@
 .iconGodot {
   --icon-background-color: transparent;
   --icon-size: 1.2em;
-  font-family: var(--font-mono);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -35,6 +34,10 @@
   &Label{
     @include srOnly();
   }
+}
+
+.iconGodotWrapper{
+  font-family: var(--font-mono);
 }
 
 .iconGodot-TileSelection {
