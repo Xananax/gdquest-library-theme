@@ -1,0 +1,51 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.videoFile {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  &UseDefaultAspectRatio {
+    aspect-ratio: 16/9;
+  }
+  &Rounded {
+    border-radius: 0.5rem; /* 8px */
+  }
+  &Video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  &ButtonsContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    a,
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem; /* 32px */
+      height: 2rem; /* 32px */
+      border-radius: 9999px;
+      background-color: rgb(241 245 249);
+      color: rgb(15 23 42);
+      span {
+        @include srOnly;
+      }
+    }
+    &ButtonNewTab {
+      &::before {
+        @include icon();
+        @extend %icon-external-link;
+      }
+    }
+  }
+}
+
+.main:hover .buttonsContainer {
+  opacity: 1;
+}
