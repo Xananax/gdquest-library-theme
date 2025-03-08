@@ -1,6 +1,7 @@
 @use "./icons.scss" as *;
 @use "./utils.scss" as *;
 @use "./contentGrid.scss" as *;
+@use "globals.scss" as *;
 
 :root {
   interpolate-size: allow-keywords;
@@ -86,7 +87,7 @@ body:has([popover]:popover-open) {
 .gdquestLogo,
 .gdschoolLogo,
 .githubLogo {
-  background-image: url("/gdquest_logo.svg");
+  background-image: url("#{$basePath}/gdquest_logo.svg");
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
@@ -107,11 +108,11 @@ body:has([popover]:popover-open) {
 }
 
 .gdschoolLogo {
-  background-image: url("/gdschool_logo_dark.svg");
+  background-image: url("#{$basePath}/gdschool_logo_dark.svg");
 }
 
 .githubLogo {
-  background-image: url("/github_logo.svg");
+  background-image: url("#{$basePath}/github_logo.svg");
   filter: drop-shadow(0 2px 1.77px rgba(0, 0, 0, 0.25));
 }
 

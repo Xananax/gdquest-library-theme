@@ -1,3 +1,5 @@
+@use "globals.scss" as *;
+
 .itemSummaryBrowserHero {
 	padding-block: 6rem;
 	background:
@@ -6,7 +8,7 @@
 			color-mix(in srgb, var(--purple-light-030) 80%, transparent) 0%,
 			color-mix(in srgb, var(--purple-light-020) 80%, transparent) 100%
 		),
-		repeat center/ 50px url("/logopattern.png"),
+		repeat center/ 50px url("#{$basePath}/logopattern.png"),
 		linear-gradient(
 			90deg,
 			var(--purple-light-030) 0%,

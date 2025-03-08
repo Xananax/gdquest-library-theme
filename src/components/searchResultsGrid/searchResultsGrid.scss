@@ -1,6 +1,7 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
 @use "../../css/contentGrid.scss" as *;
+@use "globals.scss" as *;
 
 .searchResultsGrid{
     &Summary {
@@ -50,7 +51,7 @@
             width: 12.7rem;
             height: 7.3rem;
             aspect-ratio: 1.74;
-            background-image: url("/all-together.png");
+            background-image: url("#{$basePath}/all-together.png");
             background-size: contain;
         }
     }

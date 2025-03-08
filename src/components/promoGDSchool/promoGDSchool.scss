@@ -1,5 +1,6 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
+@use "globals.scss" as *;
 
 $promoGDSchoolBreakpoint: 1000px;
 
@@ -45,7 +46,7 @@ $promoGDSchoolBreakpoint: 1000px;
 			&::before {
 				content: "";
 				display: block;
-				background: no-repeat url("/gdschool_logo.svg") 0%
+				background: no-repeat url("#{$basePath}/gdschool_logo.svg") 0%
 					center / contain;
 				height: 100%;
 				aspect-ratio: 3.5;

@@ -2,6 +2,7 @@
 @use "../../css/icons.scss" as *;
 @use "../../css/contentGrid.scss" as *;
 @use "../prose/prose.scss" as prose;
+@use "globals.scss" as *;
 
 .contributeBlock {
 	--dark-color: rgba(26, 18, 45, 1);
@@ -149,7 +150,7 @@
 		}
 		&:nth-child(1) {
 			transform: perspective(100px) translateZ(10px);
-			--background-image: url("/head-gobot.png");
+			--background-image: url("#{$basePath}/head-gobot.png");
 			--number: "1";
 			.contributeBlockFooterLink span::after {
 				@extend %icon-arrow-left-s-line;
@@ -157,7 +158,7 @@
 			}
 		}
 		&:nth-child(2) {
-			--background-image: url("/head-sophia.png");
+			--background-image: url("#{$basePath}/head-sophia.png");
 			--number: "2";
 			& > p::before {
 				width: 10rem;
@@ -167,7 +168,7 @@
 			}
 		}
 		&:nth-child(3) {
-			--background-image: url("/head-gdbot.png");
+			--background-image: url("#{$basePath}/head-gdbot.png");
 			--number: "3";
 			.contributeBlockFooterLink span::after {
 				@extend %icon-share;

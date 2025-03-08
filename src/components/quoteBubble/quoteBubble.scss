@@ -1,5 +1,6 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
+@use "globals.scss" as *;
 
 /******************************************************************************
  *
@@ -8,7 +9,7 @@
  *****************************************************************************/
 
 .quoteBubble {
-	--quote-author-image: url("/nathan_avatar.png");
+	--quote-author-image: url("#{$basePath}/nathan_avatar.png");
 	@include paddingMarginReset;
 	width: 100%;
 	a {

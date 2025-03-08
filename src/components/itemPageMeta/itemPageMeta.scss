@@ -1,5 +1,6 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
+@use "globals.scss" as *;
 
 @mixin title {
   text-transform: uppercase;
@@ -130,7 +131,7 @@
     height: 100%;
     transform: scale(0.8);
     background: no-repeat center/contain
-      url("/all-together-circle.png");
+      url("#{$basePath}/all-together-circle.png");
   }
   span {
     text-align: center;

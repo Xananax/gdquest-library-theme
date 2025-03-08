@@ -1,10 +1,11 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
+@use "globals.scss" as *;
 
 $footerBreakPoint: 60rem;
 
 .mainPageFooter {
-	background: url("/footer-background.svg") no-repeat center center /
+	background: url("#{basePath}/footer-background.svg") no-repeat center center /
 		cover;
 	container: mainPageFooterContainer / inline-size;
 	ul,
