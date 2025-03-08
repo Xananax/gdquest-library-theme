@@ -1,5 +1,5 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
-const { div, button, span } = tmpl;
+import { tmpl, ComponentString, ValidChild } from "../../depsServer.ts";
+const { div } = tmpl;
 
 interface CollapsibleElementProps {
   title?: ValidChild;
@@ -10,14 +10,9 @@ interface CollapsibleElementProps {
 
 const randomId = () => "c" + Math.random().toString(36).substring(2, 15);
 
-export const CollapsibleElement = (
-  {
-    title = "details",
-    isOpen = false,
-    id = randomId(),
-    className,
-  }: CollapsibleElementProps,
-  ...content: ValidChild[]
+export const CollapsibleElement: ComponentString<CollapsibleElementProps> = (
+  { title = "details", isOpen = false, id = randomId(), className },
+  ...content
 ) =>
   div(
     {
@@ -25,10 +20,7 @@ export const CollapsibleElement = (
       dataOpen: isOpen,
       className,
     },
-    div(
-      { className: "disclosureSummary" },
-      title
-    ),
+    div({ className: "disclosureSummary" }, title),
     div(
       { className: "disclosureDetails", id },
       div({ className: "disclosureDetailsContent" }, ...content)

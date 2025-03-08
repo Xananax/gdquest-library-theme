@@ -1,16 +1,13 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { tmpl, ComponentString } from "../../depsServer.ts";
 const { span, div } = tmpl;
 
 const classPrefix = "note";
 
-export const Note = (
-  {
-    title = "NOTE:",
-  }: {
-    title?: string;
-  },
-  ...children: ValidChild[]
-) => {
+interface NoteProps{
+  title?: string;
+}
+
+export const Note: ComponentString<NoteProps> = ({ title = "NOTE:" }, ...children) => {
   return div(
     { className: classPrefix },
     span({ className: `${classPrefix}Icon`, ariaHidden: "true" }),

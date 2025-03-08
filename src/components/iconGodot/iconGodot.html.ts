@@ -1,18 +1,16 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { ComponentString, tmpl } from "../../depsServer.ts";
 const { span } = tmpl;
 
-export const IconGodot = (
-  {
-    currentColor = false,
-    name,
-    asMask = false,
-  }: Partial<{
-    currentColor: boolean;
-    name: string;
-    asMask: boolean;
-    iconOnly: boolean;
-  }>,
-  ...children: ValidChild[]
+type IconGodotProps = Partial<{
+  currentColor: boolean;
+  name: string;
+  asMask: boolean;
+  iconOnly: boolean;
+}>;
+
+export const IconGodot: ComponentString<IconGodotProps> = (
+  { currentColor = false, name, asMask = false },
+  ...children
 ) =>
   span(
     { className: "iconGodotWrapper" },

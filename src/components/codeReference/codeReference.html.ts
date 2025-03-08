@@ -1,4 +1,4 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { tmpl, ComponentString } from "../../depsServer.ts";
 import { SectionTitle as SectionTitle } from "./../sectionTitle/sectionTitle.html.ts";
 import { FileInText as FileInText } from "./../fileInText/fileInText.html.ts";
 import { CollapsibleElement } from "../collapsibleElement/collapsibleElement.html.ts";
@@ -11,9 +11,9 @@ interface CodeReferenceProps {
   open: boolean;
 }
 
-export const CodeReference = (
-  { title = "Code Reference", file = "", closed = true }: CodeReferenceProps,
-  ...content: ValidChild[]
+export const CodeReference: ComponentString<CodeReferenceProps> = (
+  { title = "Code Reference", file = "", closed = true },
+  ...content
 ) =>
   CollapsibleElement(
     {

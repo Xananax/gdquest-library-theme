@@ -1,21 +1,14 @@
-/**
-<h1 class="hasIconBefore{{ if icon }} icon-{{ icon }}{{ /if }}">{{- content -}}</h1>
- */
+import { tmpl, ComponentString } from "../../depsServer.ts";
 
-import { tmpl, ValidChild } from "../../depsServer.ts";
-const { h1 } = tmpl;
+type SectionTitle = Partial<{
+  icon: string;
+  level: 1 | 2 | 3 | 4 | 5 | 6 | "1" | "2" | "3" | "4" | "5" | 6;
+  className: string[];
+}>;
 
-export const SectionTitle = (
-  {
-    level = 1,
-    icon,
-    className = [],
-  }: Partial<{
-    icon: string;
-    level: 1 | 2 | 3 | 4 | 5 | 6 | "1" | "2" | "3" | "4" | "5" | 6;
-    className: string[]
-  }>,
-  ...content: ValidChild[]
+export const SectionTitle: ComponentString<SectionTitle> = (
+  { level = 1, icon, className = [] },
+  ...content
 ) =>
   tmpl(
     `h${level}`,

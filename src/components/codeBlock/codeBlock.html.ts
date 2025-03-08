@@ -1,14 +1,16 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { ComponentString, tmpl } from "../../depsServer.ts";
 const { pre, span, code } = tmpl;
 
-export const CodeBlock = (
+type CodeBlockProps = Partial<{ line: number; diff: boolean; file: string; lang: string }>
+
+export const CodeBlock: ComponentString<CodeBlockProps> = (
   {
     line,
     diff = false,
     file = "",
     lang = "gdscript",
-  }: Partial<{ line: number; diff: boolean; file: string; lang: string }>,
-  ...content: ValidChild[]
+  },
+  ...content
 ) =>
   pre(
     {

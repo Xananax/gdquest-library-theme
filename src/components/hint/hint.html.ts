@@ -1,4 +1,4 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { ComponentString, tmpl } from "../../depsServer.ts";
 import { CollapsibleElement } from "../collapsibleElement/collapsibleElement.html.ts";
 const { div, span, strong } = tmpl;
 
@@ -6,7 +6,7 @@ interface HintProps {
   title: string;
 }
 
-export const Hint = ({ title }: HintProps, ...content: ValidChild[]) =>
+export const Hint: ComponentString<HintProps> = ({ title }, ...content) =>
   CollapsibleElement(
     {
       isOpen: !closed,

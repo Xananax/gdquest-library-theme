@@ -1,7 +1,5 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { tmpl, ComponentString } from "../../depsServer.ts";
 const { span } = tmpl;
 
-export const CodeErrorInText = (
-  { }: { },
-  ...content: ValidChild[]
-) => span({ className: 'codeErrorInText' }, ...content);
+export const CodeErrorInText: ComponentString<void> = (_skip, ...content) =>
+  span({ className: "codeErrorInText" }, ...content);

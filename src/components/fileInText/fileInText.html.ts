@@ -1,7 +1,9 @@
-import { tmpl, ValidChild } from "../../depsServer.ts";
+import { tmpl, ComponentString } from "../../depsServer.ts";
 const { span } = tmpl;
 
-export const FileInText = (
-  { fileOnly = false }: Partial<{ fileOnly: boolean }>,
-  ...content: ValidChild[]
+type FileInTextProps = Partial<{ fileOnly: boolean }>;
+
+export const FileInText: ComponentString<FileInTextProps> = (
+  { fileOnly = false },
+  ...content
 ) => span({ dataIs: "file-in-text", dataFileOnly: fileOnly }, ...content);

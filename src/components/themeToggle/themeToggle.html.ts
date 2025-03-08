@@ -1,9 +1,9 @@
-import { tmpl } from "../../depsServer.ts";
-const { form, button, span } = tmpl;
+import { tmpl, ComponentString } from "../../depsServer.ts";
+const { button, span } = tmpl;
 
 const classPrefix = "themeToggle";
 
-export const ThemeToggle = () =>
+export const ThemeToggle: ComponentString<void, "none"> = () =>
   button(
     {
       title: "Press to toggle to dark mode",

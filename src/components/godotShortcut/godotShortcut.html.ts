@@ -1,3 +1,6 @@
+import { tmpl } from "../../depsServer.ts";
+const { kbd, span } = tmpl;
+
 const MAP = {
   general: {
     "open 2d editor": { default: "ctrl+f1", mac: "opt+1" },
@@ -287,17 +290,16 @@ export function GodotShortcut({
     `gdquest-godot-shortcut shortcut-windows shortcut-linux` +
     (hasMac ? "" : " shortcut-mac");
 
-  return (
-    `<span className="${className}">` +
-    KeyboardShortcut(shortcut.default) +
-    `</span>` +
-    (hasMac
-      ? `<span className="shortcut-none shortcut-mac"> (on Mac: </span>` +
-        `<span className="shortcut-mac">` +
-        KeyboardShortcut(shortcut.mac) +
-        `</span>` +
-        `<span className="shortcut-none shortcut-mac">)</span>`
-      : "")
+  return span(
+    { className },
+    KeyboardShortcut(shortcut.default),
+    hasMac
+      ? [
+          span({ className: "shortcut-none shortcut-mac" }, " (on Mac: "),
+          span({ className: "shortcut-mac" }, KeyboardShortcut(shortcut.mac)),
+          span({ className: "shortcut-none shortcut-mac" }, ")"),
+        ].join("")
+      : false
   );
 }
 
@@ -325,11 +327,17 @@ export const KeyboardShortcut = (children: string | undefined) => {
     .split(/\s/)
     .map((term) =>
       mouseTerms.includes(term)
-        ? `<span className="gdquest-keyboard-key i-m-${term}"></span>`
-        : `<span className="gdquest-keyboard-key-sequence gdquest-keyboard-key-letters-${term.length}">` +
-          (charmap[term as keyof typeof charmap] ?? term) +
-          `</span>`
+        ? span({ className: [`gdquest-keyboard-key`, `i-m-${term}`] })
+        : span(
+            {
+              className: [
+                `gdquest-keyboard-key-sequence`,
+                `gdquest-keyboard-key-letters-${term.length}`,
+              ],
+            },
+            charmap[term as keyof typeof charmap] ?? term
+          )
     );
   const text = keys.join("");
-  return `<kbd>` + text + `</kbd>`;
+  return kbd({}, text);
 };

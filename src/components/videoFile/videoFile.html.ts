@@ -1,4 +1,4 @@
-import { tmpl, ImageResourceInfo } from "../../depsServer.ts";
+import { tmpl, ImageResourceInfo, type ComponentString } from "../../depsServer.ts";
 const {
   video,
   source,
@@ -26,13 +26,13 @@ interface VideoFileProps {
 
 const classPrefix = 'videoFile';
 
-export function VideoFile({
+export const VideoFile: ComponentString<VideoFileProps, "none"> = ({
   src,
   className,
   /** If true, applies a 16/9 aspect ratio (the one we use most commonly) */
   useDefaultAspectRatio = true,
   rounded = true,
-}: VideoFileProps) {
+}) => {
   
   const mimeType =
     mimeTypes[
