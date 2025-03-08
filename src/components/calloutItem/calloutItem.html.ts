@@ -1,7 +1,7 @@
 import { type ComponentString } from "../../depsServer.ts";
 import { CollapsibleItem } from "../collapsibleItem/collapsibleItem.html.ts";
 
-interface CalloutItemProps {
+export type CalloutItemProps = {
   type: "question" | "info" | "warning" | "error" | "troubleshoot";
   title: string;
   open: boolean;
