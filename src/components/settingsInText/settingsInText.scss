@@ -4,7 +4,7 @@
 .settingsInText{
   font-family: var(--font-mono);
   border-radius: 0.5rem; /* 8px */
-  white-space: nowrap;
+  overflow-wrap: break-word;
   padding-left: 0.25rem;
   padding-right: 0.5rem;
   background-color: rgb(229 231 235);

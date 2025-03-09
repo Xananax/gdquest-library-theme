@@ -7,6 +7,7 @@
 .contributeBlock {
 	--dark-color: rgba(26, 18, 45, 1);
 	grid-area: main;
+  padding: 1rem;
 	h1 {
 		@include prose.title();
 	}
@@ -149,7 +150,6 @@
 			}
 		}
 		&:nth-child(1) {
-			transform: perspective(100px) translateZ(10px);
 			--background-image: url("#{$basePath}/head-gobot.png");
 			--number: "1";
 			.contributeBlockFooterLink span::after {

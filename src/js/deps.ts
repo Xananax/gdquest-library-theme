@@ -12,6 +12,6 @@ export {
 export { type NominalType } from "../../../process-course-utils/src/any/NominalType.ts";
 export { autoFetchWhenSubmit } from "./../../../process-course-utils/src/web/autoFetchWhenSubmit.ts";
 
-export const { button, img, li, span, div, ul, a, pre, code } = h;
+export const { button, img, li, span, div, ul, a, pre, code, wbr } = h;
 
 export { add };

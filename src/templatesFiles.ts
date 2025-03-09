@@ -26,7 +26,7 @@ export type TemplateFileName =
   | "videoEmbed"
   | "promoIntro"
   | "nodeFlashCardShuffler"
-  | "checkpoint"
+  | "checkpointList"
   | "pageTaxonomy"
   | "codeBlock"
   | "itemPageMeta"
@@ -149,9 +149,9 @@ export const templatesFiles = {
     relPath: "nodeFlashCardShuffler/nodeFlashCardShuffler.vto",
     fullPath: "src/components/nodeFlashCardShuffler/nodeFlashCardShuffler.vto" 
   },
-  checkpoint: { 
-    relPath: "checkpoint/checkpoint.vto",
-    fullPath: "src/components/checkpoint/checkpoint.vto" 
+  checkpointList: { 
+    relPath: "checkpointList/checkpointList.vto",
+    fullPath: "src/components/checkpointList/checkpointList.vto" 
   },
   pageTaxonomy: { 
     relPath: "pageTaxonomy/pageTaxonomy.vto",

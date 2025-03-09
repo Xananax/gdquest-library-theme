@@ -1,4 +1,4 @@
-import { splitPathStringToParts, add, span } from "../../js/deps.ts";
+import { splitPathStringToParts, add, span, wbr } from "../../js/deps.ts";
 
 const classPrefix = "fileInText";
 
@@ -32,6 +32,7 @@ export const splitHTMLElementTextContent = (holderElement: HTMLElement) => {
             ? pathParts.dirname.map((chunk) => [
                 span({ class: `${classPrefix}Directory` }, chunk),
                 span({ class: `${classPrefix}Slash` }, "/"),
+                wbr()
             ])
             : undefined,
         pathParts.filename &&

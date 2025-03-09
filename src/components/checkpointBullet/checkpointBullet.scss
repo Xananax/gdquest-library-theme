@@ -7,7 +7,6 @@
   $marginBefore: 1.875rem;
   padding-block: 0.3125rem;
   padding-inline-start: calc($marginBefore + $iconSize + $iconSpacing);
-  line-height: 1;
   position: relative;
   &::before {
     @include icon();

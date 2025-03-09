@@ -1,4 +1,4 @@
-import { tmpl, ComponentString, ValidChild } from "../../depsServer.ts";
+import { tmpl, simpleHash, ComponentString, ValidChild } from "../../depsServer.ts";
 const { div } = tmpl;
 
 interface CollapsibleElementProps {
@@ -8,10 +8,11 @@ interface CollapsibleElementProps {
   className?: string;
 }
 
-const randomId = () => "c" + Math.random().toString(36).substring(2, 15);
+let ids = 0
+const predictableId = (baseString: string) => 'c' + simpleHash(baseString) + (ids++)
 
 export const CollapsibleElement: ComponentString<CollapsibleElementProps> = (
-  { title = "details", isOpen = false, id = randomId(), className },
+  { title = "details", isOpen = false, id = "", className },
   ...content
 ) =>
   div(
@@ -22,7 +23,7 @@ export const CollapsibleElement: ComponentString<CollapsibleElementProps> = (
     },
     div({ className: "disclosureSummary" }, title),
     div(
-      { className: "disclosureDetails", id },
+      { className: "disclosureDetails", id: id || predictableId(title+content.join('')) },
       div({ className: "disclosureDetailsContent" }, ...content)
     )
   );

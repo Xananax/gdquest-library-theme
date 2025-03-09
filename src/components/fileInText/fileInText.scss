@@ -5,7 +5,7 @@
   position: relative;
   color: white;
   background-color: rgb(100 116 139);
-  word-break: break-word;
+  overflow-wrap: break-word;
   border-radius: var(--rounded);
   padding-inline: 0.25rem;
   cursor: pointer;

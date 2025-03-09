@@ -6,13 +6,13 @@
 :root {
   interpolate-size: allow-keywords;
   --icon-color: var(--purple-mid-025);
-    @include dark {
-      --icon-color: var(--purple-light-010);
-    }
+  @include dark {
+    --icon-color: var(--purple-light-010);
+  }
 }
 
 [hidden] {
-  display: none;// !important;
+  display: none; // !important;
 }
 
 .showWhenJSLoads[hidden] {
@@ -40,7 +40,6 @@ body {
 a {
   color: inherit;
 }
-
 
 .button {
   &Outline {
@@ -178,7 +177,7 @@ a.socialLink {
   &.icon-patch {
     @extend %icon-patch;
   }
-  &.icon-code{
+  &.icon-code {
     @extend %icon-terminal-window-fill;
   }
 }
@@ -215,22 +214,21 @@ a.socialLink {
   }
 }
 
-
 kbd {
   position: relative;
   top: -2px;
   white-space: nowrap;
-    text-wrap-mode: nowrap;
-  border-radius: .125rem;
-  padding: .125rem .25rem;
+  text-wrap-mode: nowrap;
+  border-radius: 0.125rem;
+  padding: 0.125rem 0.25rem;
   text-wrap: nowrap;
-  font-size: .75rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 600;
   text-transform: capitalize;
   background-color: rgb(243 244 246);
   color: rgb(31 41 55);
-  box-shadow: 0 2px var(--un-shadow-color,#888);
+  box-shadow: 0 2px var(--un-shadow-color, #888);
   outline-width: 1px;
   outline-color: rgb(136 136 136);
   outline-style: solid;
@@ -239,7 +237,7 @@ kbd {
     &:after,
     &:before {
       color: rgb(96 165 250);
-      @include dark(){
+      @include dark() {
         color: rgb(147 197 253);
       }
     }
@@ -265,12 +263,30 @@ kbd {
   }
 }
 
-
 /** TODO: make Prism inline highlighting work */
-code:not([class]), code[class=""], :not(pre) > code.language-gdscript {
+code:not([class]),
+code[class=""],
+:not(pre) > code.language-gdscript {
   background-color: #202020;
   word-break: break-word;
   display: inline;
-  padding: .125rem;
+  padding: 0.125rem;
   font-family: var(--font-mono);
+}
+
+/** for bots */
+.super-important-woah {
+  border: 0;
+  opacity: 0.01;
+  pointer-events: none;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }

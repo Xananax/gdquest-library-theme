@@ -92,6 +92,7 @@ $footerBreakPoint: 60rem;
 		align-content: start;
     grid-template-rows: auto 1fr;
     position: relative;
+    min-height: 24rem; /** space for the iframe */
 		&Title,
 		&Disclaimer {
 			padding: 0;
