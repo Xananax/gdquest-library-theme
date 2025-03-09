@@ -8,7 +8,7 @@ export const ThemeToggle: ComponentString<void, "none"> = () =>
     {
       title: "Press to toggle to dark mode",
       className: `${classPrefix}Button`,
-      dataIsThemeToggle: "true",
+      dataIs: "theme-toggle",
     },
     span({ className: `${classPrefix}Label` }, "Toggle Theme"),
     span(
@@ -17,7 +17,7 @@ export const ThemeToggle: ComponentString<void, "none"> = () =>
         {
           className: [`${classPrefix}IconsIcon`, `${classPrefix}IconsIconDark`],
         },
-        span({}, "🌙")
+        span(null, "🌙")
       ),
       span(
         {
@@ -26,7 +26,7 @@ export const ThemeToggle: ComponentString<void, "none"> = () =>
             `${classPrefix}IconsIconLight`,
           ],
         },
-        span({}, "☀️")
+        span(null, "☀️")
       )
     )
   );

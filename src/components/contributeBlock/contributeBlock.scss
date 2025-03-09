@@ -14,11 +14,14 @@
 	&Wrapper {
 		$s: 128px;
 		grid-column: 1 / -1;
-		background: repeating-conic-gradient(#ffffff1f 0% 25%, #ffffff2b 0% 50%)
-			50% / #{$s $s};
+		background: repeating-conic-gradient(rgba(115, 115, 115, 0.12) 0% 25%, rgba(238, 238, 238, 0.17) 0% 50%) 50% / #{$s $s};
 		display: grid;
 		grid-template-columns: auto minmax(22.5rem, 65rem) auto;
 		grid-template-areas: "gutter1 main gutter2";
+    @include dark(){
+      background: repeating-conic-gradient(#ffffff1f 0% 25%, #ffffff2b 0% 50%)
+			50% / #{$s $s};
+    }
 	}
 	ul,
 	li {

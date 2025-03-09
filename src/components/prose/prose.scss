@@ -4,7 +4,6 @@
 @mixin title() {
 	font-weight: 900;
 	font-size: 2rem;
-	color: white;
 	text-transform: uppercase;
 	font-family: var(--font-title);
 	position: relative;
@@ -73,4 +72,13 @@
 		font-weight: 700;
 		font-size: 1.25rem;
 	}
+}
+
+
+.dark {
+  .prose{
+    &Title, h1{
+      color: white;
+    }
+  }
 }

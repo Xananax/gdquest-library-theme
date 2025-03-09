@@ -13,7 +13,7 @@ export const SectionTitle: ComponentString<SectionTitle> = (
   tmpl(
     `h${level}`,
     {
-      className: icon && [`hasIconBefore`, `icon-${icon}`, ...className],
+      className: icon && [`hasIconBefore`, `icon-${icon}`, ...(Array.isArray(className)? className : [className])],
     },
     ...content
   );

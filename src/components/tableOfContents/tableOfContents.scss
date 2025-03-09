@@ -62,16 +62,16 @@ $navBarBreakpoint: grid.$gridBreakPointMid + $minNavBarWidth;
 	&Pane {
 		background-color: var(--purple-dark-040);
 		max-height: calc(100vh - 6rem); // 6rem is the size of the header
-		background: var(--purple-dark-040);
 		overflow-y: scroll;
+    background-color: #F8FAFC;
 		@include hideScrollBar;
+    @include dark(){
+		  background: var(--purple-dark-040);
+    }
 	}
 	&ToggleButton {
 		z-index: 1;
 		cursor: pointer;
-		color: var(--purple-light-010);
-		background-color: rgba(40, 28, 65, 1);
-		border: 2px solid rgba(68, 35, 105, 1);
 		position: absolute;
 		inset-block-start: 0;
 		inset-inline-end: 0;
@@ -82,14 +82,22 @@ $navBarBreakpoint: grid.$gridBreakPointMid + $minNavBarWidth;
 		width: $buttonWidth;
 		height: $buttonWidth;
 		border-radius: 0 50% 50% 0;
+    color: #6A38BE;
+		background-color: #EAEFF3;
+    border: 2px solid #E5E7EB;
+    @include dark(){
+      color: var(--purple-light-010);
+      background-color: rgba(40, 28, 65, 1);
+		  border: 2px solid rgba(68, 35, 105, 1);
+    }
 		&::before {
-			@include icon();
+      @include icon();
 			font-size: 1.6rem;
 			transition: transform 0.2s ease-out;
 			@extend %icon-arrow-left-double-line;
 		}
 		span {
-			@include srOnly();
+      @include srOnly();
 		}
 	}
 }
@@ -156,10 +164,16 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 	&ListItem {
 		position: relative;
 		&.isCurrent {
-			background-color: var(--purple-dark-010);
+      background-color: #DDD6FE;
+      @include dark(){
+        background-color: var(--purple-dark-010);
+      }
 		}
 		&:has(.isCurrent) {
-			background-color: #5e2d8f4f; //var(--purple-dark-010);
+      background-color: #F8FAFC;
+      @include dark(){
+        background-color: #5e2d8f4f; //var(--purple-dark-010);
+      }
 		}
 	}
 	&ItemLevel1 {
@@ -200,10 +214,16 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 			inset-inline-end: 0;
 			inset-block-start: 0;
 			height: 100%;
-			border-inline-end: 3px solid var(--purple-dark-010);
+      border-inline-end: 3px solid #DDD6FE;
+      @include dark(){
+        border-inline-end-color: var(--purple-dark-010);
+      }
 		}
 		&.isActive::after {
-			border-inline-end-color: var(--purple-light-010);
+      border-inline-end-color: #6725D6;
+      @include dark(){
+        border-inline-end-color: var(--purple-light-010);
+      }
 		}
     &.hasIconBefore::before{
       margin-inline-end: 0.2ch;

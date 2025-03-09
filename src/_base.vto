@@ -4,10 +4,11 @@
         <title>{{ pageTitle }} | GDQuest</title>
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="{{ cssUrl }}" />
+        <script src="{{ headJsUrl }}" type="module"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {{ include "/src/components/openGraphTags/openGraphTags.vto" }}
     </head>
-    <body class="dark {{ bodyclass }}">
+    <body class="{{ bodyclass }}">
         <header class="mainNavContainer">
             {{ include "/src/components/mainNav/mainNav.vto" }}
         </header>

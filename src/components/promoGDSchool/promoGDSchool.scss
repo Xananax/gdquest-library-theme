@@ -15,6 +15,7 @@ $promoGDSchoolBreakpoint: 1000px;
 		@include title;
 		@include paddingMarginReset;
 		display: flex;
+    color: white;
 		align-items: center;
 		position: relative;
 		max-width: 100%;

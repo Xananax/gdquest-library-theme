@@ -23,8 +23,6 @@ $navMaxWidth: 101.25rem;
 	&Wrapper {
 		max-width: $navMaxWidth;
 		width: 100%;
-		color: white;
-
 		display: grid;
 		grid-template-columns: min-content 1fr;
 		align-items: center;
@@ -69,6 +67,7 @@ $navMaxWidth: 101.25rem;
 	&ItemsList {
 		gap: 0.2rem;
 		background: white;
+    color: var(--purple-dark-030);
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
@@ -91,7 +90,7 @@ $navMaxWidth: 101.25rem;
 			@include modalBackdrop;
 		}
 		a {
-			color: black;
+			color: inherit;
 			text-decoration: none;
 		}
 		@container navigation-container (width > #{$nav-breakpoint}) {
@@ -103,9 +102,7 @@ $navMaxWidth: 101.25rem;
 			flex-direction: row;
 			position: static;
 			max-width: 100%;
-			a {
-				color: white;
-			}
+      color: white;
 		}
 	}
 	&Item {

@@ -28,9 +28,13 @@ body,
 html {
   padding: 0;
   margin: 0;
-  background-color: var(--purple-dark-040);
-  color: white;
   scroll-behavior: smooth;
+  background-color: #F8FAFC;
+  color: #303249;
+  @include dark(){
+    background-color: var(--purple-dark-040);
+    color: white;
+  }
 }
 
 body {
@@ -267,6 +271,7 @@ kbd {
 code:not([class]),
 code[class=""],
 :not(pre) > code.language-gdscript {
+  color: white;
   background-color: #202020;
   word-break: break-word;
   display: inline;
