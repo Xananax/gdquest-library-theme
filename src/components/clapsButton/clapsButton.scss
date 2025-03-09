@@ -66,4 +66,7 @@
 			animation-timing-function: ease-out;
 		}
 	}
+  &Placeholder { // This is the placeholder for the claps button, remove once claps work
+    height: 2.5rem; 
+  }
 }

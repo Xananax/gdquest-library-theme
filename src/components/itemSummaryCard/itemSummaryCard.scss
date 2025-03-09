@@ -19,7 +19,7 @@ $summaryCardBreakPoint: 40rem;
 	font-weight: 500;
 	margin: 0 auto;
 	margin-block-end: 6px; /** for the shadow) **/
-	color: black;
+	color: #303249;
 	grid-template-areas:
 		".  . title    title"
 		".  . cover    cover"
@@ -159,7 +159,7 @@ $summaryCardBreakPoint: 40rem;
 		dt {
 			width: auto;
 			float: left;
-			font-weight: 600;
+			font-weight: 700;
 			&::after {
 				content: ":";
 				margin-inline-end: 0.5ch;
@@ -207,6 +207,7 @@ $summaryCardBreakPoint: 40rem;
 				@include icon;
 				@extend %icon-checked-circle;
 				font-size: 1.3rem;
+        margin-inline-end: 0.5ch;
 			}
 		}
 	}
@@ -270,7 +271,7 @@ $summaryCardBreakPoint: 40rem;
 		}
 		dt {
 			grid-column: 1;
-			font-weight: 600;
+			font-weight: 700;
 			&::after {
 				content: ":";
 				margin-inline-end: 0.5ch;

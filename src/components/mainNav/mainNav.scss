@@ -112,7 +112,7 @@ $navMaxWidth: 101.25rem;
 		--underline-offset: 10px;
 		--underline-padding: 10px;
 		--underline-thickness: 5px;
-		--vertical-padding: 2.5rem;
+		--vertical-padding: .5rem;
 		--underline-color: var(--yellow);
 		--horizontal-padding: 0.9375rem;
 		--vertical-offset: calc(
@@ -144,6 +144,7 @@ $navMaxWidth: 101.25rem;
 			background-size: calc(100% - var(--total-pad)) 5px;
 		}
 		@container navigation-container (width > #{$nav-breakpoint}) {
+      --vertical-padding: 2.5rem;
 			background-position: bottom var(--vertical-offset) center;
 		}
 	}
@@ -156,6 +157,8 @@ $navMaxWidth: 101.25rem;
 		padding: 1rem;
 		gap: 1rem;
 		font-weight: 700;
+    width: 100%;
+    margin: auto;
 		.socialLink{
 			display: flex;
 			place-items: center;
@@ -163,6 +166,7 @@ $navMaxWidth: 101.25rem;
 			filter: drop-shadow(0 2px 2px rgba(0,0,0,.2));
 		}
 		@container navigation-container (width > #{$nav-breakpoint}) {
+      width: auto;
 			margin-inline-start: auto;
 			flex-direction: row;
 			place-items: center;
