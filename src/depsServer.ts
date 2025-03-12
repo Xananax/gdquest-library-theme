@@ -11,7 +11,7 @@ interface AnyComponentProps extends HTMLFactory.Attributes<"div"> {}
 type ChildMode = "many" | "two" |  "one" | "none";
 
 export type ComponentString<
-  T = {},
+  T = Record<string, unknown>,
   Mode extends ChildMode = "many"
 > = Mode extends "many"
   ? (props: AnyComponentProps & T, ...content: ValidChild[]) => string
