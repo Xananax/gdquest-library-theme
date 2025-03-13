@@ -1,3 +1,4 @@
+import { ToggleShowEvent } from './../togglerButton/togglerButton.ts';
 import { add, span, div, a, li, ul } from '../../js/deps.ts';
 import { TogglerButton } from "../togglerButton/togglerButton.ts";
 
@@ -193,12 +194,16 @@ const processNavigationBehavior = (button: HTMLButtonElement) => {
 	// We will do a media query that checks if there's enough space for the navigation to be shown.
 	// If not, we programmatically press the toggle button to hide the navigation.
 
-	if (!button || button.classList.contains("isJSProcessed")) {
+	if (!button || button.classList.contains("isNavJSProcessed")) {
 		return;
 	}
-	button.classList.add("isJSProcessed");
+	button.classList.add("isNavJSProcessed");
 
-	const mediaQuery = window.matchMedia("(max-width: 1800px)");
+  button.addEventListener("toggler-toggleshow", (event: ToggleShowEvent) => {
+    document.documentElement.classList.toggle("tableOfContentsSideBarIsClosed", event.isHidden);
+  })
+
+	const mediaQuery = window.matchMedia("(max-width: 1760px)");
 	if (mediaQuery.matches) {
 		button.click();
 	}

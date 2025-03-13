@@ -16,7 +16,7 @@
 $minNavSize: 20rem; // smallest "nav" column value, see contentGrid
 $buttonWidth: 2.5rem;
 $minNavBarWidth: $minNavSize + $buttonWidth;
-$navBarBreakpoint: grid.$gridBreakPointMid + $minNavBarWidth;
+$navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
 
 /******************************************************************************
  *

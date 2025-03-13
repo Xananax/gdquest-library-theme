@@ -177,7 +177,7 @@
 				@extend %icon-share;
 			}
 		}
-		@media (min-width: $gridBreakPointMid){
+		@media (min-width: $mid-breakpoint){
 			&:nth-child(1) {
 				flex: 1.3;
 				order: 2;

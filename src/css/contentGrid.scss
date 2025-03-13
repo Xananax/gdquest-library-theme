@@ -1,65 +1,119 @@
+@use "sass:math";
 @use "./utils.scss" as *;
 
-$gridBreakPointMid: 69.5rem; // 1080px
-$gridBreakPointLarge: 92rem; // 1440px
-$gridMinMargin: 2.5rem;
-
-// at 2560px, the columns are: 530 1000 530 on in ems: 33.125em 62.5em 33.125em
-// at 1920px, the columns are: 400 990 530 or in ems: 25em 61.875em 33.125em
-// at 1440px, the columns are: 320 660 360 or in ems: 20em 41.25em 22.5em
-// the left column may collapse, at which point the remaining columns are:
-// at 1440: 980 460 or in ems: 61.25em 28.75em
-
-// total: 120rem
-// fractions:2, 5, 2.75
-
-@mixin gridSmall() {
-	grid-template-columns:
-		$gridMinMargin /* left margin */
-		0 /** nav **/
-		1fr /* main */
-		$gridMinMargin; /* right margin */
-	grid-template-areas:
-		"marginLeft nav actions marginRight"
-		"marginLeft nav main marginRight"
-		"marginLeft nav meta marginRight";
-	row-gap: 2rem;
+@function toRem($value) {
+  $remValue: math.div($value, 16) * 1rem;
+  @return $remValue;
 }
 
-@mixin gridMid() {
-	// breakpoint is 41.25 + 3.75 + 22.5 = 67.5rem
-	grid-template-columns:
-		minmax($gridMinMargin, auto) /* left margin */
-		0 /* nav */
-		0 /* gutter */
-		minmax(41.25rem, 62.5rem) // main
-		3.75rem // gutter
-		minmax(22.5rem, 33.125rem) // meta
-		minmax($gridMinMargin, auto); // right margin
-	grid-template-areas: "marginLeft nav gutterLeft main actions meta marginRight";
-	row-gap: 0;
+@function no-unit($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+/////////////////////////////////// SMALL SIZE ///////////////////////////////////
+
+$small-marginLeft: toRem(40);
+
+$small-nav: 0rem;
+
+$small-gutterLeft: 0rem;
+
+$small-main-min: toRem(240);
+$small-main-max: 1fr;
+
+$small-actions: 0rem;
+
+$small-meta: 0rem;
+
+$small-marginRight: $small-marginLeft;
+
+$small-breakpoint: calc(
+  $small-marginLeft + $small-nav + $small-gutterLeft + $small-main-min +
+    $small-actions + $small-meta + $small-marginRight
+);
+
+/////////////////////////////////// MEDIUM SIZE ///////////////////////////////////
+
+$sideBarWidthMin: toRem(320);
+$sideBarWidthMax: toRem(400);
+
+$mid-marginLeft-min: toRem(160);
+$mid-marginLeft-max: auto;
+
+$mid-nav-min: 0rem;
+$mid-nav-max: $sideBarWidthMax;
+
+$mid-gutterLeft-min: 0rem;
+$mid-gutterLeft-max: toRem(95);
+
+$mid-main-min: toRem(660);
+$mid-main-max: toRem(1000);
+
+$mid-actions-min: $mid-marginLeft-min;
+$mid-actions-max: toRem(160);
+
+$mid-meta-min: toRem(330);
+$mid-meta-max: toRem(400);
+
+$mid-marginRight-min: toRem(130);
+$mid-marginRight-max: auto;
+
+$mid-breakpoint: calc(
+  $mid-marginLeft-min + $mid-nav-min + $mid-gutterLeft-min + $mid-main-min +
+    $mid-actions-min + $mid-meta-min + $mid-marginRight-min
+);
+$large-breakpoint: calc($mid-breakpoint + $sideBarWidthMin);
+
+@debug "breakpoints: #{calc(no-unit($small-breakpoint) * 16px)}, #{calc(no-unit($mid-breakpoint) * 16px)}, #{calc(no-unit($large-breakpoint) * 16px)}";
+
+@mixin gridSmall() {
+  grid-template-columns:
+    $small-marginLeft
+    $small-nav
+    minmax($small-main-min, $small-main-max)
+    $small-marginRight;
+  grid-template-areas:
+    "marginLeft nav actions marginRight"
+    "marginLeft nav main marginRight"
+    "marginLeft nav meta marginRight";
+  row-gap: 2rem;
+}
+
+@mixin gridMid($_sideBarWidth) {
+  grid-template-columns:
+    minmax($mid-marginLeft-min, $mid-marginLeft-max)
+    minmax($_sideBarWidth, $mid-nav-max)
+    minmax($mid-gutterLeft-min, $mid-gutterLeft-max)
+    minmax($mid-main-min, $mid-main-max)
+    minmax($mid-actions-min, $mid-actions-max)
+    minmax($mid-meta-min, $mid-meta-max)
+    minmax($mid-marginRight-min, $mid-marginRight-min);
+  grid-template-areas: "marginLeft nav gutterLeft main actions meta marginRight";
+  row-gap: 0;
 }
 
 @mixin gridLarge() {
-	// breakpoint is 20 + 2.5 + 41.25 + 3.75 + 22.5 = 90rem
-	grid-template-columns: minmax($gridMinMargin, auto) // marginLfet
-		minmax(20rem, 33.125rem) // nav
-		minmax(2.5rem, 15.625rem) // gutterLeft
-		minmax(41.25rem, 62.5rem) // main
-		minmax(3.75rem, 15.625rem) // actions
-		minmax(22.5rem, 33.125rem) // meta
-		minmax($gridMinMargin, auto); // marginRight
+  grid-template-columns:
+    minmax($mid-marginLeft-min, $mid-marginLeft-max)
+    minmax($mid-nav-min, $mid-nav-max)
+    minmax($mid-gutterLeft-min, $mid-gutterLeft-max)
+    minmax($mid-main-min, $mid-main-max)
+    minmax($mid-actions-min, $mid-actions-max)
+    minmax($mid-meta-min, $mid-meta-max)
+    minmax($mid-marginRight-min, $mid-marginRight-min);
 }
 
 @mixin contentGrid() {
-	@include gridSmall();
-	@media (min-width: $gridBreakPointMid) {
-		@include gridMid();
-	}
-	@media (min-width: $gridBreakPointLarge) {
-		@include gridLarge();
-		@at-root .contentSidebarClosed #{&} {
-			@include gridMid();
-		}
-	}
+  @include gridSmall();
+  justify-content: center;
+  @media (min-width: $mid-breakpoint) {
+    @include gridMid($mid-nav-min);
+  }
+  @media (min-width: $large-breakpoint) {
+    @include gridMid($sideBarWidthMin);
+    transition: grid-template-columns 300ms ease-in-out;
+    @at-root .tableOfContentsSideBarIsClosed #{&} {
+      @include gridMid($mid-nav-min);
+    }
+  }
 }
