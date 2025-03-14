@@ -8,6 +8,7 @@ $footerBreakPoint: 60rem;
 	background: url("#{$basePath}/footer-background.svg") no-repeat center center /
 		cover;
 	container: mainPageFooterContainer / inline-size;
+  color: white;
 	ul,
 	li {
 		list-style: none;
