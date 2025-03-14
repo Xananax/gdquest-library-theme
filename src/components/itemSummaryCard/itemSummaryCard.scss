@@ -35,6 +35,7 @@ $summaryCardBreakPoint: 40rem;
 			".  . attrs    license"
 			".  . features dates"
 			".  . claps    date";
+      max-width: min(540px, 100%);
 	}
 	@container (width > #{$summaryCardBreakPoint}) {
 		grid-template-columns: 14fr 5fr 40fr 40fr;
@@ -44,6 +45,9 @@ $summaryCardBreakPoint: 40rem;
 			"license .  cover    attrs"
 			"license .  features dates"
 			".       .  .        claps";
+      max-height: min(500px, 100%);
+      aspect-ratio: 1 / 0.5;
+      max-width: fit-content;
 	}
 	&::before,
 	&::after {
