@@ -12,29 +12,32 @@
 
 /////////////////////////////////// SMALL SIZE ///////////////////////////////////
 
-$small-marginLeft: toRem(40);
+$small-marginLeft-min: toRem(40);
+$small-marginLeft-max: toRem(160);
 
 $small-nav: 0rem;
 
 $small-gutterLeft: 0rem;
 
-$small-main-min: toRem(240);
+$small-main-min-min: toRem(240);
+$small-main-min-flexible: max($small-main-min-min, 80%);
 $small-main-max: 1fr;
 
 $small-actions: 0rem;
 
 $small-meta: 0rem;
 
-$small-marginRight: $small-marginLeft;
+$small-marginRight-min: $small-marginLeft-min;
+$small-marginRight-max: $small-marginLeft-max;
 
 $small-breakpoint: calc(
-  $small-marginLeft + $small-nav + $small-gutterLeft + $small-main-min +
-    $small-actions + $small-meta + $small-marginRight
+  $small-marginLeft-min + $small-nav + $small-gutterLeft + $small-main-min-min +
+    $small-actions + $small-meta + $small-marginRight-min
 );
 
 /////////////////////////////////// MEDIUM SIZE ///////////////////////////////////
 
-$sideBarWidthMin: toRem(320);
+$sideBarWidthMin: toRem(220);
 $sideBarWidthMax: toRem(400);
 
 $mid-marginLeft-min: toRem(160);
@@ -68,10 +71,10 @@ $large-breakpoint: calc($mid-breakpoint + $sideBarWidthMin);
 
 @mixin gridSmall() {
   grid-template-columns:
-    $small-marginLeft
+    minmax($small-marginLeft-min, $small-marginLeft-max)
     $small-nav
-    minmax($small-main-min, $small-main-max)
-    $small-marginRight;
+    minmax($small-main-min-flexible, $small-main-max)
+    minmax($small-marginRight-min, $small-marginRight-max);
   grid-template-areas:
     "marginLeft nav actions marginRight"
     "marginLeft nav main marginRight"
