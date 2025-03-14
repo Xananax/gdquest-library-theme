@@ -17,6 +17,7 @@ import "../components/tableOfContents/tableOfContents.ts";
 import "../components/tabList/tabList.ts";
 import "../components/togglerButton/togglerButton.ts";
 import "../components/themeToggle/themeToggle.ts";
+import "../components/videoFile/videoFile.ts";
 // import "./prism.js";
 
 import { autoFetchWhenSubmit } from "./deps.ts";

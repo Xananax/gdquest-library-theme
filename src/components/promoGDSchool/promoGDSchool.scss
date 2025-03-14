@@ -20,9 +20,10 @@ $promoGDSchoolBreakpoint: 1000px;
 		position: relative;
 		max-width: 100%;
 		z-index: 1;
-		font-weight: 900;
+		font-weight: 700;
 		font-size: 1.25rem;
-		padding-inline-start: 1rem;
+		padding-inline: 2.5rem;
+    padding-block: 2.1rem;
 		margin-block-end: -0.7rem;
 		background-color: var(--color);
 		height: 4rem;
@@ -36,10 +37,10 @@ $promoGDSchoolBreakpoint: 1000px;
 			@include text-stroke(32, var(--color));
 		}
 		&Logo {
-			height: 3ch;
+			height: 4.5ch;
 			position: absolute;
 			inset: 0 auto 0 auto;
-			margin-inline-start: -2rem;
+			margin-inline-start: -3.5rem;
 			transform: translateY(-70%);
 			span {
 				@include srOnly;

@@ -19,4 +19,4 @@ export const MailingListCollector:ComponentString<MailingListCollectorProps> = (
     input({ ariaHidden: "true", tabIndex: -1, type: "text", name: "name", autocomplete: "off" })
   ),
   button({}, span({}, "Subscribe"))
-): iframe({ src: signupFormIframe });
+): iframe({ src: signupFormIframe, loading: `lazy` });

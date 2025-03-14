@@ -63,6 +63,8 @@ export const VideoFile: ComponentString<VideoFileProps, "none"> = ({
         loop: true,
         controls: true,
         playsInline: true,
+        preload: "metadata",
+        dataShouldPreload: "onmouseenter"
       },
       source({ "data-src": src, type: mimeType }),
       "Your browser does not support the video tag. ",
