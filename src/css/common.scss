@@ -268,14 +268,14 @@ kbd {
 }
 
 /** TODO: make Prism inline highlighting work */
+// inline code
 code:not([class]),
 code[class=""],
 :not(pre) > code.language-gdscript {
-  color: white;
-  background-color: #202020;
+  background-color: rgba(203,213,225,.3);
   word-break: break-word;
   display: inline;
-  padding: 0.125rem;
+  padding: 0 toRem(3);
   font-family: var(--font-mono);
 }
 

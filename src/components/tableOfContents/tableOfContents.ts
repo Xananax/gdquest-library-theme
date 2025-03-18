@@ -200,6 +200,7 @@ const processNavigationBehavior = (button: HTMLButtonElement) => {
 	button.classList.add("isNavJSProcessed");
 
   button.addEventListener("toggler-toggleshow", (event: ToggleShowEvent) => {
+    console.log("sdsdfs")
     document.documentElement.classList.toggle("tableOfContentsSideBarIsClosed", event.isHidden);
   })
 

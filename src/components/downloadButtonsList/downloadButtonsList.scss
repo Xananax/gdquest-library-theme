@@ -2,16 +2,20 @@
 @use "../../css/icons.scss" as *;
 
 %downloadButton {
-  inherit: all;
-  height: 100%;
+  //all:inherit;
   @include raisedButtonMain();
+  --button-background-color: var(--purple-mid-022);
+  --button-shadow: var(--color-purple-dark-2);
+  border-radius: toRem(5);
+  padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+  height: 100%;
   text-decoration: none;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  justify-content: center;
+  justify-content: start;
   text-align: center;
   position: relative;
   &::before {
@@ -47,7 +51,7 @@
   li {
     @extend %noList;
     flex-basis: 12rem;
-    max-width: 15rem;
+    //max-width: 15rem;
     flex-grow: 1;
   }
 }

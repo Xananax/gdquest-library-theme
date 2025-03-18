@@ -365,3 +365,9 @@
   color: var(--yellow);
   font-size: 1.2rem;
 }
+
+@function toRem($value) {
+  // $remValue: math.div($value, 16) * 1rem;
+  // @return $remValue;
+  @return ($value * 1px);
+}

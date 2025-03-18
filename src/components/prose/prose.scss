@@ -4,7 +4,6 @@
 @mixin title() {
 	font-weight: 900;
 	font-size: 2rem;
-	text-transform: uppercase;
 	font-family: var(--font-title);
 	position: relative;
 }
@@ -13,20 +12,23 @@
 /** Layout **/
 
 .prose{
-  & > h1, & > h2, & > h3{
-    margin-block-start: 4.0625rem;
+  & > h1{
+    margin-block-start: toRem(75);
+    margin-block-end: toRem(25);
   }
   & > h1:first-of-type {
     margin-block-start: 0;
   }
-  & > h1{
-    margin-block-end: 2.1875rem;
+  & > ul{
+    margin-block-start: toRem(10);
   }
   & > h2{
-    margin-block-end: 3.125rem;
+    margin-block-start: toRem(40);
+    margin-block-end: toRem(30);
   }
   & > h3 {
-    margin-block-end: 1.875rem;
+    margin-block-start: toRem(30);
+    margin-block-end: toRem(20);
   }
   & > .videoEmbed{
     margin-block-end: 2.5rem;
@@ -40,16 +42,18 @@
 }
 
 .prose {
+  line-height: toRem(24);
+  display: grid;
 	&Title,
 	h1 {
 		@include title();
+    text-transform: uppercase;
 	}
 	h2,
 	h3,
 	h4,
 	h5 {
 		font-family: var(--font-title);
-		text-transform: uppercase;
 	}
 	h3,
 	h4,

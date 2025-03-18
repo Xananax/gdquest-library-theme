@@ -1,11 +1,6 @@
 @use "sass:math";
 @use "./utils.scss" as *;
 
-@function toRem($value) {
-  $remValue: math.div($value, 16) * 1rem;
-  @return $remValue;
-}
-
 @function no-unit($number) {
   @return math.div($number, ($number * 0 + 1));
 }
@@ -15,17 +10,17 @@
 $small-marginLeft-min: toRem(40);
 $small-marginLeft-max: toRem(160);
 
-$small-nav: 0rem;
+$small-nav: toRem(0);
 
-$small-gutterLeft: 0rem;
+$small-gutterLeft: toRem(0);
 
 $small-main-min-min: toRem(240);
 $small-main-min-flexible: max($small-main-min-min, 80%);
 $small-main-max: 1fr;
 
-$small-actions: 0rem;
+$small-actions: toRem(0);
 
-$small-meta: 0rem;
+$small-meta: toRem(0);
 
 $small-marginRight-min: $small-marginLeft-min;
 $small-marginRight-max: $small-marginLeft-max;
@@ -40,25 +35,25 @@ $small-breakpoint: calc(
 $sideBarWidthMin: toRem(220);
 $sideBarWidthMax: toRem(400);
 
-$mid-marginLeft-min: toRem(160);
+$mid-marginLeft-min: toRem(20);//toRem(160);
 $mid-marginLeft-max: auto;
 
-$mid-nav-min: 0rem;
+$mid-nav-min: toRem(0);
 $mid-nav-max: $sideBarWidthMax;
 
-$mid-gutterLeft-min: 0rem;
+$mid-gutterLeft-min: toRem(40);
 $mid-gutterLeft-max: toRem(95);
 
 $mid-main-min: toRem(660);
 $mid-main-max: toRem(1000);
 
-$mid-actions-min: $mid-marginLeft-min;
+$mid-actions-min: toRem(60);//$mid-marginLeft-min;
 $mid-actions-max: toRem(160);
 
 $mid-meta-min: toRem(330);
 $mid-meta-max: toRem(400);
 
-$mid-marginRight-min: toRem(130);
+$mid-marginRight-min: toRem(20);//toRem(130);
 $mid-marginRight-max: auto;
 
 $mid-breakpoint: calc(
@@ -109,12 +104,15 @@ $large-breakpoint: calc($mid-breakpoint + $sideBarWidthMin);
 @mixin contentGrid() {
   @include gridSmall();
   justify-content: center;
+  transition: grid-template-columns 300ms ease-in-out;
   @media (min-width: $mid-breakpoint) {
-    @include gridMid($mid-nav-min);
+    @include gridMid($sideBarWidthMin);
+    @at-root .tableOfContentsSideBarIsClosed #{&} {
+      @include gridMid($mid-nav-min);
+    }
   }
   @media (min-width: $large-breakpoint) {
     @include gridMid($sideBarWidthMin);
-    transition: grid-template-columns 300ms ease-in-out;
     @at-root .tableOfContentsSideBarIsClosed #{&} {
       @include gridMid($mid-nav-min);
     }

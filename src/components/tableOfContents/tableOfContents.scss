@@ -13,9 +13,8 @@
  * On mobile, a bit of JS will press the button to hide the TOC on loading
  *****************************************************************************/
 
-$minNavSize: 20rem; // smallest "nav" column value, see contentGrid
-$buttonWidth: 2.5rem;
-$minNavBarWidth: $minNavSize + $buttonWidth;
+$buttonWidth: toRem(38);
+$minNavBarWidth: grid.$sideBarWidthMin + $buttonWidth;
 $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
 
 /******************************************************************************
@@ -58,10 +57,11 @@ $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
 		transition: transform 0.2s ease-out;
 		width: 100%;
 		min-width: $minNavBarWidth;
+    margin-block-start: -3rem; // this needs to be compensated by the max-height
 	}
 	&Pane {
 		background-color: var(--purple-dark-040);
-		max-height: calc(100vh - 6rem); // 6rem is the size of the header
+		max-height: calc(100vh - 6rem - 3rem); // 6rem is the size of the header
 		overflow-y: scroll;
     background-color: #F8FAFC;
 		@include hideScrollBar;
