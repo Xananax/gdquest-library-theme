@@ -1,8 +1,9 @@
 import { tmpl, ComponentString } from "../../depsServer.ts";
-import { SectionTitle as SectionTitle } from "./../sectionTitle/sectionTitle.html.ts";
+//import { SectionTitle as SectionTitle } from "./../sectionTitle/sectionTitle.html.ts";
 import { FileInText as FileInText } from "./../fileInText/fileInText.html.ts";
 import { CollapsibleElement } from "../collapsibleElement/collapsibleElement.html.ts";
-const { p, div } = tmpl;
+import { CalloutsListSingleItem } from "../calloutsListSingleItem/calloutsListSingleItem.html.ts";
+const { p, div, h3 } = tmpl;
 
 interface CodeReferenceProps {
   title: string;
@@ -19,8 +20,8 @@ export const CodeReference: ComponentString<CodeReferenceProps> = (
     {
       isOpen: !closed,
       className: "codeReference",
-      title: SectionTitle(
-        { icon: "code", level: 4, className: ["codeReferenceTitle"] },
+      title: h3(
+        { className: ["codeReferenceTitle"] },
         title
       ),
     },
@@ -32,7 +33,7 @@ export const CodeReference: ComponentString<CodeReferenceProps> = (
         null,
         "Here's the complete code for the ",
         FileInText({}, file),
-        " script at the end of this lesson:"
+        " script:"
       ),
       ...content
     )
