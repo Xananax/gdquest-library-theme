@@ -8,7 +8,7 @@ export const splitHTMLElementTextContent = (holderElement: HTMLElement) => {
         holderElement.remove();
         return;
     }
-    const fileOnly = holderElement.hasAttribute("data-file-only");
+    const fileOnly = holderElement.dataset['fileOnly'] === "true";
 
     const pathParts = splitPathStringToParts(pathStr);
     let recipient = holderElement;

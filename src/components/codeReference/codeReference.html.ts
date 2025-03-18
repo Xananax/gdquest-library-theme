@@ -1,8 +1,6 @@
 import { tmpl, ComponentString } from "../../depsServer.ts";
-//import { SectionTitle as SectionTitle } from "./../sectionTitle/sectionTitle.html.ts";
 import { FileInText as FileInText } from "./../fileInText/fileInText.html.ts";
 import { CollapsibleElement } from "../collapsibleElement/collapsibleElement.html.ts";
-import { CalloutsListSingleItem } from "../calloutsListSingleItem/calloutsListSingleItem.html.ts";
 const { p, div, h3 } = tmpl;
 
 interface CodeReferenceProps {

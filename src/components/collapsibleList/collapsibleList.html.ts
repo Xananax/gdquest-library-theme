@@ -4,4 +4,4 @@ const { dl } = tmpl;
 export const CollapsibleList: ComponentString<{}> = (
   { className },
   ...content
-) => dl({ className: [className], dataIs: "collapsibleList" }, ...content);
+) => dl({ className: [className], dataIs: "collapsible-list" }, ...content);

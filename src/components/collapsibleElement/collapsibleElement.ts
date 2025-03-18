@@ -45,7 +45,7 @@ export const makeRevealButton = (
         onclick: onRevealButtonClick,
         type: "button",
       },
-      summary.textContent
+      ...Array.from(summary.childNodes)
     ),
     { content: details, caption: summary }
   );

@@ -3,12 +3,14 @@
 
 [data-is="file-in-text"] {
   position: relative;
-  color: white;
-  background-color: rgb(100 116 139);
+  background-color: var(--color-slate-200);
   overflow-wrap: break-word;
-  border-radius: var(--rounded);
+  border-radius: 0.125rem;
   padding-inline: 0.25rem;
-  cursor: pointer;
+  font-family: var(--font-mono);
+  @include dark() {
+    background-color: var(--color-slate-700);
+  }
   &::before {
     @include icon;
     @extend %icon-file-fill;
@@ -20,6 +22,7 @@
     &Tooltip {
       position: absolute;
       background: #696868;
+      color: white;
       padding: 0.2rem 0.4rem;
       border-radius: 5px;
       font-size: 0.9rem;
@@ -57,7 +60,7 @@
   }
 }
 
-.fileInText {
+[data-is="file-in-text"].fileInText {
   &Protocol,
   &Slash {
     opacity: 0.7;
@@ -68,10 +71,10 @@
     @extend %icon-folder-fill;
   }
   &-gdscript::before {
-    @extend %icon-file-code-fill;
+    @extend %icon-file-settings-fill;
   }
   &-scene::before {
-    @extend %icon-file-settings-fill;
+    @extend %icon-clapperboard-fill;
   }
   &-image::before {
     @extend %icon-file-image-fill;

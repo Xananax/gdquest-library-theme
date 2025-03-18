@@ -4,6 +4,7 @@ import { makeRevealButton } from "../collapsibleElement/collapsibleElement.ts";
 const wasProcessedClass = "isJSProcessed";
 
 const processCallout = (collapsiblesList: HTMLDListElement) => {
+  
   if (collapsiblesList.classList.contains(wasProcessedClass)) {
     return;
   }

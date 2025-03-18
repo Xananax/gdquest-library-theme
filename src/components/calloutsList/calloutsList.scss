@@ -147,6 +147,14 @@ $arbitraryIconTopMargin: 1rem;
 		}
 	}
 
+  .code{
+    --callout-icons-color: currentColor;
+		&::after {
+			content: "" / "code reference";
+			@extend %icon-gear;
+		}
+  }
+
 	.error,
 	.warning {
 		--callout-icons-color: var(--color-pink-main);
