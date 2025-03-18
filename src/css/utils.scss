@@ -355,6 +355,15 @@
   }
 }
 
+@keyframes slideUpALot {
+  from {
+    transform: translateY(50svh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 @mixin noScriptWarning {
   @include flexCenter;
   position: absolute;
@@ -370,4 +379,16 @@
   // $remValue: math.div($value, 16) * 1rem;
   // @return $remValue;
   @return ($value * 1px);
+}
+
+@mixin showAsYouScroll(){
+  @media screen and (prefers-reduced-motion: no-preference) {
+    @supports ((animation-timeline: view()) and (animation-range: 0% 100%)) { 
+      opacity: 0;
+      animation-name: fadeIn, slideUpALot;
+      animation-fill-mode: forwards;
+      animation-timeline: view(block);
+      animation-range: entry 45% exit 55%;
+    } 
+  }
 }

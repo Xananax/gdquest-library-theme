@@ -63,6 +63,8 @@ const processArticleToc = (root: HTMLElement) => {
 			const id = setOrUseId(heading);
 			const level = parseInt(heading.tagName.replace("H", ""), 10);
 
+      const text = heading.dataset['tocTitle'] || heading.textContent || "";
+
 			const listItem = li(
 				{
 					class: [
@@ -80,7 +82,7 @@ const processArticleToc = (root: HTMLElement) => {
 						CLASS_PREFIX + CLASS_ANCHOR_LINK_LEVEL_PREFIX +
 						heading.tagName,
 					],
-				}, heading.textContent),
+				}, text),
 			);
 
 			if (level === 1) {
@@ -200,7 +202,6 @@ const processNavigationBehavior = (button: HTMLButtonElement) => {
 	button.classList.add("isNavJSProcessed");
 
   button.addEventListener("toggler-toggleshow", (event: ToggleShowEvent) => {
-    console.log("sdsdfs")
     document.documentElement.classList.toggle("tableOfContentsSideBarIsClosed", event.isHidden);
   })
 

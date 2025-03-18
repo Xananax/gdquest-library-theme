@@ -4,6 +4,7 @@
   --letter-shift: 30%;
   --letter-rotate: -15deg;
   --letter-color-inside: #27144f;
+  --letter-color-flap: #381d72;
   position: relative;
   display: block;
   margin-block: 5rem;
@@ -20,15 +21,15 @@
     border-style: solid;
     border-width: var(--letter-height) var(--letter-width);
     z-index: 1;
-    border-radius: 7px;
+    border-radius: 3px;
   }
   &::before {
-    transform: rotate(var(--letter-rotate)) translate(0, calc(var(--letter-shift) + var(--letter-height) * -2));
-    border-color: transparent transparent var(--letter-color-inside) transparent;
+    transform: rotate(var(--letter-rotate)) translate(0, calc(var(--letter-shift) + var(--letter-height) * -2 + 1px));
+    border-color: transparent transparent var(--letter-color-flap) transparent;
   }
   &::after {
     border-color: var(--letter-color-inside) #7121a8 #7d15c2 rgb(138, 54, 194);
-    filter: drop-shadow(5px 15px 3px #22212280)
+    filter: drop-shadow(5px 15px 3px #47234780)
   }
   span {
     font-family: var(--font-mono);
@@ -49,10 +50,12 @@
       linear-gradient(-135deg, #0000 1.24em, #fff 0);
     animation-name: letterDisclose;
     animation-duration: 1s;
-	animation-timeline: view();
+	  animation-timeline: view();
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-range: entry 25% exit 75%;
     white-space: nowrap;
+    box-shadow: -4px 4px 4px rgb(54 29 82 / 40%);
     a {
       color: #5464ef;
     }

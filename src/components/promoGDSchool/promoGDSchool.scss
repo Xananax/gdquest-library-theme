@@ -8,6 +8,7 @@ $promoGDSchoolBreakpoint: 1000px;
 	container-name: promoGDSchoolContainer;
 	container-type: inline-size;
 	--color: var(--purple-mid-025);
+  @include showAsYouScroll();
   &:first-child {
     margin-block-start: 25vh;
   }
@@ -62,19 +63,23 @@ $promoGDSchoolBreakpoint: 1000px;
 	}
 	&Body {
 		border-radius: 0 0 2.5rem 2.5rem; /* 40px */
-		border: 0.625rem solid var(--color);
+		border: toRem(6) solid var(--color);
 		padding: 1rem;
 		gap: 1.25rem;
 		display: grid;
 		width: 100%;
 		justify-items: center;
 		position: relative;
+    box-shadow: 0px 4px 4px 0px #00000040;
 		@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
 			border-radius: 2.5rem; /* 40px */
 			padding: 5rem 6.25rem;
 			border-width: 1.25rem;
 			gap: 3.125rem;
 		}
+    @include dark(){
+      box-shadow: none;
+    }
 		&List {
 			@include listReset;
 			@include paddingMarginReset;
@@ -98,18 +103,21 @@ $promoGDSchoolBreakpoint: 1000px;
 		&HighlightLink {
 			@include title;
 			@include flexCenter;
-			color: var(--yellow);
+      color: var(--color);
 			display: flex;
 			font-weight: 900;
 			font-size: 1rem;
 			text-transform: uppercase;
 			justify-self: end;
 			@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
-				position: absolute;
+        position: absolute;
 				font-size: 1.5rem;
 				bottom: 1rem;
 				right: 1rem;
 			}
+      @include dark(){
+        color: var(--yellow);
+      }
 			&::after {
 				@include icon;
 				@extend %icon-arrow-left-s-line;

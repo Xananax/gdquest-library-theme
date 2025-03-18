@@ -21,15 +21,7 @@
     background-image: linear-gradient(to bottom right, #6366f1, #9333ea);
     box-shadow: 1px 2px 0 rgb(0, 0, 0, 0.05);
   }
-  @media screen and (prefers-reduced-motion: no-preference) {
-    @supports ((animation-timeline: view()) and (animation-range: 0% 100%)) { 
-      opacity: 0;
-      animation-name: fadeIn;
-      animation-fill-mode: forwards;
-      animation-timeline: view(block);
-      animation-range: contain 25% contain 75%;
-    } 
-  }
+  @include showAsYouScroll();
   &::before {
     @include icon();
     @extend %icon-discord;

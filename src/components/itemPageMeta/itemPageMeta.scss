@@ -17,12 +17,16 @@
   gap: 4rem;
   &Links {
     --padding-inline: 1.25rem;
-    background: var(--color-pink-light);
-    color: white;
-    border-radius: var(--rounded-md);
-    padding-inline: var(--padding-inline);
+    --background: var(--color-pink-light);
     @include dark {
-      background: var(--purple-dark-010);
+      color: white;
+      --background: var(--purple-dark-010);
+    }
+    li{
+      color: #5D31A9;
+      @include dark {
+        color: #EDE3FE
+      }
     }
     a {
       text-decoration: none;
@@ -39,6 +43,10 @@
       @include title;
       margin: 0;
       padding-block-start: 1rem;
+      border-top-left-radius: var(--rounded-md);
+      border-top-right-radius: var(--rounded-md);
+      background: var(--background);
+      padding-inline: var(--padding-inline);
       a {
         color: var(--color-pink-main);
         @include dark {
@@ -56,22 +64,31 @@
         list-style: none;
         position: relative;
         padding-block: 1rem 1.875rem;
-        &:not(:last-of-type)::after {
-          content: "";
-          display: block;
-          width: calc(100% + var(--padding-inline) * 2);
-          position: absolute;
-          bottom: -0.635rem;
-          left: calc(var(--padding-inline) * -1);
-          border-bottom: 0.625rem solid var(--purple-dark-040);
+        background: var(--background);
+        padding-inline: var(--padding-inline);
+        &::last-of-type {
+          border-bottom-left-radius: var(--rounded-md);
+          border-bottom-right-radius: var(--rounded-md);
         }
+        // &:not(:last-of-type)::after {
+        //   content: "";
+        //   display: block;
+        //   width: calc(100% + var(--padding-inline) * 2);
+        //   position: absolute;
+        //   bottom: -0.635rem;
+        //   left: calc(var(--padding-inline) * -1);
+        //   border-bottom: 0.625rem solid var(--purple-dark-040);
+        // }
         & > span {
           @include title;
           margin-block: 1rem;
           &::before {
             @include icon();
             @extend %icon-link;
-            color: var(--purple-light-010);
+            color: #492388;
+            @include dark {
+              color: #E2A5FF;
+            }
             font-size: 1.4rem;
           }
           &::after {

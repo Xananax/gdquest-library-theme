@@ -16,6 +16,8 @@
 $buttonWidth: toRem(38);
 $minNavBarWidth: grid.$sideBarWidthMin + $buttonWidth;
 $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
+$headerHeight: toRem(96); // approximate height of the header
+$navNegativeMargin: toRem(48);
 
 /******************************************************************************
  *
@@ -50,21 +52,30 @@ $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
 		align-self: start;
 		z-index: 2;
 		position: sticky;
-		top: 6rem;
+    top: $navNegativeMargin;
+    margin-block-start: -4rem; // padding for the content page
+    @media (min-width: $navBarBreakpoint) {
+      top: calc($headerHeight + $navNegativeMargin);
+    }
 	}
 	&Container {
 		left: 0;
 		transition: transform 0.2s ease-out;
 		width: 100%;
 		min-width: $minNavBarWidth;
-    margin-block-start: -3rem; // this needs to be compensated by the max-height
+    //margin-block-start: - $navNegativeMargin; 
 	}
 	&Pane {
 		background-color: var(--purple-dark-040);
-		max-height: calc(100vh - 6rem - 3rem); // 6rem is the size of the header
+    height: calc(100vh - $navNegativeMargin);
+		height: calc(100svh - $navNegativeMargin);
 		overflow-y: scroll;
     background-color: #F8FAFC;
-		@include hideScrollBar;
+		@include hideScrollBar();
+    @media (min-width: $navBarBreakpoint) {
+      height: calc(100vh - $navNegativeMargin - $headerHeight);
+      height: calc(100svh - $navNegativeMargin - $headerHeight);
+    }
     @include dark(){
 		  background: var(--purple-dark-040);
     }
@@ -74,8 +85,7 @@ $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
 		cursor: pointer;
 		position: absolute;
 		inset-block-start: 0;
-		inset-inline-end: 0;
-		transform: translateX(100%);
+		inset-inline-start: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -89,6 +99,11 @@ $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
       color: var(--purple-light-010);
       background-color: rgba(40, 28, 65, 1);
 		  border: 2px solid rgba(68, 35, 105, 1);
+    }
+    @media (min-width: $navBarBreakpoint) {
+      transform: translateX(100%);
+      inset-inline-start: unset;
+      inset-inline-end: 0;
     }
 		&::before {
       @include icon();
@@ -204,6 +219,7 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 		}
 		&LinkToH2 {
 			justify-content: end;
+      text-align: end;
 		}
 		&::before {
 			margin-top: 0.3rem;
@@ -227,7 +243,7 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 		}
     &.hasIconBefore::before{
       margin-inline-end: 0.2ch;
-      top: 0;
+      top: -0.2ch;
     }
 	}
 	&SubheadingsContainer {
