@@ -6,14 +6,47 @@
 	grid-area: actions;
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 	align-self: start;
-	padding: 0.625rem 0.875rem;
-	gap: 1.2rem;
-	animation-name: fadeIn;
-	animation-timeline: view(10% block);
-	top: 8rem;
+
+  animation-name: fadeIn, slideUpALot;
+  animation-duration: 1s;
+  animation-timeline: view(block);
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-range: entry 25% exit 75%;
+	
+  top: 8rem;
+  gap: 2px;
+  margin-block-start: 5rem;
+  background: #B7A2DA; // is the thin border between elements
+  margin-inline-start: auto;
+  color: #6A38BE;
+  @include dark(){
+    color: white;
+  }
+  @media (min-width: $mid-breakpoint){
+    margin-inline: toRem(13);
+		position: sticky;
+	}
+  & > * {
+    //padding: 0.625rem 0.875rem;
+    background-color: #f8fafc;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include dark(){
+      background-color: var(--purple-dark-040);
+    }
+  }
+  .clapsButton{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    --icon-size: #{toRem(30)};
+    font-size: toRem(14);
+  }
 	.clipboardButton {
 		position: relative;
 		padding: .3125rem;
@@ -45,8 +78,5 @@
 				opacity: 1;
 			}
 		}
-	}
-	@media (min-width: $mid-breakpoint){
-		position: sticky;
 	}
 }

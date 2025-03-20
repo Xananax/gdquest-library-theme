@@ -3,6 +3,7 @@
 @use "../../css/animation.scss" as *;
 
 .clapsButton {
+  --icon-size: 1.4rem;
 	@include buttonReset;
 	justify-self: start;
 	display: flex;
@@ -15,6 +16,31 @@
 		display: flex;
 		align-items: center;
 	}
+  &Bubble{
+    background-color: black;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: toRem(12);
+    aspect-ratio: 1;
+    position: absolute;
+    inset-block-start: 0;
+    transform: translateY(0);
+    opacity: 0;
+    &::after{
+      content: "";
+      display: block;
+      position: absolute;
+      inset-block-end: 0;
+      transform: translateY(calc(100% - 2px));
+      border-color: black transparent transparent transparent;
+      border-style: solid;
+      border-width: 7px;
+    }
+  }
 	&Label {
 		position: relative;
 		&::before,
@@ -22,9 +48,11 @@
 			@include icon;
 			@extend %icon-clap;
 			display: block;
-			font-size: 1.4rem;
+			font-size: var(--icon-size);
+      transform-origin: center;
 		}
 		&::before {
+      @extend %icon-clap-bold;
 			opacity: 0;
 		}
 		&::after {
@@ -47,7 +75,6 @@
 			position: absolute;
 		}
 		&Total {
-			transform: translateY(0);
 			opacity: 0;
 			background: grey;
 			color: white;
@@ -57,16 +84,35 @@
 	&[aria-pressed="true"] {
 		.clapsButtonLabel::before {
 			animation-name: clap, fadeOut;
-			animation-duration: 0.5s;
+      animation-duration: 0.5s;
 			animation-timing-function: $easeOutBack;
 		}
-		.clapsButtonAmountTotal {
-			animation: riseUp, fadeIn;
-			animation-duration: 1s;
+		.clapsButtonBubble {
+      animation: clapBubbleUp, fadeIn;
+      animation-duration: 1s;
+      animation-delay: 0.1s;
 			animation-timing-function: ease-out;
 		}
 	}
-  &Placeholder { // This is the placeholder for the claps button, remove once claps work
-    height: 2.5rem; 
-  }
+}
+
+@keyframes clapBubbleUp {
+	from {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(-150%);
+	}
+}
+
+@keyframes clap {
+	from {
+		transform: scale(1);
+	}
+	10% {
+		color: var(--color-pink-main);
+	}
+	to {
+		transform: scale(2);
+	}
 }

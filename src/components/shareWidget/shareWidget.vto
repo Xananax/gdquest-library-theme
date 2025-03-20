@@ -1,6 +1,10 @@
 <div class="shareWidget">
+  <span>
 	{{ include "/src/components/clapsButton/clapsButton.vto" { claps: 45000 } }}
+  </span>
+  <span>
 	{{ layout "/src/components/clipboardButton/clipboardButton.vto" { className: "clipboardButton" } }}
     <span class="clipboardButtonLabel">Copy URL to clipboard</span>
   {{ /layout }}
+  </span>
 </div>
