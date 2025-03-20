@@ -392,3 +392,13 @@
     } 
   }
 }
+
+@mixin stack(){
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "stack";
+  & > * {
+    grid-area: stack;
+  }
+}
