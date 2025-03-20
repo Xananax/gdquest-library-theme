@@ -6,7 +6,7 @@ function setPasswordButtonText(this: PasswordButton, text: string){
     this.buttonLabel.textContent = text
 }
 
-function onclipboardButtonClick(this: PasswordButton){
+function onPasswordButtonClick(this: PasswordButton){
     const controlId = this.getAttribute('aria-controls')
     const element = document.querySelector<HTMLInputElement>(`#${controlId}`)
     
@@ -29,12 +29,12 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
     
     const buttonLabel = span(null, 'show characters')
 
-    const revealButon: PasswordButton = Object.assign(button({
+    const revealButton: PasswordButton = Object.assign(button({
         class: 'passwordContainerRevealButton',
         ariaExpanded: 'false',
         type: 'button',
         ariaControls: id,
-        onClick: onclipboardButtonClick,
+        onclick: onPasswordButtonClick,
     }, buttonLabel), { buttonLabel, setText: setPasswordButtonText })
 
     const container = div({
@@ -42,5 +42,5 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
     })
 
     input.parentElement?.insertBefore(container, input)
-    add(container, input, revealButon)
+    add(container, input, revealButton)
 })

@@ -27,10 +27,9 @@
 		&Label {
 			@include srOnly();
 		}
-		& > [data-clipboard-message] {
+		& > [data-is="clipboard-message"] {
 			position: absolute;
-			//opacity: 0;
-			position: absolute;
+      color: white;
 			position-anchor: --anchor-el;
 			top: 0;
 			right: 0;
@@ -42,7 +41,7 @@
 			padding: 0.25rem;
 		}
 		&[aria-pressed="true"] {
-			& > [data-clipboard-message] {
+			& > [data-is="clipboard-message"] {
 				opacity: 1;
 			}
 		}

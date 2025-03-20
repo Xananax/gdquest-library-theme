@@ -52,7 +52,11 @@
 					>
 					…
 				</p>
-				<button
+        {{ layout "/src/components/clipboardButton/clipboardButton.vto" { className: "contributeBlockFooterLink contributeBlockFooterLinkShare" } }}
+          <span>Share</span>
+        {{ /layout }}
+				{{#
+        <button
 					class="contributeBlockFooterLink contributeBlockFooterLinkShare"
 					data-is="clipboard-button"
 					data-clipboard="currentURL"
@@ -63,6 +67,7 @@
 					<span data-clipboard-message>Copied to clipboard!</span>
 				</button>
 				<!-- replace with:{{ include "/src/components/clipboardButton/clipboardButton.vto" }} -->
+        #}}
 			</li>
 		</ul>
 	</section>

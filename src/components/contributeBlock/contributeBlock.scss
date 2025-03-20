@@ -160,7 +160,7 @@
       }
       &Share {
         overflow: hidden;
-        & > [data-clipboard-message] {
+        & > [data-is="clipboard-message"] {
           position: absolute;
         }
       }
