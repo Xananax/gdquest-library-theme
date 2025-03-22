@@ -1,9 +1,11 @@
-import { Signal } from "../../js/deps.ts";
+import { Signal, getClampedRandomInt } from "../../js/deps.ts";
 
 const clapsOnPage = new Set<[Element, Element, Element]>();
 
 const claps = Signal(0);
 const clapped = Signal(0);
+
+type ClapButton = HTMLButtonElement & { label: Element };
 
 claps.on((amount) => {
   const formattedAmount = formatNumber(amount);
@@ -14,10 +16,11 @@ claps.on((amount) => {
   });
 });
 
-function increase(this: HTMLButtonElement) {
+function increase(this: ClapButton) {
   this.setAttribute("aria-pressed", "true");
   clapped.set(clapped.get() + 1);
   claps.set(claps.get() + 1);
+  this.label.appendChild(createConfetti());
 }
 
 function formatNumber(number = 0) {
@@ -29,7 +32,7 @@ function formatNumber(number = 0) {
 }
 
 document
-  .querySelectorAll("button.clapsButton")
+  .querySelectorAll<ClapButton>("button.clapsButton")
   .forEach(function processClapsButton(button) {
     if (button.classList.contains("isJSProcessed")) {
       return;
@@ -40,8 +43,9 @@ document
     const total = button.querySelector(".clapsButtonAmountTotal");
     const abbreviated = button.querySelector(".clapsButtonAmountAbbreviated");
     const bubble = button.querySelector(".clapsButtonBubble");
+    const label = button.querySelector(".clapsButtonLabel");
 
-    if (!total || !abbreviated || !bubble) {
+    if (!total || !abbreviated || !bubble || !label) {
       return;
     }
 
@@ -49,9 +53,14 @@ document
 
     button.addEventListener(
       "animationend",
-      () => button.setAttribute("aria-pressed", "false"),
+      (event) =>{
+        if(event.animationName === "clapTotal"){
+          button.setAttribute("aria-pressed", "false")
+        }
+      }
     );
 
+    button.label = label;
     button.addEventListener("click", increase);
   });
 
@@ -61,3 +70,30 @@ if (firstClapElement) {
   const amount = parseInt(total.textContent ?? "0", 10);
   claps.set(amount);
 }
+
+const createConfetti = () => {
+  const randomRotationAngle = getClampedRandomInt(360) + "deg";
+
+  const particlesContainer = document.createElement("span");
+  particlesContainer.dataset.is = "confetti";
+  particlesContainer.addEventListener("animationend", () =>
+    particlesContainer.remove()
+  );
+  particlesContainer.style.transform = `rotate(${randomRotationAngle})`;
+
+  let children = getClampedRandomInt(10, 5);
+
+  particlesContainer.classList.add(`has-${children + 1}`);
+
+  while (children-- >= 0) {
+    const particle = document.createElement("span");
+    particle.style.setProperty("--angle", getClampedRandomInt(25) + "deg");
+    particle.style.setProperty(
+      "--destination",
+      getClampedRandomInt(55, 5) + "px"
+    );
+    particlesContainer.appendChild(particle);
+  }
+
+  return particlesContainer;
+};

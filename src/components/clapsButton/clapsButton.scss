@@ -1,6 +1,7 @@
 @use "../../css/utils.scss" as *;
 @use "../../css/icons.scss" as *;
 @use "../../css/animation.scss" as *;
+@use "./confetti.scss";
 
 .clapsButton {
   --icon-size: 1.4rem;
@@ -59,7 +60,7 @@
 			position: absolute;
 			inset: 0 0;
 		}
-		& > span {
+		&Title {
 			@include srOnly;
 		}
 	}
@@ -82,27 +83,46 @@
 		}
 	}
 	&[aria-pressed="true"] {
+    animation-duration: 1.6s; // same as clapBubbleUp, which allows for JS's "animationend" event to be used
+    animation-name: clapTotal;
 		.clapsButtonLabel::before {
 			animation-name: clap, fadeOut;
       animation-duration: 0.5s;
 			animation-timing-function: $easeOutBack;
 		}
 		.clapsButtonBubble {
-      animation: clapBubbleUp, fadeIn;
+      animation: clapBubbleUp;
       animation-duration: 1s;
-      animation-delay: 0.1s;
+      animation-delay: 0.6s;
 			animation-timing-function: ease-out;
 		}
 	}
 }
 
+@keyframes clapTotal{
+  from{
+    transform: translateY(0);
+  }
+  to{
+    transform: translateY(0);
+  }
+}
+
 @keyframes clapBubbleUp {
 	from {
 		transform: translateY(0);
+    opacity: 0;
 	}
+  50% {
+    opacity: 1;
+  }
 	75% {
 		transform: translateY(-150%);
 	}
+  100%{
+    transform: translateY(-200%);
+    opacity: 0;
+  }
 }
 
 @keyframes clap {
