@@ -47,9 +47,12 @@ $shareWidgetBreakpoint: toRem(100);
     display: block;
     background-color: #B7A2DA;
     align-self: stretch;
+    margin-inline: toRem(5px);
     @container shareWidgetContainer (width > #{$shareWidgetBreakpoint}){
       width: 1px;
       height: unset;
+      margin-block: toRem(5px);
+      margin-inline: toRem(0);
     }
   }
   .clapsButton{

@@ -23,7 +23,7 @@
     grid-template-columns: auto minmax(22.5rem, 65rem) auto;
     grid-template-areas: "gutter1 main gutter2";
     @include dark() {
-      background: repeating-conic-gradient(#ffffff1f 0% 25%, #ffffff2b 0% 50%)
+      background: repeating-conic-gradient(#292442 0% 25%, #2f294e 0% 50%)
         50% / #{$s $s};
     }
   }
@@ -103,9 +103,9 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: end;
-      @media (min-width: $mid-breakpoint) {
-        padding-inline-end: 4.2rem;
-      }
+      //@media (min-width: $mid-breakpoint) {
+      //  padding-inline-end: 4.2rem;
+      //}
       img {
         float: left;
         height: 9.625rem;
@@ -207,10 +207,12 @@
       }
     }
     @media (min-width: $mid-breakpoint) {
-      max-width: toRem(260);
+      max-width: toRem(235);
+      min-height: toRem(252);
       &:nth-child(1) {
         flex: 1.3;
         order: 2;
+        max-width: toRem(260);
         transform: perspective(70px) translateZ(10px);
         & > p{
           padding-inline-start: 6rem;

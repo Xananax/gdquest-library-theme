@@ -25,6 +25,8 @@
       @extend %icon-eye;
       margin-inline-end: 0.5ch;
       font-size: toRem(20);
+      position: relative;
+      inset-block-start: toRem(3);
     }
   }
 

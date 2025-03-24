@@ -219,6 +219,7 @@ $summaryCardBreakPoint: 40rem;
 				@extend %icon-checked-circle;
 				font-size: 1.3rem;
         margin-inline-end: 0.5ch;
+        margin-block-start: 0;
 			}
 		}
 	}

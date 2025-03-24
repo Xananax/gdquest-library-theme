@@ -15,6 +15,10 @@
   & > h1{
     margin-block-start: toRem(85);
     margin-block-end: toRem(40);
+    --icon-color: var(--purple-mid-025);
+    @include dark {
+      --icon-color: var(--purple-light-010);
+    }
     &.hasIconBefore{
       padding-inline-start: toRem(44);
       &::before{
