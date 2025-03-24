@@ -1,7 +1,7 @@
 import { tmpl, ComponentString } from '../../depsServer.ts'
 const { figure, blockquote, figcaption, h4, h5 } = tmpl
 
-export const QuoteBubble: ComponentString<void> = (_skip, ...content) => figure({
+export const QuoteBubble: ComponentString<{}> = (_skip, ...content) => figure({
   className: 'quoteBubble'},
   blockquote({className: 'quoteBubbleContents'}, ...content),
   figcaption({className: 'quoteBubbleAuthor'},

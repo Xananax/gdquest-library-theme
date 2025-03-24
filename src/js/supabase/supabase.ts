@@ -4,7 +4,7 @@ import { type Database } from "./database.ts";
 
 export { AuthError };
 export type { Database, PostgrestError, Session, User };
-export type { PostId } from "../framework/nominalTypes.ts";
+export type { PostId } from "../nominalTypes.ts";
 
 // @ts-ignore
 const SUPABASE_URL = process.env.SUPABASE_URL || "";

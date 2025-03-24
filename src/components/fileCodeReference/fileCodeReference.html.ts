@@ -1,5 +1,5 @@
 import { tmpl, ComponentString } from "../../depsServer.ts";
-import { FileInText as FileInText } from "./../fileInText/fileInText.html.ts";
+import { FileInText as FileInText } from "../fileInText/fileInText.html.ts";
 import { CalloutsListSingleItem } from "../calloutsListSingleItem/calloutsListSingleItem.html.ts";
 const { div, span } = tmpl;
 

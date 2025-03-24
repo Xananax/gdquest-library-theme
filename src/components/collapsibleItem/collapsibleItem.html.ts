@@ -28,5 +28,5 @@ export const CollapsibleItem: ComponentString<CollapsibleItemProps> = (
       },
       title
     ),
-    dd({}, div({}, ...content)),
+    dd(null, div(null, ...content)),
   ].join("");

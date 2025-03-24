@@ -1,3 +1,4 @@
+//import { type Stripe } from "stripe";
 import { SetNonNullable, type MergeDeep } from "type-fest";
 
 import { type Database as GeneratedDatabase, Json } from "./database-generated.ts";
@@ -5,10 +6,10 @@ import {
   PostId,
   NotificationPostId,
   NotificationContentId,
-} from "../framework/nominalTypes.ts";
+} from "./nominalTypes.ts";
 
 /** Shortcut to the Stripe address type */
-export type Address = any;
+export type Address = any //Stripe.Address;
 
 export type Post = Omit<
   RemoveNullExcept<
