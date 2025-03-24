@@ -21,14 +21,15 @@ $promoGDSchoolBreakpoint: 1000px;
 		position: relative;
 		max-width: 100%;
 		z-index: 1;
+    text-align: center;
 		font-weight: 700;
 		font-size: 1.25rem;
-		padding-inline: 2.5rem;
+		padding-inline: toRem(40) toRem(20);
     padding-block: 2.1rem;
 		margin-block-end: -0.7rem;
 		background-color: var(--color);
 		height: 4rem;
-		border-start-end-radius: 4rem;
+		border-start-end-radius: toRem(40);
 		@container promoGDSchoolContainer (width > #{$promoGDSchoolBreakpoint}) {
 			margin-block-end: -2rem;
 			font-size: 3rem;
@@ -42,7 +43,7 @@ $promoGDSchoolBreakpoint: 1000px;
 			position: absolute;
 			inset: 0 auto 0 auto;
 			margin-inline-start: -3.5rem;
-			transform: translateY(-70%);
+			transform: translateY(-60%);
 			span {
 				@include srOnly;
 			}

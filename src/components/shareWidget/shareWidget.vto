@@ -1,10 +1,9 @@
-<div class="shareWidget">
-  <span>
-	{{ include "/src/components/clapsButton/clapsButton.vto" { claps: 45000 } }}
-  </span>
-  <span>
-	{{ layout "/src/components/clipboardButton/clipboardButton.vto" { className: "clipboardButton" } }}
-    <span class="clipboardButtonLabel">Copy URL to clipboard</span>
-  {{ /layout }}
-  </span>
+<div class="shareWidget shareWidgetContainer">
+  <div class="shareWidgetContent">
+    {{ include "/src/components/clapsButton/clapsButton.vto" { claps: 45000 } }}
+    <span class="shareWidgetSeparator" aria-hidden="true"></span>
+    {{ layout "/src/components/clipboardButton/clipboardButton.vto" { className: "clipboardButton" } }}
+      <span class="clipboardButtonLabel">Copy URL to clipboard</span>
+    {{ /layout }}
+  </div>
 </div>

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 [data-is="confetti"] {
   --duration: 0.3s;
   --translation: 50px;
@@ -40,7 +42,7 @@
   }
   @for $n from 5 through 11 {
     &.has-#{$n} {
-      $angleFraction: 360 / $n;
+      $angleFraction: math.div(360, $n);
       @for $i from 1 through $n {
         & > span:nth-child(#{$i}) {
           $angle: $angleFraction * $i * 1deg;

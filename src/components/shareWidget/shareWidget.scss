@@ -2,42 +2,54 @@
 @use "../../css/icons.scss" as *;
 @use "../../css/contentGrid.scss" as *;
 
-.shareWidget {
-	grid-area: actions;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-self: start;
+$shareWidgetBreakpoint: toRem(100);
 
-  animation-name: fadeIn, slideUpALot;
-  animation-duration: 1s;
-  animation-timeline: view(block);
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-range: entry 25% exit 75%;
-	
-  top: 8rem;
-  gap: 2px;
-  margin-block-start: 5rem;
-  background: #B7A2DA; // is the thin border between elements
-  margin-inline-start: auto;
-  color: #6A38BE;
-  @include dark(){
-    color: white;
+.shareWidget {
+  &Container{
+    grid-area: actions;
+    animation-name: fadeIn, slideUpALot;
+    animation-duration: 1s;
+    animation-timeline: view(block);
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-range: entry 25% exit 75%;
+    
+    top: 8rem;
+    gap: 2px;
+    margin-block-start: 5rem;
+    container-name: shareWidgetContainer;
+		container-type: inline-size;
+    @media (min-width: $mid-breakpoint){
+      margin-inline: toRem(13);
+      position: sticky;
+    }
   }
-  @media (min-width: $mid-breakpoint){
-    margin-inline: toRem(13);
-		position: sticky;
-	}
-  & > * {
-    //padding: 0.625rem 0.875rem;
-    background-color: #f8fafc;
-    flex: 1;
+  &Content{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    align-self: start;
+    color: #6A38BE;
+    max-width: min-content;
     @include dark(){
-      background-color: var(--purple-dark-040);
+      color: white;
+    }
+    @media (min-width: $mid-breakpoint){
+      margin-inline: auto;
+    }
+    @container shareWidgetContainer (width > #{$shareWidgetBreakpoint}){
+      flex-direction: row;
+    }
+  }
+  &Separator{
+    height: 1px;
+    display: block;
+    background-color: #B7A2DA;
+    align-self: stretch;
+    @container shareWidgetContainer (width > #{$shareWidgetBreakpoint}){
+      width: 1px;
+      height: unset;
     }
   }
   .clapsButton{

@@ -14,7 +14,7 @@
  *****************************************************************************/
 
 $buttonWidth: toRem(38);
-$minNavBarWidth: grid.$sideBarWidthMin + $buttonWidth;
+$minNavBarWidth: grid.$sideBarWidthMin;
 $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
 $headerHeight: toRem(96); // approximate height of the header
 $navNegativeMargin: toRem(48);
@@ -52,6 +52,7 @@ $navNegativeMargin: toRem(48);
     align-self: start;
     z-index: 2;
     position: sticky;
+    justify-self: stretch;
     top: $navNegativeMargin;
     margin-block-start: -4rem; // padding for the content page
     @media (min-width: $navBarBreakpoint) {
@@ -61,9 +62,12 @@ $navNegativeMargin: toRem(48);
   &Container {
     left: 0;
     transition: transform 0.2s ease-out;
-    width: 100%;
+    // width: 100%;
     min-width: $minNavBarWidth;
     //margin-block-start: - $navNegativeMargin;
+    // @media (min-width: $navBarBreakpoint) {
+    //   
+    // }
   }
   &Pane {
     background-color: var(--purple-dark-040);
@@ -95,15 +99,13 @@ $navNegativeMargin: toRem(48);
     color: #6a38be;
     background-color: #eaeff3;
     border: 2px solid #e5e7eb;
+    transform: translateX(100%);
+    inset-inline-start: unset;
+    inset-inline-end: 0;
     @include dark() {
       color: var(--purple-light-010);
       background-color: rgba(40, 28, 65, 1);
       border: 2px solid rgba(68, 35, 105, 1);
-    }
-    @media (min-width: $navBarBreakpoint) {
-      transform: translateX(100%);
-      inset-inline-start: unset;
-      inset-inline-end: 0;
     }
     &::before {
       @include icon();
@@ -128,22 +130,29 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
 
 .tableOfContents {
   &Wrapper {
-    grid-column: marginLeft / nav;
+    grid-column: nav / nav;
   }
   &Container {
     position: absolute;
-    transform: translateX(-100%);
+    pointer-events: none;
   }
   &Pane {
     opacity: 0;
-    transition: opacity 0.2s ease-out;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-property: opacity, transform;
     pointer-events: none;
+    transform: translateX(-100%);
   }
-  @at-root .isToggled &Container {
-    transform: translateX(0);
-  }
+  //@at-root .isToggled &Container {
+  //  transform: translateX(0);
+  //}
   @at-root .isToggled &Pane {
     opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+  @at-root .isToggled &Container {
     pointer-events: auto;
   }
   &ToggleButton {
@@ -151,15 +160,16 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
       transform: $buttonIconNormal;
     }
     @at-root .isToggled & {
+      transform: translateX(calc($minNavBarWidth + 100%));
       &::before {
         transform: $buttonIconTransform;
+      }
+      @media (min-width: grid.$mid-breakpoint) {
+        transform: translateX(100%);
       }
     }
   }
   @media (min-width: $navBarBreakpoint) {
-    &Wrapper {
-      grid-column: nav;
-    }
     @at-root .isToggled &Container {
       position: static; // this allows the TOC to affect the layout and to scroll out of view once the bottom of the page is reached
     }
