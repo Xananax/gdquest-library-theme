@@ -34,8 +34,8 @@
     background-color: rgb(55 65 81);
     color: white;
     border-color: rgb(92, 96, 102);
-    .section {
-      &.first:before,
+    &Section {
+      &First:before,
       &:after {
         color: rgb(156 163 175);
       }

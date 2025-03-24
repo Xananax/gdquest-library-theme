@@ -29,11 +29,8 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    opacity: 0;
     cursor: pointer;
-    span {
-      @include srOnly();
-    }
+    font-size: inherit;
   }
   &[data-closed] {
     &::after {

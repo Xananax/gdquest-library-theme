@@ -28,6 +28,7 @@
 		padding: toRem(16) toRem(17);
 		margin-bottom: 1rem;
 		font-size: toRem(16);
+    line-height: 1.7;
 		z-index: 0;
 		& > * {
 			position: relative;
@@ -43,7 +44,7 @@
 		}
 		&::after {
 			@include bubble-pointer(var(--pointer-color));
-			--bubble-pointer-size: 0.7rem;
+			--bubble-pointer-size: #{toRem(9)};
 			--bubble-pointer-offset-x: 2rem;
 			z-index: 1;
 		}

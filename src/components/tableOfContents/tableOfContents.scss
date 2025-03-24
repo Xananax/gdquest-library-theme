@@ -56,6 +56,11 @@ $navNegativeMarginLarge: toRem(105);
     justify-self: stretch;
     top: $navNegativeMarginSmall;
     margin-block-start: -4rem; // padding for the content page
+    --icon-color: var(--purple-mid-025);
+    @include dark {
+      --icon-color: var(--purple-light-010);
+      --icon-color: #E2A5FF;
+    }
     @media (min-width: grid.$mid-breakpoint) {
       top: $navNegativeMarginLarge; //calc($headerHeight + $navNegativeMarginSmall);
     }
@@ -226,20 +231,29 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
     text-decoration: none;
     padding-inline-start: 0.625rem;
     padding-inline-end: 1.25rem;
-    padding-block: 0.875rem;
+    //padding-block: toRem(17);
     gap: 0.625rem;
+    font-weight: 600;
+    align-items: center;
     display: flex;
-    align-items: start;
+    &Number{
+      color: #6725D6;
+      @include dark(){
+        color: #BA32FF;
+      }
+      &::after{
+        content: ". ";
+      }
+    }
     &LinkToH1 {
       text-transform: uppercase;
       font-weight: 700;
+      min-height: toRem(70);
     }
     &LinkToH2 {
       justify-content: end;
       text-align: end;
-    }
-    &::before {
-      margin-top: 0.3rem;
+      min-height: toRem(45);
     }
     &::after {
       content: "";
@@ -260,7 +274,8 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
     }
     &.hasIconBefore::before {
       margin-inline-end: 0.2ch;
-      top: 0.5ch;
+      top: -0.1ch;
+      position: relative;
       font-size: 1.7rem;
     }
   }

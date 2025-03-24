@@ -2,9 +2,9 @@
 @use "../../css/icons.scss" as *;
 
 .discordLetterInvite {
-  --letter-width: 60px;
-  --letter-height: 40px;
-  --letter-shift: 30%;
+  --letter-width: 43px;
+  --letter-height: 30px;
+  --letter-shift: 18%;
   --letter-rotate: -15deg;
   --letter-color-inside: #27144f;
   --letter-color-flap: #381d72;
@@ -34,6 +34,7 @@
     border-color: var(--letter-color-inside) #7121a8 #7d15c2 rgb(138, 54, 194);
     filter: drop-shadow(5px 15px 3px #47234780)
   }
+  /*
   .discordFullLogo{
     content: "";
     width: 7em;
@@ -49,31 +50,33 @@
       @include srOnly;
     }
   }
+    */
   &Message {
     font-family: var(--font-mono);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 1.125rem;
+    font-size: 1rem;
     position: relative;
     display: block;
     color: black;
-    padding: 1rem;
+    padding: 0.5rem 3rem;
     margin-inline-start: calc(var(--letter-width) * 1.5);
-    padding-inline-start: calc(var(--letter-width) * 0.5);
+    padding-inline-start: calc(var(--letter-width) * 0.5 + 1rem);
     border-radius: 5px;
     overflow: hidden;
     text-align: center;
-    background-image: linear-gradient(to bottom right, #e1e1f9, #edd9ff);
-    //background: linear-gradient(to bottom left, #0000 50%, #0006 0) 100% 0 /
-    //    1.7em 1.7em no-repeat,
-    //  linear-gradient(-135deg, #0000 1.24em, #fff 0);
+    //background-image: linear-gradient(to bottom right, #e1e1f9, #edd9ff);
+    background: linear-gradient(to bottom left, #0000 50%, #0006 0) 100% 0 /
+        1.7em 1.7em no-repeat,
+      linear-gradient(-135deg, #0000 1.24em, #fff 0);
     animation-name: letterDisclose;
     animation-duration: 1s;
 	  animation-timeline: view();
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
     animation-range: entry 25% exit 75%;
-    white-space: nowrap;
+    width: fit-content;
+    //white-space: nowrap;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.31);
     a {
       color: #5464ef;

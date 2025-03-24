@@ -12,7 +12,7 @@ export const ContributeBlock = () =>
       h1(
         {
           className: [`hasIconBefore`, `icon-github`],
-          dataTocTitle: "Contribute to the Free Library",
+          dataTocTitle: "Contribute to the Library",
         },
         "Contribute to GDQuest's Free Library"
       ),

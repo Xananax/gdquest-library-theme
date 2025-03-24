@@ -17,9 +17,13 @@ export const FileCodeReference: ComponentString<CodeReferenceProps> = (
 ) => {
   return CalloutsListSingleItem(
     {
-      title: span(null, "Code Reference: ", FileInText({ fileOnly }, file)),
+      title: span(
+        { className: `${classPrefix}Title` },
+        span({ className: `${classPrefix}TitlePrefix` }, "Code Reference: "),
+        FileInText({ fileOnly }, file)
+      ),
       open: !closed,
-      className: `${classPrefix}`,
+      className: [`${classPrefix}`],
       type: "code",
     },
     div(

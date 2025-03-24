@@ -9,7 +9,7 @@
 	content: "";
 }
 
-$arbitraryIconTopMargin: 1rem;
+$arbitraryIconTopMargin: 0.9rem;
 
 .calloutsList {
 	--callout-border-color: var(--color-purple-faint);
@@ -18,6 +18,15 @@ $arbitraryIconTopMargin: 1rem;
 	border-width: 1px;
 	border-radius: var(--rounded-md);
 	display: grid;
+  --callout-padding-block-start: 1rem;
+  --callout-padding-block-end: 1rem;
+  --callout-icons-color: var(--color-slate-700);
+  --callout-padding-inline: 1.875rem;
+  --callout-padding: 
+      var(--callout-padding-block-start)
+      var(--callout-padding-inline)
+      var(--callout-padding-block-end)
+      calc(var(--callout-padding-inline) * 2);
 	@include dark() {
 		--callout-border-color: var(--color-purple-800);
 		background-color: var(--color-slate-800);
@@ -33,10 +42,6 @@ $arbitraryIconTopMargin: 1rem;
 		}
 	}
 	dt {
-		--callout-icons-color: var(--color-slate-700);
-		--callout-padding-inline: 1.875rem;
-		--callout-padding: 1rem var(--callout-padding-inline) 1rem
-			calc(var(--callout-padding-inline) * 2);
 		padding: var(--callout-padding);
 		position: relative;
 		font-weight: 600;
@@ -63,9 +68,8 @@ $arbitraryIconTopMargin: 1rem;
 			padding-inline-start: calc(var(--callout-padding-inline) * 3);
 			width: 100%;
 			&::before {
-				// chevron
-				@include icon();
-				color: var(--callout-icons-color);
+        // chevron
+        --icon-color: var(--callout-icons-color);
 				position: absolute;
 				font-size: 1.5rem;
 				left: calc(var(--callout-padding-inline) * 2);
@@ -148,7 +152,10 @@ $arbitraryIconTopMargin: 1rem;
 	}
 
   .code{
-    --callout-icons-color: currentColor;
+    --callout-icons-color: rgb(46 16 101);
+    @include dark(){
+      --callout-icons-color: var(--color-coderef-title);
+    }
 		&::after {
 			content: "" / "code reference";
 			@extend %icon-gear;

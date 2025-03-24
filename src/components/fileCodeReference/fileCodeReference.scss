@@ -1,0 +1,12 @@
+@use "../../css/utils.scss" as *;
+@use "../../css/icons.scss" as *;
+
+.fileCodeReference{
+  &TitlePrefix{
+    text-transform: uppercase;
+    color: rgb(46 16 101);
+    @include dark(){
+      color: var(--color-coderef-title);
+    }
+  }
+}

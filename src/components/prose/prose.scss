@@ -13,8 +13,8 @@
 
 .prose{
   & > h1{
-    margin-block-start: toRem(75);
-    margin-block-end: toRem(25);
+    margin-block-start: toRem(85);
+    margin-block-end: toRem(40);
     &.hasIconBefore{
       padding-inline-start: toRem(44);
       &::before{
@@ -32,7 +32,7 @@
     margin-block-start: toRem(10);
   }
   & > h2{
-    margin-block-start: toRem(40);
+    margin-block-start: toRem(70);
     margin-block-end: toRem(30);
   }
   & > h3 {
@@ -40,13 +40,17 @@
     margin-block-end: toRem(20);
   }
   & > .videoEmbed{
-    margin-block-end: 2.5rem;
+    margin-block-start: toRem(20);
+    margin-block-end: toRem(30);
   }
   & > .calloutsList {
-    margin-block-start: 2.5rem;
+    margin-block-start: 1.5rem;
   }
   & > .calloutsList + .calloutsList {
     margin-block-start: 0;
+  }
+  & > .quoteBubble{
+    margin-block: 1.5rem;
   }
 }
 
@@ -55,29 +59,31 @@
   p, li{
     line-height: toRem(24);
   }
-  h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
-    margin-block-start: 0;
+  h1, h2, h3, h4, h5{
+    & + p, & + dl, & + ul, & + ol, & + .calloutsList, & + section{
+      margin-block-start: toRem(0);
+    }
   }
 	&Title,
-	h1 {
+	& > h1 {
 		@include title();
     text-transform: uppercase;
 	}
-	h2,
-	h3,
-	h4,
-	h5 {
+	& > h2,
+	& > h3,
+	& > h4,
+	& > h5 {
 		font-family: var(--font-title);
 	}
-	h3,
-	h4,
-	a {
+	& > h3,
+	& > h4,
+	& > a {
 		color: var(--color-pink-main);
 		@include dark {
 			color: var(--color-pink-main-on-dark);
 		}
 	}
-	h2 {
+	& > h2 {
 		font-weight: 700;
 		font-size: 1.5rem;
 		color: var(--purple-mid-025);
@@ -85,7 +91,7 @@
 			color: var(--purple-light-010);
 		}
 	}
-	h3 {
+	& > h3 {
 		@include title();
 		font-weight: 700;
 		font-size: 1.25rem;

@@ -24,6 +24,7 @@
       @include icon();
       @extend %icon-eye;
       margin-inline-end: 0.5ch;
+      font-size: toRem(20);
     }
   }
 
@@ -32,12 +33,21 @@
     align-content: start;
     justify-content: start;
     grid-template-columns: auto 1fr;
+    min-height: toRem(27);
+    align-items: center;
+    button{
+      text-align: start;
+      padding-inline-start: 3ch;
+    }
   }
 
   .disclosureDetails {
-    margin-inline-start: 2ch;
+    margin-inline-start: 3ch;
     top: -0.2rem;
     position: relative;
+    font-style: italic;
+    min-height: toRem(27);
+    align-items: center;
   }
 
   &.isJSProcessed {
