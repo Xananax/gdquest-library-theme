@@ -27,7 +27,7 @@
 		border-radius: var(--rounded-2xl);
 		padding: toRem(16) toRem(17);
 		margin-bottom: 1rem;
-		font-size: 1.125rem;
+		font-size: toRem(16);
 		z-index: 0;
 		& > * {
 			position: relative;

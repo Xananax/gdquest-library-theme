@@ -27,7 +27,7 @@ interface ItemDiscordInviteProps {
 
 export const ItemDiscordInvite: ComponentString<ItemDiscordInviteProps> = ({ discord_invite}) => section(
   { className: "itemDiscordInvite" },
-  h4(null, "This tutorial has a discord channel!"),
+  h4(null, "This tutorial has a Discord channel!"),
   p(null, "Connect with fellow beginners and pros building games and learning."),
   span(null, "20,000 members"),
   a({ href: discord_invite }, "Join Server")

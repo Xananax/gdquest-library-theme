@@ -4,7 +4,7 @@ import "../components/clapsButton/clapsButton.ts";
 import "../components/clipboardButton/clipboardButton.ts";
 import "../components/codeBlock/codeBlock.ts";
 import "../components/collapsibleList/collapsibleList.ts";
-import "../components/fontSizeResizer/fontSizeResizer.ts";
+// import "../components/fontSizeResizer/fontSizeResizer.ts";
 import "../components/glossarySearch/glossarySearch.ts";
 import "../components/mainSearch/mainSearch.ts";
 import "../components/passwordField/passwordField.ts";

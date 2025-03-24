@@ -1,8 +1,8 @@
 import { tmpl, ComponentString } from "../../depsServer.ts";
-const { div } = tmpl;
+const { span } = tmpl;
 
 export const CheckPointBullet: ComponentString = (_skip, ...content) =>
-  div(
+  span(
     {
       className: "checkpointBullet",
     },

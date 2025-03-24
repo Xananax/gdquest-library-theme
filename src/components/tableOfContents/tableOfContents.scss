@@ -16,8 +16,9 @@
 $buttonWidth: toRem(38);
 $minNavBarWidth: grid.$sideBarWidthMin;
 $navBarBreakpoint: grid.$mid-breakpoint + $minNavBarWidth;
-$headerHeight: toRem(96); // approximate height of the header
-$navNegativeMargin: toRem(48);
+// $headerHeight: toRem(96); // approximate height of the header
+$navNegativeMarginSmall: toRem(48);
+$navNegativeMarginLarge: toRem(105);
 
 /******************************************************************************
  *
@@ -53,10 +54,10 @@ $navNegativeMargin: toRem(48);
     z-index: 2;
     position: sticky;
     justify-self: stretch;
-    top: $navNegativeMargin;
+    top: $navNegativeMarginSmall;
     margin-block-start: -4rem; // padding for the content page
-    @media (min-width: $navBarBreakpoint) {
-      top: calc($headerHeight + $navNegativeMargin);
+    @media (min-width: grid.$mid-breakpoint) {
+      top: $navNegativeMarginLarge; //calc($headerHeight + $navNegativeMarginSmall);
     }
   }
   &Container {
@@ -71,14 +72,14 @@ $navNegativeMargin: toRem(48);
   }
   &Pane {
     background-color: var(--purple-dark-040);
-    height: calc(100vh - $navNegativeMargin);
-    height: calc(100svh - $navNegativeMargin);
+    //height: calc(100vh - $navNegativeMarginSmall);
+    //height: calc(100svh - $navNegativeMarginSmall);
     overflow-y: scroll;
     background-color: #f8fafc;
     @include hideScrollBar();
-    @media (min-width: $navBarBreakpoint) {
-      height: calc(100vh - $navNegativeMargin - $headerHeight);
-      height: calc(100svh - $navNegativeMargin - $headerHeight);
+    @media (min-width: grid.$mid-breakpoint) {
+      height: calc(100vh - $navNegativeMarginLarge);// - $headerHeight);
+      height: calc(100svh - $navNegativeMarginLarge); // - $headerHeight);
     }
     @include dark() {
       background: var(--purple-dark-040);
@@ -259,7 +260,8 @@ $buttonIconTransform: rotate(180deg) scaleX(-1);
     }
     &.hasIconBefore::before {
       margin-inline-end: 0.2ch;
-      top: -0.2ch;
+      top: 0.5ch;
+      font-size: 1.7rem;
     }
   }
   &SubheadingsContainer {

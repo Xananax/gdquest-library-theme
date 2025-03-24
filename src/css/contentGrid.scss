@@ -46,7 +46,7 @@ $small-breakpoint: calc(
 /////////////////////////////////// MEDIUM SIZE ///////////////////////////////////
 
 $mid-nav-min: toRem(300);
-$mid-nav-max: auto;
+$mid-nav-max: toRem(300);
 
 $mid-marginLeft-min: toRem(40);//toRem(160);
 $mid-marginLeft-max: 1fr;
@@ -74,7 +74,7 @@ $large-breakpoint: calc($mid-breakpoint + $sideBarWidthMin);
 
 @mixin gridMid($navWidth) {
   grid-template-columns:
-    minmax($navWidth, $mid-nav-max)
+    $navWidth
     minmax($mid-marginLeft-min, $mid-marginLeft-max)
     minmax($mid-main-min, $mid-main-max)
     minmax($mid-actions-min, $mid-actions-max)
@@ -87,7 +87,7 @@ $large-breakpoint: calc($mid-breakpoint + $sideBarWidthMin);
 /////////////////////////////////// LARGE SIZE ///////////////////////////////////
 
 $large-nav-min: toRem(400);
-$large-nav-max: auto;
+$large-nav-max: toRem(400);
 
 $large-marginLeft-min: toRem(95);
 $large-marginLeft-max: 1fr;
@@ -115,7 +115,7 @@ $extralarge-breakpoint: calc($large-breakpoint + $largeSideBarWidthMin);
 
 @mixin gridLarge($navWidth) {
   grid-template-columns:
-    minmax($navWidth, $large-nav-max)
+    $navWidth
     minmax($large-marginLeft-min, $large-marginLeft-max)
     minmax($large-main-min, $large-main-max)
     minmax($large-actions-min, $large-actions-max)
@@ -126,7 +126,7 @@ $extralarge-breakpoint: calc($large-breakpoint + $largeSideBarWidthMin);
 /////////////////////////////////// EXTRA LARGE SIZE ///////////////////////////////////
 
 $extralarge-nav-min: toRem(530);
-$extralarge-nav-max: auto;
+$extralarge-nav-max: toRem(530);
 
 $extralarge-marginLeft-min: toRem(250);
 $extralarge-marginLeft-max: 1fr;
@@ -147,7 +147,7 @@ $extralargeSideBarWidthMin: toRem(320);
 
 @mixin gridExtraLarge($navWidth) {
   grid-template-columns:
-    minmax($navWidth, $extralarge-nav-max)
+    $navWidth
     minmax($extralarge-marginLeft-min, $extralarge-marginLeft-max)
     minmax($extralarge-main-min, $extralarge-main-max)
     minmax($extralarge-actions-min, $extralarge-actions-max)
@@ -155,6 +155,8 @@ $extralargeSideBarWidthMin: toRem(320);
     minmax($extralarge-marginRight-min, $extralarge-marginRight-max);
 }
 
+$final-possible-size: calc($extralarge-nav-max + $extralarge-marginLeft-min + $extralarge-main-max +
+$extralarge-actions-min + $extralarge-meta-max + $extralarge-marginRight-min);
 
 /////////////////////////////////// EXTRA LARGE SIZE ///////////////////////////////////
 
@@ -164,9 +166,11 @@ $extralargeSideBarWidthMin: toRem(320);
 /////////////////////////////////// EXTRA LARGE SIZE ///////////////////////////////////
 
 @mixin contentGrid() {
-  @include gridSmall();
   justify-content: center;
-  transition: grid-template-columns 300ms ease-in-out;
+  transition: grid-template-columns 200ms ease-in-out;
+  max-width: $final-possible-size;
+  margin-inline: auto;
+  @include gridSmall();
   @media (min-width: $mid-breakpoint) {
     @include gridMid($sideBarWidthMin);
     @at-root .tableOfContentsSideBarIsClosed #{&} {

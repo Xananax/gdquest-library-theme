@@ -14,7 +14,7 @@
     {{- for link of mainNavLinks -}}
       <a class="mainNavItem {{ link.className ? link.className : '' }}" href="{{ link.url }}">{{ link.label }}</a>
     {{- /for -}}
-    {{ include "/src/components/fontSizeResizer/fontSizeResizer.vto" }}
+    {{#- include "/src/components/fontSizeResizer/fontSizeResizer.vto" -#}}
     {{ include "/src/components/themeToggle/themeToggle.vto" }}
     <div class="mainNavSecondaryItems">
       {{- if showLoginButton -}}

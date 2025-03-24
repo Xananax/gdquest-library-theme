@@ -15,5 +15,5 @@ export const DiscordLetterInvite: ComponentString<DiscordLetterInviteProps> = ({
 }) =>
   span(
     { className: classPrefix },
-    span(null, "Join our discord ", a({ href: discord_invite }, "here"), "!")
+    span({ className: `${classPrefix}Message`}, "You're invited to join our ", span({className:"discordFullLogo"}, span(null, "Discord")), " server ", a({ href: discord_invite }, "here"), "!")
   );
