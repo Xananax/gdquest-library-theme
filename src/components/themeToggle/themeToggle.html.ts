@@ -3,7 +3,7 @@ const { button, span } = tmpl;
 
 const classPrefix = "themeToggle";
 
-export const ThemeToggle: ComponentString<void, "none"> = () =>
+export const ThemeToggle: ComponentString<{}, "none"> = () =>
   button(
     {
       title: "Press to toggle to dark mode",

@@ -3,6 +3,7 @@ import { HTMLFactory } from "./../../process-course-utils/src/any/createElement/
 export { simpleHash } from "../../process-course-utils/src/any/simpleHash.ts";
 export { tmpl } from "../../process-course-utils/src/any/createElement/tmpl.any.ts";
 export { type ImageResourceInfo } from "./../../process-course-utils/src/cli/getImageInfoFromMarkdown.ts";
+export { type ParsedDate } from "./../../process-course-utils/src/any/dateUtils.ts";
 export type ValidChild = HTMLFactory.ValidChild;
 export type ClassNameValue = HTMLFactory.ClassNameValue;
 

@@ -6,7 +6,7 @@ function setPasswordButtonText(this: PasswordButton, text: string){
     this.buttonLabel.textContent = text
 }
 
-function onPasswordButtonClick(this: PasswordButton){
+function onPasswordButtonClick(this: PasswordButton, _event:MouseEvent){
     const controlId = this.getAttribute('aria-controls')
     const element = document.querySelector<HTMLInputElement>(`#${controlId}`)
     
@@ -34,6 +34,7 @@ document.querySelectorAll('input[type="password"]').forEach(input=>{
         ariaExpanded: 'false',
         type: 'button',
         ariaControls: id,
+        // @ts-expect-error The button is not yet cast to a PasswordButton on this line
         onclick: onPasswordButtonClick,
     }, buttonLabel), { buttonLabel, setText: setPasswordButtonText })
 

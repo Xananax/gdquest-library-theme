@@ -27,7 +27,7 @@ const {
 
 const classPrefix = "itemPageMeta";
 
-interface ItemPageMetaProps {
+export interface ItemPageMetaProps {
   showTeachingMethodLink: boolean;
   staticRoot: string;
   discord_invite: string;

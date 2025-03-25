@@ -4,7 +4,7 @@ const { footer, h3, span, a, ul, li, p } = tmpl;
 
 const classPrefix = "mainPageFooter";
 
-export const Footer:ComponentString = () => footer({className: classPrefix},
+export const Footer = () => footer({className: classPrefix},
   ul({className: `${classPrefix}Wrapper`, role: "list"},
     li({className: `${classPrefix}Socials`},
       a({href: "#", className: `${classPrefix}SocialsLogo gdquestLogo`, ariaHidden: "true"},
